@@ -6,6 +6,22 @@ public class Resposta {
 
 	private String textoResposta;
 
+	public int getIdResposta() {
+		return idResposta;
+	}
+
+	public void setIdResposta(int idResposta) {
+		this.idResposta = idResposta;
+	}
+
+	public String getTextoResposta() {
+		return textoResposta;
+	}
+
+	public void setTextoResposta(String textoResposta) {
+		this.textoResposta = textoResposta;
+	}
+
 	public Boolean incluirResposta(Resposta resposta) {
 		return null;
 	}

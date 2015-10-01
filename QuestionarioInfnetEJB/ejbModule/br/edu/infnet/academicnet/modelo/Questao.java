@@ -6,6 +6,22 @@ public class Questao {
 
 	private String textoQuestao;
 
+	public int getIdQuestao() {
+		return idQuestao;
+	}
+
+	public void setIdQuestao(int idQuestao) {
+		this.idQuestao = idQuestao;
+	}
+
+	public String getTextoQuestao() {
+		return textoQuestao;
+	}
+
+	public void setTextoQuestao(String textoQuestao) {
+		this.textoQuestao = textoQuestao;
+	}
+
 	public Boolean incluirQuestao(Questao questao) {
 		return null;
 	}

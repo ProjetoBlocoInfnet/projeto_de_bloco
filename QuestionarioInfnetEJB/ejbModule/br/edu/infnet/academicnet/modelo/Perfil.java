@@ -8,6 +8,30 @@ public class Perfil {
 
 	private String descricao;
 
+	public int getIdPerfil() {
+		return idPerfil;
+	}
+
+	public void setIdPerfil(int idPerfil) {
+		this.idPerfil = idPerfil;
+	}
+
+	public String getNomePerfil() {
+		return nomePerfil;
+	}
+
+	public void setNomePerfil(String nomePerfil) {
+		this.nomePerfil = nomePerfil;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public Boolean incluirPerfil(Perfil perfil) {
 		return null;
 	}

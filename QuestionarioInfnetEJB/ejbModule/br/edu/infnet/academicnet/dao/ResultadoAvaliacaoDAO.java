@@ -1,5 +1,7 @@
 package br.edu.infnet.academicnet.dao;
 
-public class ResultadoAvaliacaoDAO {
+import br.edu.infnet.academicnet.modelo.ResultadoAvaliacao;
+
+public interface ResultadoAvaliacaoDAO extends GenericoDAO<ResultadoAvaliacao> {
 
 }
