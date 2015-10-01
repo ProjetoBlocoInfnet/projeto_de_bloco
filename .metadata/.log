@@ -339,3 +339,6 @@ org.eclipse.swt.SWTError: No more handles [Unknown Mozilla path (MOZILLA_FIVE_HO
 
 !ENTRY org.eclipse.ui 4 4 2015-09-30 21:24:24.854
 !MESSAGE Plug-in 'org.eclipse.pde.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.pde.ui.ConvertedProjectWizard
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2015-09-30 21:48:26.085
+!MESSAGE No valid Android XML Editor Delegate found for file /QuestionarioInfnetEJB/ejbModule/META-INF/ejb-jar.xml [Res null, type null]

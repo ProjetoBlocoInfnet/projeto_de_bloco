@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;QuestionarioInfnetWAR/WebContent/resources/bootstrap-3.3.5-dist&apos; to &apos;bootstrap&apos;" description="Rename resource &apos;bootstrap-3.3.5-dist&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/resources/bootstrap-3.3.5-dist" name="bootstrap" stamp="1443661070169" updateReferences="true"/>
+</session>
