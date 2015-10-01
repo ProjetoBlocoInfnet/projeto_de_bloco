@@ -342,3 +342,453 @@ org.eclipse.swt.SWTError: No more handles [Unknown Mozilla path (MOZILLA_FIVE_HO
 
 !ENTRY com.android.ide.eclipse.adt 1 0 2015-09-30 21:48:26.085
 !MESSAGE No valid Android XML Editor Delegate found for file /QuestionarioInfnetEJB/ejbModule/META-INF/ejb-jar.xml [Res null, type null]
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2015-09-30 22:24:28.359
+!MESSAGE Full publish failed for module QuestionarioInfnetWAR
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.359
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/META-INF/MANIFEST.MF: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.359
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/footer.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/index.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/openDoc.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.eot: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.svg: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.ttf: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff2: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.min.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/npm.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap-3.3.5-dist.zip: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/img/infnet_logo.png: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:28.360
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/js/jquery-1.11.3.min.js: Permissão negada
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-30 22:24:28.388
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+	at org.jboss.ide.eclipse.as.wtp.core.server.behavior.LocalFilesystemController.touchResource(LocalFilesystemController.java:361)
+	at org.jboss.ide.eclipse.as.core.server.internal.v7.DeploymentMarkerUtils.createDoDeployMarker(DeploymentMarkerUtils.java:116)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.restartModule(StandardFileSystemPublishController.java:655)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.ensureModulesRestarted(StandardFileSystemPublishController.java:605)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.publishFinish(StandardFileSystemPublishController.java:251)
+	at org.jboss.tools.as.core.server.controllable.internal.DeployableServerBehavior.publishFinish(DeployableServerBehavior.java:111)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:1011)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:774)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Server.java:3157)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Server.java:345)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 0 2015-09-30 22:24:28.401
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2015-09-30 22:24:34.763
+!MESSAGE Full publish failed for module QuestionarioInfnetWAR
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/META-INF/MANIFEST.MF: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/footer.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/index.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/openDoc.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.eot: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.svg: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.ttf: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff2: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.min.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/npm.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap-3.3.5-dist.zip: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/img/infnet_logo.png: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:24:34.763
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/js/jquery-1.11.3.min.js: Permissão negada
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-30 22:24:34.764
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+	at org.jboss.ide.eclipse.as.wtp.core.server.behavior.LocalFilesystemController.touchResource(LocalFilesystemController.java:361)
+	at org.jboss.ide.eclipse.as.core.server.internal.v7.DeploymentMarkerUtils.createDoDeployMarker(DeploymentMarkerUtils.java:116)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.restartModule(StandardFileSystemPublishController.java:655)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.ensureModulesRestarted(StandardFileSystemPublishController.java:605)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.publishFinish(StandardFileSystemPublishController.java:251)
+	at org.jboss.tools.as.core.server.controllable.internal.DeployableServerBehavior.publishFinish(DeployableServerBehavior.java:111)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:1011)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:774)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Server.java:3157)
+	at org.eclipse.wst.server.core.internal.Server.publish(Server.java:1327)
+	at org.jboss.ide.eclipse.as.ui.launch.JBTWebLaunchableClient.wait(JBTWebLaunchableClient.java:87)
+	at org.jboss.ide.eclipse.as.ui.launch.JBTWebLaunchableClient.launch2(JBTWebLaunchableClient.java:61)
+	at org.jboss.ide.eclipse.as.ui.launch.JBTWebLaunchableClient$1.run(JBTWebLaunchableClient.java:53)
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 0 2015-09-30 22:24:34.765
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+
+!ENTRY org.jboss.ide.eclipse.as.ui 2 0 2015-09-30 22:24:54.793
+!MESSAGE Server stopped before before browser could be opened.
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2015-09-30 22:26:08.837
+!MESSAGE Full publish failed for module QuestionarioInfnetWAR
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.837
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/META-INF/MANIFEST.MF: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.837
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/footer.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.837
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/index.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.837
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/openDoc.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.837
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.837
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.838
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.838
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.eot: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.svg: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.ttf: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff2: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.840
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.min.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.841
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/npm.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.841
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap-3.3.5-dist.zip: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.841
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/img/infnet_logo.png: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:26:08.841
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/js/jquery-1.11.3.min.js: Permissão negada
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-30 22:26:08.846
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+	at org.jboss.ide.eclipse.as.wtp.core.server.behavior.LocalFilesystemController.touchResource(LocalFilesystemController.java:361)
+	at org.jboss.ide.eclipse.as.core.server.internal.v7.DeploymentMarkerUtils.createDoDeployMarker(DeploymentMarkerUtils.java:116)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.restartModule(StandardFileSystemPublishController.java:655)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.ensureModulesRestarted(StandardFileSystemPublishController.java:605)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.publishFinish(StandardFileSystemPublishController.java:251)
+	at org.jboss.tools.as.core.server.controllable.internal.DeployableServerBehavior.publishFinish(DeployableServerBehavior.java:111)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:1011)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:774)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Server.java:3157)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Server.java:345)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 0 2015-09-30 22:26:08.846
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2015-09-30 22:35:20.263
+!MESSAGE Full publish failed for module QuestionarioInfnetWAR
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.263
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/META-INF/MANIFEST.MF: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/footer.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/index.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/openDoc.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.eot: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.svg: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.ttf: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff2: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.min.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/npm.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap-3.3.5-dist.zip: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/img/infnet_logo.png: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:35:20.264
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/js/jquery-1.11.3.min.js: Permissão negada
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-30 22:35:20.288
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+	at org.jboss.ide.eclipse.as.wtp.core.server.behavior.LocalFilesystemController.touchResource(LocalFilesystemController.java:361)
+	at org.jboss.ide.eclipse.as.core.server.internal.v7.DeploymentMarkerUtils.createDoDeployMarker(DeploymentMarkerUtils.java:116)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.restartModule(StandardFileSystemPublishController.java:655)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.ensureModulesRestarted(StandardFileSystemPublishController.java:605)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.publishFinish(StandardFileSystemPublishController.java:251)
+	at org.jboss.tools.as.core.server.controllable.internal.DeployableServerBehavior.publishFinish(DeployableServerBehavior.java:111)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:1011)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:774)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Server.java:3157)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Server.java:345)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 0 2015-09-30 22:35:20.288
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2015-09-30 22:37:33.508
+!MESSAGE Full publish failed for module QuestionarioInfnetWAR
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/META-INF/MANIFEST.MF: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/footer.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/index.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/openDoc.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.eot: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.svg: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.ttf: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff2: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.min.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/npm.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap-3.3.5-dist.zip: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/img/infnet_logo.png: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:33.508
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/js/jquery-1.11.3.min.js: Permissão negada
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-30 22:37:33.511
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+	at org.jboss.ide.eclipse.as.wtp.core.server.behavior.LocalFilesystemController.touchResource(LocalFilesystemController.java:361)
+	at org.jboss.ide.eclipse.as.core.server.internal.v7.DeploymentMarkerUtils.createDoDeployMarker(DeploymentMarkerUtils.java:116)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.restartModule(StandardFileSystemPublishController.java:655)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.ensureModulesRestarted(StandardFileSystemPublishController.java:605)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.publishFinish(StandardFileSystemPublishController.java:251)
+	at org.jboss.tools.as.core.server.controllable.internal.DeployableServerBehavior.publishFinish(DeployableServerBehavior.java:111)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:1011)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:774)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Server.java:3157)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Server.java:345)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 0 2015-09-30 22:37:33.511
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2015-09-30 22:37:47.808
+!MESSAGE Full publish failed for module QuestionarioInfnetWAR
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/META-INF/MANIFEST.MF: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/footer.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/index.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/openDoc.jsp: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap-theme.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.css.map: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/css/bootstrap.min.css: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.eot: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.svg: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.ttf: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/fonts/glyphicons-halflings-regular.woff2: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/bootstrap.min.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap/js/npm.js: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/bootstrap-3.3.5-dist.zip: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/img/infnet_logo.png: Permissão negada
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2015-09-30 22:37:47.808
+!MESSAGE Error copying file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war/resources/js/jquery-1.11.3.min.js: Permissão negada
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-30 22:37:47.815
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+	at org.jboss.ide.eclipse.as.wtp.core.server.behavior.LocalFilesystemController.touchResource(LocalFilesystemController.java:361)
+	at org.jboss.ide.eclipse.as.core.server.internal.v7.DeploymentMarkerUtils.createDoDeployMarker(DeploymentMarkerUtils.java:116)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.restartModule(StandardFileSystemPublishController.java:655)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.ensureModulesRestarted(StandardFileSystemPublishController.java:605)
+	at org.jboss.tools.as.core.server.controllable.subsystems.internal.StandardFileSystemPublishController.publishFinish(StandardFileSystemPublishController.java:251)
+	at org.jboss.tools.as.core.server.controllable.internal.DeployableServerBehavior.publishFinish(DeployableServerBehavior.java:111)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:1011)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:774)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Server.java:3157)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Server.java:345)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 0 2015-09-30 22:37:47.815
+!MESSAGE Unable to create file /opt/jboss-as-7.1.1.Final/standalone/deployments/QuestionarioInfnetWAR.war.dodeploy
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2015-09-30 22:38:17.070
+!MESSAGE No valid Android XML Editor Delegate found for file file:/opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml [Res configuration, type null]
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 16973826 2015-09-30 22:44:59.568
+!MESSAGE The server was shutdown forcefully. All processes were terminated.
+
+!ENTRY org.eclipse.ui 2 2 2015-09-30 22:46:44.208
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.runtime.ui, page: org.jboss.tools.runtime.preferences.RuntimePreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2015-09-30 22:46:44.208
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.usage, page: org.jboss.tools.usage.analytics.preferences.UsageAnalyticsPreferencePage)
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 16842784 2015-09-30 22:52:49.684
+!MESSAGE 
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 16973826 2015-09-30 22:53:00.215
+!MESSAGE The server was shutdown forcefully. All processes were terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 16842784 2015-09-30 23:01:14.409
+!MESSAGE 
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 16973826 2015-09-30 23:01:24.954
+!MESSAGE The server was shutdown forcefully. All processes were terminated.
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2015-09-30 23:05:14.278
+!MESSAGE No valid Android XML Editor Delegate found for file file:/opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml [Res configuration, type null]
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2015-09-30 23:06:17.625
+!MESSAGE No valid Android XML Editor Delegate found for file file:/opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml [Res configuration, type null]
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 16842784 2015-09-30 23:09:59.777
+!MESSAGE 
+
+!ENTRY org.eclipse.debug.core 4 2 2015-09-30 23:10:29.250
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.debug.core".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.internal.debug.ui.XSLDebugUILaunchListener.launchesTerminated(XSLDebugUILaunchListener.java:64)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:318)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:270)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1055)
+	at org.eclipse.debug.core.Launch.fireTerminate(Launch.java:405)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Launch.java:577)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1151)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1187)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:431)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.core 4 120 2015-09-30 23:10:29.251
+!MESSAGE An exception occurred during launch change notification.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.internal.debug.ui.XSLDebugUILaunchListener.launchesTerminated(XSLDebugUILaunchListener.java:64)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:318)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:270)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1055)
+	at org.eclipse.debug.core.Launch.fireTerminate(Launch.java:405)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Launch.java:577)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1151)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1187)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:431)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

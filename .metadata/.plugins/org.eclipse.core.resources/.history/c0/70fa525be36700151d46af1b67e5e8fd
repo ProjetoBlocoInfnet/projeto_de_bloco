@@ -1,0 +1,7 @@
+
+<jsp:include page="openDoc.jsp" />
+
+
+
+
+<jsp:include page="footer.jsp" />
