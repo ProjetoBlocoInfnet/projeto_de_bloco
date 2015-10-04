@@ -13,6 +13,62 @@ public class Avaliacao {
 
 	private Date dataFim;
 
+	public Avaliacao()
+	{
+		
+	}
+	
+	public Avaliacao(int idAvaliacao, List<Questao> listQuestao, Date dataInicio, Date dataFim)
+	{
+		super();
+		this.idAvaliacao = idAvaliacao;
+		this.listQuestao = listQuestao;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+	}
+		
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dataFim == null) ? 0 : dataFim.hashCode());
+		result = prime * result
+				+ ((dataInicio == null) ? 0 : dataInicio.hashCode());
+		result = prime * result + idAvaliacao;
+		result = prime * result
+				+ ((listQuestao == null) ? 0 : listQuestao.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Avaliacao other = (Avaliacao) obj;
+		if (dataFim == null) {
+			if (other.dataFim != null)
+				return false;
+		} else if (!dataFim.equals(other.dataFim))
+			return false;
+		if (dataInicio == null) {
+			if (other.dataInicio != null)
+				return false;
+		} else if (!dataInicio.equals(other.dataInicio))
+			return false;
+		if (idAvaliacao != other.idAvaliacao)
+			return false;
+		if (listQuestao == null) {
+			if (other.listQuestao != null)
+				return false;
+		} else if (!listQuestao.equals(other.listQuestao))
+			return false;
+		return true;
+	}
+
 	public int getIdAvaliacao() {
 		return idAvaliacao;
 	}

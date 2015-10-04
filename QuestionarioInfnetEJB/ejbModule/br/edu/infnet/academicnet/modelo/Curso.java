@@ -6,6 +6,18 @@ public class Curso {
 
 	private String nome;
 	
+	public Curso()
+	{
+		
+	}
+	
+	public Curso(int idCurso, String nome)
+	{
+		super();
+		this.idCurso = idCurso;
+		this.nome = nome;
+	}
+	
 	public int getIdCurso() {
 		return idCurso;
 	}
