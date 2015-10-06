@@ -1,49 +1,43 @@
 
 <jsp:include page="openDoc.jsp" />
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
-		<img alt="Brand" src="resources/img/infnet_logo.png"> 
+		<img src="resources/img/logoInfnet3.png">  
 		
-		<form action="" method="post" class="navbar-form navbar-right">
-		  <div class="form-group">
-		    <label class="sr-only" for="login">Login</label>
-		    <input type="text" class="form-control" name="login" id="login" placeholder="Login">
-		  </div>
-		  <div class="form-group">
-		    <label class="sr-only" for="senha">Senha</label>
-		    <input type="password" class="form-control" id="senha" placeholder="Senha">
-		  </div>
-		  <div class="checkbox">
-		    <label>
-		      <input type="checkbox"> Esqueceu a senha?
-		    </label>
-		  </div>
-		  <button type="submit" class="btn btn-default">Login</button>
-		</form> 
-	</div>
-	
+		<ul id="menu" class="nav navbar-nav navbar-right">	 
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Área <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">Usuários</a></li>
+	            <li><a href="#">Questões</a></li>
+	            <li><a href="#">Avaliações</a></li>
+	          </ul>
+	        </li>
+        	<li><a href="#" >Média Histórica</a></li>
+      	</ul>
+      					  
+	</div>	
 	
 </nav>
   
-<div id="container" class="container-fluid">
+
+<div id="containerSlider" class="container-fluid">
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
 
 	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">	    
+	  <div class="carousel-inner" role="listbox">
 	    <div class="item active">
-	      <img  src="resources/img/fotoIndex.jpg">
-	    </div> 
-	     <div class="item">
-	      <img  src="resources/img/0143_72dpi_1024x680.jpg">
+	      <img class="img-responsive" src="resources/img/2.jpg">
+	    </div>
+	    <div class="item">
+	      <img class="img-responsive" src="resources/img/3.jpg">
+	    </div>
+	    <div class="item">
+	      <img class="img-responsive" src="resources/img/8.jpg">
 	    </div>
 	  </div> 
 	</div>
-	
-	<script type="text/javascript">
-	$(document).ready( function () {
-		$('.carousel').carousel()
-	});		
-	</script>
-	
 </div>
+
+<jsp:include page="footer.jsp" />

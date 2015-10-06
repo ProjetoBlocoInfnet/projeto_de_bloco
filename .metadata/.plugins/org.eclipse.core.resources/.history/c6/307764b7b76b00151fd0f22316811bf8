@@ -1,0 +1,15 @@
+body{
+background-image:url("bg/bg-black.jpg");
+background-repeat: repeat-x;
+}
+
+#container{
+	margin-top:120px;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}

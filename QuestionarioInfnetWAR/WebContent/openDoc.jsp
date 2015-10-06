@@ -12,9 +12,6 @@
 	<link href="resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="resources/css/style.css" rel="stylesheet">
 	
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery-1.11.3.min.js"></script>
-	
 </head>
 <body>
 
