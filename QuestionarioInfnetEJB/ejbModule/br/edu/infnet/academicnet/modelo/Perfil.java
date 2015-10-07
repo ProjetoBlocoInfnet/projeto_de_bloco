@@ -8,6 +8,19 @@ public class Perfil {
 
 	private String descricao;
 
+	public Perfil()
+	{
+		
+	}
+	
+	public Perfil(int idPerfil, String nomePerfil, String descricao)
+	{
+		super();
+		this.idPerfil = idPerfil;
+		this.nomePerfil = nomePerfil;
+		this.descricao = descricao;
+	}
+	
 	public int getIdPerfil() {
 		return idPerfil;
 	}

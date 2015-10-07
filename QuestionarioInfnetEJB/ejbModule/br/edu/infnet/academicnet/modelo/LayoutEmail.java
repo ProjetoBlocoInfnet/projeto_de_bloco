@@ -8,6 +8,41 @@ public class LayoutEmail {
 
 	private String descricaoLayout;
 
+	public LayoutEmail()
+	{
+		
+	}
+	
+	public LayoutEmail(int idLayout, String layout, String descricaoLayout)
+	{
+		super();
+		this.idLayout = idLayout;
+		this.layout = layout;
+		this.descricaoLayout = descricaoLayout;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idLayout;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LayoutEmail other = (LayoutEmail) obj;
+		if (idLayout != other.idLayout)
+			return false;
+		return true;
+	}
+
 	public int getIdLayout() {
 		return idLayout;
 	}
