@@ -2,11 +2,11 @@
 <jsp:include page="openDoc.jsp" />
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" >
 	<div class="container">
 		<img src="resources/img/logoInfnet3.png"> 
 		
-		<form action="" method="post" class="navbar-form navbar-right">
+		<form action="ControllerLogin" method="post" class="navbar-form navbar-right" id="formLogin">
 		  <div class="form-group">
 		    <label class="sr-only" for="login">Login</label>
 		    <input type="text" class="form-control" name="login" id="login" placeholder="Login">
@@ -15,7 +15,7 @@
 		    <label class="sr-only" for="senha">Senha</label>
 		    <input type="password" class="form-control" id="senha" placeholder="Senha">
 		  </div>
-		  <div class="checkbox">
+		  <div class="checkbox" id="esqueceuSenha">
 		    <label>
 		      <input type="checkbox"> Esqueceu a senha?
 		    </label>

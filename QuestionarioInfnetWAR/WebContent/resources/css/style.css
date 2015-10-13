@@ -1,4 +1,6 @@
-
+#body{
+	color:#fff;
+}
 
 #containerSlider{
 	margin-top:82px;
@@ -19,4 +21,12 @@
 	margin-top:15px;
 	font-size: 18px;
 	
+}
+
+#esqueceuSenha{
+	color:#fff;
+}
+
+#formLogin{
+	padding-top:15px;
 }
