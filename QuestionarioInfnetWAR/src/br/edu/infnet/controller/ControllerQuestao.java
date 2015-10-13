@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ControllerQuestao
+ * Servlet implementation class ControllerQuestao 
  */
 @WebServlet("/ControllerQuestao")
 public class ControllerQuestao extends HttpServlet {
