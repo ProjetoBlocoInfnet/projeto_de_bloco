@@ -1,5 +1,10 @@
 #body{
-	color:#fff;
+	color:#fff;	
+}
+
+#footer{
+	background-color: rgba(0, 0, 0, 0.9);
+	min-height: 500px;
 }
 
 #containerSlider{
@@ -17,10 +22,13 @@
   margin-bottom: 20px;
 }
 
-#menu,#logout{
+#menu{
 	margin-top:15px;
 	font-size: 18px;
-	
+}
+
+#logout{
+	font-size: 18px;	
 }
 
 #esqueceuSenha{

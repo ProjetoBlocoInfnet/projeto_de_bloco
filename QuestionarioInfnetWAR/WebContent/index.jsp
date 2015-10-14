@@ -29,12 +29,18 @@
 	          </ul>
 	        </li>
         	<li>
-	        		<a href="ControllerMediaHistorica" >
-	        			 Média Histórica <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-	        		</a>
-        		</li>
-      	</ul>
-      					  
+        		<a href="ControllerMediaHistorica" >
+        			 Média Histórica <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+        		</a>
+       		</li>
+       		<li>
+	       		<form id="logout" action="Logout" method="post" class="navbar-form navbar">
+				  <div class="form-group">
+				      <button type="submit" class="btn btn-primary">Logout</button>
+				  </div>
+				</form>
+			</li>
+      	</ul>      				  
 	</div>	
 	
 </nav>
@@ -57,5 +63,5 @@
 	  </div> 
 	</div>
 </div>
-
+<div id="footer" class="container-fluid"></div>
 <jsp:include page="footer.jsp" />
