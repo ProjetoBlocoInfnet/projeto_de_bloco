@@ -10,6 +10,18 @@ public class Resposta {
 		return idResposta;
 	}
 
+	public Resposta()
+	{
+		
+	}
+	
+	public Resposta(int idResposta, String textoResposta)
+	{
+		super();
+		this.idResposta = idResposta;
+		this.textoResposta = textoResposta;
+	}
+	
 	public void setIdResposta(int idResposta) {
 		this.idResposta = idResposta;
 	}
