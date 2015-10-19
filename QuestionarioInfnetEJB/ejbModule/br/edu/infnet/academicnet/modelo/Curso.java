@@ -1,10 +1,30 @@
 package br.edu.infnet.academicnet.modelo;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_curso")
 public class Curso {
-
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCurso;
-
+	
+	@Column(nullable=false, unique = true)
 	private String nome;
+	
+	@ManyToMany
+	@JoinTable(name="curso_turmas")
+	private List<Turma> turmas;
 	
 	public Curso()
 	{

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+   xmlns="http://java.sun.com/xml/ns/persistence">
+   
+    <persistence-unit name="questionario" transaction-type="JTA" >
+        <provider>org.hibernate.ejb.HibernatePersistenceProvider</provider>
+        
+        <jta-data-source>java:/questionarioDS</jta-data-source>
+        
+        <class>br.edu.infnet.academicnet.modelo.Aluno</class>
+        <class>br.edu.infnet.academicnet.modelo.Avaliacao</class>
+        <class>br.edu.infnet.academicnet.modelo.Curso</class>
+        <class>br.edu.infnet.academicnet.modelo.Perfil</class>
+        <class>br.edu.infnet.academicnet.modelo.Pessoa</class>
+        <class>br.edu.infnet.academicnet.modelo.Professor</class>
+        <class>br.edu.infnet.academicnet.modelo.Questao</class>
+        <class>br.edu.infnet.academicnet.modelo.ResultadoAvaliacao</class>
+        <class>br.edu.infnet.academicnet.modelo.Turma</class>
+        <class>br.edu.infnet.academicnet.modelo.Usuario</class>
+        
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        
+        <properties>
+        	           
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.hbm2dll.auto" value="update" />
+            <property name="hibernate.show_sql" value="true" />
+  			<property name="hibernate.format_sql" value="true" />
+        </properties>
+    </persistence-unit>
+</persistence>

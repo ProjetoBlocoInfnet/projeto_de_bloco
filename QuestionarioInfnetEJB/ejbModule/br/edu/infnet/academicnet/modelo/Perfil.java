@@ -1,12 +1,33 @@
 package br.edu.infnet.academicnet.modelo;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_perfil")
 public class Perfil {
-
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPerfil;
-
+	
+	@Column(nullable=false, unique = true)
 	private String nomePerfil;
 
 	private String descricao;
+	
+	@OneToMany(mappedBy = "perfil")
+	@JoinColumn(name = "perfil_id")
+	private List<Usuario> usuarios;
 
 	public Perfil()
 	{
@@ -44,7 +65,16 @@ public class Perfil {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
 
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	
 	public Boolean incluirPerfil(Perfil perfil) {
 		return null;
 	}

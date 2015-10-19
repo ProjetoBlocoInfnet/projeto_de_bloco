@@ -7,33 +7,32 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import br.edu.infnet.academicnet.modelo.Aluno;
-import br.edu.infnet.academicnet.modelo.Avaliacao;
+import br.edu.infnet.academicnet.modelo.Questao;
 
 @Stateless
-public class AvaliacaoDAOImpl implements AvaliacaoDAO {
+public class QuestaoDAOImpl implements QuestaoDAO {
 	
 	@PersistenceContext
 	private EntityManager manager;
 
 	@Override
-	public void incluir(Avaliacao avaliacao) {
+	public void incluir(Questao questao) {
 		try {
 			manager.getTransaction().begin();
-			manager.persist(avaliacao);
+			manager.persist(questao);
 			manager.getTransaction().commit();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}	
+		}
 		
 	}
 
 	@Override
-	public void alterar(Avaliacao avaliacao) {
+	public void alterar(Questao questao) {
 		try {
 			manager.getTransaction().begin();
-			manager.merge(avaliacao);
+			manager.merge(questao);
 			manager.getTransaction().commit();
 			
 		} catch (Exception e) {
@@ -44,25 +43,25 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 
 	@Override
 	public void excluir(long id) {
-		Avaliacao avaliacaoBanco = manager.find(Avaliacao.class, id);
+		Questao questaoBanco = manager.find(Questao.class, id);
 
 		manager.getTransaction().begin();
-		manager.remove(avaliacaoBanco);
+		manager.remove(questaoBanco);
 		manager.getTransaction().commit();
 		
 	}
 
 	@Override
-	public Avaliacao obter(long id) {
-		 TypedQuery<Avaliacao> query = manager.createQuery("select av from Avaliacao av where av.idAluno=:avId ", Avaliacao.class);
-		 query.setParameter("avId", id);
+	public Questao obter(long id) {
+		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.idQuestao=:qId ", Questao.class);
+		 query.setParameter("pId", id);
 		 return query.getSingleResult();
 	}
 
 	@Override
-	public List<Avaliacao> listar() {
-		TypedQuery<Avaliacao> query = manager.createQuery("select av from Avaliacao av", Avaliacao.class);
+	public List<Questao> listar() {
+		TypedQuery<Questao> query = manager.createQuery("select q from Questao q", Questao.class);
 		return query.getResultList();
 	}
-
+	
 }

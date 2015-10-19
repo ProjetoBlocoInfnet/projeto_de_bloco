@@ -2,8 +2,10 @@ package br.edu.infnet.academicnet.dao;
 
 import java.util.List;
 
+
 public interface GenericoDAO<T>
 {
+		
     void incluir(T objeto);
     
     void alterar(T objeto);
