@@ -8,6 +8,18 @@ public class ResultadoAvaliacao {
 
 	private List<Resposta> respostas;
 
+	public ResultadoAvaliacao()
+	{
+		
+	}
+	
+	public ResultadoAvaliacao(int media, List<Resposta> respostas)
+	{
+		super();
+		this.media = media;
+		this.respostas = respostas;
+	}
+	
 	public int getMedia() {
 		return media;
 	}
