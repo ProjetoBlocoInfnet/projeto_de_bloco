@@ -13,6 +13,8 @@ import javax.persistence.Table;
 @Table(name="tbl_aluno")
 public class Aluno extends Pessoa {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idAluno;

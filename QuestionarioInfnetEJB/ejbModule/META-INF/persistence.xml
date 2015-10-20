@@ -5,9 +5,10 @@
    xmlns="http://java.sun.com/xml/ns/persistence">
    
     <persistence-unit name="questionario" transaction-type="JTA" >
-        <provider>org.hibernate.ejb.HibernatePersistenceProvider</provider>
+    
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         
-        <jta-data-source>java:/questionarioDS</jta-data-source>
+        <jta-data-source>java:jboss/datasource/academicnetDS</jta-data-source>
         
         <class>br.edu.infnet.academicnet.modelo.Aluno</class>
         <class>br.edu.infnet.academicnet.modelo.Avaliacao</class>
@@ -19,15 +20,16 @@
         <class>br.edu.infnet.academicnet.modelo.ResultadoAvaliacao</class>
         <class>br.edu.infnet.academicnet.modelo.Turma</class>
         <class>br.edu.infnet.academicnet.modelo.Usuario</class>
-        
+                
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         
-        <properties>
-        	           
+        <properties>        	           
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-            <property name="hibernate.hbm2dll.auto" value="update" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true" />
   			<property name="hibernate.format_sql" value="true" />
+  			
         </properties>
+        
     </persistence-unit>
 </persistence>

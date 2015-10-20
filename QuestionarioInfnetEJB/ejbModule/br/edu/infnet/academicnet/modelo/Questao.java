@@ -1,5 +1,6 @@
 package br.edu.infnet.academicnet.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,12 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import br.edu.infnet.academicnet.enunmerators.TipoResposta;
+import br.edu.infnet.academicnet.enumerators.TipoResposta;
 
 @Entity
 @Table(name="tbl_questao")
-public class Questao {
+public class Questao implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idQuestao;
@@ -35,14 +38,18 @@ public class Questao {
 	{
 		
 	}
-	
-	public Questao(int idQuestao, String textoQuestao)
-	{
+		
+	public Questao(int idQuestao, String textoQuestao,
+			List<Avaliacao> avaliacoes, TipoResposta tipoResposta) {
 		super();
 		this.idQuestao = idQuestao;
 		this.textoQuestao = textoQuestao;
+		this.avaliacoes = avaliacoes;
+		this.tipoResposta = tipoResposta;
 	}
-	
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

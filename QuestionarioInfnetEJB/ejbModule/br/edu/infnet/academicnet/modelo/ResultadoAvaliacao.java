@@ -1,7 +1,7 @@
 package br.edu.infnet.academicnet.modelo;
 
+import java.io.Serializable;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CollectionTable;
@@ -11,13 +11,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_resultadoAvaliacao")
-public class ResultadoAvaliacao {
+public class ResultadoAvaliacao implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idResultadoAvaliacao;

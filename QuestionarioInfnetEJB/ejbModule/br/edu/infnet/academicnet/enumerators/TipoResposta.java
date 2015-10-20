@@ -1,4 +1,4 @@
-package br.edu.infnet.academicnet.enunmerators;
+package br.edu.infnet.academicnet.enumerators;
 
 public enum TipoResposta {
 	
