@@ -39,7 +39,8 @@ public class Usuario implements Serializable{
 		
 	}
 	
-	
+		
+
 	public long getIdUsuario() {
 		return idUsuario;
 	}
@@ -62,7 +63,7 @@ public class Usuario implements Serializable{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}	
+	}
 
 	public Perfil getPerfil() {
 		return perfil;
@@ -72,6 +73,14 @@ public class Usuario implements Serializable{
 		this.perfil = perfil;
 	}
 
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+	
 
 	public Boolean efetuarLogin(String login, String senha) {
 		return null;

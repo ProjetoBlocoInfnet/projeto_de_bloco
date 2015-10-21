@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,28 +32,57 @@ public class Turma implements Serializable{
 	
 	@ManyToMany(mappedBy = "turmas")
 	private List<Curso> cursos;
+	
+	@OneToOne(mappedBy = "turma")
+	private AgendamentoAvaliacao avaliacao;
+	
 
 	public Turma()
 	{
 		
 	}
 	
-	public Turma(long idTurma)
-	{
-		super();
-		this.idTurma = idTurma;
-	}
 
-	public long getIdTurma() {
+	public Long getIdTurma() {
 		return idTurma;
 	}
-
-	public void setIdTurma(long idTurma) {
+	
+	public void setIdTurma(Long idTurma) {
 		this.idTurma = idTurma;
 	}
 	
-	
-	
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public List<Professor> getProfessores() {
+		return professores;
+	}
+
+	public void setProfessores(List<Professor> professores) {
+		this.professores = professores;
+	}
+
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
+
+	public AgendamentoAvaliacao getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(AgendamentoAvaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+
 
 	@Override
 	public int hashCode() {

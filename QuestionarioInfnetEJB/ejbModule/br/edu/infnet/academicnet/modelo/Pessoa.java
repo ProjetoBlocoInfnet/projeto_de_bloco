@@ -44,16 +44,16 @@ public abstract class Pessoa implements Serializable{
 		
 	}
 	
-	public Pessoa(int matricula, String nome, String endereco, String cep, String email)
-	{
-		super();
-		this.matricula = matricula;
-		this.nome = nome;
-		this.endereco = endereco;
-		this.cep = cep;
-		this.email = email;
-	}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,18 +34,26 @@ public class ResultadoAvaliacao implements Serializable{
 	@Column(name="respostas")
 	@CollectionTable(name="questoes_respostas", joinColumns = @JoinColumn(name="resposta_valor"))
 	private Map<Questao,String> respostas = new HashMap<Questao,String>();
+	
+	@OneToOne
+	@JoinColumn(name="aluno_id")
+	private Aluno aluno;
+	
+	@OneToOne
+	@JoinColumn(name="turma_id")
+	private Turma turma;
 
 	public ResultadoAvaliacao()
 	{
 		
 	}
-		
-	public ResultadoAvaliacao(long idResultadoAvaliacao, double media,
-			Map<Questao, String> respostas) {
-		super();
+	
+	public long getIdResultadoAvaliacao() {
+		return idResultadoAvaliacao;
+	}
+
+	public void setIdResultadoAvaliacao(long idResultadoAvaliacao) {
 		this.idResultadoAvaliacao = idResultadoAvaliacao;
-		this.media = media;
-		this.respostas = respostas;
 	}
 
 	public double getMedia() {
@@ -55,13 +64,28 @@ public class ResultadoAvaliacao implements Serializable{
 		this.media = media;
 	}
 
-
-	public long getIdResultadoAvaliacao() {
-		return idResultadoAvaliacao;
+	public Map<Questao, String> getRespostas() {
+		return respostas;
 	}
 
-	public void setIdResultadoAvaliacao(long idResultadoAvaliacao) {
-		this.idResultadoAvaliacao = idResultadoAvaliacao;
+	public void setRespostas(Map<Questao, String> respostas) {
+		this.respostas = respostas;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public Turma getTurma() {
+		return turma;
+	}
+
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	public Boolean efetuarAvaliacao() {

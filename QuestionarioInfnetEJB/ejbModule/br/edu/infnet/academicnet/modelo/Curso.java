@@ -34,12 +34,6 @@ public class Curso implements Serializable{
 		
 	}
 	
-	public Curso(int idCurso, String nome)
-	{
-		super();
-		this.idCurso = idCurso;
-		this.nome = nome;
-	}
 	
 	public int getIdCurso() {
 		return idCurso;
@@ -56,6 +50,16 @@ public class Curso implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
+
+
 
 	@Override
 	public int hashCode() {

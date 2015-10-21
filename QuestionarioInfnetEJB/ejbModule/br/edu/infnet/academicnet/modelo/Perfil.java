@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -28,7 +27,6 @@ public class Perfil implements Serializable{
 	private String descricao;
 	
 	@OneToMany(mappedBy = "perfil")
-	@JoinColumn(name = "perfil_id")
 	private List<Usuario> usuarios;
 
 	public Perfil()
@@ -36,14 +34,7 @@ public class Perfil implements Serializable{
 		
 	}
 	
-	public Perfil(int idPerfil, String nomePerfil, String descricao)
-	{
-		super();
-		this.idPerfil = idPerfil;
-		this.nomePerfil = nomePerfil;
-		this.descricao = descricao;
-	}
-	
+		
 	public int getIdPerfil() {
 		return idPerfil;
 	}
@@ -67,7 +58,7 @@ public class Perfil implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -76,7 +67,6 @@ public class Perfil implements Serializable{
 		this.usuarios = usuarios;
 	}
 
-	
 	public Boolean incluirPerfil(Perfil perfil) {
 		return null;
 	}

@@ -39,17 +39,7 @@ public class Questao implements Serializable{
 		
 	}
 		
-	public Questao(int idQuestao, String textoQuestao,
-			List<Avaliacao> avaliacoes, TipoResposta tipoResposta) {
-		super();
-		this.idQuestao = idQuestao;
-		this.textoQuestao = textoQuestao;
-		this.avaliacoes = avaliacoes;
-		this.tipoResposta = tipoResposta;
-	}
-
-
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
