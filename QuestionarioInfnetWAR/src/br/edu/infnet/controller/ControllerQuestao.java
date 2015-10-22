@@ -33,6 +33,8 @@ public class ControllerQuestao extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		List<Questao> listaQuestao = null;
+		
 		if(request.getParameter("tela") != null){
 			String tela = request.getParameter("tela");	
 			
@@ -50,33 +52,37 @@ public class ControllerQuestao extends HttpServlet {
 				break;
 			
 			case "telaAlterar":
-				System.out.println(idQuestao);
+				
 				Questao questao = questaoDAO.obter(idQuestao);
 				request.setAttribute("questao", questao);
+				request.setAttribute("categorias", Categoria.values());
+				request.setAttribute("tipoResposta", TipoResposta.values());
 				request.getRequestDispatcher("sistema/alterarQuestao.jsp").forward(request, response);
 				break;
 			
 			case "excluir":
 				
 				boolean result = questaoDAO.excluir(idQuestao);
-				/*if(result){
-					request.setAttribute("result_ok", "Questão excluída com Sucesso");
+				System.out.println(result);
+				if(result){
+					request.setAttribute("result_ok", "Questão excluída com Sucesso!");
 				}else{
-					request.setAttribute("result_error", "Erro ao excluir a questão");
-				}	*/
-				doGet(request, response);
+					request.setAttribute("result_error", "Erro ao excluir a questão!");
+				}	
+				
+				listaQuestao = questaoDAO.listar();
+				request.setAttribute("listaQuestao", listaQuestao);
 				break;
-
+				
 			default:
 				break;
 			}
-			
+									
 		}else{
-			List<Questao> listaQuestao = questaoDAO.listar();
-			request.setAttribute("listaQuestao", listaQuestao);
-			request.getRequestDispatcher("sistema/questoesIndex.jsp").forward(request, response);
+			 listaQuestao = questaoDAO.listar();			
 		}
-		
+		request.setAttribute("listaQuestao", listaQuestao);
+		request.getRequestDispatcher("sistema/questoesIndex.jsp").forward(request, response);
 		
 	}
 
@@ -103,9 +109,9 @@ public class ControllerQuestao extends HttpServlet {
 					
 					result = questaoDAO.incluir(questaoObj);
 					if(result){
-						request.setAttribute("result_ok", "Questão Cadastrada com Sucesso");
+						request.setAttribute("result_ok", "Questão Cadastrada com Sucesso!");
 					}else{
-						request.setAttribute("result_error", "Erro ao cadastrar a questão");
+						request.setAttribute("result_error", "Erro ao cadastrar a questão!");
 					}					
 					
 					break;
@@ -118,19 +124,26 @@ public class ControllerQuestao extends HttpServlet {
 					
 					result = questaoDAO.alterar(questaoObj);
 					if(result){
-						request.setAttribute("result_ok", "Questão alterada com Sucesso");
+						request.setAttribute("result_ok", "Questão alterada com Sucesso!");
 					}else{
-						request.setAttribute("result_error", "Erro ao alterar a questão");
+						request.setAttribute("result_error", "Erro ao alterar a questão!");
 					}	
 					
 					break;
 				case "consultar":
+					List<Questao> listaQuestao = questaoDAO.consultarPorTextoDaQuestao(request.getParameter("textoQuestao"));
+					for (Questao questao2 : listaQuestao) {
+						System.out.println(questao2.getTextoQuestao());
+						System.out.println();
+					}
+					request.setAttribute("listaQuestao", listaQuestao);
+					request.getRequestDispatcher("sistema/questoesIndex.jsp").forward(request, response);					
 					
 					break;
 				default:
 					break;
 			}
-			doGet(request, response);
+			
 		}
 		
 		doGet(request, response);
