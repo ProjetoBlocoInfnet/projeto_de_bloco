@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import br.edu.infnet.academicnet.enumerators.Categoria;
 import br.edu.infnet.academicnet.enumerators.TipoResposta;
 
 @Entity
@@ -23,7 +24,7 @@ public class Questao implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idQuestao;
+	private long idQuestao;
 	
 	@Column(nullable=false, unique = true)
 	private String textoQuestao;
@@ -32,48 +33,24 @@ public class Questao implements Serializable{
 	private List<Avaliacao> avaliacoes;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(length=50)
 	private TipoResposta tipoResposta;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(length=50)
+	private Categoria categoria;
 
 	public Questao()
 	{
 		
 	}
 		
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + idQuestao;
-		result = prime * result
-				+ ((textoQuestao == null) ? 0 : textoQuestao.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Questao other = (Questao) obj;
-		if (idQuestao != other.idQuestao)
-			return false;
-		if (textoQuestao == null) {
-			if (other.textoQuestao != null)
-				return false;
-		} else if (!textoQuestao.equals(other.textoQuestao))
-			return false;
-		return true;
-	}
-
-	public int getIdQuestao() {
+	public long getIdQuestao() {
 		return idQuestao;
 	}
 
-	public void setIdQuestao(int idQuestao) {
+	public void setIdQuestao(long idQuestao) {
 		this.idQuestao = idQuestao;
 	}
 
@@ -100,8 +77,16 @@ public class Questao implements Serializable{
 	public void setTextoQuestao(String textoQuestao) {
 		this.textoQuestao = textoQuestao;
 	}
-
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+
 	public Boolean incluirQuestao(Questao questao) {
 		return null;
 	}
@@ -117,5 +102,53 @@ public class Questao implements Serializable{
 	public Boolean consultarQuestao(Questao questao) {
 		return null;
 	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((avaliacoes == null) ? 0 : avaliacoes.hashCode());
+		result = prime * result
+				+ ((categoria == null) ? 0 : categoria.hashCode());
+		result = prime * result + (int) (idQuestao ^ (idQuestao >>> 32));
+		result = prime * result
+				+ ((textoQuestao == null) ? 0 : textoQuestao.hashCode());
+		result = prime * result
+				+ ((tipoResposta == null) ? 0 : tipoResposta.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Questao other = (Questao) obj;
+		if (avaliacoes == null) {
+			if (other.avaliacoes != null)
+				return false;
+		} else if (!avaliacoes.equals(other.avaliacoes))
+			return false;
+		if (categoria != other.categoria)
+			return false;
+		if (idQuestao != other.idQuestao)
+			return false;
+		if (textoQuestao == null) {
+			if (other.textoQuestao != null)
+				return false;
+		} else if (!textoQuestao.equals(other.textoQuestao))
+			return false;
+		if (tipoResposta != other.tipoResposta)
+			return false;
+		return true;
+	}
+
 
 }

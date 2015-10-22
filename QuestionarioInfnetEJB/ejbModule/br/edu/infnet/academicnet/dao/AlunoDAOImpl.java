@@ -9,14 +9,14 @@ import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.modelo.Aluno;
 
-@Stateless
+@Stateless 
 public class AlunoDAOImpl implements AlunoDAO{
 	
 	@PersistenceContext
 	private EntityManager manager;
 	
 	@Override
-	public void incluir(Aluno aluno) {
+	public boolean incluir(Aluno aluno) {
 		try {
 			manager.getTransaction().begin();
 			manager.persist(aluno);
@@ -24,12 +24,13 @@ public class AlunoDAOImpl implements AlunoDAO{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
+		return true;
 		
 	}
 
 	@Override
-	public void alterar(Aluno aluno) {
+	public boolean alterar(Aluno aluno) {
 		
 		try {
 			manager.getTransaction().begin();
@@ -39,17 +40,20 @@ public class AlunoDAOImpl implements AlunoDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return true;
 	}
 
 	@Override
-	public void excluir(long id) {
+	public boolean excluir(long id) {
 		Aluno alunoBanco = manager.find(Aluno.class, id);
-
-		manager.getTransaction().begin();
-		manager.remove(alunoBanco);
-		manager.getTransaction().commit();
-		
+		try {
+			manager.getTransaction().begin();
+			manager.remove(alunoBanco);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override

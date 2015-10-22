@@ -26,14 +26,14 @@ public class ControllerUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("usuarioIndex.jsp").forward(request, response);
+		request.getRequestDispatcher("sistema/usuarioIndex.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("cadastroUsuario.jsp").forward(request, response);
+		request.getRequestDispatcher("sistema/cadastroUsuario.jsp").forward(request, response);
 	}
 
 }
