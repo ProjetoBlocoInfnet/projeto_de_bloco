@@ -1,5 +1,8 @@
 
 <jsp:include page="../openDoc.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
+<%@ page import="br.edu.infnet.academicnet.modelo.Questao" %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -65,9 +68,12 @@
 		  <div class="form-group">
 		    <label for="permissao" class="col-sm-2 control-label">Questões</label>
 		    	<div class="col-sm-10">
-					  <select name="questoes" id="questoes" multiple="multiple" class="form-control">
-					  <option>Como o professor foi ? | Professor</option>
-					  <option>Os equipamentos estavam em bom estado? | Equipamentos</option>
+					<select name="questoes" id="questoes" multiple="multiple" class="form-control">
+				  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
+		  					<c:forEach items="${requestScope.questoes}" var="questao">
+							  <option value=${questao.idQuestao}>${questao.textoQuestao} | ${questao.tipoQuestao.getTipo()}</option>
+							</c:forEach>
+						</c:if>
 					</select>
 		  		</div>
 		  </div>

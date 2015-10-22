@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.academicnet.dao.AvaliacaoDAO;
+import br.edu.infnet.academicnet.dao.QuestaoDAO;
 import br.edu.infnet.academicnet.modelo.Avaliacao;
+import br.edu.infnet.academicnet.modelo.Questao;
 
 /**
  * Servlet implementation class ControllerAvaliacao
@@ -22,6 +24,9 @@ public class ControllerAvaliacao extends HttpServlet {
 
 	@EJB
 	AvaliacaoDAO avaliacao;
+	
+	@EJB
+	QuestaoDAO questao;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,6 +47,8 @@ public class ControllerAvaliacao extends HttpServlet {
 			switch(action)
 			{
 				case "telaCadastro":
+					List<Questao> questoes = questao.listar();
+					request.setAttribute("questoes", questoes);	
 					request.getRequestDispatcher("sistema/cadastroAvaliacao.jsp").forward(request, response);
 					break;
 				case "consultar":

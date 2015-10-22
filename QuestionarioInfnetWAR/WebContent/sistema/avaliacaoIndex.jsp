@@ -84,7 +84,7 @@
   		<tbody>
   		<c:if test="${requestScope.avaliacoes != null && requestScope.avaliacoes.size() > 0 }">
   		<!-- inicio do loop -->
-  			<c:forEach items="${requestScope.avaliacoes}" var="avaliacao"> 
+  			<c:forEach items="${requestScope.avaliacoes}" var="avaliacao">
 	  		<tr>
 	  			<td>${avaliacao.idAvaliacao}</td>  
 	  			<td>${avaliacao.nome}</td>
