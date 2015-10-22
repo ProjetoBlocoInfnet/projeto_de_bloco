@@ -1,5 +1,8 @@
 
 <jsp:include page="../openDoc.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
+<%@ page import="br.edu.infnet.academicnet.modelo.Avaliacao" %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -79,16 +82,20 @@
   		<th>Ação</th>
   		</thead>
   		<tbody>
+  		<c:if test="${requestScope.avaliacoes != null && requestScope.avaliacoes.size() > 0 }">
   		<!-- inicio do loop -->
+  			<c:forEach items="${requestScope.avaliacoes}" var="avaliacao"> 
 	  		<tr>
-	  			<td>1</td>  
-	  			<td>Avaliação 1</td>  		
+	  			<td>${avaliacao.idAvaliacao}</td>  
+	  			<td>${avaliacao.nome}</td>
 	  			<td>
-	  				<a href="ControllerAvaliacao?action=editar&id=1"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href="ControllerAvaliacao?action=excluir&id=1"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+	  				<a href="ControllerAvaliacao?action=editar&id=${avaliacao.idAvaliacao}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+	  				<a href="ControllerAvaliacao?action=excluir&id=${avaliacao.idAvaliacao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
 	  			</td>
 	  		</tr>
-	  		<!-- fim do loop -->
+	  		</c:forEach>
+	  	<!-- fim do loop -->
+	  	</c:if>
   		</tbody>
 	</table>
 	</div>
