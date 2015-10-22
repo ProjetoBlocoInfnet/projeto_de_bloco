@@ -26,14 +26,14 @@ public class ControllerQuestao extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("questoesIndex.jsp").forward(request, response);
+		request.getRequestDispatcher("sistema/questoesIndex.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("cadastroQuestao.jsp").forward(request, response);
+		request.getRequestDispatcher("sistema/cadastroQuestao.jsp").forward(request, response);
 	}
 
 }

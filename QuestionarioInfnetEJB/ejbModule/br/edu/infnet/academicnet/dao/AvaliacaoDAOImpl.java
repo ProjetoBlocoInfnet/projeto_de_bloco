@@ -60,6 +60,14 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 	}
 
 	@Override
+	public List<Avaliacao> obterPorNome(String nome)
+	{
+		 TypedQuery<Avaliacao> query = manager.createQuery("select a from Avaliacao as a where a.nome like :avNome ", Avaliacao.class);
+		 query.setParameter("avNome", "%"+nome+"%");
+		 return query.getResultList();
+	}
+
+	@Override
 	public List<Avaliacao> listar() {
 		TypedQuery<Avaliacao> query = manager.createQuery("select av from Avaliacao av", Avaliacao.class);
 		return query.getResultList();

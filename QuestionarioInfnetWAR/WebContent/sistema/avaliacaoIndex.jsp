@@ -49,14 +49,14 @@
 <div id="container" class="container-fluid">
 
 	<div class="container">
-	<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
+	<a href="ControllerLogin"><button type="button" class="btn btn-default">Voltar</button></a>
 	<br><br>
-	<form action="ControllerAvaliacao" method="post">
+	<form action="ControllerAvaliacao" method="get">
 		<input type="hidden" name="action" value="telaCadastro">
 		<input type="submit" class="btn btn-info" value="Cadastrar Avaliação">
 	</form>
 	<br>
-	<form action="ControllerAvaliacao" method="post">
+	<form action="ControllerAvaliacao" method="get">
 		<input type="hidden" name="action" value="consultar">
 		<div class="row">  
 		  <div class="col-lg-6">
@@ -76,24 +76,19 @@
   		<thead>
   		<th>Id</th>
   		<th>Avaliação</th>
-  		<th>Curso</th>
-  		<th>Professor</th>
-  		<th>Questões</th>
   		<th>Ação</th>
   		</thead>
   		<tbody>
-  		
+  		<!-- inicio do loop -->
 	  		<tr>
 	  			<td>1</td>  
 	  			<td>Avaliação 1</td>  		
-	  			<td>Pós-graduação em Engenharia de Software com JAVA</td>  		
-	  			<td>Helbert Moraes</td> 
-	  			<td>Questões</td>  	  				
 	  			<td>
-	  				<a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+	  				<a href="ControllerAvaliacao?action=editar&id=1"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+	  				<a href="ControllerAvaliacao?action=excluir&id=1"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
 	  			</td>
 	  		</tr>
+	  		<!-- fim do loop -->
   		</tbody>
 	</table>
 	</div>

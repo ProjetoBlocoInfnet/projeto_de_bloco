@@ -49,7 +49,7 @@
 <div id="container" class="container-fluid">
 
 	<div class="container">
-		<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
+		<a href="ControllerAvaliacao"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
 		<h2>Cadastro de Avaliações</h2>
@@ -59,12 +59,6 @@
 		    <label for="login" class="col-sm-2 control-label">Avaliacao</label>
 		    <div class="col-sm-10">
 		      <input type="text" class="form-control" id="avaliacao" placeholder="avaliacao">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label for="senha" class="col-sm-2 control-label">Curso</label>
-		    <div class="col-sm-10">
-		      <input type="password" class="form-control" id="curso" placeholder="Curso">
 		    </div>
 		  </div>
 		 		 

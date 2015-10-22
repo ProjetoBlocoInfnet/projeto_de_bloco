@@ -3,6 +3,7 @@ package br.edu.infnet.academicnet.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,9 @@ public class Avaliacao implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAvaliacao;
+	
+	@Column
+	private String nome;
 	
 	@ManyToMany
 	@JoinTable(name="avaliacao_questoes")
@@ -100,7 +104,14 @@ public class Avaliacao implements Serializable{
 		this.listQuestao = listQuestao;
 	}
 	
-		
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public Boolean inicializarAvaliacao() {
 		return null;
 	}
