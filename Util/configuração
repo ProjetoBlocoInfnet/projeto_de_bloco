@@ -3,7 +3,7 @@ WildFly
 Configuração
 
 1) copiar a pasta mysql com jar do driver para dentro da pasta: 
-wildfly-9.0.1.Final/modules/system/layers/base
+wildfly-9.0.1.Final/modules/system/layers/base/com
 
 2) Copiar as configurações do DataSource e driver do arquivo standalone.xml, para o arquivo standalone.xml da pasta: wildfly-9.0.1.Final/standalone/configuration
 
