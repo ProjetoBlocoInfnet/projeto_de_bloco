@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import br.edu.infnet.academicnet.enumerators.TipoQuestao;
 import br.edu.infnet.academicnet.enumerators.TipoResposta;
 
 @Entity
@@ -33,6 +34,9 @@ public class Questao implements Serializable{
 	
 	@Enumerated(EnumType.STRING)
 	private TipoResposta tipoResposta;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoQuestao tipoQuestao;
 
 	public Questao()
 	{

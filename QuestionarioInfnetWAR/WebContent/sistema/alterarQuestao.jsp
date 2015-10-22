@@ -1,5 +1,5 @@
 
-<jsp:include page="openDoc.jsp" />
+<jsp:include page="../openDoc.jsp" />
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -40,28 +40,49 @@
 				  </div>
 				</form>
 			</li>
-      	</ul>      				  
+      	</ul>      			  
 	</div>	
 	
 </nav>
   
 
-<div id="containerSlider" class="container-fluid">
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
+<div id="container" class="container-fluid">
 
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">
-	    <div class="item active">
-	      <img class="img-responsive" src="resources/img/2.jpg">
-	    </div>
-	    <div class="item">
-	      <img class="img-responsive" src="resources/img/3.jpg">
-	    </div>
-	    <div class="item">
-	      <img class="img-responsive" src="resources/img/8.jpg">
-	    </div>
-	  </div> 
+	<div class="container">
+		<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
+		<br><br>
+		
+		<h2>Alterar de Questão</h2>
+		<hr>
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="login" class="col-sm-2 control-label">Questão</label>
+		    <div class="col-sm-10">
+		      <textarea class="form-control" id="login" placeholder="Questão"></textarea>
+		    </div>
+		  </div>
+		  		 		 
+		  <div class="form-group">
+		    <label for="permissao" class="col-sm-2 control-label">Categoria</label>
+		    	<div class="col-sm-10">
+					  <select name="permissao" id="permissao" class="form-control">
+						  <option>Selecionar</option>
+						  <option>Professor</option>
+						  <option>Equipamentos</option>
+						  <option>Curso</option>
+					</select>
+		  		</div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Cadastrar</button>
+		    </div>
+		  </div>
+		</form>
+	
 	</div>
+
+	
 </div>
-<div id="footer" class="container-fluid"></div>
-<jsp:include page="footer.jsp" />
+
+<jsp:include page="../footer.jsp" />

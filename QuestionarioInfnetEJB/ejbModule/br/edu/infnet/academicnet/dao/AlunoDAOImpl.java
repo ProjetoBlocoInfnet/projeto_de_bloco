@@ -2,6 +2,7 @@ package br.edu.infnet.academicnet.dao;
 
 import java.util.List;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.modelo.Aluno;
 
-@Stateless
+@Stateless 
 public class AlunoDAOImpl implements AlunoDAO{
 	
 	@PersistenceContext

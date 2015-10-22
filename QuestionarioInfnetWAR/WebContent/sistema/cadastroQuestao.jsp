@@ -45,7 +45,7 @@
 	
 </nav>
   
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div id="container" class="container-fluid">
 
 	<div class="container">
@@ -67,6 +67,7 @@
 		    	<div class="col-sm-10">
 					  <select name="permissao" id="permissao" class="form-control">
 						  <option>Selecionar</option>
+						  
 						  <option>Professor</option>
 						  <option>Equipamentos</option>
 						  <option>Curso</option>

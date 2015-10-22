@@ -2,7 +2,6 @@ package br.edu.infnet.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +28,7 @@ public class ControllerLogin extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("sistema/index.jsp").forward(request, response);
 	}
 
 }

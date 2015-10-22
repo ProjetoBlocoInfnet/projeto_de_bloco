@@ -50,7 +50,7 @@
 	<div class="container">
 	<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
 	<br><br>
-	<form action="ControllerQuestao" method="post">
+	<form action="ControllerQuestao" method="get">
 		<input type="hidden" name="action" value="telaCadastro">
 		<input type="submit" class="btn btn-info" value="Cadastrar Questão">
 	</form>
