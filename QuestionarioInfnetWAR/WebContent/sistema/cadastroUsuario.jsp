@@ -1,5 +1,5 @@
 
-<jsp:include page="openDoc.jsp" />
+<jsp:include page="../openDoc.jsp" />
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -101,4 +101,4 @@
 	
 </div>
 
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />
