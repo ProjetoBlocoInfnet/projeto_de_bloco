@@ -38,23 +38,30 @@ public class QuestaoDAOImpl implements QuestaoDAO {
 	}
 
 	@Override
-	public boolean excluir(long id) {
-		
-		Questao questaoBanco = manager.find(Questao.class, id);
+	public boolean excluir(long id) {		
+		Questao questaoBanco = manager.find(Questao.class, id);		
 		try {
 			manager.remove(questaoBanco);
-			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return true;
 	}
 
 	@Override
 	public Questao obter(long id) {
 		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.idQuestao=:qId ", Questao.class);
-		 query.setParameter("pId", id);
+		 query.setParameter("qId", id);
 		 return query.getSingleResult();
+	}
+	
+	
+	public List<Questao> consultarPorTextoDaQuestao(String texto) {		
+		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.textoQuestao like :qtexto", Questao.class);
+		query.setParameter("qtexto", "%"+texto+"%" );
+		return query.getResultList();
+		 
 	}
 
 	@Override

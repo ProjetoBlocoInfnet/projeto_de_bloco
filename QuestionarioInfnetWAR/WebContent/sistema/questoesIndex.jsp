@@ -60,7 +60,7 @@
 		<div class="row">  
 		  <div class="col-lg-6">
 		    <div class="input-group">
-		      <input type="text" name="nome" class="form-control" placeholder="Consultar por...">
+		      <input type="text" name="textoQuestao" class="form-control" placeholder="Consultar por...">
 		      <span class="input-group-btn">
 		        <input type="submit" class="btn btn-default" type="button" value="Consultar">
 		      </span>
@@ -100,7 +100,7 @@
 		  			<td>${questao.categoria}</td>  		
 		  			<td>${questao.tipoResposta}</td>   				
 		  			<td>
-		  				<a href="ControllerQuestao?tela=alterar&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+		  				<a href="ControllerQuestao?tela=telaAlterar&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
 		  				<a href="ControllerQuestao?tela=excluir&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
 		  			</td>
 		  		</tr>
