@@ -1,6 +1,7 @@
 package br.edu.infnet.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -9,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.edu.infnet.academicnet.dao.QuestaoDAOImpl;
-import br.edu.infnet.academicnet.enumerators.TipoQuestao;
+import br.edu.infnet.academicnet.dao.QuestaoDAO;
+import br.edu.infnet.academicnet.enumerators.Categoria;
+import br.edu.infnet.academicnet.enumerators.TipoResposta;
 import br.edu.infnet.academicnet.modelo.Questao;
 
 /**
@@ -21,9 +23,7 @@ public class ControllerQuestao extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     @EJB
-    private QuestaoDAOImpl questaoDAOImpl;
-    private Questao questao = null;
-    
+    private QuestaoDAO questaoDAO;
 	
     public ControllerQuestao() {
         super();
@@ -33,23 +33,47 @@ public class ControllerQuestao extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getParameter("action") != null){
-			String action = request.getParameter("action");		
+		if(request.getParameter("tela") != null){
+			String tela = request.getParameter("tela");	
 			
-			switch (action) {
+			long idQuestao =0;
+			
+			if(request.getParameter("idQuestao") != null){
+				idQuestao = Long.valueOf(request.getParameter("idQuestao"));
+			}
+						
+			switch (tela) {
 			case "telaCadastro":				
-				request.setAttribute("tipo", TipoQuestao.values());
+				request.setAttribute("categorias", Categoria.values());
+				request.setAttribute("tipoResposta", TipoResposta.values());
 				request.getRequestDispatcher("sistema/cadastroQuestao.jsp").forward(request, response);
 				break;
 			
 			case "telaAlterar":
+				System.out.println(idQuestao);
+				Questao questao = questaoDAO.obter(idQuestao);
+				request.setAttribute("questao", questao);
 				request.getRequestDispatcher("sistema/alterarQuestao.jsp").forward(request, response);
+				break;
+			
+			case "excluir":
+				
+				boolean result = questaoDAO.excluir(idQuestao);
+				/*if(result){
+					request.setAttribute("result_ok", "Questão excluída com Sucesso");
+				}else{
+					request.setAttribute("result_error", "Erro ao excluir a questão");
+				}	*/
+				doGet(request, response);
 				break;
 
 			default:
 				break;
 			}
+			
 		}else{
+			List<Questao> listaQuestao = questaoDAO.listar();
+			request.setAttribute("listaQuestao", listaQuestao);
 			request.getRequestDispatcher("sistema/questoesIndex.jsp").forward(request, response);
 		}
 		
@@ -61,12 +85,43 @@ public class ControllerQuestao extends HttpServlet {
 		
 		if(request.getParameter("action") != null){
 			
+			Questao questaoObj ;
+			boolean result;
+			
+			
+			String questao = request.getParameter("questao");
+			String categoria = request.getParameter("categoria");
+			String tipoResposta = request.getParameter("tipoResposta");	
+			 
 			String action = request.getParameter("action");	
 			switch (action) {
 				case "cadastrar":
+					questaoObj = new Questao();
+					questaoObj.setTextoQuestao(questao);
+					questaoObj.setCategoria(Categoria.valueOf(categoria));
+					questaoObj.setTipoResposta(TipoResposta.valueOf(tipoResposta));
+					
+					result = questaoDAO.incluir(questaoObj);
+					if(result){
+						request.setAttribute("result_ok", "Questão Cadastrada com Sucesso");
+					}else{
+						request.setAttribute("result_error", "Erro ao cadastrar a questão");
+					}					
 					
 					break;
 				case "alterar":
+					questaoObj = new Questao();
+					questaoObj.setIdQuestao(Long.valueOf(request.getParameter("idQuestao")));
+					questaoObj.setTextoQuestao(questao);
+					questaoObj.setCategoria(Categoria.valueOf(categoria));
+					questaoObj.setTipoResposta(TipoResposta.valueOf(tipoResposta));
+					
+					result = questaoDAO.alterar(questaoObj);
+					if(result){
+						request.setAttribute("result_ok", "Questão alterada com Sucesso");
+					}else{
+						request.setAttribute("result_error", "Erro ao alterar a questão");
+					}	
 					
 					break;
 				case "consultar":
@@ -75,6 +130,7 @@ public class ControllerQuestao extends HttpServlet {
 				default:
 					break;
 			}
+			doGet(request, response);
 		}
 		
 		doGet(request, response);

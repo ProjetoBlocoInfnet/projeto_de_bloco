@@ -16,39 +16,38 @@ public class QuestaoDAOImpl implements QuestaoDAO {
 	private EntityManager manager;
 
 	@Override
-	public void incluir(Questao questao) {
-		try {
-			manager.getTransaction().begin();
-			manager.persist(questao);
-			manager.getTransaction().commit();
-			
+	public boolean incluir(Questao questao) {
+		try {			
+			manager.persist(questao);	
+			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return true;
 	}
 
 	@Override
-	public void alterar(Questao questao) {
+	public boolean alterar(Questao questao) {
 		try {
-			manager.getTransaction().begin();
 			manager.merge(questao);
-			manager.getTransaction().commit();
-			
+			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return true;
 	}
 
 	@Override
-	public void excluir(long id) {
-		Questao questaoBanco = manager.find(Questao.class, id);
-
-		manager.getTransaction().begin();
-		manager.remove(questaoBanco);
-		manager.getTransaction().commit();
+	public boolean excluir(long id) {
 		
+		Questao questaoBanco = manager.find(Questao.class, id);
+		try {
+			manager.remove(questaoBanco);
+			manager.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override

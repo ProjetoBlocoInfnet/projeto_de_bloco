@@ -2,7 +2,6 @@ package br.edu.infnet.academicnet.dao;
 
 import java.util.List;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,7 +16,7 @@ public class AlunoDAOImpl implements AlunoDAO{
 	private EntityManager manager;
 	
 	@Override
-	public void incluir(Aluno aluno) {
+	public boolean incluir(Aluno aluno) {
 		try {
 			manager.getTransaction().begin();
 			manager.persist(aluno);
@@ -25,12 +24,13 @@ public class AlunoDAOImpl implements AlunoDAO{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
+		return true;
 		
 	}
 
 	@Override
-	public void alterar(Aluno aluno) {
+	public boolean alterar(Aluno aluno) {
 		
 		try {
 			manager.getTransaction().begin();
@@ -40,17 +40,20 @@ public class AlunoDAOImpl implements AlunoDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return true;
 	}
 
 	@Override
-	public void excluir(long id) {
+	public boolean excluir(long id) {
 		Aluno alunoBanco = manager.find(Aluno.class, id);
-
-		manager.getTransaction().begin();
-		manager.remove(alunoBanco);
-		manager.getTransaction().commit();
-		
+		try {
+			manager.getTransaction().begin();
+			manager.remove(alunoBanco);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override

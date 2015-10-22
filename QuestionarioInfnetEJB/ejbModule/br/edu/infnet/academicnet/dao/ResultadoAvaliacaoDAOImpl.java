@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.ResultadoAvaliacao;
 
 @Stateless
@@ -17,7 +16,7 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	private EntityManager manager;
 
 	@Override
-	public void incluir(ResultadoAvaliacao resultAvaliacao) {
+	public boolean incluir(ResultadoAvaliacao resultAvaliacao) {
 		try {
 			manager.getTransaction().begin();
 			manager.persist(resultAvaliacao);
@@ -26,11 +25,11 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return true;
 	}
 
 	@Override
-	public void alterar(ResultadoAvaliacao resultAvaliacao) {
+	public boolean alterar(ResultadoAvaliacao resultAvaliacao) {
 		try {
 			manager.getTransaction().begin();
 			manager.merge(resultAvaliacao);
@@ -39,17 +38,20 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return true;
 	}
 
 	@Override
-	public void excluir(long id) {
+	public boolean excluir(long id) {
 		ResultadoAvaliacao ResultadoAvaliacaoBanco = manager.find(ResultadoAvaliacao.class, id);
-
-		manager.getTransaction().begin();
-		manager.remove(ResultadoAvaliacaoBanco);
-		manager.getTransaction().commit();
-		
+		try {
+			manager.getTransaction().begin();
+			manager.remove(ResultadoAvaliacaoBanco);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override

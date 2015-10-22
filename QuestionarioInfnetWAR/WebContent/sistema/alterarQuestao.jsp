@@ -49,35 +49,53 @@
 <div id="container" class="container-fluid">
 
 	<div class="container">
-		<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
+		<a href="ControllerQuestao"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Alterar de Questão</h2>
+		<h2>Alterar  Questão</h2>
 		<hr>
-		<form class="form-horizontal">
-		  <div class="form-group">
-		    <label for="login" class="col-sm-2 control-label">Questão</label>
-		    <div class="col-sm-10">
-		      <textarea class="form-control" id="login" placeholder="Questão"></textarea>
-		    </div>
-		  </div>
-		  		 		 
-		  <div class="form-group">
-		    <label for="permissao" class="col-sm-2 control-label">Categoria</label>
-		    	<div class="col-sm-10">
-					  <select name="permissao" id="permissao" class="form-control">
-						  <option>Selecionar</option>
-						  <option>Professor</option>
-						  <option>Equipamentos</option>
-						  <option>Curso</option>
-					</select>
-		  		</div>
-		  </div>
-		  <div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">Cadastrar</button>
-		    </div>
-		  </div>
+		
+		<form action="ControllerQuestao" method="post" class="form-horizontal">
+			
+			  <input type="hidden" name="action" value="alterar">
+		
+			  <div class="form-group">
+			    <label for="questao" class="col-sm-2 control-label">Questão</label>
+			    <div class="col-sm-10">
+			      <textarea name="questao" class="form-control" id="questao" placeholder="Questão">${questao.textoQuestao}</textarea>
+			    </div>
+			  </div>
+			  		 		 
+			  <div class="form-group">
+			    <label for="categoria" class="col-sm-2 control-label">Categoria</label>
+			    	<div class="col-sm-10">
+						  <select name="categoria" id="categoria" class="form-control">
+							  <option>Selecionar</option>
+							  <c:forEach var="categoria" items="${categorias}">
+							  		<option value="${categoria}" selected=${questao.categoria == categoria ? 'selected'} >>${categoria.categoria }</option>
+							  </c:forEach>
+						</select>
+			  		</div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="tipoResposta" class="col-sm-2 control-label">Categoria</label>
+			    	<div class="col-sm-10">
+						  <select name="tipoResposta" id="tipoResposta" class="form-control">
+							  <option>Selecionar</option>
+							  <c:forEach var="tipo" items="${tipoResposta}">
+							  		<option value="${tipo}" selected=${questao.tipoResposta == tipo ? 'selected'} >>${tipo}</option>
+							  </c:forEach>
+						</select>
+			  		</div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-default">Cadastrar</button>
+			    </div>
+			  </div>
+			  
 		</form>
 	
 	</div>

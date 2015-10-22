@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../openDoc.jsp" />
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -48,10 +48,10 @@
 <div id="container" class="container-fluid">
 
 	<div class="container">
-	<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
+	<a href="ControllerLogin"><button type="button" class="btn btn-default">Voltar</button></a>
 	<br><br>
 	<form action="ControllerQuestao" method="get">
-		<input type="hidden" name="action" value="telaCadastro">
+		<input type="hidden" name="tela" value="telaCadastro">
 		<input type="submit" class="btn btn-info" value="Cadastrar Questão">
 	</form>
 	<br>
@@ -70,31 +70,43 @@
 	</form>
 	<hr>
 	
+	<c:choose>
+		<c:when test="${result_ok != null}">
+			<div class="alert alert-success" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>${result_ok}</strong>
+			</div>
+		</c:when>
+		<c:when test="${result_error != null}">
+			<div class="alert alert-danger" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>${result_error}</strong>
+			</div>
+		</c:when>		
+	</c:choose>
+	
 	<div >
 	<table class="table table-hover">
   		<thead>
-  		<th>Id</th>
-  		<th>Questão</th>
-  		<th>Categoria</th>
-  		<th>Ação</th>
+	  		<th>Questão</th>
+	  		<th>Categoria</th>
+	  		<th>tipoResposta</th>
+	  		<th>Ação</th>
   		</thead>
   		<tbody>
-  		
-	  		<tr>
-	  			<td>1</td>  
-	  			<td>Até agora, o curso está atingindo as minhas expectativas</td>  		
-	  			<td>elom</td> 	  				
-	  			<td>
-	  				<a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
-	  			</td>
-	  		</tr>
+  			<c:forEach var="questao" items="${listaQuestao}">
+		  		<tr>
+		  			<td>${questao.textoQuestao}</td>  
+		  			<td>${questao.categoria}</td>  		
+		  			<td>${questao.tipoResposta}</td>   				
+		  			<td>
+		  				<a href="ControllerQuestao?tela=alterar&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+		  				<a href="ControllerQuestao?tela=excluir&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+		  			</td>
+		  		</tr>
+	  		</c:forEach>
   		</tbody>
 	</table>
-	</div>
-	
-	</div>
-
 	
 </div>
 
