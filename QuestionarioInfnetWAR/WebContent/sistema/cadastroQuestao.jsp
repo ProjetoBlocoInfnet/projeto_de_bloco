@@ -1,5 +1,5 @@
 
-<jsp:include page="openDoc.jsp" />
+<jsp:include page="../openDoc.jsp" />
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -40,62 +40,49 @@
 				  </div>
 				</form>
 			</li>
-      	</ul>      				  
+      	</ul>      			  
 	</div>	
+	
 </nav>
   
 
 <div id="container" class="container-fluid">
 
 	<div class="container">
-	<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
-	<br><br>
-	<form action="ControllerQuestao" method="post">
-		<input type="hidden" name="action" value="telaCadastro">
-		<input type="submit" class="btn btn-info" value="Cadastrar Questão">
-	</form>
-	<br>
-	<form action="ControllerQuestao" method="post">
-		<input type="hidden" name="action" value="consultar">
-		<div class="row">  
-		  <div class="col-lg-6">
-		    <div class="input-group">
-		      <input type="text" name="nome" class="form-control" placeholder="Consultar por...">
-		      <span class="input-group-btn">
-		        <input type="submit" class="btn btn-default" type="button" value="Consultar">
-		      </span>
-		    </div><!-- /input-group -->
-		  </div><!-- /.col-lg-6 -->
-		</div><!-- /.row -->
-	</form>
-	<hr>
-	
-	<div >
-	<table class="table table-hover">
-  		<thead>
-  		<th>Id</th>
-  		<th>Questão</th>
-  		<th>Categoria</th>
-  		<th>Ação</th>
-  		</thead>
-  		<tbody>
-  		
-	  		<tr>
-	  			<td>1</td>  
-	  			<td>Até agora, o curso está atingindo as minhas expectativas</td>  		
-	  			<td>elom</td> 	  				
-	  			<td>
-	  				<a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
-	  			</td>
-	  		</tr>
-  		</tbody>
-	</table>
-	</div>
+		<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
+		<br><br>
+		
+		<h2>Cadastro de Questões</h2>
+		<hr>
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="login" class="col-sm-2 control-label">Questão</label>
+		    <div class="col-sm-10">
+		      <textarea class="form-control" id="login" placeholder="Questão"></textarea>
+		    </div>
+		  </div>
+		  		 		 
+		  <div class="form-group">
+		    <label for="permissao" class="col-sm-2 control-label">Categoria</label>
+		    	<div class="col-sm-10">
+					  <select name="permissao" id="permissao" class="form-control">
+						  <option>Selecionar</option>
+						  <option>Professor</option>
+						  <option>Equipamentos</option>
+						  <option>Curso</option>
+					</select>
+		  		</div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Cadastrar</button>
+		    </div>
+		  </div>
+		</form>
 	
 	</div>
 
 	
 </div>
 
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />
