@@ -1,22 +1,39 @@
 package br.edu.infnet.academicnet.modelo;
 
-public class Curso {
+import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_curso")
+public class Curso implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCurso;
-
+	
+	@Column(nullable=false, unique = true)
 	private String nome;
+	
+	@ManyToMany
+	@JoinTable(name="curso_turmas")
+	private List<Turma> turmas;
 	
 	public Curso()
 	{
 		
 	}
 	
-	public Curso(int idCurso, String nome)
-	{
-		super();
-		this.idCurso = idCurso;
-		this.nome = nome;
-	}
 	
 	public int getIdCurso() {
 		return idCurso;
@@ -33,6 +50,16 @@ public class Curso {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
+
+
 
 	@Override
 	public int hashCode() {

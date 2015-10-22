@@ -1,39 +1,64 @@
 package br.edu.infnet.academicnet.modelo;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.Date;
 
-public class Avaliacao {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="tbl_avaliacao")
+public class Avaliacao implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAvaliacao;
-
+	
+	@ManyToMany
+	@JoinTable(name="avaliacao_questoes")
 	private List<Questao> listQuestao;
-
-	private Date dataInicio;
-
-	private Date dataFim;
+	
+	/*
+	@OneToOne
+	@JoinColumn(name = "turma_id")
+	private Turma turma;	*/
+	
+	/*@ManyToOne
+	@JoinColumn(name="agendamento_id") 
+	private AgendamentoAvaliacao agendamentoAvaliacao;*/
+	
+	@OneToMany(mappedBy="avaliacao")
+	private List<AgendamentoAvaliacao> agendamentoAvaliacao;
 
 	public Avaliacao()
 	{
 		
 	}
 	
-	public Avaliacao(int idAvaliacao, List<Questao> listQuestao, Date dataInicio, Date dataFim)
-	{
-		super();
-		this.idAvaliacao = idAvaliacao;
-		this.listQuestao = listQuestao;
-		this.dataInicio = dataInicio;
-		this.dataFim = dataFim;
+	
+	public List<AgendamentoAvaliacao> getAgendamentoAvaliacao() {
+		return agendamentoAvaliacao;
 	}
-		
+
+	public void setAgendamentoAvaliacao(
+			List<AgendamentoAvaliacao> agendamentoAvaliacao) {
+		this.agendamentoAvaliacao = agendamentoAvaliacao;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dataFim == null) ? 0 : dataFim.hashCode());
-		result = prime * result
-				+ ((dataInicio == null) ? 0 : dataInicio.hashCode());
 		result = prime * result + idAvaliacao;
 		result = prime * result
 				+ ((listQuestao == null) ? 0 : listQuestao.hashCode());
@@ -49,16 +74,6 @@ public class Avaliacao {
 		if (getClass() != obj.getClass())
 			return false;
 		Avaliacao other = (Avaliacao) obj;
-		if (dataFim == null) {
-			if (other.dataFim != null)
-				return false;
-		} else if (!dataFim.equals(other.dataFim))
-			return false;
-		if (dataInicio == null) {
-			if (other.dataInicio != null)
-				return false;
-		} else if (!dataInicio.equals(other.dataInicio))
-			return false;
 		if (idAvaliacao != other.idAvaliacao)
 			return false;
 		if (listQuestao == null) {
@@ -84,23 +99,8 @@ public class Avaliacao {
 	public void setListQuestao(List<Questao> listQuestao) {
 		this.listQuestao = listQuestao;
 	}
-
-	public Date getDataInicio() {
-		return dataInicio;
-	}
-
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public Date getDataFim() {
-		return dataFim;
-	}
-
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
-	}
-
+	
+		
 	public Boolean inicializarAvaliacao() {
 		return null;
 	}

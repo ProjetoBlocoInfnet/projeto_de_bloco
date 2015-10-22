@@ -1,39 +1,91 @@
 package br.edu.infnet.academicnet.modelo;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ResultadoAvaliacao {
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-	private int media;
+@Entity
+@Table(name = "tbl_resultadoAvaliacao")
+public class ResultadoAvaliacao implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 
-	private List<Resposta> respostas;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long idResultadoAvaliacao;
+	
+	@Column(nullable=false)
+	private double media;
+	
+	@ElementCollection
+	@MapKeyColumn(name="idQuestao")
+	@Column(name="respostas")
+	@CollectionTable(name="questoes_respostas", joinColumns = @JoinColumn(name="resposta_valor"))
+	private Map<Questao,String> respostas = new HashMap<Questao,String>();
+	
+	@OneToOne
+	@JoinColumn(name="aluno_id")
+	private Aluno aluno;
+	
+	@OneToOne
+	@JoinColumn(name="turma_id")
+	private Turma turma;
 
 	public ResultadoAvaliacao()
 	{
 		
 	}
 	
-	public ResultadoAvaliacao(int media, List<Resposta> respostas)
-	{
-		super();
-		this.media = media;
-		this.respostas = respostas;
+	public long getIdResultadoAvaliacao() {
+		return idResultadoAvaliacao;
 	}
-	
-	public int getMedia() {
+
+	public void setIdResultadoAvaliacao(long idResultadoAvaliacao) {
+		this.idResultadoAvaliacao = idResultadoAvaliacao;
+	}
+
+	public double getMedia() {
 		return media;
 	}
 
-	public void setMedia(int media) {
+	public void setMedia(double media) {
 		this.media = media;
 	}
 
-	public List<Resposta> getRespostas() {
+	public Map<Questao, String> getRespostas() {
 		return respostas;
 	}
 
-	public void setRespostas(List<Resposta> respostas) {
+	public void setRespostas(Map<Questao, String> respostas) {
 		this.respostas = respostas;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public Turma getTurma() {
+		return turma;
+	}
+
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	public Boolean efetuarAvaliacao() {

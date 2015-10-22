@@ -1,9 +1,13 @@
 package br.edu.infnet.academicnet.modelo;
 
+
+
 public class Resposta {
-
+	
+	
 	private int idResposta;
-
+	
+	
 	private String textoResposta;
 
 	public int getIdResposta() {

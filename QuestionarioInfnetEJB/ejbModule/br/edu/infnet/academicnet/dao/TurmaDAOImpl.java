@@ -8,19 +8,19 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.modelo.Aluno;
-import br.edu.infnet.academicnet.modelo.Avaliacao;
+import br.edu.infnet.academicnet.modelo.Turma;
 
 @Stateless
-public class AvaliacaoDAOImpl implements AvaliacaoDAO {
+public class TurmaDAOImpl implements TurmaDAO{
 	
 	@PersistenceContext
 	private EntityManager manager;
 
 	@Override
-	public void incluir(Avaliacao avaliacao) {
+	public void incluir(Turma turma) {
 		try {
 			manager.getTransaction().begin();
-			manager.persist(avaliacao);
+			manager.persist(turma);
 			manager.getTransaction().commit();
 			
 		} catch (Exception e) {
@@ -30,10 +30,10 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 	}
 
 	@Override
-	public void alterar(Avaliacao avaliacao) {
+	public void alterar(Turma turma) {
 		try {
 			manager.getTransaction().begin();
-			manager.merge(avaliacao);
+			manager.merge(turma);
 			manager.getTransaction().commit();
 			
 		} catch (Exception e) {
@@ -44,25 +44,27 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 
 	@Override
 	public void excluir(long id) {
-		Avaliacao avaliacaoBanco = manager.find(Avaliacao.class, id);
+		Turma turmaBanco = manager.find(Turma.class, id);
 
 		manager.getTransaction().begin();
-		manager.remove(avaliacaoBanco);
+		manager.remove(turmaBanco);
 		manager.getTransaction().commit();
 		
 	}
 
 	@Override
-	public Avaliacao obter(long id) {
-		 TypedQuery<Avaliacao> query = manager.createQuery("select av from Avaliacao av where av.idAluno=:avId ", Avaliacao.class);
-		 query.setParameter("avId", id);
+	public Turma obter(long id) {
+		 TypedQuery<Turma> query = manager.createQuery("select t from Turma t where t.idTurma=:tId ", Turma.class);
+		 query.setParameter("tId", id);
 		 return query.getSingleResult();
 	}
 
 	@Override
-	public List<Avaliacao> listar() {
-		TypedQuery<Avaliacao> query = manager.createQuery("select av from Avaliacao av", Avaliacao.class);
+	public List<Turma> listar() {
+		TypedQuery<Turma> query = manager.createQuery("select t from Turma t", Turma.class);
 		return query.getResultList();
 	}
+	
+	
 
 }

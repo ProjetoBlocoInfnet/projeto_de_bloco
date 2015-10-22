@@ -1,26 +1,40 @@
 package br.edu.infnet.academicnet.modelo;
 
-public class Perfil {
+import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_perfil")
+public class Perfil implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPerfil;
-
+	
+	@Column(nullable=false, unique = true)
 	private String nomePerfil;
 
 	private String descricao;
+	
+	@OneToMany(mappedBy = "perfil")
+	private List<Usuario> usuarios;
 
 	public Perfil()
 	{
 		
 	}
 	
-	public Perfil(int idPerfil, String nomePerfil, String descricao)
-	{
-		super();
-		this.idPerfil = idPerfil;
-		this.nomePerfil = nomePerfil;
-		this.descricao = descricao;
-	}
-	
+		
 	public int getIdPerfil() {
 		return idPerfil;
 	}
@@ -43,6 +57,14 @@ public class Perfil {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	public Boolean incluirPerfil(Perfil perfil) {

@@ -1,32 +1,59 @@
 package br.edu.infnet.academicnet.modelo;
 
-public abstract class Pessoa {
+import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_pessoa")
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class Pessoa implements Serializable{
+	
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int matricula;
-
+	
+	@Column(nullable=false, unique = true)
 	private String nome;
 
 	private String endereco;
 
 	private String cep;
-
+	
+	@Column(unique = true)
 	private String email;
+	
+	@OneToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
 
 	public Pessoa()
 	{
 		
 	}
 	
-	public Pessoa(int matricula, String nome, String endereco, String cep, String email)
-	{
-		super();
-		this.matricula = matricula;
-		this.nome = nome;
-		this.endereco = endereco;
-		this.cep = cep;
-		this.email = email;
-	}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
