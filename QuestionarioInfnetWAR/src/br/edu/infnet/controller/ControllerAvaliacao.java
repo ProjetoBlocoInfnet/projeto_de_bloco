@@ -48,6 +48,7 @@ public class ControllerAvaliacao extends HttpServlet {
 					String nome = request.getParameter("nome");
 					List<Avaliacao> avaliacoes = avaliacao.obterPorNome(nome);
 					request.setAttribute("avaliacoes", avaliacoes);
+					request.getRequestDispatcher("sistema/avaliacaoIndex.jsp").forward(request, response);
 					break;
 				case "editar":
 					request.getRequestDispatcher("sistema/alterarAvaliacao.jsp").forward(request, response);
@@ -60,11 +61,8 @@ public class ControllerAvaliacao extends HttpServlet {
 					System.out.println("Não houve ação válida inserida");
 			}
 		}
-		else
-		{
-			List<Avaliacao> avaliacoes = avaliacao.listar();
-			request.setAttribute("avaliacoes", avaliacoes);
-		}
+		List<Avaliacao> avaliacoes = avaliacao.listar();
+		request.setAttribute("avaliacoes", avaliacoes);
 		request.getRequestDispatcher("sistema/avaliacaoIndex.jsp").forward(request, response);
 	}
 

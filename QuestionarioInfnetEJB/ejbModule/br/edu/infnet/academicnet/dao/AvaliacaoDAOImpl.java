@@ -18,12 +18,12 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 
 	@Override
 	public void incluir(Avaliacao avaliacao) {
-		try {
-			manager.getTransaction().begin();
+		try
+		{
 			manager.persist(avaliacao);
-			manager.getTransaction().commit();
-			
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}	
 		
@@ -31,12 +31,12 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 
 	@Override
 	public void alterar(Avaliacao avaliacao) {
-		try {
-			manager.getTransaction().begin();
+		try
+		{
 			manager.merge(avaliacao);
-			manager.getTransaction().commit();
-			
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 		
@@ -46,10 +46,7 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 	public void excluir(long id) {
 		Avaliacao avaliacaoBanco = manager.find(Avaliacao.class, id);
 
-		manager.getTransaction().begin();
 		manager.remove(avaliacaoBanco);
-		manager.getTransaction().commit();
-		
 	}
 
 	@Override
