@@ -71,7 +71,7 @@
 					<select name="questoes" id="questoes" multiple="multiple" class="form-control">
 				  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
 		  					<c:forEach items="${requestScope.questoes}" var="questao">
-							  <option value=${questao.idQuestao}>${questao.textoQuestao} | ${questao.tipoQuestao.getTipo()}</option>
+							  <option value=${questao.idQuestao}>${questao.textoQuestao} | ${questao.categoria.getCategoria()}</option>
 							</c:forEach>
 						</c:if>
 					</select>

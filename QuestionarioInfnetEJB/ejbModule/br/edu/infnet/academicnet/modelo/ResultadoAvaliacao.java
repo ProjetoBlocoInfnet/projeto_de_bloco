@@ -44,6 +44,7 @@ public class ResultadoAvaliacao implements Serializable{
 	@JoinColumn(name="turma_id")
 	private Turma turma;
 
+	//TODO Verificar porque essa chave estrangeira não funciona. Ela é necessária para saber que a resposta é de uma avaliação
 	@ManyToOne 
 	@JoinColumn(name="avaliacao_id") 
 	private Avaliacao avaliacao;
