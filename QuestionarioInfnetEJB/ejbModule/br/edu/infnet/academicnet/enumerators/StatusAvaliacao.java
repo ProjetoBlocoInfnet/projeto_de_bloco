@@ -1,12 +1,12 @@
 package br.edu.infnet.academicnet.enumerators;
 
-public enum Status {
+public enum StatusAvaliacao {
 	
-	ATIVO("Ativo"), INATIVO("Inativo");
+	CRIADO("Criado"), EM_ANDAMENTO("Em Andamento"), FINALIZADO("Finalizado");
 	
 	private String status;
 	
-	private Status(String status) {
+	private StatusAvaliacao(String status) {
 		this.status = status;
 	}
 

@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.edu.infnet.academicnet.enumerators.Categoria;
+import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.enumerators.TipoResposta;
 
 @Entity
@@ -39,6 +40,9 @@ public class Questao implements Serializable{
 	@Enumerated(EnumType.STRING)
 	@Column(length=50)
 	private Categoria categoria;
+	
+	@Enumerated(EnumType.STRING)
+	private Status status;
 
 	public Questao()
 	{
@@ -57,7 +61,11 @@ public class Questao implements Serializable{
 	public String getTextoQuestao() {
 		return textoQuestao;
 	}
-	
+
+	public void setTextoQuestao(String textoQuestao) {
+		this.textoQuestao = textoQuestao;
+	}
+
 	public List<Avaliacao> getAvaliacoes() {
 		return avaliacoes;
 	}
@@ -74,10 +82,6 @@ public class Questao implements Serializable{
 		this.tipoResposta = tipoResposta;
 	}
 
-	public void setTextoQuestao(String textoQuestao) {
-		this.textoQuestao = textoQuestao;
-	}
-	
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -86,6 +90,13 @@ public class Questao implements Serializable{
 		this.categoria = categoria;
 	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	public Boolean incluirQuestao(Questao questao) {
 		return null;
@@ -102,8 +113,7 @@ public class Questao implements Serializable{
 	public Boolean consultarQuestao(Questao questao) {
 		return null;
 	}
-	
-	
+
 
 	@Override
 	public int hashCode() {
@@ -114,6 +124,7 @@ public class Questao implements Serializable{
 		result = prime * result
 				+ ((categoria == null) ? 0 : categoria.hashCode());
 		result = prime * result + (int) (idQuestao ^ (idQuestao >>> 32));
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result
 				+ ((textoQuestao == null) ? 0 : textoQuestao.hashCode());
 		result = prime * result
@@ -140,6 +151,8 @@ public class Questao implements Serializable{
 			return false;
 		if (idQuestao != other.idQuestao)
 			return false;
+		if (status != other.status)
+			return false;
 		if (textoQuestao == null) {
 			if (other.textoQuestao != null)
 				return false;
@@ -149,6 +162,10 @@ public class Questao implements Serializable{
 			return false;
 		return true;
 	}
+	
+	
+	
+
 
 
 }
