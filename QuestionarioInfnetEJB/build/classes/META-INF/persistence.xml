@@ -21,6 +21,7 @@
         <class>br.edu.infnet.academicnet.modelo.Turma</class>
         <class>br.edu.infnet.academicnet.modelo.Usuario</class>
         <class>br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao</class>
+        <class>br.edu.infnet.academicnet.modelo.Modulo</class>
                 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         

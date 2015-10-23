@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -44,15 +43,21 @@ public class ResultadoAvaliacao implements Serializable{
 	@JoinColumn(name="turma_id")
 	private Turma turma;
 
-	//TODO Verificar porque essa chave estrangeira não funciona. Ela é necessária para saber que a resposta é de uma avaliação
-	@ManyToOne 
+	//TODO Verificar porque essa chave estrangeira nï¿½o funciona. Ela ï¿½ necessï¿½ria para saber que a resposta ï¿½ de uma avaliaï¿½ï¿½o
+	/*@ManyToOne 
 	@JoinColumn(name="avaliacao_id") 
-	private Avaliacao avaliacao;
+	private Avaliacao avaliacao;*/
+	
+	@OneToOne
+	@JoinColumn(name="agendamentoAvaliacao_id")
+	private AgendamentoAvaliacao agendamentoAvaliacao;
 	
 	public ResultadoAvaliacao()
 	{
 		
 	}
+	
+	
 	
 	public long getIdResultadoAvaliacao() {
 		return idResultadoAvaliacao;
@@ -94,8 +99,79 @@ public class ResultadoAvaliacao implements Serializable{
 		this.turma = turma;
 	}
 
+	public AgendamentoAvaliacao getAgendamentoAvaliacao() {
+		return agendamentoAvaliacao;
+	}
+
+	public void setAgendamentoAvaliacao(AgendamentoAvaliacao agendamentoAvaliacao) {
+		this.agendamentoAvaliacao = agendamentoAvaliacao;
+	}
+
 	public Boolean efetuarAvaliacao() {
 		return null;
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((agendamentoAvaliacao == null) ? 0 : agendamentoAvaliacao
+						.hashCode());
+		result = prime * result + ((aluno == null) ? 0 : aluno.hashCode());
+		result = prime * result
+				+ (int) (idResultadoAvaliacao ^ (idResultadoAvaliacao >>> 32));
+		long temp;
+		temp = Double.doubleToLongBits(media);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result
+				+ ((respostas == null) ? 0 : respostas.hashCode());
+		result = prime * result + ((turma == null) ? 0 : turma.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ResultadoAvaliacao other = (ResultadoAvaliacao) obj;
+		if (agendamentoAvaliacao == null) {
+			if (other.agendamentoAvaliacao != null)
+				return false;
+		} else if (!agendamentoAvaliacao.equals(other.agendamentoAvaliacao))
+			return false;
+		if (aluno == null) {
+			if (other.aluno != null)
+				return false;
+		} else if (!aluno.equals(other.aluno))
+			return false;
+		if (idResultadoAvaliacao != other.idResultadoAvaliacao)
+			return false;
+		if (Double.doubleToLongBits(media) != Double
+				.doubleToLongBits(other.media))
+			return false;
+		if (respostas == null) {
+			if (other.respostas != null)
+				return false;
+		} else if (!respostas.equals(other.respostas))
+			return false;
+		if (turma == null) {
+			if (other.turma != null)
+				return false;
+		} else if (!turma.equals(other.turma))
+			return false;
+		return true;
+	}
+	
+	
 
 }

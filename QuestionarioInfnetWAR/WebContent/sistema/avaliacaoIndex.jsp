@@ -1,8 +1,6 @@
 
 <jsp:include page="../openDoc.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %>
-<%@ page import="br.edu.infnet.academicnet.modelo.Avaliacao" %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">

@@ -5,12 +5,16 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import br.edu.infnet.academicnet.enumerators.Status;
 
 @Entity
 @Table(name="tbl_curso")
@@ -29,12 +33,17 @@ public class Curso implements Serializable{
 	@JoinTable(name="curso_turmas")
 	private List<Turma> turmas;
 	
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	
+	@ManyToMany(mappedBy="cursos")
+	private List<Modulo> modulo;
+	
 	public Curso()
 	{
 		
 	}
-	
-	
+
 	public int getIdCurso() {
 		return idCurso;
 	}
@@ -58,15 +67,32 @@ public class Curso implements Serializable{
 	public void setTurmas(List<Turma> turmas) {
 		this.turmas = turmas;
 	}
+	
+	public List<Modulo> getModulo() {
+		return modulo;
+	}
 
+	public void setModulo(List<Modulo> modulo) {
+		this.modulo = modulo;
+	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idCurso;
+		result = prime * result + ((modulo == null) ? 0 : modulo.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((turmas == null) ? 0 : turmas.hashCode());
 		return result;
 	}
 
@@ -81,11 +107,26 @@ public class Curso implements Serializable{
 		Curso other = (Curso) obj;
 		if (idCurso != other.idCurso)
 			return false;
+		if (modulo == null) {
+			if (other.modulo != null)
+				return false;
+		} else if (!modulo.equals(other.modulo))
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (status != other.status)
+			return false;
+		if (turmas == null) {
+			if (other.turmas != null)
+				return false;
+		} else if (!turmas.equals(other.turmas))
+			return false;
 		return true;
 	}
+
+		
+	
 }
