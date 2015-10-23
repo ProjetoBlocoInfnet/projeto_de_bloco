@@ -49,7 +49,8 @@ public class ControllerQuestao extends HttpServlet {
 				request.setAttribute("categorias", Categoria.values());
 				request.setAttribute("tipoResposta", TipoResposta.values());
 				request.getRequestDispatcher("sistema/cadastroQuestao.jsp").forward(request, response);
-				break;
+				return;
+				//break;
 			
 			case "telaAlterar":
 				
@@ -58,7 +59,8 @@ public class ControllerQuestao extends HttpServlet {
 				request.setAttribute("categorias", Categoria.values());
 				request.setAttribute("tipoResposta", TipoResposta.values());
 				request.getRequestDispatcher("sistema/alterarQuestao.jsp").forward(request, response);
-				break;
+				return;
+				//break;
 			
 			case "excluir":
 				
@@ -137,15 +139,14 @@ public class ControllerQuestao extends HttpServlet {
 					}
 					request.setAttribute("listaQuestao", listaQuestao);
 					request.getRequestDispatcher("sistema/questoesIndex.jsp").forward(request, response);					
-					
-					break;
+					return;
+					//break;
 				default:
 					break;
 			}
 			
 		}
-		
-		doGet(request, response);
+		doGet(request,response);
 	}
 
 }
