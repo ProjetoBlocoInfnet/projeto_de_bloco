@@ -52,17 +52,19 @@
 		<a href="ControllerQuestao"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Cadastro de Questões</h2>
+		<h2>Alterar  Questão</h2>
 		<hr>
 		
 		<form action="ControllerQuestao" method="post" class="form-horizontal">
 			
-			  <input type="hidden" name="action" value="cadastrar">
+			  <input type="hidden" name="action" value="alterar">
+			  <input type="hidden" name="idQuestao" value="${questao.idQuestao}">
+			  
 		
 			  <div class="form-group">
 			    <label for="questao" class="col-sm-2 control-label">Questão</label>
 			    <div class="col-sm-10">
-			      <textarea name="questao" class="form-control" id="questao" placeholder="Questão"></textarea>
+			      <textarea name="questao" class="form-control" id="questao" placeholder="Questão">${questao.textoQuestao}</textarea>
 			    </div>
 			  </div>
 			  		 		 
@@ -72,7 +74,7 @@
 						  <select name="categoria" id="categoria" class="form-control">
 							  <option>Selecionar</option>
 							  <c:forEach var="categoria" items="${categorias}">
-							  		<option value="${categoria}">${categoria.categoria }</option>
+							  		<option value="${categoria}" ${categoria eq questao.categoria ? 'selected="selected"' : ''} >${categoria.categoria }</option>
 							  </c:forEach>
 						</select>
 			  		</div>
@@ -82,17 +84,18 @@
 			    <label for="tipoResposta" class="col-sm-2 control-label">Categoria</label>
 			    	<div class="col-sm-10">
 						  <select name="tipoResposta" id="tipoResposta" class="form-control">
-							  <option>Selecionar</option>
+							  <option >Selecionar</option>
 							  <c:forEach var="tipo" items="${tipoResposta}">
-							  		<option value="${tipo}">${tipo}</option>
+							  		<option value="${tipo}" ${tipo eq questao.tipoResposta ? 'selected="selected"' : ''} >${tipo}</option>
 							  </c:forEach>
 						</select>
 			  		</div>
 			  </div>
+			  			  
 			  
 			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-default">Cadastrar</button>
+			      <button type="submit" class="btn btn-default">Alterar</button>
 			    </div>
 			  </div>
 			  

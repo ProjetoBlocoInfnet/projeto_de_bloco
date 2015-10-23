@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Turma;
 
 @Stateless
@@ -17,7 +16,7 @@ public class TurmaDAOImpl implements TurmaDAO{
 	private EntityManager manager;
 
 	@Override
-	public void incluir(Turma turma) {
+	public boolean incluir(Turma turma) {
 		try {
 			manager.getTransaction().begin();
 			manager.persist(turma);
@@ -26,11 +25,11 @@ public class TurmaDAOImpl implements TurmaDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
-		
+		return true;
 	}
 
 	@Override
-	public void alterar(Turma turma) {
+	public boolean alterar(Turma turma) {
 		try {
 			manager.getTransaction().begin();
 			manager.merge(turma);
@@ -39,17 +38,20 @@ public class TurmaDAOImpl implements TurmaDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return true;
 	}
 
 	@Override
-	public void excluir(long id) {
+	public boolean excluir(long id) {
 		Turma turmaBanco = manager.find(Turma.class, id);
-
-		manager.getTransaction().begin();
-		manager.remove(turmaBanco);
-		manager.getTransaction().commit();
-		
+		try {
+			manager.getTransaction().begin();
+			manager.remove(turmaBanco);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override

@@ -2,15 +2,17 @@ package br.edu.infnet.academicnet.dao;
 
 import java.util.List;
 
+import javax.ejb.Local;
 
+@Local
 public interface GenericoDAO<T>
 {
 		
-    void incluir(T objeto);
+    boolean incluir(T objeto);
     
-    void alterar(T objeto);
+    boolean alterar(T objeto);
     
-    void excluir(long id);
+    boolean excluir(long id);
     
     T obter(long id);
     

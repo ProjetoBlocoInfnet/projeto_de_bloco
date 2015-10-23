@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Avaliacao;
 
 @Stateless
@@ -17,7 +16,7 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 	private EntityManager manager;
 
 	@Override
-	public void incluir(Avaliacao avaliacao) {
+	public boolean incluir(Avaliacao avaliacao) {
 		try
 		{
 			manager.persist(avaliacao);
@@ -26,11 +25,11 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 		{
 			e.printStackTrace();
 		}	
-		
+		return true;
 	}
 
 	@Override
-	public void alterar(Avaliacao avaliacao) {
+	public boolean alterar(Avaliacao avaliacao) {
 		try
 		{
 			manager.merge(avaliacao);
@@ -39,14 +38,14 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 		{
 			e.printStackTrace();
 		}
-		
+		return true;
 	}
 
 	@Override
-	public void excluir(long id) {
+	public boolean excluir(long id) {
 		Avaliacao avaliacaoBanco = manager.find(Avaliacao.class, id);
-
 		manager.remove(avaliacaoBanco);
+		return true;
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class Perfil implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPerfil;
 	
-	@Column(nullable=false, unique = true)
+	@Column(nullable=false, unique = true, length=100)
 	private String nomePerfil;
 
 	private String descricao;

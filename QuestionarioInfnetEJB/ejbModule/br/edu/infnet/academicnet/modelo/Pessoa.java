@@ -25,11 +25,12 @@ public abstract class Pessoa implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int matricula;
 	
-	@Column(nullable=false, unique = true)
+	@Column(nullable=false, unique = true, length=180)
 	private String nome;
 
 	private String endereco;
-
+	
+	@Column(length=50)
 	private String cep;
 	
 	@Column(unique = true)
