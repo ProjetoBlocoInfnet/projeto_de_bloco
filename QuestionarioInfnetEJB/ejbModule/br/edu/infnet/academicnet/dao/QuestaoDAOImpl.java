@@ -58,7 +58,7 @@ public class QuestaoDAOImpl implements QuestaoDAO {
 	
 	
 	public List<Questao> consultarPorTextoDaQuestao(String texto) {		
-		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.textoQuestao like :qtexto", Questao.class);
+		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.textoQuestao like :qtexto order by q.categoria", Questao.class);
 		query.setParameter("qtexto", "%"+texto+"%" );
 		return query.getResultList();
 		 
@@ -66,7 +66,7 @@ public class QuestaoDAOImpl implements QuestaoDAO {
 
 	@Override
 	public List<Questao> listar() {
-		TypedQuery<Questao> query = manager.createQuery("select q from Questao q", Questao.class);
+		TypedQuery<Questao> query = manager.createQuery("select q from Questao q order by q.categoria", Questao.class);
 		return query.getResultList();
 	}
 	

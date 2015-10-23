@@ -35,10 +35,10 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO carrega a tela da avaliação
+		// TODO carrega a tela da avaliaï¿½ï¿½o
 		String login = request.getParameter("aluno");
 		String senha = request.getParameter("key");
-		// TODO fazer consulta de validação de usuário aqui
+		// TODO fazer consulta de validaï¿½ï¿½o de usuï¿½rio aqui
 		long idAgendamento = Long.valueOf(request.getParameter("aval"));
 		AgendamentoAvaliacao minhaAvaliacao = agendamento.obterAtivo(idAgendamento);
 		if(minhaAvaliacao != null)
@@ -56,7 +56,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 				}
 			}
 			request.setAttribute("aluno", meuAluno);
-			request.getRequestDispatcher("formularioAvaliacao.jsp").forward(request, response);
+			request.getRequestDispatcher("sistema/formularioAvaliacao.jsp").forward(request, response);
 		}
 		else
 		{
@@ -69,7 +69,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO salva a avaliação
+		// TODO salva a avaliaï¿½ï¿½o
 		request.getRequestDispatcher("avaliacaoConcluida.jsp").forward(request, response);
 	}
 

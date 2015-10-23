@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.academicnet.dao.QuestaoDAO;
 import br.edu.infnet.academicnet.enumerators.Categoria;
+import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.enumerators.TipoResposta;
 import br.edu.infnet.academicnet.modelo.Questao;
 
@@ -58,6 +59,7 @@ public class ControllerQuestao extends HttpServlet {
 				request.setAttribute("questao", questao);
 				request.setAttribute("categorias", Categoria.values());
 				request.setAttribute("tipoResposta", TipoResposta.values());
+				request.setAttribute("listaStatus", Status.values());
 				request.getRequestDispatcher("sistema/alterarQuestao.jsp").forward(request, response);
 				return;
 				//break;
@@ -99,6 +101,8 @@ public class ControllerQuestao extends HttpServlet {
 			String questao = request.getParameter("questao");
 			String categoria = request.getParameter("categoria");
 			String tipoResposta = request.getParameter("tipoResposta");	
+			
+			
 			 
 			String action = request.getParameter("action");	
 			switch (action) {
@@ -107,6 +111,7 @@ public class ControllerQuestao extends HttpServlet {
 					questaoObj.setTextoQuestao(questao);
 					questaoObj.setCategoria(Categoria.valueOf(categoria));
 					questaoObj.setTipoResposta(TipoResposta.valueOf(tipoResposta));
+					questaoObj.setStatus(Status.ATIVO);
 					
 					result = questaoDAO.incluir(questaoObj);
 					if(result){
@@ -122,6 +127,7 @@ public class ControllerQuestao extends HttpServlet {
 					questaoObj.setTextoQuestao(questao);
 					questaoObj.setCategoria(Categoria.valueOf(categoria));
 					questaoObj.setTipoResposta(TipoResposta.valueOf(tipoResposta));
+					questaoObj.setStatus(Status.valueOf(request.getParameter("status")));
 					
 					result = questaoDAO.alterar(questaoObj);
 					if(result){
