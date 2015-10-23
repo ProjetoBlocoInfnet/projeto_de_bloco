@@ -15,7 +15,7 @@
 <body>
 	<form action="ControllerFormularioAvaliacao" method="post">
 		Nome: "${requestScope.aluno.nome}" <br/>
-		Curso: "${requestScope.Curso.nome}" Professor: "${requestScope.aluno.nome}" <br/>
+		Curso: "${requestScope.curso.nome}" Professor: "${requestScope.professor.nome}" <br/>
 		<div >
 			<table class="table table-hover">
 		  		<thead>
@@ -29,27 +29,82 @@
 		  		</thead>
 		  		<tbody>
 			  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
-			  		<!-- inicio do loop -->
+			  		<!-- inicio do loop Curso -->
+			  		<tr>
+			  			<td>Sobre o curso</td>
+			  		</tr>
 			  			<c:forEach items="${requestScope.questoes}" var="questao">
-				  		<tr>
-				  			<td>${questao.nome}</td>
-				  			<c:if test="${questao.tipoResposta == LIKERT}">
-				  				<td><input type="radio" name="${questao.idQuestao}" value=5 /></td>
-				  				<td><input type="radio" name="${questao.idQuestao}" value=4 /></td>
-				  				<td><input type="radio" name="${questao.idQuestao}" value=3 /></td>
-				  				<td><input type="radio" name="${questao.idQuestao}" value=2 /></td>
-				  				<td><input type="radio" name="${questao.idQuestao}" value=1 /></td>
-				  				<td><input type="radio" name="${questao.idQuestao}" value=0 /></td>
-				  			</c:if>
-				  		</tr>
-				  		<c:if test="${questao.tipoResposta == TEXTO}">
-				  			<tr>
-				  				<td><input type="text" name="${questao.idQuestao}"/></td>
-				  			</tr>
-				  		</c:if>
+			  				<c:if test="${questao.categoria.getCategoria() == 'Curso'}">
+						  		<tr>
+						  			<td>${questao.nome}</td>
+						  			<c:if test="${questao.tipoResposta == 'LIKERT'}">
+						  				<td><input type="radio" name="${questao.idQuestao}" value=5 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=4 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=3 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=2 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=1 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=0 /></td>
+						  			</c:if>
+						  		</tr>
+						  		<c:if test="${questao.tipoResposta == TEXTO}">
+						  			<tr>
+						  				<td><input type="text" name="${questao.idQuestao}"/></td>
+						  			</tr>
+						  		</c:if>
+					  		</c:if>
 				  		</c:forEach>
-				  	<!-- fim do loop -->
-				  	</c:if>	
+				  	<!-- fim do loop Curso -->
+			  		<!-- inicio do loop Professor -->
+			  		<tr>
+			  			<td>Sobre o professor</td>
+			  		</tr>
+			  			<c:forEach items="${requestScope.questoes}" var="questao">
+			  				<c:if test="${questao.categoria.getCategoria() == 'Professor'}">
+						  		<tr>
+						  			<td>${questao.nome}</td>
+						  			<c:if test="${questao.tipoResposta == 'LIKERT'}">
+						  				<td><input type="radio" name="${questao.idQuestao}" value=5 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=4 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=3 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=2 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=1 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=0 /></td>
+						  			</c:if>
+						  		</tr>
+						  		<c:if test="${questao.tipoResposta == TEXTO}">
+						  			<tr>
+						  				<td><input type="text" name="${questao.idQuestao}"/></td>
+						  			</tr>
+						  		</c:if>
+					  		</c:if>
+				  		</c:forEach>
+				  	<!-- fim do loop Professor -->
+			  		<!-- inicio do loop Equipamentos -->
+			  		<tr>
+			  			<td>Sobre o equipamento</td>
+			  		</tr>
+			  			<c:forEach items="${requestScope.questoes}" var="questao">
+			  				<c:if test="${questao.categoria.getCategoria() == 'Equipamento'}">
+						  		<tr>
+						  			<td>${questao.nome}</td>
+						  			<c:if test="${questao.tipoResposta == 'LIKERT'}">
+						  				<td><input type="radio" name="${questao.idQuestao}" value=5 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=4 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=3 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=2 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=1 /></td>
+						  				<td><input type="radio" name="${questao.idQuestao}" value=0 /></td>
+						  			</c:if>
+						  		</tr>
+						  		<c:if test="${questao.tipoResposta == TEXTO}">
+						  			<tr>
+						  				<td><input type="text" name="${questao.idQuestao}"/></td>
+						  			</tr>
+						  		</c:if>
+					  		</c:if>
+				  		</c:forEach>
+				  	<!-- fim do loop Equipamentos -->
+				  	</c:if>
 			  	</tbody>
 			</table>
 		</div>
