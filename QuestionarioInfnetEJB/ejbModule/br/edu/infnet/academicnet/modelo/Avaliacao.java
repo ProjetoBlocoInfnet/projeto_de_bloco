@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -31,7 +32,9 @@ public class Avaliacao implements Serializable{
 	private String nome;
 	
 	@ManyToMany
-	@JoinTable(name="avaliacao_questoes")
+	@JoinTable(name="avaliacao_questoes",
+	joinColumns = @JoinColumn(name = "avaliacao_id"),
+	inverseJoinColumns = @JoinColumn(name = "questao_id"))
 	private List<Questao> listQuestao;
 	
 	/*

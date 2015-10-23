@@ -14,7 +14,7 @@
 	            </li>
 	            <li>
 	            	<a href="ControllerQuestao">
-	            		<span class="glyphicon glyphicon-list aria-hidden="true"> Questões</span> 
+	            		<span class="glyphicon glyphicon-list" aria-hidden="true"> Questões</span> 
 	            	</a>
 	            </li>
 	            <li>
@@ -22,12 +22,22 @@
 	            		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Avaliações</span> 
 	            	</a>
 	            </li>
+	             <li>
+	            	<a href="">
+	            		<span class="glyphicon glyphicon-th" aria-hidden="true"> Módulo</span> 
+	            	</a>
+	            </li>
 	            
 	          </ul>
 	        </li>
         	<li>
         		<a href="ControllerMediaHistorica" >
-        			 Média Histórica <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+        			 Média Histórica <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+        		</a>
+       		</li>
+       		<li>
+        		<a href="ControllerMediaHistorica" >
+        			 Agendamento <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         		</a>
        		</li>
        		<li>

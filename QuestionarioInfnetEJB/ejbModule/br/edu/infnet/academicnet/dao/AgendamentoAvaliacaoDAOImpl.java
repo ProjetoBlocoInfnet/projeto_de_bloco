@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
-import br.edu.infnet.academicnet.modelo.Avaliacao;
 
 @Stateless
 public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
@@ -21,6 +20,7 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 		try
 		{
 			manager.persist(agendamentoAvaliacao);
+			manager.flush();
 		}
 		catch (Exception e)
 		{

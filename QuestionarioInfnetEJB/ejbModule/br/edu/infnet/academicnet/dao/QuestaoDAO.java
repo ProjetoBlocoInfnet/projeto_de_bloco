@@ -11,4 +11,6 @@ public interface QuestaoDAO extends GenericoDAO<Questao> {
 	
 	public List<Questao> consultarPorTextoDaQuestao(String texto);
 
+	public List<Questao> listarAtivas();
+
 }
