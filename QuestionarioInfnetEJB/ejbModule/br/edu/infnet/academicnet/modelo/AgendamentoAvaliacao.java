@@ -38,7 +38,7 @@ public class AgendamentoAvaliacao implements Serializable{
 	private List<Avaliacao> avaliacao;*/
 
 	//TODO essa relação ternaria entre turma, curso e professor tem que existir. ela não existe em lugar algum.
-	//TODO avaliar se este é o local correto
+	//TODO turma já estava aqui, coloquei o curso e o professor, avaliar se este é o local correto
 	@OneToOne
 	@JoinColumn(name = "turma_id")
 	private Turma turma;
