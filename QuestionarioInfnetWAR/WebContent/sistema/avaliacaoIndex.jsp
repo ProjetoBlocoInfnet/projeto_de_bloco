@@ -59,7 +59,7 @@
 		<input type="submit" class="btn btn-info" value="Cadastrar Avaliação">
 	</form>
 	<br>
-	<form action="ControllerAvaliacao" method="get">
+	<form action="ControllerAvaliacao" method="post">
 		<input type="hidden" name="action" value="consultar">
 		<div class="row">  
 		  <div class="col-lg-6">
@@ -73,6 +73,21 @@
 		</div><!-- /.row -->
 	</form>
 	<hr>
+	
+	<c:choose>
+		<c:when test="${result_ok != null}">
+			<div class="alert alert-success" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>${result_ok}</strong>
+			</div>
+		</c:when>
+		<c:when test="${result_error != null}">
+			<div class="alert alert-danger" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>${result_error}</strong>
+			</div>
+		</c:when>		
+	</c:choose>
 	
 	<div >
 	<table class="table table-hover">
