@@ -17,12 +17,12 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 
 	@Override
 	public boolean incluir(Avaliacao avaliacao) {
-		try {
-			manager.getTransaction().begin();
+		try
+		{
 			manager.persist(avaliacao);
-			manager.getTransaction().commit();
-			
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}	
 		return true;
@@ -30,12 +30,12 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 
 	@Override
 	public boolean alterar(Avaliacao avaliacao) {
-		try {
-			manager.getTransaction().begin();
+		try
+		{
 			manager.merge(avaliacao);
-			manager.getTransaction().commit();
-			
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 		return true;
@@ -44,13 +44,7 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 	@Override
 	public boolean excluir(long id) {
 		Avaliacao avaliacaoBanco = manager.find(Avaliacao.class, id);
-		try {
-			manager.getTransaction().begin();
-			manager.remove(avaliacaoBanco);
-			manager.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		manager.remove(avaliacaoBanco);
 		return true;
 	}
 
@@ -59,6 +53,14 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 		 TypedQuery<Avaliacao> query = manager.createQuery("select av from Avaliacao av where av.idAluno=:avId ", Avaliacao.class);
 		 query.setParameter("avId", id);
 		 return query.getSingleResult();
+	}
+
+	@Override
+	public List<Avaliacao> obterPorNome(String nome)
+	{
+		 TypedQuery<Avaliacao> query = manager.createQuery("select a from Avaliacao as a where a.nome like :avNome ", Avaliacao.class);
+		 query.setParameter("avNome", "%"+nome+"%");
+		 return query.getResultList();
 	}
 
 	@Override

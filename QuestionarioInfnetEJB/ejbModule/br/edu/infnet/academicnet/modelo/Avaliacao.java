@@ -3,6 +3,7 @@ package br.edu.infnet.academicnet.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,10 @@ public class Avaliacao implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idAvaliacao;
+	private long idAvaliacao;
+	
+	@Column
+	private String nome;
 	
 	@ManyToMany
 	@JoinTable(name="avaliacao_questoes")
@@ -59,7 +63,7 @@ public class Avaliacao implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idAvaliacao;
+		result = (int) (prime * result + idAvaliacao);
 		result = prime * result
 				+ ((listQuestao == null) ? 0 : listQuestao.hashCode());
 		return result;
@@ -84,11 +88,11 @@ public class Avaliacao implements Serializable{
 		return true;
 	}
 
-	public int getIdAvaliacao() {
+	public long getIdAvaliacao() {
 		return idAvaliacao;
 	}
 
-	public void setIdAvaliacao(int idAvaliacao) {
+	public void setIdAvaliacao(long idAvaliacao) {
 		this.idAvaliacao = idAvaliacao;
 	}
 
@@ -100,7 +104,14 @@ public class Avaliacao implements Serializable{
 		this.listQuestao = listQuestao;
 	}
 	
-		
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public Boolean inicializarAvaliacao() {
 		return null;
 	}

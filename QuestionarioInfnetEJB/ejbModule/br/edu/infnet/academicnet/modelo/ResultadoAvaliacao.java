@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -43,6 +44,11 @@ public class ResultadoAvaliacao implements Serializable{
 	@JoinColumn(name="turma_id")
 	private Turma turma;
 
+	//TODO Verificar porque essa chave estrangeira não funciona. Ela é necessária para saber que a resposta é de uma avaliação
+	@ManyToOne 
+	@JoinColumn(name="avaliacao_id") 
+	private Avaliacao avaliacao;
+	
 	public ResultadoAvaliacao()
 	{
 		

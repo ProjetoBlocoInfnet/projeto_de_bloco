@@ -36,10 +36,20 @@ public class AgendamentoAvaliacao implements Serializable{
 	
 	/*@OneToMany(mappedBy="agendamentoAvaliacao")
 	private List<Avaliacao> avaliacao;*/
-	
+
+	//TODO essa relação ternaria entre turma, curso e professor tem que existir. ela não existe em lugar algum.
+	//TODO turma já estava aqui, coloquei o curso e o professor, avaliar se este é o local correto
 	@OneToOne
 	@JoinColumn(name = "turma_id")
 	private Turma turma;
+
+	@OneToOne
+	@JoinColumn(name = "curso_id")
+	private Curso curso;
+	
+	@OneToOne
+	@JoinColumn(name = "professor_id")
+	private Professor professor;
 	
 	@ManyToOne 
 	@JoinColumn(name="avaliacao_id") 
@@ -101,6 +111,24 @@ public class AgendamentoAvaliacao implements Serializable{
 		this.status = status;
 	}
 
+	public Curso getCurso() {
+		return curso;
+	}
+
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
 
 
 	@Override

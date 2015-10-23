@@ -1,8 +1,5 @@
 
 <jsp:include page="../openDoc.jsp" />
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %>
-<%@ page import="br.edu.infnet.academicnet.modelo.Questao" %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -55,7 +52,7 @@
 		<a href="ControllerAvaliacao"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Cadastro de Avaliações</h2>
+		<h2>Alterar Avaliação</h2>
 		<hr>
 		<form class="form-horizontal">
 		  <div class="form-group">
@@ -64,22 +61,19 @@
 		      <input type="text" class="form-control" id="avaliacao" placeholder="avaliacao">
 		    </div>
 		  </div>
-		 		 
+		  
 		  <div class="form-group">
 		    <label for="permissao" class="col-sm-2 control-label">Questões</label>
 		    	<div class="col-sm-10">
-					<select name="questoes" id="questoes" multiple="multiple" class="form-control">
-				  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
-		  					<c:forEach items="${requestScope.questoes}" var="questao">
-							  <option value=${questao.idQuestao}>${questao.textoQuestao} | ${questao.categoria.getCategoria()}</option>
-							</c:forEach>
-						</c:if>
+					  <select name="questoes" id="questoes" multiple="multiple" class="form-control">
+					  <option>Como o professor foi ? | Professor</option>
+					  <option>Os equipamentos estavam em bom estado? | Equipamentos</option>
 					</select>
 		  		</div>
 		  </div>
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">Cadastrar</button>
+		      <button type="submit" class="btn btn-default">Alterar</button>
 		    </div>
 		  </div>
 		</form>

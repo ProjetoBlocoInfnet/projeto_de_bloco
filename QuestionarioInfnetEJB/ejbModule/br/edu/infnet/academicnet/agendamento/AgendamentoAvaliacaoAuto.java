@@ -6,7 +6,7 @@ import javax.ejb.Startup;
 
 @Singleton
 @Startup
-public class AgendamentoAvaliacao
+public class AgendamentoAvaliacaoAuto
 {
 	//O agendamento executa a cada dia às 00hrs
 	@Schedule(hour="0")

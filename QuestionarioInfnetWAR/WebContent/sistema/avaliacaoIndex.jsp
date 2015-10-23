@@ -1,5 +1,8 @@
 
 <jsp:include page="../openDoc.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
+<%@ page import="br.edu.infnet.academicnet.modelo.Avaliacao" %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -49,7 +52,7 @@
 <div id="container" class="container-fluid">
 
 	<div class="container">
-	<a href="index.jsp"><button type="button" class="btn btn-default">Voltar</button></a>
+	<a href="ControllerLogin"><button type="button" class="btn btn-default">Voltar</button></a>
 	<br><br>
 	<form action="ControllerAvaliacao" method="get">
 		<input type="hidden" name="action" value="telaCadastro">
@@ -71,29 +74,43 @@
 	</form>
 	<hr>
 	
+	<c:choose>
+		<c:when test="${result_ok != null}">
+			<div class="alert alert-success" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>${result_ok}</strong>
+			</div>
+		</c:when>
+		<c:when test="${result_error != null}">
+			<div class="alert alert-danger" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>${result_error}</strong>
+			</div>
+		</c:when>		
+	</c:choose>
+	
 	<div >
 	<table class="table table-hover">
   		<thead>
   		<th>Id</th>
   		<th>Avaliação</th>
-  		<th>Curso</th>
-  		<th>Professor</th>
-  		<th>Questões</th>
   		<th>Ação</th>
   		</thead>
   		<tbody>
-  		
+  		<c:if test="${requestScope.avaliacoes != null && requestScope.avaliacoes.size() > 0 }">
+  		<!-- inicio do loop -->
+  			<c:forEach items="${requestScope.avaliacoes}" var="avaliacao">
 	  		<tr>
-	  			<td>1</td>  
-	  			<td>Avaliação 1</td>  		
-	  			<td>Pós-graduação em Engenharia de Software com JAVA</td>  		
-	  			<td>Helbert Moraes</td> 
-	  			<td>Questões</td>  	  				
+	  			<td>${avaliacao.idAvaliacao}</td>  
+	  			<td>${avaliacao.nome}</td>
 	  			<td>
-	  				<a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+	  				<a href="ControllerAvaliacao?action=editar&id=${avaliacao.idAvaliacao}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+	  				<a href="ControllerAvaliacao?action=excluir&id=${avaliacao.idAvaliacao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
 	  			</td>
 	  		</tr>
+	  		</c:forEach>
+	  	<!-- fim do loop -->
+	  	</c:if>
   		</tbody>
 	</table>
 	</div>
