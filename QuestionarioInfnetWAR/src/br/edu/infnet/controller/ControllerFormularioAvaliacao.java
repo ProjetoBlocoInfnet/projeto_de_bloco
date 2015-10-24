@@ -1,7 +1,9 @@
 package br.edu.infnet.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -11,9 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
+import br.edu.infnet.academicnet.dao.ResultadoAvaliacaoDAO;
+import br.edu.infnet.academicnet.enumerators.Categoria;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Questao;
+import br.edu.infnet.academicnet.modelo.ResultadoAvaliacao;
 
 /**
  * Servlet implementation class ControllerFormularioAvaliacao
@@ -24,6 +29,9 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
     
 	@EJB
 	AgendamentoAvaliacaoDAO agendamento;
+	
+	@EJB
+	ResultadoAvaliacaoDAO resultado;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,17 +43,19 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO carrega a tela da avaliaï¿½ï¿½o
+		// TODO carrega a tela da avaliação
 		String login = request.getParameter("aluno");
 		String senha = request.getParameter("key");
-		// TODO fazer consulta de validaï¿½ï¿½o de usuï¿½rio aqui
+		// TODO fazer consulta de validação de usuário aqui
 		long idAgendamento = Long.valueOf(request.getParameter("aval"));
 		AgendamentoAvaliacao minhaAvaliacao = agendamento.obterAtivo(idAgendamento);
 		if(minhaAvaliacao != null)
 		{
+			request.setAttribute("idAgendamento", idAgendamento);
 			request.setAttribute("questoes", minhaAvaliacao.getAvaliacao().getListQuestao());
 			request.setAttribute("curso", minhaAvaliacao.getCurso());
 			request.setAttribute("professor", minhaAvaliacao.getProfessor());
+			request.setAttribute("modulo", minhaAvaliacao.getModulo());
 			Aluno meuAluno = null;
 			for(Aluno a : minhaAvaliacao.getTurma().getAlunos())
 			{
@@ -69,8 +79,40 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO salva a avaliaï¿½ï¿½o
-		request.getRequestDispatcher("avaliacaoConcluida.jsp").forward(request, response);
+		ResultadoAvaliacao r = new ResultadoAvaliacao();
+		AgendamentoAvaliacao a = agendamento.obter(Long.valueOf(request.getParameter("idAgendamento")));
+		r.setAgendamentoAvaliacao(a);
+		r.setTurma(a.getTurma());
+		//TODO essa parte aqui pode mudar dependendo de como fizermos a parte de login
+		Aluno meuAluno = null;
+		String login = request.getParameter("idAluno");
+		for(Aluno al : r.getTurma().getAlunos())
+		{
+			if(login.equals(al.getUsuario()))
+			{
+				meuAluno = al;
+				break;
+			}
+		}
+		r.setAluno(meuAluno);
+		//TODO essa parte aqui pode mudar dependendo de como fizermos a parte de login
+		
+		//Recupera as questões da tela e faz a média internamente no método setRespostas
+		Map<Questao,String> minhasRespostas = new HashMap<Questao,String>();
+		for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
+		{
+			minhasRespostas.put(resposta.getKey(), request.getParameter(request.getParameter(String.valueOf(resposta.getKey().getIdQuestao()))));
+		}
+		r.setRespostas(minhasRespostas);
+
+		if(resultado.incluir(r))
+		{
+			request.getRequestDispatcher("avaliacaoConcluida.jsp").forward(request, response);
+		}
+		else
+		{
+			request.getRequestDispatcher("erroAvaliacao.jsp").forward(request, response);
+		}
 	}
 
 }

@@ -16,6 +16,8 @@ import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.edu.infnet.academicnet.enumerators.TipoResposta;
+
 @Entity
 @Table(name = "tbl_resultadoAvaliacao")
 public class ResultadoAvaliacao implements Serializable{
@@ -54,7 +56,7 @@ public class ResultadoAvaliacao implements Serializable{
 	
 	public ResultadoAvaliacao()
 	{
-		
+
 	}
 	
 	
@@ -81,6 +83,7 @@ public class ResultadoAvaliacao implements Serializable{
 
 	public void setRespostas(Map<Questao, String> respostas) {
 		this.respostas = respostas;
+		this.calculaMedia();
 	}
 
 	public Aluno getAluno() {
@@ -111,7 +114,20 @@ public class ResultadoAvaliacao implements Serializable{
 		return null;
 	}
 
-
+	public void calculaMedia()
+	{
+		int total=0;
+		int qtdLikert=0;
+		for(Map.Entry<Questao, String> resposta : respostas.entrySet())
+		{
+			if(resposta.getKey().getTipoResposta() == TipoResposta.LIKERT)
+			{
+				total+=Integer.valueOf(resposta.getValue());
+				qtdLikert++;
+			}
+		}
+		this.media = total/qtdLikert;
+	}
 
 	@Override
 	public int hashCode() {
