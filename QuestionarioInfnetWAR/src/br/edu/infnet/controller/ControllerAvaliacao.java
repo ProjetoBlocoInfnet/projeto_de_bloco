@@ -65,14 +65,26 @@ public class ControllerAvaliacao extends HttpServlet {
 					request.getRequestDispatcher("sistema/cadastroAvaliacao.jsp").forward(request, response);
 					break;
 				case "editar":
-					request.setAttribute("avaliacao", avaliacao.obter(Long.valueOf(request.getParameter("id"))));
+					request.setAttribute("avaliacao", avaliacao.obter(Long.valueOf(request.getParameter("id"))));					
 					request.setAttribute("questoes", questao.listar());
+					request.setAttribute("listaStatus", Status.values());
 					request.getRequestDispatcher("sistema/alterarAvaliacao.jsp").forward(request, response);
 					return;
 				case "excluir":
 					long id = Long.valueOf(request.getParameter("id"));
 					request = checkReturn(avaliacao.excluir(id), action, request);
 					break;
+				case "excluirQuestao":
+					long idAvaliacao = Long.valueOf(request.getParameter("id"));
+					long idQuestao = Long.valueOf(request.getParameter("idQuestao"));
+					
+					avaliacao.excluirQuestao(idAvaliacao,idQuestao);
+					request.setAttribute("avaliacao", avaliacao.obter(idAvaliacao));					
+					request.setAttribute("questoes", questao.listar());
+					request.setAttribute("listaStatus", Status.values());
+					request.getRequestDispatcher("sistema/alterarAvaliacao.jsp").forward(request, response);
+					return;
+					//break;
 				default:
 					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}

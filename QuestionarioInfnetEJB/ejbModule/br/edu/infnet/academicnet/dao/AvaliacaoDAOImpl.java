@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.modelo.Avaliacao;
+import br.edu.infnet.academicnet.modelo.Questao;
 
 @Stateless
 public class AvaliacaoDAOImpl implements AvaliacaoDAO {
@@ -46,7 +47,7 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 
 	@Override
 	public boolean excluir(long id) {
-		Avaliacao avaliacaoBanco = manager.find(Avaliacao.class, id);
+		Avaliacao avaliacaoBanco = manager.find(Avaliacao.class, id);		
 		try {
 			avaliacaoBanco.setStatus(Status.INATIVO);
 			manager.flush();
@@ -55,10 +56,25 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
 		}
 		return true;
 	}
+	
+	public boolean excluirQuestao(long idAvaliacao, long idQuestao){
+		
+		Avaliacao avaliacaoBanco = manager.find(Avaliacao.class, idAvaliacao);
+		Questao questaoBanco = manager.find(Questao.class, idQuestao);	
+				
+		try {
+			avaliacaoBanco.getListQuestao().remove(questaoBanco);
+			manager.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
 
 	@Override
 	public Avaliacao obter(long id) {
-		 TypedQuery<Avaliacao> query = manager.createQuery("select av from Avaliacao av where av.idAluno=:avId ", Avaliacao.class);
+		 TypedQuery<Avaliacao> query = manager.createQuery("select av from Avaliacao av where av.idAvaliacao=:avId ", Avaliacao.class);
 		 query.setParameter("avId", id);
 		 return query.getSingleResult();
 	}

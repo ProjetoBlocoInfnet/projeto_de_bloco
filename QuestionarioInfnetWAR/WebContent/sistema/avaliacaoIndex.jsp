@@ -48,8 +48,8 @@
 	<div >
 	<table class="table table-hover">
   		<thead>
-  		<th>Id</th>
   		<th>Avaliação</th>
+  		<th>Status</th>
   		<th>Ação</th>
   		</thead>
   		<tbody>
@@ -57,8 +57,9 @@
   		<!-- inicio do loop -->
   			<c:forEach items="${requestScope.avaliacoes}" var="avaliacao">
 	  		<tr>
-	  			<td>${avaliacao.idAvaliacao}</td>  
+	  			
 	  			<td>${avaliacao.nome}</td>
+	  			<td>${avaliacao.status}</td>  
 	  			<td>
 	  				<a href="ControllerAvaliacao?action=editar&id=${avaliacao.idAvaliacao}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
 	  				<a href="ControllerAvaliacao?action=excluir&id=${avaliacao.idAvaliacao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				

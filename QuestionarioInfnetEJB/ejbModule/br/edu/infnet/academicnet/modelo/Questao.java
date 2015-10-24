@@ -162,6 +162,14 @@ public class Questao implements Serializable{
 			return false;
 		return true;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Questao [idQuestao=" + idQuestao + ", textoQuestao="
+				+ textoQuestao 	+ ", tipoResposta=" + tipoResposta + ", categoria=" + categoria
+				+ ", status=" + status + "]";
+	}
 	
 	
 	
