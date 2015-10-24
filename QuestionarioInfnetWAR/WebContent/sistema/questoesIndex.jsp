@@ -1,48 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../openDoc.jsp" />
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<img src="resources/img/logoInfnet3.png">  
-		
-		<ul id="menu" class="nav navbar-nav navbar-right">	 
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-	         Áreas  <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li>
-	            	<a href="ControllerUsuario">
-	            		<span class="glyphicon glyphicon-user" aria-hidden="true"> Usuários</span> 
-	            	</a>
-	            </li>
-	            <li>
-	            	<a href="ControllerQuestao">
-	            		<span class="glyphicon glyphicon-list aria-hidden="true"> Questões</span> 
-	            	</a>
-	            </li>
-	            <li>
-	            	<a href="ControllerAvaliacao">
-	            		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Avaliações</span> 
-	            	</a>
-	            </li>
-	            
-	          </ul>
-	        </li>
-        	<li>
-        		<a href="ControllerMediaHistorica" >
-        			 Média Histórica <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-        		</a>
-       		</li>
-       		<li>
-	       		<form id="logout" action="Logout" method="post" class="navbar-form navbar">
-				  <div class="form-group">
-				      <button type="submit" class="btn btn-primary">Logout</button>
-				  </div>
-				</form>
-			</li>
-      	</ul>      				  
-	</div>	
-</nav>
+<jsp:include page="menu.jsp" />
   
 
 <div id="container" class="container-fluid">
@@ -91,6 +50,7 @@
 	  		<th>Questão</th>
 	  		<th>Categoria</th>
 	  		<th>tipoResposta</th>
+	  		<th>Status</th>
 	  		<th>Ação</th>
   		</thead>
   		<tbody>
@@ -98,7 +58,8 @@
 		  		<tr>
 		  			<td>${questao.textoQuestao}</td>  
 		  			<td>${questao.categoria}</td>  		
-		  			<td>${questao.tipoResposta}</td>   				
+		  			<td>${questao.tipoResposta}</td>
+		  			<td>${questao.status}</td>   				
 		  			<td>
 		  				<a href="ControllerQuestao?tela=telaAlterar&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
 		  				<a href="ControllerQuestao?tela=excluir&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				

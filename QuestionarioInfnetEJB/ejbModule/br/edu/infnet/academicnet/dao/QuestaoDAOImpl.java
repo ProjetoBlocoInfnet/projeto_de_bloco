@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.modelo.Questao;
 
 @Stateless
@@ -41,7 +42,9 @@ public class QuestaoDAOImpl implements QuestaoDAO {
 	public boolean excluir(long id) {		
 		Questao questaoBanco = manager.find(Questao.class, id);		
 		try {
-			manager.remove(questaoBanco);
+			//manager.remove(questaoBanco);
+			questaoBanco.setStatus(Status.INATIVO);
+			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,22 +54,29 @@ public class QuestaoDAOImpl implements QuestaoDAO {
 
 	@Override
 	public Questao obter(long id) {
+		System.out.println("dentro obter: " + id);
 		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.idQuestao=:qId ", Questao.class);
-		 query.setParameter("qId", id);
-		 return query.getSingleResult();
+		query.setParameter("qId", id);
+		return query.getSingleResult();
 	}
 	
 	
 	public List<Questao> consultarPorTextoDaQuestao(String texto) {		
-		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.textoQuestao like :qtexto", Questao.class);
+		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.textoQuestao like :qtexto order by q.categoria", Questao.class);
 		query.setParameter("qtexto", "%"+texto+"%" );
 		return query.getResultList();
 		 
 	}
+	
+	public List<Questao> listarAtivas() {		
+		TypedQuery<Questao> query = manager.createQuery("select q from Questao q where q.status=:qAtivo order by q.categoria", Questao.class);
+		query.setParameter("qAtivo", Status.ATIVO );
+		return query.getResultList();		 
+	}
 
 	@Override
 	public List<Questao> listar() {
-		TypedQuery<Questao> query = manager.createQuery("select q from Questao q", Questao.class);
+		TypedQuery<Questao> query = manager.createQuery("select q from Questao q order by q.categoria", Questao.class);
 		return query.getResultList();
 	}
 	

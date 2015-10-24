@@ -1,6 +1,7 @@
 package br.edu.infnet.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.academicnet.dao.AvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.QuestaoDAO;
+import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.modelo.Avaliacao;
+import br.edu.infnet.academicnet.modelo.Questao;
 
 /**
  * Servlet implementation class ControllerAvaliacao
@@ -26,6 +29,7 @@ public class ControllerAvaliacao extends HttpServlet {
 	
 	@EJB
 	QuestaoDAO questao;
+
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,13 +39,13 @@ public class ControllerAvaliacao extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    //Funções auxiliares
+    //Funï¿½ï¿½es auxiliares
     private HttpServletRequest checkReturn(boolean status, String action, HttpServletRequest request)
     {
 		if(status){
-			request.setAttribute("result_ok", "Ação efetuada com Sucesso!");
+			request.setAttribute("result_ok", "AÃ§Ã£o efetuada com Sucesso!");
 		}else{
-			request.setAttribute("result_error", "Erro ao " + action + " a avaliação!");
+			request.setAttribute("result_error", "Erro ao " + action + " a avaliaÃ§Ã£o!");
 		}
 		return request;
     }
@@ -57,20 +61,32 @@ public class ControllerAvaliacao extends HttpServlet {
 			switch(action)
 			{
 				case "telaCadastro":
-					request.setAttribute("questoes", questao.listar());
+					request.setAttribute("questoes", questao.listarAtivas());
 					request.getRequestDispatcher("sistema/cadastroAvaliacao.jsp").forward(request, response);
 					break;
 				case "editar":
-					request.setAttribute("avaliacao", avaliacao.obter(Long.valueOf(request.getParameter("id"))));
+					request.setAttribute("avaliacao", avaliacao.obter(Long.valueOf(request.getParameter("id"))));					
 					request.setAttribute("questoes", questao.listar());
+					request.setAttribute("listaStatus", Status.values());
 					request.getRequestDispatcher("sistema/alterarAvaliacao.jsp").forward(request, response);
 					return;
 				case "excluir":
 					long id = Long.valueOf(request.getParameter("id"));
 					request = checkReturn(avaliacao.excluir(id), action, request);
 					break;
+				case "excluirQuestao":
+					long idAvaliacao = Long.valueOf(request.getParameter("id"));
+					long idQuestao = Long.valueOf(request.getParameter("idQuestao"));
+					
+					avaliacao.excluirQuestao(idAvaliacao,idQuestao);
+					request.setAttribute("avaliacao", avaliacao.obter(idAvaliacao));					
+					request.setAttribute("questoes", questao.listar());
+					request.setAttribute("listaStatus", Status.values());
+					request.getRequestDispatcher("sistema/alterarAvaliacao.jsp").forward(request, response);
+					return;
+					//break;
 				default:
-					request.setAttribute("result_error", "Não houve ação válida inserida");
+					request.setAttribute("result_error", "NÃ£o houve aÃ§Ã£o vÃ¡lida inserida");
 			}
 		}
 		List<Avaliacao> avaliacoes = avaliacao.listar();
@@ -87,22 +103,43 @@ public class ControllerAvaliacao extends HttpServlet {
 		long id;
 		String nome;
 		Avaliacao a;
+		String[] questoes = null;
+		List<Questao> listaDeQuestao = new ArrayList<Questao>();
 		if(action != null)
 		{
+			if(request.getParameterValues("questoes") != null){
+				 questoes = request.getParameterValues("questoes");
+			}
+			
 			switch(action)
 			{
 				case "cadastrar":
-					nome = request.getParameter("nome");
+					nome = request.getParameter("nome");	
+					System.out.println(nome);
+					for (String ques : questoes) {	
+						listaDeQuestao.add(questao.obter(Long.valueOf(ques)));
+					}															
 					a = new Avaliacao();
 					a.setNome(nome);
+					if(listaDeQuestao.size() >0){
+						a.setListQuestao(listaDeQuestao);
+					}
+					a.setStatus(Status.ATIVO);
 					request = checkReturn(avaliacao.incluir(a), action, request);
 					break;
 				case "alterar":
 					id = Long.valueOf(request.getParameter("id"));
 					nome = request.getParameter("nome");
+					for (String ques : questoes) {	
+						listaDeQuestao.add(questao.obter(Long.valueOf(ques)));
+					}
 					a = new Avaliacao();
 					a.setIdAvaliacao(id);
 					a.setNome(nome);
+					if(listaDeQuestao.size() >0){
+						a.setListQuestao(listaDeQuestao);
+					}					
+					a.setStatus(Status.valueOf(request.getParameter("status")));
 					request = checkReturn(avaliacao.alterar(a), action, request);					
 					break;
 				case "consultar":
@@ -110,7 +147,7 @@ public class ControllerAvaliacao extends HttpServlet {
 					request.getRequestDispatcher("sistema/avaliacaoIndex.jsp").forward(request, response);
 					return;
 				default:
-					request.setAttribute("result_error", "Não houve ação válida inserida");
+					request.setAttribute("result_error", "NÃ£o houve aÃ§Ã£o vÃ¡lida inserida");
 			}
 		}
 		List<Avaliacao> avaliacoes = avaliacao.listar();

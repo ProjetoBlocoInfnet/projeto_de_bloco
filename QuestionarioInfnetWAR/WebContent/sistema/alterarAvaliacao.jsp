@@ -1,49 +1,8 @@
 
 <jsp:include page="../openDoc.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<img src="resources/img/logoInfnet3.png">  
-		
-		<ul id="menu" class="nav navbar-nav navbar-right">	 
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-	         Áreas  <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li>
-	            	<a href="ControllerUsuario">
-	            		<span class="glyphicon glyphicon-user" aria-hidden="true"> Usuários</span> 
-	            	</a>
-	            </li>
-	            <li>
-	            	<a href="ControllerQuestao">
-	            		<span class="glyphicon glyphicon-list aria-hidden="true"> Questões</span> 
-	            	</a>
-	            </li>
-	            <li>
-	            	<a href="ControllerAvaliacao">
-	            		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Avaliações</span> 
-	            	</a>
-	            </li>
-	            
-	          </ul>
-	        </li>
-        	<li>
-        		<a href="ControllerMediaHistorica" >
-        			 Média Histórica <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-        		</a>
-       		</li>
-       		<li>
-	       		<form id="logout" action="Logout" method="post" class="navbar-form navbar">
-				  <div class="form-group">
-				      <button type="submit" class="btn btn-primary">Logout</button>
-				  </div>
-				</form>
-			</li>
-      	</ul>     				  
-	</div>	
-	
-</nav>
+<jsp:include page="menu.jsp" />
   
 
 <div id="container" class="container-fluid">
@@ -52,34 +11,84 @@
 		<a href="ControllerAvaliacao"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Alterar Avaliação</h2>
+		<h2>Alteração de Avaliações</h2>
 		<hr>
-		<form class="form-horizontal">
+		<form action="ControllerAvaliacao" method="post" class="form-horizontal">
+			
+		  <input type="hidden" name="action" value="alterar">
+		  <input type="hidden" name="id" value="${avaliacao.idAvaliacao}">
+		
 		  <div class="form-group">
-		    <label for="login" class="col-sm-2 control-label">Avaliacao</label>
+		    <label for="avaliacao" class="col-sm-2 control-label">Avaliacao</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="avaliacao" placeholder="avaliacao">
+		      <input type="text" name="nome" class="form-control" id="avaliacao" placeholder="avaliacao" value="${avaliacao.nome}">
 		    </div>
 		  </div>
-		  
+		 		 
 		  <div class="form-group">
-		    <label for="permissao" class="col-sm-2 control-label">Questões</label>
+		    <label for="questoes" class="col-sm-2 control-label">Questões</label>
 		    	<div class="col-sm-10">
-					  <select name="questoes" id="questoes" multiple="multiple" class="form-control">
-					  <option>Como o professor foi ? | Professor</option>
-					  <option>Os equipamentos estavam em bom estado? | Equipamentos</option>
+					<select name="questoes" id="questoes" multiple="multiple" class="form-control">
+				  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
+		  					<c:forEach items="${requestScope.questoes}" var="questao">
+							  <option value="${questao.idQuestao}">${questao.textoQuestao} | ${questao.categoria.getCategoria()}</option>
+							</c:forEach>
+						</c:if>
 					</select>
 		  		</div>
 		  </div>
+		  
+		  <div class="form-group">
+			    <label for="status" class="col-sm-2 control-label">Status</label>
+			    	<div class="col-sm-10">
+						  <select name="status" id="status" class="form-control">
+							  <option >Selecionar</option>
+							  <c:forEach var="status" items="${listaStatus}">
+							  		<option value="${status}" ${status eq avaliacao.status ? 'selected="selected"' : ''} >${status.status}</option>
+							  </c:forEach>
+						</select>
+			  		</div>
+			  </div>
+		  
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">Alterar</button>
+		      <button type="submit" class="btn btn-default">Alterar Avaliação</button>
 		    </div>
 		  </div>
 		</form>
 	
 	</div>
-
+	
+	<hr>
+	
+	<div class="container">
+		<h2>Questões Atuais</h2>
+		<hr>
+		<table class="table table-hover">
+	  		<thead>
+		  		<th>Questão</th>
+		  		<th>Categoria</th>
+		  		<th>tipoResposta</th>
+		  		<th>Status</th>
+		  		<th>Ação</th>
+	  		</thead>
+	  		<tbody>
+	  		 
+	  			<c:forEach var="questao" items="${avaliacao.listQuestao}">
+			  		<tr>
+			  			<td>${questao.textoQuestao}</td>  
+			  			<td>${questao.categoria}</td>  		
+			  			<td>${questao.tipoResposta}</td>
+			  			<td>${questao.status}</td>   				
+			  			<td>			  				
+			  				<a href="ControllerAvaliacao?action=excluirQuestao&id=${avaliacao.idAvaliacao}&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+			  			</td>
+			  		</tr>
+		  		</c:forEach>
+		  	 
+	  		</tbody>
+		</table>
+	</div>
 	
 </div>
 

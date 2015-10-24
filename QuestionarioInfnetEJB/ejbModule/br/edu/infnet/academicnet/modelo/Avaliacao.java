@@ -7,9 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -30,8 +32,10 @@ public class Avaliacao implements Serializable{
 	@Column
 	private String nome;
 	
-	@ManyToMany
-	@JoinTable(name="avaliacao_questoes")
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="avaliacao_questoes",
+	joinColumns = @JoinColumn(name = "avaliacao_id"),
+	inverseJoinColumns = @JoinColumn(name = "questao_id"))
 	private List<Questao> listQuestao;
 	
 	/*
@@ -127,15 +131,7 @@ public class Avaliacao implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime
-				* result
-				+ ((agendamentoAvaliacao == null) ? 0 : agendamentoAvaliacao
-						.hashCode());
 		result = prime * result + (int) (idAvaliacao ^ (idAvaliacao >>> 32));
-		result = prime * result
-				+ ((listQuestao == null) ? 0 : listQuestao.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -149,27 +145,12 @@ public class Avaliacao implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Avaliacao other = (Avaliacao) obj;
-		if (agendamentoAvaliacao == null) {
-			if (other.agendamentoAvaliacao != null)
-				return false;
-		} else if (!agendamentoAvaliacao.equals(other.agendamentoAvaliacao))
-			return false;
 		if (idAvaliacao != other.idAvaliacao)
-			return false;
-		if (listQuestao == null) {
-			if (other.listQuestao != null)
-				return false;
-		} else if (!listQuestao.equals(other.listQuestao))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (status != other.status)
 			return false;
 		return true;
 	}
+
+
 	
 	
 
