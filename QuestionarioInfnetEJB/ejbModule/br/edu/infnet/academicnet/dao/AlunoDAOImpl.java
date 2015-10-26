@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.modelo.Aluno;
 
 @Stateless 
@@ -17,11 +18,9 @@ public class AlunoDAOImpl implements AlunoDAO{
 	
 	@Override
 	public boolean incluir(Aluno aluno) {
-		try {
-			manager.getTransaction().begin();
+		try {			
 			manager.persist(aluno);
-			manager.getTransaction().commit();
-			
+			manager.flush();			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,13 +29,11 @@ public class AlunoDAOImpl implements AlunoDAO{
 	}
 
 	@Override
-	public boolean alterar(Aluno aluno) {
+	public boolean alterar(Aluno aluno){
 		
 		try {
-			manager.getTransaction().begin();
 			manager.merge(aluno);
-			manager.getTransaction().commit();
-			
+			manager.flush();			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,10 +43,9 @@ public class AlunoDAOImpl implements AlunoDAO{
 	@Override
 	public boolean excluir(long id) {
 		Aluno alunoBanco = manager.find(Aluno.class, id);
-		try {
-			manager.getTransaction().begin();
-			manager.remove(alunoBanco);
-			manager.getTransaction().commit();
+		try {			
+			alunoBanco.setStatus(Status.INATIVO);
+			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -61,6 +57,19 @@ public class AlunoDAOImpl implements AlunoDAO{
 		 TypedQuery<Aluno> query = manager.createQuery("select a from Aluno a where a.idAluno=:pId ", Aluno.class);
 		 query.setParameter("pId", id);
 		 return query.getSingleResult();
+	}
+	
+	public List<Aluno> consultarPorTextoDaQuestao(String nome) {		
+		TypedQuery<Aluno> query = manager.createQuery("select a from Aluno a where a.textoQuestao like :aNome order by a.pessoa_id", Aluno.class);
+		query.setParameter("aNome", "%"+nome+"%" );
+		return query.getResultList();
+		 
+	}
+	
+	public List<Aluno> listarAtivos() {		
+		TypedQuery<Aluno> query = manager.createQuery("select a from Aluno a where a.status=:aAtivo order by a.pessoa_id", Aluno.class);
+		query.setParameter("aAtivo", Status.ATIVO );
+		return query.getResultList();		 
 	}
 
 	@Override

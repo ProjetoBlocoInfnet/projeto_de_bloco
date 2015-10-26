@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../openDoc.jsp" />
 
 <jsp:include page="menu.jsp" />
@@ -32,20 +32,30 @@
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="matricula" class="col-sm-2 control-label">Matrícula</label>
+		    <label for="cep" class="col-sm-2 control-label">CEP</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="matricula" placeholder="Matrícula">
+		      <input type="text" class="form-control" id="cep" placeholder="CEP">
 		    </div>
 		  </div>
+		   <div class="form-group">
+		    <label for="endereco" class="col-sm-2 control-label">Endereço</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+		    </div>
+		  </div>
+		  
 		  <div class="form-group">
-		    <label for="permissao" class="col-sm-2 control-label">Permissão</label>
+		    <label for="perfil" class="col-sm-2 control-label">Perfil</label>
 		    	<div class="col-sm-10">
-					  <select name="permissao" id="permissao" class="form-control">
-					  <option>Aluno</option>
-					  <option>Administrador</option>
+					  <select name="perfil" id="perfil" class="form-control">
+					   <c:forEach var="perfil" items="${listaPerfil}">
+							  		<option value="${perfil.idPerfil}">${perfil.nomePerfil}</option>
+					</c:forEach>
 					</select>
 		  		</div>
 		  </div>
+		  
+		  
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-default">Cadastrar</button>

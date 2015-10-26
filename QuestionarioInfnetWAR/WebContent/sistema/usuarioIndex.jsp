@@ -9,8 +9,8 @@
 	<div class="container">
 	<a href="ControllerLogin"><button type="button" class="btn btn-default">Voltar</button></a>
 	<br><br>
-	<form action="" method="post">
-		<input type="hidden" name="action" value="telaCadastro">
+	<form action="" method="get">
+		<input type="hidden" name="tela" value="telaCadastro">
 		<input type="submit" class="btn btn-info" value="Cadastrar Usuário">
 	</form>
 	<br>

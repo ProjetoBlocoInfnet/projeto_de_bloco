@@ -1,5 +1,6 @@
 package br.edu.infnet.academicnet.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,15 +11,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tbl_aluno")
 @PrimaryKeyJoinColumn(name = "pessoa_id")
-public class Aluno extends Pessoa {
+public class Aluno extends Pessoa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
-	/*
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idAluno;
-	*/
+		
 	
 	@ManyToMany(mappedBy = "alunos")
 	private List<Turma> turmas;
@@ -37,15 +33,7 @@ public class Aluno extends Pessoa {
 		this.turmas = turmas;
 	}
 	
-	/*
-	public long getIdAluno() {
-		return idAluno;
-	}
-
-	public void setIdAluno(long idAluno) {
-		this.idAluno = idAluno;
-	} */
-	
+		
 	
 
 }
