@@ -54,8 +54,6 @@ public class PessoaDAOImpl implements PessoaDAO{
 		
 		return true;
 	}
-	
-	
 
 	@Override
 	public Pessoa obter(long id) {		
@@ -64,6 +62,7 @@ public class PessoaDAOImpl implements PessoaDAO{
 		return query.getSingleResult();
 	}
 	
+
 	@Override
 	public Pessoa obterPorIdUsuario(Usuario usuario) {		
 		TypedQuery<Pessoa> query = manager.createQuery("select p from Pessoa p where p.usuario=:uId ", Pessoa.class);
@@ -78,6 +77,7 @@ public class PessoaDAOImpl implements PessoaDAO{
 		return query.getResultList();
 		 
 	}
+	
 	@Override
 	public List<Pessoa> listarAtivas() {		
 		TypedQuery<Pessoa> query = manager.createQuery("select p from Pessoa p where p.status=:pAtivo order by p.matricula", Pessoa.class);

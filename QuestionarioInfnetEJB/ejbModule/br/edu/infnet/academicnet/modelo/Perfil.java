@@ -19,7 +19,7 @@ public class Perfil implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idPerfil;
+	private long idPerfil;
 	
 	@Column(nullable=false, unique = true, length=100)
 	private String nomePerfil;
@@ -35,11 +35,11 @@ public class Perfil implements Serializable{
 	}
 	
 		
-	public int getIdPerfil() {
+	public long getIdPerfil() {
 		return idPerfil;
 	}
 
-	public void setIdPerfil(int idPerfil) {
+	public void setIdPerfil(long idPerfil) {
 		this.idPerfil = idPerfil;
 	}
 

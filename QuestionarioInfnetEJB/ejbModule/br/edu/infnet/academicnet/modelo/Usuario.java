@@ -41,6 +41,16 @@ public class Usuario implements Serializable{
 	
 		
 
+	public Usuario(String login, String senha, Perfil perfil, Pessoa pessoa) {
+		super();
+		this.login = login;
+		this.senha = senha;
+		this.perfil = perfil;
+		this.pessoa = pessoa;
+	}
+
+
+
 	public long getIdUsuario() {
 		return idUsuario;
 	}
