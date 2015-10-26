@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %>
-<%@ page import="br.edu.infnet.academicnet.modelo.Questao" %>
-<%@ page import="br.edu.infnet.academicnet.modelo.Aluno" %>
-<%@ page import="br.edu.infnet.academicnet.modelo.Professor" %>
-<%@ page import="br.edu.infnet.academicnet.modelo.Curso" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,12 +13,14 @@
 		Nome: "${requestScope.aluno.nome}" <br/>
 		Curso: "${requestScope.curso.nome}" Professor: "${requestScope.professor.nome}" <br/>
 		<div >
+			<input type="hidden" name="idAgendamento" value="${requestScope.idAgendamento}"/>
+			<input type="hidden" name="idAluno" value="${requestScope.aluno.usuario}"/>
 			<table class="table table-hover">
 		  		<thead>
 			  		<th>Questão</th>
 			  		<th>Concordo totalmente</th>
 			  		<th>Concordo</th>
-			  		<th>Em cima do muro</th>
+			  		<th>Não concordo nem discordo</th>
 			  		<th>Discordo</th>
 			  		<th>Discordo totalmente</th>
 			  		<th>Não sabe opinar</th>
@@ -31,7 +29,7 @@
 			  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
 			  		<!-- inicio do loop Curso -->
 			  		<tr>
-			  			<td>Sobre o curso</td>
+			  			<td>Avaliação geral da Pós-Graduação</td>
 			  		</tr>
 			  			<c:forEach items="${requestScope.questoes}" var="questao">
 			  				<c:if test="${questao.categoria.getCategoria() == 'Curso'}">
@@ -56,7 +54,7 @@
 				  	<!-- fim do loop Curso -->
 			  		<!-- inicio do loop Professor -->
 			  		<tr>
-			  			<td>Sobre o professor</td>
+			  			<td>Avaliação do professor do módulo</td>
 			  		</tr>
 			  			<c:forEach items="${requestScope.questoes}" var="questao">
 			  				<c:if test="${questao.categoria.getCategoria() == 'Professor'}">
@@ -81,10 +79,10 @@
 				  	<!-- fim do loop Professor -->
 			  		<!-- inicio do loop Equipamentos -->
 			  		<tr>
-			  			<td>Sobre o equipamento</td>
+			  			<td>Avaliação de Conteúdo e infra-estrutura no módulo</td>
 			  		</tr>
 			  			<c:forEach items="${requestScope.questoes}" var="questao">
-			  				<c:if test="${questao.categoria.getCategoria() == 'Equipamento'}">
+			  				<c:if test="${questao.categoria.getCategoria() == 'Conteúdo e Infra-Estrutura do módulo'}">
 						  		<tr>
 						  			<td>${questao.nome}</td>
 						  			<c:if test="${questao.tipoResposta == 'LIKERT'}">
