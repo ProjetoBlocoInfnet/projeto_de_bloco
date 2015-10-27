@@ -4,4 +4,17 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
+  
+  <filter>
+	  <filter-name>FilterLogin</filter-name> <!-- mandatory -->
+	  <filter-class>br.edu.infnet.filter.FilterLogin</filter-class> <!-- mandatory -->  
+  </filter>
+  
+  <filter-mapping>
+	  <filter-name>FilterLogin</filter-name> <!-- mandatory -->
+	  <url-pattern>/sistema/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+	  <servlet-name>ControllerLogin</servlet-name>
+	  <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  
 </web-app>

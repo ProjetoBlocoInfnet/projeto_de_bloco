@@ -3,6 +3,7 @@ package br.edu.infnet.academicnet.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,7 +31,7 @@ public class Questao implements Serializable{
 	@Column(nullable=false, unique = true)
 	private String textoQuestao;
 	
-	@ManyToMany(mappedBy = "listQuestao")
+	@ManyToMany(mappedBy = "listQuestao",cascade = CascadeType.REMOVE)
 	private List<Avaliacao> avaliacoes;
 	
 	@Enumerated(EnumType.STRING)

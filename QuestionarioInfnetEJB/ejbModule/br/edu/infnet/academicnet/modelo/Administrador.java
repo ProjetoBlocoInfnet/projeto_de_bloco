@@ -7,7 +7,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tbl_admin")
+@Table(name="tbl_administrador")
 @PrimaryKeyJoinColumn(name="pessoa_id")
 public class Administrador extends Pessoa implements Serializable{
 

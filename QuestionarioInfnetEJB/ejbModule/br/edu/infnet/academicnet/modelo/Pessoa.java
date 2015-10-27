@@ -2,10 +2,12 @@ package br.edu.infnet.academicnet.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +42,7 @@ public abstract class Pessoa implements Serializable{
 	@Column(unique = true)
 	private String email;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 	
