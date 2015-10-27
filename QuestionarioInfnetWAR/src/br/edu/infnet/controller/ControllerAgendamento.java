@@ -1,7 +1,6 @@
 package br.edu.infnet.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
-import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
+import br.edu.infnet.academicnet.dao.TurmaDAO;
 
 /**
  * Servlet implementation class ControllerAgendamento
@@ -23,6 +22,10 @@ public class ControllerAgendamento extends HttpServlet {
     @EJB
     AgendamentoAvaliacaoDAO agendamento;
 
+    @EJB
+    TurmaDAO turma;
+    
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -51,20 +54,22 @@ public class ControllerAgendamento extends HttpServlet {
 			switch(action)
 			{
 				case "telaCadastro":
+					request.setAttribute("turmas", turma.listar());
 					request.getRequestDispatcher("sistema/cadastroAgendamento.jsp").forward(request, response);
 					break;
 				case "editar":
 					request.getRequestDispatcher("sistema/alterarAgendamento.jsp").forward(request, response);
 					return;
 				case "excluir":
+					long id = Long.valueOf(request.getParameter("id"));
+					request = checkReturn(agendamento.excluir(id), action, request);
 					break;
 				//case "excluirQuestao":
 				default:
 					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
 		}
-		List<AgendamentoAvaliacao> agendamentos = agendamento.listar();
-		request.setAttribute("agendamentos", agendamentos);
+		request.setAttribute("agendamentos", agendamento.listar());
 		request.getRequestDispatcher("sistema/agendamentoIndex.jsp").forward(request, response);
 	}
 
