@@ -2,8 +2,11 @@ package br.edu.infnet.academicnet.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import br.edu.infnet.academicnet.modelo.Modulo;
 
+@Stateless
 public class ModuloDAOImpl implements ModuloDAO
 {
 

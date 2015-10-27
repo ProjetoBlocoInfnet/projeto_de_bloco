@@ -23,7 +23,7 @@
 	            	</a>
 	            </li>
 	             <li>
-	            	<a href="">
+	            	<a href="ControllerModulo">
 	            		<span class="glyphicon glyphicon-th" aria-hidden="true"> Módulo</span> 
 	            	</a>
 	            </li>
