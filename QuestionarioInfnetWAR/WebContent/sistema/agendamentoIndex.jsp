@@ -57,6 +57,7 @@
   		<th>Curso</th>
   		<th>Módulo</th>
   		<th>Professor</th>
+  		<th>Ação</th>
   		</thead>
   		<tbody>
   		<c:if test="${requestScope.agendamentos != null && requestScope.agendamentos.size() > 0 }">

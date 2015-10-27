@@ -12,7 +12,7 @@
 	<br><br>
 	<form action="ControllerModulo" method="get">
 		<input type="hidden" name="action" value="telaCadastro">
-		<input type="submit" class="btn btn-info" value="Cadastrar Avaliação">
+		<input type="submit" class="btn btn-info" value="Cadastrar Módulo">
 	</form>
 	<br>
 	<form action="ControllerModulo" method="post">
@@ -48,21 +48,21 @@
 	<div >
 	<table class="table table-hover">
   		<thead>
-  		<th>Avaliação</th>
-  		<th>Status</th>
+  		<th>Módulo</th>
+  		<th>Professor</th>
   		<th>Ação</th>
   		</thead>
   		<tbody>
-  		<c:if test="${requestScope.avaliacoes != null && requestScope.avaliacoes.size() > 0 }">
+  		<c:if test="${requestScope.avaliacoes != null && requestScope.modulos.size() > 0 }">
   		<!-- inicio do loop -->
-  			<c:forEach items="${requestScope.avaliacoes}" var="avaliacao">
+  			<c:forEach items="${requestScope.modulos}" var="modulo">
 	  		<tr>
 	  			
-	  			<td>${avaliacao.nome}</td>
-	  			<td>${avaliacao.status}</td>  
+	  			<td>${modulo.nomeModulo}</td>
+	  			<td>${modulo.professor.nome}</td>  
 	  			<td>
-	  				<a href="ControllerModulo?action=editar&id=${avaliacao.idAvaliacao}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href="ControllerModulo?action=excluir&id=${avaliacao.idAvaliacao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+	  				<a href="ControllerModulo?action=editar&id=${modulo.idModulo}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+	  				<a href="ControllerModulo?action=excluir&id=${modulo.idModulo}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
 	  			</td>
 	  		</tr>
 	  		</c:forEach>

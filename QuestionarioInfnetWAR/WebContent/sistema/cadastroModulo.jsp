@@ -11,26 +11,26 @@
 		<a href="ControllerAvaliacao"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Cadastro de Avaliações</h2>
+		<h2>Cadastro de Módulos</h2>
 		<hr>
 		<form action="ControllerModulo" method="post" class="form-horizontal">
 			
 		  <input type="hidden" name="action" value="cadastrar">
 		
 		  <div class="form-group">
-		    <label for="avaliacao" class="col-sm-2 control-label">Avaliacao</label>
+		    <label for="avaliacao" class="col-sm-2 control-label">Módulo</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="nome" class="form-control" id="avaliacao" placeholder="avaliacao">
+		      <input type="text" name="nome" class="form-control" id="avaliacao" placeholder="Módulo">
 		    </div>
 		  </div>
 		 		 
 		  <div class="form-group">
-		    <label for="questoes" class="col-sm-2 control-label">Questões</label>
+		    <label for="questoes" class="col-sm-2 control-label">Professores</label>
 		    	<div class="col-sm-10">
 					<select name="questoes" id="questoes" multiple="multiple" class="form-control">
-				  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
-		  					<c:forEach items="${requestScope.questoes}" var="questao">
-							  <option value="${questao.idQuestao}">${questao.textoQuestao} | ${questao.categoria.getCategoria()}</option>
+				  		<c:if test="${requestScope.professores != null && requestScope.professores.size() > 0 }">
+		  					<c:forEach items="${requestScope.professores}" var="professor">
+							  <option value="${professor.matricula}">${professor.nome}</option>
 							</c:forEach>
 						</c:if>
 					</select>
