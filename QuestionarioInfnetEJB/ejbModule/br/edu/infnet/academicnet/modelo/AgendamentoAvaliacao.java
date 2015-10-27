@@ -37,8 +37,6 @@ public class AgendamentoAvaliacao implements Serializable{
 	/*@OneToMany(mappedBy="agendamentoAvaliacao")
 	private List<Avaliacao> avaliacao;*/
 
-	//TODO essa rela��o ternaria entre turma, curso e professor tem que existir. ela n�o existe em lugar algum.
-	//TODO turma j� estava aqui, coloquei o curso e o professor, avaliar se este � o local correto
 	@OneToOne
 	@JoinColumn(name = "turma_id")
 	private Turma turma;

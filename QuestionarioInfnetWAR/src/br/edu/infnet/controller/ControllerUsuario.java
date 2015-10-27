@@ -19,7 +19,6 @@ public class ControllerUsuario extends HttpServlet {
      */
     public ControllerUsuario() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

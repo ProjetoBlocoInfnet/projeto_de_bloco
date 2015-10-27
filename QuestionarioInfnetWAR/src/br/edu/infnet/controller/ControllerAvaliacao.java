@@ -36,7 +36,6 @@ public class ControllerAvaliacao extends HttpServlet {
      */
     public ControllerAvaliacao() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     //Fun��es auxiliares
