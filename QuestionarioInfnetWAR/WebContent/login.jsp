@@ -13,14 +13,14 @@
 		  </div>
 		  <div class="form-group">
 		    <label class="sr-only" for="senha">Senha</label>
-		    <input type="password" class="form-control" id="senha" placeholder="Senha">
+		    <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
 		  </div>
-		  <div class="checkbox" id="esqueceuSenha">
+		  <div class="checkbox" id="esqueceuSenha" name="esqueceuSenha">
 		    <label>
-		      <input type="checkbox"> Esqueceu a senha?
+		      <input type="checkbox" value="S"> Esqueceu a senha?
 		    </label>
 		  </div>
-		  <button type="submit" class="btn btn-sm btn-primary">Login</button>
+		  <button type="submit" class="btn btn-primary">Login</button>
 		</form> 
 	</div>
 	

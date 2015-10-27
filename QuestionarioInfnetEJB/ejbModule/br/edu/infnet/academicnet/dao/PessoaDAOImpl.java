@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.modelo.Pessoa;
+import br.edu.infnet.academicnet.modelo.Usuario;
 
 @Stateless
 public class PessoaDAOImpl implements PessoaDAO{
@@ -29,7 +30,7 @@ public class PessoaDAOImpl implements PessoaDAO{
 
 	@Override
 	public boolean alterar(Pessoa objeto) {
-		try {
+		try {			
 			manager.merge(objeto);
 			manager.flush();
 		} catch (Exception e) {
@@ -51,6 +52,8 @@ public class PessoaDAOImpl implements PessoaDAO{
 		
 		return true;
 	}
+	
+	
 
 	@Override
 	public Pessoa obter(long id) {		
@@ -59,14 +62,21 @@ public class PessoaDAOImpl implements PessoaDAO{
 		return query.getSingleResult();
 	}
 	
+	@Override
+	public Pessoa obterPorIdUsuario(Usuario usuario) {		
+		TypedQuery<Pessoa> query = manager.createQuery("select p from Pessoa p where p.usuario=:uId ", Pessoa.class);
+		query.setParameter("uId", usuario);
+		return query.getSingleResult();
+	}
 	
+	@Override
 	public List<Pessoa> consultarPorNomeDaPessoa(String nome) {		
 		TypedQuery<Pessoa> query = manager.createQuery("select p from Pessoa p where p.nome like :pNome order by p.matricula", Pessoa.class);
 		query.setParameter("pNome", "%"+nome+"%" );
 		return query.getResultList();
 		 
 	}
-	
+	@Override
 	public List<Pessoa> listarAtivas() {		
 		TypedQuery<Pessoa> query = manager.createQuery("select p from Pessoa p where p.status=:pAtivo order by p.matricula", Pessoa.class);
 		query.setParameter("pAtivo", Status.ATIVO );
@@ -77,6 +87,16 @@ public class PessoaDAOImpl implements PessoaDAO{
 	public List<Pessoa> listar() {
 		TypedQuery<Pessoa> query = manager.createQuery("select p from Pessoa p order by p.matricula", Pessoa.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public Pessoa login(String login, String senha) {
+		TypedQuery<Usuario> query = manager.createQuery("select u from Usuario u where u.login=:uLogin and u.senha=:uSenha ", Usuario.class);
+		query.setParameter("uLogin", login);
+		query.setParameter("uSenha", senha);
+		Usuario usuario = (Usuario) query.getSingleResult();
+		
+		return obterPorIdUsuario(usuario);
 	}
 	
 

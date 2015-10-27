@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../openDoc.jsp" />
 
 <jsp:include page="menu.jsp" />
@@ -29,29 +29,49 @@
 	</form>
 	<hr>
 	
+	<c:choose>
+		<c:when test="${result_ok != null}">
+			<div class="alert alert-success" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>${result_ok}</strong>
+			</div>
+		</c:when>
+		<c:when test="${result_error != null}">
+			<div class="alert alert-danger" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>${result_error}</strong>
+			</div>
+		</c:when>		
+	</c:choose>
+	
 	<div >
 	<table class="table table-hover">
   		<thead>
-  		<th>Id</th>
+  		<th>Matrícula</th>
   		<th>Nome</th>
   		<th>Login</th>
-  		<th>Matrícula</th>
-  		<th>Permissão</th>
+  		<th>E-mail</th>
+  		<th>CEP</th>
+  		<th>Endereço</th>
+  		<th>Perfil</th>
   		<th>Ação</th>
   		</thead>
   		<tbody>
-  		
-	  		<tr>
-	  			<td>1</td>  
-	  			<td>Elom Waizmam Soares Carvalho</td>  		
-	  			<td>elom</td>  		
-	  			<td>14235</td> 
-	  			<td>Aluno</td>  	  				
-	  			<td>
-	  				<a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
-	  			</td>
-	  		</tr>
+  			<c:forEach var="pessoa" items="${listaPessoa}" >
+		  		<tr>
+		  			<td>${pessoa.matricula }</td>  
+		  			<td>${pessoa.nome }</td>  		
+		  			<td>${pessoa.usuario.login}</td>  		
+		  			<td>${pessoa.email }</td> 
+		  			<td>${pessoa.cep }</td>
+		  			<td>${pessoa.endereco }</td>
+		  			<td>${pessoa.usuario.perfil.nomePerfil }</td>  	  				
+		  			<td>
+		  				<a href="ControllerUsuario?tela=telaAlterar&matricula=${pessoa.matricula}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+		  				<a href="ControllerUsuario?tela=excluir&matricula=${pessoa.matricula}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+		  			</td>
+		  		</tr>
+	  		</c:forEach>
   		</tbody>
 	</table>
 	</div>

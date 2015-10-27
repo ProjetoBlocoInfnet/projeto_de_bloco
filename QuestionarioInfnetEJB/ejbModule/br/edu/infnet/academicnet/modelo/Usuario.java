@@ -22,10 +22,10 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idUsuario;
 	
-	@Column(nullable=false, unique = true, length=100)
+	@Column(length=100)
 	private String login;
 	
-	@Column(nullable=false)	
+	
 	private String senha;
 	
 	@ManyToOne

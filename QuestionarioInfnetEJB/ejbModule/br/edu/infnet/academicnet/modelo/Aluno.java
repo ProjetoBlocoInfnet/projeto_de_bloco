@@ -32,8 +32,20 @@ public class Aluno extends Pessoa implements Serializable{
 	public void setTurmas(List<Turma> turmas) {
 		this.turmas = turmas;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Aluno [turmas=" + turmas + ", getMatricula()=" + getMatricula()
+				+ ", getNome()=" + getNome() + ", getEndereco()="
+				+ getEndereco() + ", getCep()=" + getCep() + ", getEmail()="
+				+ getEmail() + ", getUsuario()=" + getUsuario()
+				+ ", getStatus()=" + getStatus() + ", hashCode()=" + hashCode()
+				+ ", getClass()=" + getClass() + ", toString()="
+				+ super.toString() + "]";
+	}
 	
-		
+	
 	
 
 }
