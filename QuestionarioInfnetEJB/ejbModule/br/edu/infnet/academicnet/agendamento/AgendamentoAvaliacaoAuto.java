@@ -5,9 +5,16 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAOImpl;
 import br.edu.infnet.academicnet.enumerators.StatusAvaliacao;
@@ -18,6 +25,9 @@ import br.edu.infnet.academicnet.modelo.Aluno;
 @Startup
 public class AgendamentoAvaliacaoAuto
 {
+    @Resource(name = "java:jboss/mail/gmail")
+    private Session session;
+
 	//O agendamento executa a cada dia às 00hrs
 	@Schedule(hour="0")
 	public void IniciarAvaliacao()
@@ -30,7 +40,19 @@ public class AgendamentoAvaliacaoAuto
 			for(Aluno al : a.getTurma().getAlunos())
 			{
 				//TODO Enviar emails para os alunos com os links das avaliações
-				al.getEmail();
+				try {
+					 
+		            Message message = new MimeMessage(session);
+		            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
+		            message.setSubject("Avaliação curso Infnet " + a.getModulo().getNomeModulo());
+		            message.setText("Teste de envio de email");
+		 
+		            Transport.send(message);
+		 
+		        } catch (MessagingException e) {
+		            System.out.println("Erro ao enviar o email");
+		            e.printStackTrace();
+		        }
 			}
 			try
 			{
