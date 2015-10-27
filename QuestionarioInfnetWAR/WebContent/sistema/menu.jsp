@@ -3,7 +3,7 @@
 		<img src="resources/img/logoInfnet3.png">  
 		
 		<ul id="menu" class="nav navbar-nav navbar-right">	 
-	        <li class="dropdown">
+	        <li class="dropdown principal">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 	         Áreas  <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
@@ -29,20 +29,23 @@
 	            </li>
 	            
 	          </ul>
-	        </li>
-        	<li>
+	        </li>	        
+        	<li class="principal">
         		<a href="ControllerMediaHistorica" >
         			 Média Histórica <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
         		</a>
        		</li>
-       		<li>
+       		<li class="principal">
         		<a href="ControllerMediaHistorica" >
         			 Agendamento <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         		</a>
        		</li>
+       		<li class="barra"></li>
        		<li>
-	       		<form id="logout" action="Logout" method="post" class="navbar-form navbar">
+       			
+	       		<form id="logout" action="ControllerLogout" method="post" class="navbar-form navbar">
 				  <div class="form-group">
+				      <p id="userLogado"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> : ${pessoa.usuario.login} </p> 
 				      <button type="submit" class="btn btn-primary">Logout</button>
 				  </div>
 				</form>

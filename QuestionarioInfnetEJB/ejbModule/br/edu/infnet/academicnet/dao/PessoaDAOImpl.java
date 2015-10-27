@@ -94,9 +94,16 @@ public class PessoaDAOImpl implements PessoaDAO{
 		TypedQuery<Usuario> query = manager.createQuery("select u from Usuario u where u.login=:uLogin and u.senha=:uSenha ", Usuario.class);
 		query.setParameter("uLogin", login);
 		query.setParameter("uSenha", senha);
-		Usuario usuario = (Usuario) query.getSingleResult();
+		Pessoa pessoa = null;
+		try {
+			Usuario usuario = (Usuario) query.getSingleResult();
+			pessoa =  obterPorIdUsuario(usuario);
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pessoa;
 		
-		return obterPorIdUsuario(usuario);
 	}
 	
 
