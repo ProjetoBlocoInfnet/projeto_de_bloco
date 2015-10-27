@@ -2,6 +2,7 @@ package br.edu.infnet.filter;
 
 import java.io.IOException;
 
+import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -17,7 +18,9 @@ import br.edu.infnet.academicnet.modelo.Pessoa;
 /**
  * Servlet Filter implementation class FilterLogin
  */
-@WebFilter(filterName = "/FilterLogin", urlPatterns="/sistema/*")
+@WebFilter(filterName = "/FilterLogin", urlPatterns="/paginas/*",
+		   servletNames = {"ControllerAvaliacao","ControllerFormularioAvaliacao","ControllerMediaHistorica","ControllerQuestao","ControllerUsuario"}
+           )
 public class FilterLogin implements Filter {
 
 	private FilterConfig context = null; 
@@ -25,7 +28,6 @@ public class FilterLogin implements Filter {
     public FilterLogin() {
     	
     }
-
 	
 	public void destroy() {
 		this.context = null;
@@ -36,14 +38,11 @@ public class FilterLogin implements Filter {
 		
 		HttpServletRequest req = (HttpServletRequest) request;	
 		String resource = req.getRequestURI().replaceAll(req.getContextPath(), "");
-		System.out.println();
-		System.out.println("Acessandoo Controller ======>>>>>>>" + resource);
-		System.out.println();
 	    Pessoa pessoa = getPessoa(req);    
 	    if(pessoa != null){
 	    	chain.doFilter(request, response);
 	    }else{
-	    	request.getRequestDispatcher("login.jsp").forward(request, response);
+	    	request.getRequestDispatcher("/login.jsp").forward(request, response);
 	    }		
 		
 	}

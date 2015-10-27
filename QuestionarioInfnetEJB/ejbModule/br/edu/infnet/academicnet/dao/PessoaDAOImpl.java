@@ -96,7 +96,6 @@ public class PessoaDAOImpl implements PessoaDAO{
 		TypedQuery<Usuario> query = manager.createQuery("select u from Usuario u where u.login=:uLogin and u.senha=:uSenha ", Usuario.class);
 		query.setParameter("uLogin", login);
 		query.setParameter("uSenha", senha);
-
 		Pessoa pessoa = null;
 		try {
 			Usuario usuario = (Usuario) query.getSingleResult();
@@ -136,7 +135,6 @@ public class PessoaDAOImpl implements PessoaDAO{
 
 		Usuario usuario = (Usuario) query.getSingleResult();
 		
-		return obterPorIdUsuario(usuario);
 	}
 	
 
