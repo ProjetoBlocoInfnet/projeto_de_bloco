@@ -8,7 +8,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.enumerators.Status;
+import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Pessoa;
+import br.edu.infnet.academicnet.modelo.Professor;
 import br.edu.infnet.academicnet.modelo.Usuario;
 
 @Stateless
@@ -104,6 +106,18 @@ public class PessoaDAOImpl implements PessoaDAO{
 		}
 		return pessoa;
 		
+	}
+
+	@Override
+	public List<Aluno> obterAlunos() {
+		TypedQuery<Aluno> query = manager.createQuery("select a from Aluno a order by a.matricula", Aluno.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Professor> obterProfessores() {
+		TypedQuery<Professor> query = manager.createQuery("select p from Professor p order by p.matricula", Professor.class);
+		return query.getResultList();
 	}
 	
 
