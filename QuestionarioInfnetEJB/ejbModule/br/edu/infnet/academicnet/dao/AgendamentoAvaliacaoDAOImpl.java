@@ -1,5 +1,6 @@
 package br.edu.infnet.academicnet.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -7,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import br.edu.infnet.academicnet.enumerators.StatusAvaliacao;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 
 @Stateless
@@ -67,6 +69,24 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	public List<AgendamentoAvaliacao> listar() {
 		TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag", AgendamentoAvaliacao.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public List<AgendamentoAvaliacao> obterPorStatusDataInicio(StatusAvaliacao status,
+			Date data) {
+		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataInicio=:agData and av.status =:agStatus ", AgendamentoAvaliacao.class);
+		 query.setParameter("agStatus", status);
+		 query.setParameter("agData", data);
+		 return query.getResultList();
+	}
+
+	@Override
+	public List<AgendamentoAvaliacao> obterPorStatusDataFim(StatusAvaliacao status,
+			Date data) {
+		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataFim=:agData and av.status =:agStatus ", AgendamentoAvaliacao.class);
+		 query.setParameter("agStatus", status);
+		 query.setParameter("agData", data);
+		 return query.getResultList();
 	}
 
 }
