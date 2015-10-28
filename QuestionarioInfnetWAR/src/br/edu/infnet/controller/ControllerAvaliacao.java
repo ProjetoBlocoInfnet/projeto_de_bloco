@@ -36,16 +36,15 @@ public class ControllerAvaliacao extends HttpServlet {
      */
     public ControllerAvaliacao() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-    //Funï¿½ï¿½es auxiliares
+    //Funções auxiliares
     private HttpServletRequest checkReturn(boolean status, String action, HttpServletRequest request)
     {
 		if(status){
-			request.setAttribute("result_ok", "AÃ§Ã£o efetuada com Sucesso!");
+			request.setAttribute("result_ok", "Ação efetuada com Sucesso!");
 		}else{
-			request.setAttribute("result_error", "Erro ao " + action + " a avaliaÃ§Ã£o!");
+			request.setAttribute("result_error", "Erro ao " + action + " a avaliação!");
 		}
 		return request;
     }
@@ -86,7 +85,7 @@ public class ControllerAvaliacao extends HttpServlet {
 					return;
 					//break;
 				default:
-					request.setAttribute("result_error", "NÃ£o houve aÃ§Ã£o vÃ¡lida inserida");
+					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
 		}
 		List<Avaliacao> avaliacoes = avaliacao.listar();
@@ -147,7 +146,7 @@ public class ControllerAvaliacao extends HttpServlet {
 					request.getRequestDispatcher("sistema/avaliacaoIndex.jsp").forward(request, response);
 					return;
 				default:
-					request.setAttribute("result_error", "NÃ£o houve aÃ§Ã£o vÃ¡lida inserida");
+					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
 		}
 		List<Avaliacao> avaliacoes = avaliacao.listar();

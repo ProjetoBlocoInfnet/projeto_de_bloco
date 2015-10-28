@@ -25,7 +25,6 @@ public class Aluno extends Pessoa {
 	
 		
 	public Aluno() {
-		// TODO Auto-generated constructor stub
 	}
 
 

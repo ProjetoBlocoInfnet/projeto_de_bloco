@@ -2,7 +2,7 @@ package br.edu.infnet.academicnet.enumerators;
 
 public enum StatusAvaliacao {
 	
-	CRIADO("Criado"), EM_ANDAMENTO("Em Andamento"), FINALIZADO("Finalizado");
+	CRIADO("Criado"), EM_ANDAMENTO("Em Andamento"), FINALIZADO("Finalizado"), INATIVO("Inativo");
 	
 	private String status;
 	

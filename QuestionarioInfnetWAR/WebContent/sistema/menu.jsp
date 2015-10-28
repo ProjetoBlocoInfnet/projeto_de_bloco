@@ -23,7 +23,7 @@
 	            	</a>
 	            </li>
 	             <li>
-	            	<a href="">
+	            	<a href="ControllerModulo">
 	            		<span class="glyphicon glyphicon-th" aria-hidden="true"> Módulo</span> 
 	            	</a>
 	            </li>
@@ -36,7 +36,7 @@
         		</a>
        		</li>
        		<li>
-        		<a href="ControllerMediaHistorica" >
+        		<a href="ControllerAgendamento" >
         			 Agendamento <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         		</a>
        		</li>

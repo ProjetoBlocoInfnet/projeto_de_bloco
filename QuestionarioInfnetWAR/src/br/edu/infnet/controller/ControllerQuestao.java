@@ -28,7 +28,6 @@ public class ControllerQuestao extends HttpServlet {
 	
     public ControllerQuestao() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	
