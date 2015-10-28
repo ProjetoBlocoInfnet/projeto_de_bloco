@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import br.edu.infnet.academicnet.dao.CursoDAO;
 import br.edu.infnet.academicnet.dao.ModuloDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
-import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.modelo.Curso;
 import br.edu.infnet.academicnet.modelo.Modulo;
 import br.edu.infnet.academicnet.modelo.Turma;
@@ -55,9 +54,8 @@ public class ControllerCurso extends HttpServlet {
 						
 			switch (tela) {
 			case "telaCadastro":				
-				request.setAttribute("listaAlunos", moduloDAO.listarAtivos());
-				request.setAttribute("listaCurso", turmaDAO.listar());
-				request.setAttribute("listaStatus", Status.values());
+				request.setAttribute("listaModulos", moduloDAO.listarAtivos());
+				request.setAttribute("listaTurma", turmaDAO.listar());
 				request.getRequestDispatcher("sistema/cadastroCurso.jsp").forward(request, response);
 				return;
 				//break;
@@ -66,9 +64,8 @@ public class ControllerCurso extends HttpServlet {
 				
 				Curso curso = cursoDAO.obter(idCurso);
 				request.setAttribute("curso", curso);
-				request.setAttribute("listaAlunos", moduloDAO.listarAtivos());
-				request.setAttribute("listaCurso", turmaDAO.listar());
-				request.setAttribute("listaStatus", Status.values());			
+				request.setAttribute("listaModulos", moduloDAO.listarAtivos());
+				request.setAttribute("listaTurma", turmaDAO.listar());	
 				request.getRequestDispatcher("sistema/alterarCurso.jsp").forward(request, response);
 				return;
 				//break;
@@ -105,10 +102,9 @@ public class ControllerCurso extends HttpServlet {
 			
 			boolean result = false;			
 			
-			String nome = request.getParameter("nomeCurso");
-			String status = request.getParameter("status");			
-			String[] modulos = request.getParameterValues("modulo");			
-			String[] turmas = request.getParameterValues("turma");				
+			String nome = request.getParameter("nomeCurso");	
+			String[] modulos = request.getParameterValues("modulos");			
+			String[] turmas = request.getParameterValues("turmas");				
 			Curso curso = null;
 												 
 			String action = request.getParameter("action");	
@@ -117,7 +113,6 @@ public class ControllerCurso extends HttpServlet {
 					
 					curso = new Curso();
 					curso.setNome(nome);
-					curso.setStatus(Status.ATIVO);
 					curso.setModulo(retornaListModulo(modulos));
 					curso.setTurmas(retornaListTurma(turmas));
 					result = cursoDAO.incluir(curso);					
@@ -133,7 +128,6 @@ public class ControllerCurso extends HttpServlet {
 					curso = new Curso();
 					curso.setIdCurso(Long.valueOf(request.getParameter("idCurso")));
 					curso.setNome(nome);
-					curso.setStatus(Status.valueOf(status));
 					curso.setModulo(retornaListModulo(modulos));
 					curso.setTurmas(retornaListTurma(turmas));
 					result = cursoDAO.alterar(curso);
@@ -147,7 +141,7 @@ public class ControllerCurso extends HttpServlet {
 					break;
 				case "consultar":					
 					
-					List<Curso> listaCurso = cursoDAO.listar();
+					List<Curso> listaCurso = cursoDAO.obterPorNome(request.getParameter("nome"));
 					
 					if(listaCurso.size() > 0){
 						request.setAttribute("result_ok", "(" + listaCurso.size() + ") - Cursos(s) encontrado(s)!");

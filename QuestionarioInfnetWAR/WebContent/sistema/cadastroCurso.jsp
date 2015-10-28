@@ -7,44 +7,45 @@
 <div id="container" class="container-fluid">
 
 	<div class="container">
-		<a href="ControllerTurma"><button type="button" class="btn btn-default">Voltar</button></a>
+		<a href="ControllerCurso"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Cadastro de Turma</h2>
+		<h2>Cadastro de Curso</h2>
 		<hr>
-		<form action="ControllerTurma" method="post" class="form-horizontal">
+		<form action="ControllerCurso" method="post" class="form-horizontal">
 		
 		  <input type="hidden" name="action" value="cadastrar" />
 		
 		  <div class="form-group">
 		    <label for="nome" class="col-sm-2 control-label">Nome</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome">
+		      <input type="text" name="nomeCurso" class="form-control" id="nome" placeholder="Nome">
 		    </div>
 		  </div>
-		 
+		 		  
 		  
-		   <div class="form-group">
-		    <label for="professores" class="col-sm-2 control-label">Professores</label>
+		  <div class="form-group">
+		    <label for="modulo" class="col-sm-2 control-label">Módulos</label>
 		    	<div class="col-sm-10">
-					  <select name="professores" id="professores" class="form-control" multiple="multiple">
-					   <c:forEach var="professor" items="${listaProfessor}">
-							  		<option value="${professor.matricula}">${professor.nome}</option>
+					  <select name="modulos" id="modulo" class="form-control" multiple="multiple">
+					   <c:forEach var="modulo" items="${listaModulos}">
+							  <option value="${modulo.idModulo}">${modulo.nomeModulo}</option>
 					</c:forEach>
 					</select>
 		  		</div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="alunos" class="col-sm-2 control-label">Alunos</label>
+		    <label for="turmas" class="col-sm-2 control-label">Turmas</label>
 		    	<div class="col-sm-10">
-					  <select name="alunos" id="alunos" class="form-control" multiple="multiple">
-					   <c:forEach var="aluno" items="${listaAlunos}">
-							  		<option value="${aluno.matricula}">${aluno.nome}</option>
+					  <select name="turmas" id="turmas" class="form-control" multiple="multiple">
+					   <c:forEach var="turma" items="${listaTurma}">
+							  		<option value="${turma.idTurma}">${turma.nomeTurma}</option>
 					</c:forEach>
 					</select>
 		  		</div>
 		  </div>
+		  
 		  
 		  
 		  <div class="form-group">

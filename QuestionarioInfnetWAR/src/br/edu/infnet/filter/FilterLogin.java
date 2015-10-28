@@ -19,7 +19,7 @@ import br.edu.infnet.academicnet.modelo.Pessoa;
  * Servlet Filter implementation class FilterLogin
  */
 @WebFilter(filterName = "/FilterLogin", urlPatterns="/paginas/*",
-		   servletNames = {"ControllerAvaliacao","ControllerFormularioAvaliacao","ControllerMediaHistorica","ControllerQuestao","ControllerUsuario"}
+		   servletNames = {"ControllerAvaliacao","ControllerFormularioAvaliacao","ControllerMediaHistorica","ControllerQuestao","ControllerUsuario","ControllerTurma","ControllerUsuario"}
            )
 public class FilterLogin implements Filter {
 
