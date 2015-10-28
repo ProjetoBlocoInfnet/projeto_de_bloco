@@ -9,12 +9,12 @@
 	<div class="container">
 	<a href="ControllerLogin"><button type="button" class="btn btn-default">Voltar</button></a>
 	<br><br>
-	<form action="ControllerTurma" method="get">
+	<form action="ControllerCurso" method="get">
 		<input type="hidden" name="tela" value="telaCadastro">
-		<input type="submit" class="btn btn-info" value="Cadastrar Turma">
+		<input type="submit" class="btn btn-info" value="Cadastrar Curso">
 	</form>
 	<br>
-	<form action="ControllerTurma" method="post">
+	<form action="ControllerCurso" method="post">
 		<input type="hidden" name="action" value="consultar">
 		<div class="row">  
 		  <div class="col-lg-6">
@@ -52,13 +52,13 @@
   		<th>Ação</th>
   		</thead>
   		<tbody>
-  			<c:forEach var="turma" items="${listaTurma}" >
+  			<c:forEach var="curso" items="${listaCurso}" >
 		  		<tr>
-		  			<td>${turma.idTurma }</td>  
-		  			<td>${turma.nomeTurma }</td>  		 	  				
+		  			<td>${curso.idCurso }</td>  
+		  			<td>${curso.nome }</td>  		 	  				
 		  			<td>
-		  				<a href="ControllerTurma?tela=telaAlterar&idTurma=${turma.idTurma}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-		  				<a href="ControllerTurma?tela=excluir&idTurma=${turma.idTurma}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+		  				<a href="ControllerCurso?tela=telaAlterar&idCurso=${curso.idCurso}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+		  				<a href="ControllerCurso?tela=excluir&idCurso=${curso.idCurso}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
 		  			</td>
 		  		</tr>
 	  		</c:forEach>

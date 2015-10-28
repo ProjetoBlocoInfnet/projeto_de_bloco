@@ -14,8 +14,8 @@
 		      <div class="carousel-caption">
 			      	<div class="jumbotron">
 						  <h1>Bem-vindo ao AcademicNet!</h1>
-						  <p>...</p>
-						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realiazar Avaliação</a></p>
+						  <!-- <p>...</p>
+						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realizar Avaliação</a></p> -->
 					</div>
 			  </div>
 	    </div>
@@ -24,8 +24,8 @@
 	      <div class="carousel-caption">
 			      	<div class="jumbotron">
 						  <h1>Bem-vindo ao AcademicNet!</h1>
-						  <p>...</p>
-						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realiazar Avaliação</a></p>
+						  <!-- <p>...</p>
+						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realizar Avaliação</a></p> -->
 					</div>
 			  </div>
 	    </div>
@@ -34,8 +34,8 @@
 	      <div class="carousel-caption">
 			      	<div class="jumbotron">
 						  <h1>Bem-vindo ao AcademicNet!</h1>
-						  <p>...</p>
-						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realiazar Avaliação</a></p>
+						  <!-- <p>...</p>
+						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realizar Avaliação</a></p> -->
 					</div>
 			  </div>
 	    </div>

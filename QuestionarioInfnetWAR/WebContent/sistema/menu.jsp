@@ -28,12 +28,12 @@
 	            	</a>
 	            </li>
 	            <li>
-	            	<a href="">
+	            	<a href="ControllerTurma">
 	            		<span class="glyphicon glyphicon-education" aria-hidden="true"> Turma</span> 
 	            	</a>
 	            </li>
 	             <li>
-	            	<a href="">
+	            	<a href="ControllerCurso">
 	            		<span class="glyphicon glyphicon-book" aria-hidden="true"> Curso</span> 
 	            	</a>
 	            </li>

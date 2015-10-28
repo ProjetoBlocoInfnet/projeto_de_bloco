@@ -59,7 +59,7 @@ public class ControllerTurma extends HttpServlet {
 			case "telaCadastro":				
 				request.setAttribute("listaAlunos", pessoaDAO.obterAlunos());
 				request.setAttribute("listaCurso", cursoDAO.listar());
-				request.setAttribute("listaCurso", pessoaDAO.obterProfessores());
+				request.setAttribute("listaProfessor", pessoaDAO.obterProfessores());
 				request.getRequestDispatcher("sistema/cadastroTurma.jsp").forward(request, response);
 				return;
 				//break;
@@ -109,13 +109,11 @@ public class ControllerTurma extends HttpServlet {
 			
 			boolean result = false;
 			
-			
-			String nomeTurma = request.getParameter("nomeTurma");
-			String[] cursos = request.getParameterValues("curso");
+			String nomeTurma = request.getParameter("nome");
 			String[] alunos = request.getParameterValues("alunos");
-			String[]  professores = request.getParameterValues("professor");	
+			String[] professores = request.getParameterValues("professores");	
 			Turma turma = null;
-									
+			
 			 
 			String action = request.getParameter("action");	
 			switch (action) {
@@ -125,28 +123,27 @@ public class ControllerTurma extends HttpServlet {
 					turma.setNomeTurma(nomeTurma);
 					turma.setAlunos(retornaListAlunos(alunos));
 					turma.setProfessores(retornaListProfessor(professores));
-					turma.setCursos(retornaListCursos(cursos));
 					result = turmaDAO.incluir(turma);					
 					if(result){
-						request.setAttribute("result_ok", "Usuário Cadastrado com Sucesso!");
+						request.setAttribute("result_ok", "Turma cadastrada com Sucesso!");
 					}else{
-						request.setAttribute("result_error", "Erro ao cadastrar o usuário!");
+						request.setAttribute("result_error", "Erro ao cadastrar a turma!");
 					}					
 					
 					break;
 				case "alterar":
 					
 					turma = new Turma();
+					turma.setIdTurma(Long.valueOf(request.getParameter("idTurma")));
 					turma.setNomeTurma(nomeTurma);
 					turma.setAlunos(retornaListAlunos(alunos));
 					turma.setProfessores(retornaListProfessor(professores));
-					turma.setCursos(retornaListCursos(cursos));
 					result = turmaDAO.alterar(turma);
 					
 					if(result){
-						request.setAttribute("result_ok", "Usuário alterada com Sucesso!");
+						request.setAttribute("result_ok", "Turma alterada com Sucesso!");
 					}else{
-						request.setAttribute("result_error", "Erro ao alterar a usuário!");
+						request.setAttribute("result_error", "Erro ao alterar a turma!");
 					}	
 					
 					break;
@@ -189,12 +186,6 @@ public class ControllerTurma extends HttpServlet {
 		return listaProfessor;
 	}
 	
-	private List<Curso> retornaListCursos(String[] cursos){
-		List<Curso> listaCurso = new ArrayList<Curso>();
-		for (String string : cursos) {
-			listaCurso.add(cursoDAO.obter(Long.valueOf(string)));
-		}
-		return listaCurso;
-	}
+	
 
 }

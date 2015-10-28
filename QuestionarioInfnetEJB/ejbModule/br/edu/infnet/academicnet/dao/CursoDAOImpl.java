@@ -85,4 +85,6 @@ public class CursoDAOImpl implements CursoDAO
 		 return query.getResultList();
 	}
 
+	
+
 }

@@ -16,12 +16,7 @@
 		
 		  <input type="hidden" name="action" value="alterar" />
 		
-		  <div class="form-group">
-		    <label for="nome" class="col-sm-2 control-label">Nome</label>
-		    <div class="col-sm-10">
-		      <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" value="${turma.nomeTurma }">
-		    </div>
-		  </div>
+		  
 		 
 		   <div class="form-group">
 		    <label for="Curso" class="col-sm-2 control-label">Cursos</label>
