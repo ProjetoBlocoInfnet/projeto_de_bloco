@@ -3,6 +3,7 @@ package br.edu.infnet.academicnet.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -12,6 +13,7 @@ import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Pessoa;
 import br.edu.infnet.academicnet.modelo.Professor;
 import br.edu.infnet.academicnet.modelo.Usuario;
+
 
 @Stateless
 public class PessoaDAOImpl implements PessoaDAO{
@@ -121,17 +123,18 @@ public class PessoaDAOImpl implements PessoaDAO{
 	}
 
 	@Override
-	public Aluno obterAluno(int matricula) {
+	public Aluno obterAluno(long matricula) {
 		TypedQuery<Aluno> query = manager.createQuery("select a from Aluno a where a.matricula=:aId ", Aluno.class);
 		query.setParameter("aId", matricula);
 		return query.getSingleResult();
 	}
 
 	@Override
-	public Professor obterProfessor(int matricula) {
+	public Professor obterProfessor(long matricula) {
 		TypedQuery<Professor> query = manager.createQuery("select p from Professor p where p.matricula=:pId ", Professor.class);
 		query.setParameter("pId", matricula);
 		return query.getSingleResult();
+		
 	}
 	
 

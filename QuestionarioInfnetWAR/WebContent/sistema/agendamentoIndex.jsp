@@ -15,12 +15,11 @@
 		<input type="submit" class="btn btn-info" value="Cadastrar Agendamento">
 	</form>
 	<br>
-	<form action="ControllerAgendamento" method="post">
-		<input type="hidden" name="action" value="consultar">
-		<div class="row">  
-		  <div class="col-lg-6">
-		    <div class="input-group">
-		    	<input type="text" name="valor" class="form-control" placeholder="Consultar por...">
+	<form action="ControllerAgendamento" method="post" class="form-inline">
+		<input type="hidden" name="action" value="consultar">		
+		<div class="form-group">
+		    <label class="sr-only" for="exampleInputPassword3">Password</label>
+		    <input type="text" name="valor" class="form-control" placeholder="Consultar por...">
 				<select name="tipoConsulta" id="tipoConsulta" class="form-control">
 				  	<option value="agendamento">ID Agendamento</option>
 			  		<option value="avaliacao">ID Avaliação</option>
@@ -31,12 +30,12 @@
 					<option value="modulo">Módulo</option>
 					<option value="professor">Professor</option>
 				</select>
-		    	<span class="input-group-btn">
-		    		<input type="submit" class="btn btn-default" type="button" value="Consultar">
-		    	</span>
-		    </div><!-- /input-group -->
-		  </div><!-- /.col-lg-6 -->
-		</div><!-- /.row -->
+			
+		    	<input type="submit" class="btn btn-default" type="button" value="Consultar">
+			
+		</div>
+		
+		
 	</form>
 	<hr>
 	

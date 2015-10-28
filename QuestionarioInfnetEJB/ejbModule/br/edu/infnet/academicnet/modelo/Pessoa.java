@@ -2,10 +2,12 @@ package br.edu.infnet.academicnet.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +29,7 @@ public abstract class Pessoa implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int matricula;
+	private long matricula;
 	
 	@Column(nullable=false, unique = true, length=180)
 	private String nome;
@@ -40,7 +42,7 @@ public abstract class Pessoa implements Serializable{
 	@Column(unique = true)
 	private String email;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 	
@@ -52,11 +54,11 @@ public abstract class Pessoa implements Serializable{
 		
 	}
 
-	public int getMatricula() {
+	public long getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(int matricula) {
+	public void setMatricula(long matricula) {
 		this.matricula = matricula;
 	}
 
@@ -112,13 +114,8 @@ public abstract class Pessoa implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result
-				+ ((endereco == null) ? 0 : endereco.hashCode());
-		result = prime * result + matricula;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + (int) (matricula ^ (matricula >>> 32));
 		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
 		return result;
 	}
@@ -132,29 +129,12 @@ public abstract class Pessoa implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
-		if (cep == null) {
-			if (other.cep != null)
-				return false;
-		} else if (!cep.equals(other.cep))
-			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (endereco == null) {
-			if (other.endereco != null)
-				return false;
-		} else if (!endereco.equals(other.endereco))
-			return false;
 		if (matricula != other.matricula)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (status != other.status)
 			return false;
 		if (usuario == null) {
 			if (other.usuario != null)
@@ -163,6 +143,7 @@ public abstract class Pessoa implements Serializable{
 			return false;
 		return true;
 	}
+
 	
 	
 	

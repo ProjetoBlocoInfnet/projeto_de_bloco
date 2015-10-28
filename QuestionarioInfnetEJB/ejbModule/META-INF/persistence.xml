@@ -22,6 +22,7 @@
         <class>br.edu.infnet.academicnet.modelo.Usuario</class>
         <class>br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao</class>
         <class>br.edu.infnet.academicnet.modelo.Modulo</class>
+        <class>br.edu.infnet.academicnet.modelo.Administrador</class>
                 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         
