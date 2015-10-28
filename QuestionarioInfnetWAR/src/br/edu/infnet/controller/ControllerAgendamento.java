@@ -1,6 +1,12 @@
 package br.edu.infnet.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.ejb.EJB;
@@ -72,11 +78,11 @@ public class ControllerAgendamento extends HttpServlet {
 				case "telaCadastro":
 					request.setAttribute("avaliacoes", avaliacao.listar());
 					request.setAttribute("turmas", turma.listar());
-					request.setAttribute("professores", professor.listar());
+					request.setAttribute("professores", professor.obterProfessores());
 					request.setAttribute("modulos", modulo.listar());
 					request.setAttribute("cursos", curso.listar());
 					request.getRequestDispatcher("sistema/cadastroAgendamento.jsp").forward(request, response);
-					break;
+					return;
 				case "editar":
 					request.getRequestDispatcher("sistema/alterarAgendamento.jsp").forward(request, response);
 					return;
@@ -99,13 +105,56 @@ public class ControllerAgendamento extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String action = request.getParameter("action");
+		AgendamentoAvaliacao a = null;
+		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		sdf.setLenient(false);
+		java.util.Date dataInicio = null;
+		java.util.Date dataFim = null;
 		if(action != null)
 		{
 			switch(action)
 			{
 				case "cadastrar":
+					a = new AgendamentoAvaliacao();
+					try
+					{
+						dataInicio = (java.util.Date)sdf.parse(request.getParameter("dataInicio"));
+						dataFim = (java.util.Date)sdf.parse(request.getParameter("dataFim"));
+						a.setDataInicio(new java.sql.Date(dataInicio.getTime()));
+						a.setDataFim(new java.sql.Date(dataFim.getTime()));
+					}
+					catch (ParseException e)
+					{
+						e.printStackTrace();
+					}
+					
+					a.setAvaliacao(avaliacao.obter(Long.valueOf(request.getParameter("avaliacao"))));
+					a.setTurma(turma.obter(Long.valueOf(request.getParameter("turma"))));
+					a.setCurso(curso.obter(Long.valueOf(request.getParameter("curso"))));
+					a.setModulo(modulo.obter(Long.valueOf(request.getParameter("modulo"))));
+					a.setProfessor(professor.obterProfessor(Long.valueOf(request.getParameter("professor"))));
+					request = checkReturn(agendamento.incluir(a), action, request);
 					break;
 				case "alterar":
+					a = agendamento.obter(Long.valueOf(request.getParameter("id")));
+					try
+					{
+						dataInicio = (java.util.Date)sdf.parse(request.getParameter("dataInicio"));
+						dataFim = (java.util.Date)sdf.parse(request.getParameter("dataFim"));
+						a.setDataInicio(new java.sql.Date(dataInicio.getTime()));
+						a.setDataFim(new java.sql.Date(dataFim.getTime()));
+					}
+					catch (ParseException e)
+					{
+						e.printStackTrace();
+					}
+					
+					a.setAvaliacao(avaliacao.obter(Long.valueOf(request.getParameter("avaliacao"))));
+					a.setTurma(turma.obter(Long.valueOf(request.getParameter("turma"))));
+					a.setCurso(curso.obter(Long.valueOf(request.getParameter("curso"))));
+					a.setModulo(modulo.obter(Long.valueOf(request.getParameter("modulo"))));
+					a.setProfessor(professor.obterProfessor(Long.valueOf(request.getParameter("professor"))));
+					request = checkReturn(agendamento.alterar(a), action, request);
 					break;
 				case "consultar":
 					String tipoConsulta = request.getParameter("tipoConsulta");

@@ -13,23 +13,37 @@
 		
 		<h2>Cadastro de Agendamentos de Avaliação</h2>
 		<hr>
-		<form action="ControllerAvaliacao" method="post" class="form-horizontal">
+		<form action="ControllerAgendamento" method="post" class="form-horizontal">
 			
 		  <input type="hidden" name="action" value="cadastrar">
 		
 		  <div class="form-group">
 		    <label for="dataInicio" class="col-sm-2 control-label">Data Inicio</label>
 		    <div class="col-sm-10">
-		      <input type="date" name="dataInicio" class="form-control" id="dataInicio" placeholder="Data Inicio">
+		      <input type="date" name="dataInicio" class="form-control" id="dataInicio" placeholder="Data Inicio"/>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="dataFim" class="col-sm-2 control-label">Data Fim</label>
 		    <div class="col-sm-10">
-		      <input type="date" name="dataFim" class="form-control" id="dataFim" placeholder="Data Inicio">
+		      <input type="date" name="dataFim" class="form-control" id="dataFim" placeholder="Data Fim"/>
 		    </div>
 		  </div>
+
+		  <div class="form-group">
+		    <label for="avaliacao" class="col-sm-2 control-label">Avaliação</label>
+		    	<div class="col-sm-10">
+					<select name="avaliacao" id="avaliacao" class="form-control">
+				  		<c:if test="${requestScope.avaliacoes != null && requestScope.avaliacoes.size() > 0 }">
+		  					<c:forEach items="${requestScope.avaliacoes}" var="avaliacao">
+							  <option value="${avaliacao.idAvaliacao}">${avaliacao.nome}</option>
+							</c:forEach>
+						</c:if>
+					</select>
+		  		</div>
+		  </div>
+
 
 		  <div class="form-group">
 		    <label for="turma" class="col-sm-2 control-label">Turma</label>
@@ -37,7 +51,7 @@
 					<select name="turma" id="turma" class="form-control">
 				  		<c:if test="${requestScope.turmas != null && requestScope.turmas.size() > 0 }">
 		  					<c:forEach items="${requestScope.turmas}" var="turma">
-							  <option value="${turma.idTurma}">Turma ${turma.idTurma}</option>
+							  <option value="${turma.idTurma}">Turma ${turma.nomeTurma}</option>
 							</c:forEach>
 						</c:if>
 					</select>

@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.enumerators.StatusAvaliacao;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 
@@ -64,7 +63,7 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 
 	@Override
 	public AgendamentoAvaliacao obter(long id) {
-		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where av.idAgendamento=:agId ", AgendamentoAvaliacao.class);
+		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId ", AgendamentoAvaliacao.class);
 		 query.setParameter("agId", id);
 		 return query.getSingleResult();
 	}

@@ -37,9 +37,9 @@ public class ControllerModulo extends HttpServlet {
     private HttpServletRequest checkReturn(boolean status, String action, HttpServletRequest request)
     {
 		if(status){
-			request.setAttribute("result_ok", "AÃ§Ã£o efetuada com Sucesso!");
+			request.setAttribute("result_ok", "Ação efetuada com Sucesso!");
 		}else{
-			request.setAttribute("result_error", "Erro ao " + action + " o mÃ³dulo!");
+			request.setAttribute("result_error", "Erro ao " + action + " o módulo!");
 		}
 		return request;
     }
