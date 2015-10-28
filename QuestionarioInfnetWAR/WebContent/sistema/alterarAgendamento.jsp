@@ -8,7 +8,7 @@
 <div id="container" class="container-fluid">
 
 	<div class="container">
-		<a href="ControllerAvaliacao"><button type="button" class="btn btn-default">Voltar</button></a>
+		<a href="ControllerAgendamento"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
 		<h2>Alteração de Avaliações</h2>
