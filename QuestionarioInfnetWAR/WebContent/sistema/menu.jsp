@@ -3,7 +3,7 @@
 		<img src="resources/img/logoInfnet3.png">  
 		
 		<ul id="menu" class="nav navbar-nav navbar-right">	 
-	        <li class="dropdown principal">
+	        <li id="area" class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 	         Áreas  <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
