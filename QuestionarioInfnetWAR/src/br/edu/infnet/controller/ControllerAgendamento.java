@@ -1,6 +1,7 @@
 package br.edu.infnet.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import br.edu.infnet.academicnet.dao.CursoDAO;
 import br.edu.infnet.academicnet.dao.ModuloDAO;
 import br.edu.infnet.academicnet.dao.PessoaDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
+import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 
 /**
  * Servlet implementation class ControllerAgendamento
@@ -94,8 +96,41 @@ public class ControllerAgendamento extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String action = request.getParameter("action");
+		if(action != null)
+		{
+			switch(action)
+			{
+				case "cadastrar":
+					break;
+				case "alterar":
+					break;
+				case "consultar":
+					String tipoConsulta = request.getParameter("tipoConsulta");
+					switch(tipoConsulta)
+					{
+						case "agendamento":
+							request.setAttribute("agendamentos", new ArrayList<AgendamentoAvaliacao>().add(agendamento.obter(Long.valueOf(request.getParameter("valor")))));
+						case "avaliacao":
+						case "dataInicio":
+						case "dataFim":
+						case "turma":
+						case "curso":
+						case "modulo":
+						case "professor":
+						default:
+							request.setAttribute("agendamentos", agendamento.listar());
+					}
+					request.getRequestDispatcher("sistema/agendamentoIndex.jsp").forward(request, response);
+					return;
+				default:
+					request.setAttribute("result_error", "Não houve ação válida inserida");
+			}
+		}
+		request.setAttribute("agendamentos", agendamento.listar());
+		request.getRequestDispatcher("sistema/agendamentoIndex.jsp").forward(request, response);
 	}
 
 }

@@ -20,10 +20,20 @@
 		<div class="row">  
 		  <div class="col-lg-6">
 		    <div class="input-group">
-		      <input type="text" name="nome" class="form-control" placeholder="Consultar por...">
-		      <span class="input-group-btn">
-		        <input type="submit" class="btn btn-default" type="button" value="Consultar">
-		      </span>
+		    	<input type="text" name="valor" class="form-control" placeholder="Consultar por...">
+				<select name="tipoConsulta" id="tipoConsulta" class="form-control">
+				  	<option value="agendamento">ID Agendamento</option>
+			  		<option value="avaliacao">ID Avaliação</option>
+			  		<option value="dataInicio">Data Inicio</option>
+					<option value="dataFim">Data Fim</option>
+					<option value="turma">ID Turma</option>
+					<option value="curso">Curso</option>
+					<option value="modulo">Módulo</option>
+					<option value="professor">Professor</option>
+				</select>
+		    	<span class="input-group-btn">
+		    		<input type="submit" class="btn btn-default" type="button" value="Consultar">
+		    	</span>
 		    </div><!-- /input-group -->
 		  </div><!-- /.col-lg-6 -->
 		</div><!-- /.row -->
