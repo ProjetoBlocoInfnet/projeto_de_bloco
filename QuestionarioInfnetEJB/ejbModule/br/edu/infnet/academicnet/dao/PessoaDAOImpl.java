@@ -132,6 +132,9 @@ public class PessoaDAOImpl implements PessoaDAO{
 		TypedQuery<Professor> query = manager.createQuery("select p from Professor p where p.matricula=:pId ", Professor.class);
 		query.setParameter("pId", matricula);
 		return query.getSingleResult();
+
+		Usuario usuario = (Usuario) query.getSingleResult();
+		
 	}
 	
 

@@ -10,6 +10,59 @@
 #containerSlider{
 	margin-top:82px;
 	background-color: rgba(0, 0, 0, 0.9);
+	 margin: 0;
+  min-height: 795px;
+  width: 100%;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: #000;
+  border-bottom: 5px solid #d8d8d8;
+  
+  
+}
+
+#containerSlider #carousel-example-generic{
+	margin-top:82px;
+	top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#containerSlider #carousel-example-generic-index{
+	margin-top:82px;
+	top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;  
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#containerSlider #carousel-example-generic-index img{
+	opacity:0.5;
+}
+
+.barra{
+	width: 2px;
+	height: 55px;
+	background-color: rgba(255, 255, 255, 0.3);
+	-moz-box-shadow: -1px 0px 9px #cfc7cf;
+	-webkit-box-shadow: -1px 0px 9px #cfc7cf;
+	box-shadow: -1px 0px 9px #cfc7cf;
+	margin-left:10px;
+	margin-right: 5px;
+}
+
+.jumbotron{
+	background-color: rgba(255, 255, 255, 0.3);
 }
 
 #container{
@@ -24,12 +77,43 @@
 
 #menu{
 	margin-top:15px;
-	font-size: 18px;
+	font-size: 17px;
+}
+
+#menu li{
+	-webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  margin-left:5px;
+}
+
+#menu li.principal:hover{	
+	background-color: rgba(0, 0, 0, 0.9);
+	color: rgba(0, 0, 0, 0.9);
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
 }
 
 #logout{
-	font-size: 18px;	
+	font-size: 18px;
+	color:#fff;	
 }
+
+#userLogado{
+	background-color: rgba(0, 0, 0, 0.9);
+	color: #fff;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	float:left;
+	padding: 5px 15px;
+	margin-right: 5px;
+}
+
 
 #esqueceuSenha{
 	color:#fff;
