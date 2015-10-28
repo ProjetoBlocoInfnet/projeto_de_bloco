@@ -1,6 +1,6 @@
 package br.edu.infnet.academicnet.dao;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import br.edu.infnet.academicnet.enumerators.StatusAvaliacao;
@@ -11,4 +11,6 @@ public interface AgendamentoAvaliacaoDAO extends GenericoDAO<AgendamentoAvaliaca
 	public AgendamentoAvaliacao obterAtivo(long id);
 	public List<AgendamentoAvaliacao> obterPorStatusDataInicio(StatusAvaliacao status, Date data);
 	public List<AgendamentoAvaliacao> obterPorStatusDataFim(StatusAvaliacao status, Date data);
+	public List<AgendamentoAvaliacao> obterPorDataInicio(Date data);
+	public List<AgendamentoAvaliacao> obterPorDataFim(Date data);
 }

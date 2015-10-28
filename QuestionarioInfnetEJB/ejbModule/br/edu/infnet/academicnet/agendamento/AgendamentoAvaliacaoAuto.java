@@ -2,7 +2,7 @@ package br.edu.infnet.academicnet.agendamento;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -34,7 +34,9 @@ public class AgendamentoAvaliacaoAuto
 	{
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
-		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		Date data = new Date(0);
+		data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
 			for(Aluno al : a.getTurma().getAlunos())
@@ -73,7 +75,9 @@ public class AgendamentoAvaliacaoAuto
 	{
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
-		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataFim(StatusAvaliacao.EM_ANDAMENTO, Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		Date data = new Date(0);
+		data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataFim(StatusAvaliacao.EM_ANDAMENTO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
 			try

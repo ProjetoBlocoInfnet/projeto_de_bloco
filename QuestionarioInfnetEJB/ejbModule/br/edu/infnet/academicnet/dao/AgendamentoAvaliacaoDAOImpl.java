@@ -1,6 +1,6 @@
 package br.edu.infnet.academicnet.dao;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -63,14 +63,14 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 
 	@Override
 	public AgendamentoAvaliacao obter(long id) {
-		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId ", AgendamentoAvaliacao.class);
+		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId and not ag.status = br.edu.infnet.academicnet.enumerators.StatusAvaliacao.INATIVO  ", AgendamentoAvaliacao.class);
 		 query.setParameter("agId", id);
 		 return query.getSingleResult();
 	}
 
 	@Override
 	public AgendamentoAvaliacao obterAtivo(long id) {
-		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId and av.status = br.edu.infnet.academicnet.enumerators.StatusAvaliacao.EM_ANDAMENTO ", AgendamentoAvaliacao.class);
+		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId and ag.status = br.edu.infnet.academicnet.enumerators.StatusAvaliacao.EM_ANDAMENTO ", AgendamentoAvaliacao.class);
 		 query.setParameter("agId", id);
 		 return query.getSingleResult();
 	}
@@ -84,7 +84,7 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	@Override
 	public List<AgendamentoAvaliacao> obterPorStatusDataInicio(StatusAvaliacao status,
 			Date data) {
-		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataInicio=:agData and av.status =:agStatus ", AgendamentoAvaliacao.class);
+		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataInicio=:agData and ag.status =:agStatus ", AgendamentoAvaliacao.class);
 		 query.setParameter("agStatus", status);
 		 query.setParameter("agData", data);
 		 return query.getResultList();
@@ -97,6 +97,20 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 		 query.setParameter("agStatus", status);
 		 query.setParameter("agData", data);
 		 return query.getResultList();
+	}
+
+	@Override
+	public List<AgendamentoAvaliacao> obterPorDataInicio(
+			Date data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AgendamentoAvaliacao> obterPorDataFim(
+			Date data) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

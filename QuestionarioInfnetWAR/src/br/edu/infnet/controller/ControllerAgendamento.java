@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -161,9 +162,13 @@ public class ControllerAgendamento extends HttpServlet {
 					switch(tipoConsulta)
 					{
 						case "agendamento":
-							request.setAttribute("agendamentos", new ArrayList<AgendamentoAvaliacao>().add(agendamento.obter(Long.valueOf(request.getParameter("valor")))));
+							List<AgendamentoAvaliacao> procurado = new ArrayList<AgendamentoAvaliacao>();
+							procurado.add(agendamento.obter(Long.valueOf(request.getParameter("valor"))));
+							request.setAttribute("agendamentos", procurado);
+							break;
 						case "avaliacao":
 						case "dataInicio":
+							
 						case "dataFim":
 						case "turma":
 						case "curso":
