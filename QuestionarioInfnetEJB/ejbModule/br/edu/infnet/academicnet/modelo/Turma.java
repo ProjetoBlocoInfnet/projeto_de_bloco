@@ -22,10 +22,12 @@ public class Turma implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idTurma;
 	
+	private String nomeTurma;
+	
 	@ManyToMany
 	@JoinTable(name="turma_alunos")
 	private List<Aluno> alunos;
-	
+		
 	@ManyToMany
 	@JoinTable(name="turma_professores")
 	private List<Professor> professores;
@@ -49,8 +51,17 @@ public class Turma implements Serializable{
 	
 	public void setIdTurma(Long idTurma) {
 		this.idTurma = idTurma;
+	}	
+		
+	public String getNomeTurma() {
+		return nomeTurma;
 	}
-	
+
+	public void setNomeTurma(String nomeTurma) {
+		this.nomeTurma = nomeTurma;
+	}
+
+
 	public List<Aluno> getAlunos() {
 		return alunos;
 	}
@@ -82,6 +93,8 @@ public class Turma implements Serializable{
 	public void setAvaliacao(AgendamentoAvaliacao avaliacao) {
 		this.avaliacao = avaliacao;
 	}
+	
+	
 
 
 	@Override

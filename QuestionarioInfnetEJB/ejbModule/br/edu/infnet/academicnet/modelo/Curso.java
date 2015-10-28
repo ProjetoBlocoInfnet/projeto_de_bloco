@@ -24,7 +24,7 @@ public class Curso implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idCurso;
+	private long idCurso;
 	
 	@Column(nullable=false, unique = true)
 	private String nome;
@@ -44,11 +44,11 @@ public class Curso implements Serializable{
 		
 	}
 
-	public int getIdCurso() {
+	public long getIdCurso() {
 		return idCurso;
 	}
 
-	public void setIdCurso(int idCurso) {
+	public void setIdCurso(long idCurso) {
 		this.idCurso = idCurso;
 	}
 
@@ -88,11 +88,7 @@ public class Curso implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idCurso;
-		result = prime * result + ((modulo == null) ? 0 : modulo.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((turmas == null) ? 0 : turmas.hashCode());
+		result = prime * result + (int) (idCurso ^ (idCurso >>> 32));
 		return result;
 	}
 
@@ -107,25 +103,10 @@ public class Curso implements Serializable{
 		Curso other = (Curso) obj;
 		if (idCurso != other.idCurso)
 			return false;
-		if (modulo == null) {
-			if (other.modulo != null)
-				return false;
-		} else if (!modulo.equals(other.modulo))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (status != other.status)
-			return false;
-		if (turmas == null) {
-			if (other.turmas != null)
-				return false;
-		} else if (!turmas.equals(other.turmas))
-			return false;
 		return true;
 	}
+
+	
 
 		
 	

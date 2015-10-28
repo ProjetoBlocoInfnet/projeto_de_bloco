@@ -18,10 +18,8 @@ public class TurmaDAOImpl implements TurmaDAO{
 	@Override
 	public boolean incluir(Turma turma) {
 		try {
-			manager.getTransaction().begin();
 			manager.persist(turma);
-			manager.getTransaction().commit();
-			
+			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
@@ -31,10 +29,8 @@ public class TurmaDAOImpl implements TurmaDAO{
 	@Override
 	public boolean alterar(Turma turma) {
 		try {
-			manager.getTransaction().begin();
 			manager.merge(turma);
-			manager.getTransaction().commit();
-			
+			manager.flush();			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -45,9 +41,8 @@ public class TurmaDAOImpl implements TurmaDAO{
 	public boolean excluir(long id) {
 		Turma turmaBanco = manager.find(Turma.class, id);
 		try {
-			manager.getTransaction().begin();
 			manager.remove(turmaBanco);
-			manager.getTransaction().commit();
+			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -63,10 +58,10 @@ public class TurmaDAOImpl implements TurmaDAO{
 
 	@Override
 	public List<Turma> listar() {
-		TypedQuery<Turma> query = manager.createQuery("select t from Turma t", Turma.class);
+		TypedQuery<Turma> query = manager.createQuery("select t from Turma t ", Turma.class);
 		return query.getResultList();
 	}
-	
-	
+
+		
 
 }

@@ -31,7 +31,18 @@ public class ControllerLogin extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		
+		session = request.getSession();
+		
+		Pessoa pessoa = (Pessoa) session.getAttribute("pessoa");
+		
+		if(pessoa == null){
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}else{
+			session.setAttribute("pessoa", pessoa);			
+			request.getRequestDispatcher("sistema/index.jsp").forward(request, response);
+		}	
+		
 	}
 
 	
