@@ -22,6 +22,7 @@ public class ModuloDAOImpl implements ModuloDAO
 	{
 		try
 		{
+			modulo.setStatus(Status.ATIVO);
 			manager.persist(modulo);
 			manager.flush();
 		}
@@ -62,7 +63,7 @@ public class ModuloDAOImpl implements ModuloDAO
 	@Override
 	public Modulo obter(long id)
 	{
-		 TypedQuery<Modulo> query = manager.createQuery("select m from Modulo av where m.idModulo=:mId and status = 'ATIVO'", Modulo.class);
+		 TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m where m.idModulo=:mId and status = br.edu.infnet.academicnet.enumerators.Status.ATIVO", Modulo.class);
 		 query.setParameter("mId", id);
 		 return query.getSingleResult();
 	}
@@ -73,8 +74,9 @@ public class ModuloDAOImpl implements ModuloDAO
 		return query.getResultList();
 	}
 
+	@Override
 	public List<Modulo> listarAtivos() {
-		TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m where status = 'ATIVO'", Modulo.class);
+		TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m where status = br.edu.infnet.academicnet.enumerators.Status.ATIVO", Modulo.class);
 		return query.getResultList();
 	}
 
@@ -82,7 +84,7 @@ public class ModuloDAOImpl implements ModuloDAO
 	@Override
 	public List<Modulo> obterPorNome(String nome)
 	{
-		 TypedQuery<Modulo> query = manager.createQuery("select m from Modulo as m where m.nome like :mNome ", Modulo.class);
+		 TypedQuery<Modulo> query = manager.createQuery("select m from Modulo as m where m.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and m.nomeModulo like :mNome", Modulo.class);
 		 query.setParameter("mNome", "%"+nome+"%");
 		 return query.getResultList();
 	}

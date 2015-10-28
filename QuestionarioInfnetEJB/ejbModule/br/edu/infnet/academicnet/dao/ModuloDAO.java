@@ -7,6 +7,8 @@ import br.edu.infnet.academicnet.modelo.Modulo;
 public interface ModuloDAO extends GenericoDAO<Modulo>
 {
 	public List<Modulo> obterPorNome(String nome);
+	
+	public List<Modulo> listarAtivos();
 
 	//public boolean excluirModulo(long idAvaliacao, long idQuestao);
 }

@@ -53,7 +53,7 @@
   		<th>Ação</th>
   		</thead>
   		<tbody>
-  		<c:if test="${requestScope.avaliacoes != null && requestScope.modulos.size() > 0 }">
+  		<c:if test="${requestScope.modulos != null && requestScope.modulos.size() > 0 }">
   		<!-- inicio do loop -->
   			<c:forEach items="${requestScope.modulos}" var="modulo">
 	  		<tr>

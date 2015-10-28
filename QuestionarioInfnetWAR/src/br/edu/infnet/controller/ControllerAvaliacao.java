@@ -146,7 +146,7 @@ public class ControllerAvaliacao extends HttpServlet {
 					request.getRequestDispatcher("sistema/avaliacaoIndex.jsp").forward(request, response);
 					return;
 				default:
-					request.setAttribute("result_error", "NÃ£o houve ação válida inserida");
+					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
 		}
 		List<Avaliacao> avaliacoes = avaliacao.listar();

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.academicnet.dao.ModuloDAO;
+import br.edu.infnet.academicnet.dao.PessoaDAO;
+import br.edu.infnet.academicnet.enumerators.Status;
+import br.edu.infnet.academicnet.modelo.Modulo;
 
 /**
  * Servlet implementation class ControllerModulo
@@ -21,6 +24,8 @@ public class ControllerModulo extends HttpServlet {
 	@EJB
 	ModuloDAO modulo;
 	
+	@EJB
+	PessoaDAO professor;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,36 +47,69 @@ public class ControllerModulo extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		String action = request.getParameter("action");
 		if(action != null)
 		{
 			switch(action)
 			{
 				case "telaCadastro":
+					request.setAttribute("professores", professor.listar());
 					request.getRequestDispatcher("sistema/cadastroModulo.jsp").forward(request, response);
 					break;
 				case "editar":
+					request.setAttribute("professores", professor.listar());
+					request.setAttribute("modulo", modulo.obter(Integer.valueOf(request.getParameter("id"))));
 					request.getRequestDispatcher("sistema/alterarModulo.jsp").forward(request, response);
 					return;
 				case "excluir":
 					long id = Long.valueOf(request.getParameter("id"));
 					request = checkReturn(modulo.excluir(id), action, request);
 					break;
-				//case "excluirQuestao":
+				case "excluirProfessor":
+					break;
 				default:
 					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
 		}
-		request.setAttribute("modulos", modulo.listar());
+		request.setAttribute("modulos", modulo.listarAtivos());
 		request.getRequestDispatcher("sistema/moduloIndex.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String action = request.getParameter("action");
+		Modulo m = null;
+		if(action != null)
+		{
+			switch(action)
+			{
+				case "cadastrar":
+					m = new Modulo();
+					m.setNomeModulo(request.getParameter("nome"));
+					m.setProfessor(professor.obterProfessor(Integer.valueOf(request.getParameter("professores"))));
+					request = checkReturn(modulo.incluir(m), action, request);
+					break;
+				case "alterar":
+					m = modulo.obter(Long.valueOf(request.getParameter("id")));
+					m.setNomeModulo(request.getParameter("nome"));
+					m.setProfessor(professor.obterProfessor(Integer.valueOf(request.getParameter("professores"))));
+					request = checkReturn(modulo.alterar(m), action, request);
+					break;
+				case "consultar":
+					request.setAttribute("modulos", modulo.obterPorNome(request.getParameter("nome")));
+					request.getRequestDispatcher("sistema/moduloIndex.jsp").forward(request, response);
+					return;
+				default:
+					request.setAttribute("result_error", "Não houve ação válida inserida");
+			}
+		}
+		request.setAttribute("modulos", modulo.listarAtivos());
+		request.getRequestDispatcher("sistema/moduloIndex.jsp").forward(request, response);
 	}
 
 }
