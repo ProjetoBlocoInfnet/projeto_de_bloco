@@ -33,13 +33,13 @@ public class ControllerModulo extends HttpServlet {
         super();
     }
 
-    //Funções auxiliares
+    //Funï¿½ï¿½es auxiliares
     private HttpServletRequest checkReturn(boolean status, String action, HttpServletRequest request)
     {
 		if(status){
-			request.setAttribute("result_ok", "Ação efetuada com Sucesso!");
+			request.setAttribute("result_ok", "AÃ§Ã£o efetuada com Sucesso!");
 		}else{
-			request.setAttribute("result_error", "Erro ao " + action + " a avaliação!");
+			request.setAttribute("result_error", "Erro ao " + action + " o mÃ³dulo!");
 		}
 		return request;
     }
@@ -55,12 +55,12 @@ public class ControllerModulo extends HttpServlet {
 			switch(action)
 			{
 				case "telaCadastro":
-					request.setAttribute("professores", professor.listar());
+					request.setAttribute("professores", professor.obterProfessores());
 					request.getRequestDispatcher("sistema/cadastroModulo.jsp").forward(request, response);
 					break;
 				case "editar":
-					request.setAttribute("professores", professor.listar());
-					request.setAttribute("modulo", modulo.obter(Integer.valueOf(request.getParameter("id"))));
+					request.setAttribute("professores", professor.obterProfessores());
+					request.setAttribute("modulo", modulo.obter(Long.valueOf(request.getParameter("id"))));
 					request.getRequestDispatcher("sistema/alterarModulo.jsp").forward(request, response);
 					return;
 				case "excluir":
@@ -70,7 +70,7 @@ public class ControllerModulo extends HttpServlet {
 				case "excluirProfessor":
 					break;
 				default:
-					request.setAttribute("result_error", "Não houve ação válida inserida");
+					request.setAttribute("result_error", "NÃ£o houve aÃ§Ã£o vÃ¡lida inserida");
 			}
 		}
 		request.setAttribute("modulos", modulo.listarAtivos());
@@ -91,13 +91,13 @@ public class ControllerModulo extends HttpServlet {
 				case "cadastrar":
 					m = new Modulo();
 					m.setNomeModulo(request.getParameter("nome"));
-					m.setProfessor(professor.obterProfessor(Integer.valueOf(request.getParameter("professores"))));
+					m.setProfessor(professor.obterProfessor(Long.valueOf(request.getParameter("professores"))));
 					request = checkReturn(modulo.incluir(m), action, request);
 					break;
 				case "alterar":
 					m = modulo.obter(Long.valueOf(request.getParameter("id")));
 					m.setNomeModulo(request.getParameter("nome"));
-					m.setProfessor(professor.obterProfessor(Integer.valueOf(request.getParameter("professores"))));
+					m.setProfessor(professor.obterProfessor(Long.valueOf(request.getParameter("professores"))));
 					request = checkReturn(modulo.alterar(m), action, request);
 					break;
 				case "consultar":
@@ -105,7 +105,7 @@ public class ControllerModulo extends HttpServlet {
 					request.getRequestDispatcher("sistema/moduloIndex.jsp").forward(request, response);
 					return;
 				default:
-					request.setAttribute("result_error", "Não houve ação válida inserida");
+					request.setAttribute("result_error", "NÃ£o houve aÃ§Ã£o vÃ¡lida inserida");
 			}
 		}
 		request.setAttribute("modulos", modulo.listarAtivos());

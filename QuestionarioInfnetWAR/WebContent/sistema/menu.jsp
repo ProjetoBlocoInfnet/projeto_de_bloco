@@ -29,7 +29,12 @@
 	            </li>
 	            <li>
 	            	<a href="">
-	            		<span class="glyphicon glyphicon-th" aria-hidden="true"> Turma</span> 
+	            		<span class="glyphicon glyphicon-education" aria-hidden="true"> Turma</span> 
+	            	</a>
+	            </li>
+	             <li>
+	            	<a href="">
+	            		<span class="glyphicon glyphicon-book" aria-hidden="true"> Curso</span> 
 	            	</a>
 	            </li>
 	            

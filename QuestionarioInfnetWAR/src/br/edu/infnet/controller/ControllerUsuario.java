@@ -17,6 +17,7 @@ import br.edu.infnet.academicnet.modelo.Administrador;
 import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Perfil;
 import br.edu.infnet.academicnet.modelo.Pessoa;
+import br.edu.infnet.academicnet.modelo.Professor;
 import br.edu.infnet.academicnet.modelo.Usuario;
 
 /**
@@ -130,7 +131,8 @@ public class ControllerUsuario extends HttpServlet {
 						aluno.setStatus(Status.ATIVO);
 						aluno.setUsuario(new Usuario(login,senha,perfil,aluno));						
 						result = pessoaDAO.incluir(aluno);
-					}else if(perfil.getNomePerfil().equals("Administrador")){
+					}
+					else if(perfil.getNomePerfil().equals("Administrador")){
 						Pessoa admin  = new Administrador();
 						admin.setNome(nome);
 						admin.setEmail(email);
@@ -139,6 +141,16 @@ public class ControllerUsuario extends HttpServlet {
 						admin.setStatus(Status.ATIVO);
 						admin.setUsuario(new Usuario(login,senha,perfil,admin));	
 						result = pessoaDAO.incluir(admin);
+					}
+					else if(perfil.getNomePerfil().equals("Professor")){
+						Pessoa professor  = new Professor();
+						professor.setNome(nome);
+						professor.setEmail(email);
+						professor.setCep(cep);
+						professor.setEndereco(endereco);
+						professor.setStatus(Status.ATIVO);
+						professor.setUsuario(new Usuario(login,senha,perfil,professor));	
+						result = pessoaDAO.incluir(professor);
 					}
 										
 					if(result){
@@ -173,6 +185,17 @@ public class ControllerUsuario extends HttpServlet {
 						admin.setStatus(Status.ATIVO);
 						admin.setUsuario(new Usuario(login,senha,perfil,admin));
 						result = pessoaDAO.alterar(admin);
+					}
+					else if(perfil.getNomePerfil().equals("Professor")){
+						Pessoa professor  = new Professor();
+						professor.setMatricula(Long.valueOf(request.getParameter("matricula")));
+						professor.setNome(nome);
+						professor.setEmail(email);
+						professor.setCep(cep);
+						professor.setEndereco(endereco);
+						professor.setStatus(Status.ATIVO);
+						professor.setUsuario(new Usuario(login,senha,perfil,professor));	
+						result = pessoaDAO.incluir(professor);
 					}
 					
 					if(result){
