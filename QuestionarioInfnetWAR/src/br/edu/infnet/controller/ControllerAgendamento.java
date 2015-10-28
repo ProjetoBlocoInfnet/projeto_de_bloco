@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
+import br.edu.infnet.academicnet.dao.AvaliacaoDAO;
+import br.edu.infnet.academicnet.dao.CursoDAO;
+import br.edu.infnet.academicnet.dao.ModuloDAO;
+import br.edu.infnet.academicnet.dao.PessoaDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
 
 /**
@@ -25,7 +29,17 @@ public class ControllerAgendamento extends HttpServlet {
     @EJB
     TurmaDAO turma;
     
+    @EJB
+    ModuloDAO modulo;
     
+    @EJB
+    CursoDAO curso;
+    
+    @EJB
+    PessoaDAO professor;
+    
+    @EJB
+    AvaliacaoDAO avaliacao;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -54,7 +68,11 @@ public class ControllerAgendamento extends HttpServlet {
 			switch(action)
 			{
 				case "telaCadastro":
+					request.setAttribute("avaliacoes", avaliacao.listar());
 					request.setAttribute("turmas", turma.listar());
+					request.setAttribute("professores", professor.listar());
+					request.setAttribute("modulos", modulo.listar());
+					request.setAttribute("cursos", curso.listar());
 					request.getRequestDispatcher("sistema/cadastroAgendamento.jsp").forward(request, response);
 					break;
 				case "editar":
