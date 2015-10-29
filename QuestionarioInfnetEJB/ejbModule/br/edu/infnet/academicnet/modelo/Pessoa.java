@@ -16,12 +16,18 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import br.edu.infnet.academicnet.enumerators.Status;
 
 @Entity
 @Table(name="tbl_pessoa")
 @Inheritance(strategy=InheritanceType.JOINED)
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Pessoa implements Serializable{
 	
 
@@ -44,6 +50,7 @@ public abstract class Pessoa implements Serializable{
 	
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	@JoinColumn(name = "usuario_id")
+	@XmlTransient
 	private Usuario usuario;
 	
 	@Enumerated(EnumType.STRING)
@@ -53,6 +60,7 @@ public abstract class Pessoa implements Serializable{
 	{
 		
 	}
+	
 
 	public long getMatricula() {
 		return matricula;

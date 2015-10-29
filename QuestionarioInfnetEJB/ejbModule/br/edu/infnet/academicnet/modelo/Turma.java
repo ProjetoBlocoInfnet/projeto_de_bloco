@@ -11,9 +11,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="tbl_turma")
+@XmlRootElement
 public class Turma implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -26,6 +29,7 @@ public class Turma implements Serializable{
 	
 	@ManyToMany
 	@JoinTable(name="turma_alunos")
+	@XmlTransient
 	private List<Aluno> alunos;
 		
 	@ManyToMany

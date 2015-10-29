@@ -12,5 +12,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/waizmam/Documentos/Aulas Pós/tópicos especiais/Aula 1/JAX/ParseDOMxSAX/lib/xstream-1.4.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
