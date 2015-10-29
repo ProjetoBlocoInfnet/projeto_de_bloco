@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,13 +31,13 @@ public class Curso implements Serializable{
 	private String nome;
 	
 	@ManyToMany
-	@JoinTable(name="curso_turmas")
+	@JoinTable(name="curso_turmas")	
 	private List<Turma> turmas;
 	
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
-	@ManyToMany(mappedBy="cursos")
+	@ManyToMany(mappedBy="cursos", fetch=FetchType.LAZY)
 	private List<Modulo> modulo;
 	
 	public Curso()
