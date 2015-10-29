@@ -4,12 +4,12 @@
 function getModulos()
 {
 	var idCurso = $('#curso').val();
-
+	alert(idCurso)
     $.ajax({
         url: "ControllerAgendamento?list=listarModulos",
         type: 'GET',
         dataType: 'json',
-        data: JSON.stringify(idCurso),
+        data: {idCurso: idCurso},// assim que se passa 
         contentType: 'application/json',
         mimeType: 'application/json',
  
