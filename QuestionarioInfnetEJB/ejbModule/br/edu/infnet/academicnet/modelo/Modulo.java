@@ -42,8 +42,8 @@ public class Modulo implements Serializable{
 	
 	@ManyToMany
 	@JoinTable(name = "modulo_cursos",
-	joinColumns = @JoinColumn(name = "modulo_id"),
-	inverseJoinColumns = @JoinColumn(name = "curso_id"))
+	joinColumns = @JoinColumn(name = "modulo_id", referencedColumnName="idModulo"), 
+	inverseJoinColumns = @JoinColumn(name = "curso_id", referencedColumnName = "idCurso"))
 	private List<Curso> cursos;
 	
 	@OneToOne(mappedBy="modulo")

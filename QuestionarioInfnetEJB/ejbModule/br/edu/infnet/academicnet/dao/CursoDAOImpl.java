@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.enumerators.Status;
 import br.edu.infnet.academicnet.modelo.Curso;
+import br.edu.infnet.academicnet.modelo.Modulo;
 
 @Stateless
 public class CursoDAOImpl implements CursoDAO
@@ -84,6 +85,25 @@ public class CursoDAOImpl implements CursoDAO
 		 query.setParameter("mNome", "%"+nome+"%");
 		 return query.getResultList();
 	}
+	
+	/* Eu criei essas duas Queries par atentar fazer a busca dos módulos mas está dando erros */
+	
+	@Override
+	public List<Modulo> listarModulosPorCursoId(Long idCurso) {		
+		TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m inner join m.curso c",Modulo.class);
+		List<Modulo> modulos = query.getResultList();				
+		return modulos;
+	}
+	
+	@Override
+	public Curso CursoComModulosCursoId(Long idCurso){		
+		TypedQuery<Curso> query = manager.createQuery("select c from Curso c join fetch c.modulo m where c.idCurso =:cId",Curso.class);
+		query.setParameter("cId", idCurso);
+		Curso curso = query.getSingleResult();				
+		return curso;
+	}
+
+
 
 	
 
