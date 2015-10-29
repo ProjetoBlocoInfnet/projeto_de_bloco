@@ -102,13 +102,21 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	@Override
 	public List<AgendamentoAvaliacao> obterPorDataInicio(
 			Date data) {
-		// TODO Auto-generated method stub
-		return null;
+		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataInicio=:agData", AgendamentoAvaliacao.class);
+		 query.setParameter("agData", data);
+		 return query.getResultList();
 	}
 
 	@Override
 	public List<AgendamentoAvaliacao> obterPorDataFim(
 			Date data) {
+		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataFim=:agData", AgendamentoAvaliacao.class);
+		 query.setParameter("agData", data);
+		 return query.getResultList();	}
+
+	@Override
+	public List<AgendamentoAvaliacao> obterPorNomeAvaliacao(String nome)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}

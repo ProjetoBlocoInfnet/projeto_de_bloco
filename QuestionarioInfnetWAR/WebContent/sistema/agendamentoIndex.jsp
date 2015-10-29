@@ -18,7 +18,6 @@
 	<form action="ControllerAgendamento" method="post" class="form-inline">
 		<input type="hidden" name="action" value="consultar">		
 		<div class="form-group">
-		    <label class="sr-only" for="exampleInputPassword3">Password</label>
 		    <input type="text" name="valor" class="form-control" placeholder="Consultar por...">
 				<select name="tipoConsulta" id="tipoConsulta" class="form-control">
 				  	<option value="agendamento">ID Agendamento</option>
@@ -85,8 +84,8 @@
 	  			<td>${agendamento.professor.nome}</td>
 
 	  			<td>
-	  				<a href="ControllerAgendamento?action=editar&id=${avaliacao.idAgendamento}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href="ControllerAgendamento?action=excluir&id=${avaliacao.idAgendamento}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+	  				<a href="ControllerAgendamento?action=editar&id=${agendamento.idAgendamento}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+	  				<a href="ControllerAgendamento?action=excluir&id=${agendamento.idAgendamento}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
 	  			</td>
 	  		</tr>
 	  		</c:forEach>

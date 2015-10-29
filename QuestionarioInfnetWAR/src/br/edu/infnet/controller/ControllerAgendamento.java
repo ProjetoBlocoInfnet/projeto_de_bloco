@@ -1,16 +1,15 @@
 package br.edu.infnet.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -95,6 +94,18 @@ public class ControllerAgendamento extends HttpServlet {
 				default:
 					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
+		}
+		String list = request.getParameter("list");
+		if(list != null)
+		{
+			switch(list)
+			{
+				case "listarModulos":
+					request.setAttribute("modulos", curso.obter(Long.valueOf(request.getParameter("idCurso"))).getModulo());
+					//JsonObject modulos = Json.
+							//.add(curso.obter(Long.valueOf(request.getParameter("idCurso"))).getModulo()).build();
+				break;
+			}	
 		}
 		request.setAttribute("agendamentos", agendamento.listar());
 		request.getRequestDispatcher("sistema/agendamentoIndex.jsp").forward(request, response);

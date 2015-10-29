@@ -29,13 +29,13 @@ public class AgendamentoAvaliacaoAuto
     private Session session;
 
 	//O agendamento executa a cada dia às 00hrs
-	@Schedule(hour="0")
+	@Schedule(hour="0", minute="15")
 	public void IniciarAvaliacao()
 	{
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
 		Date data = new Date(0);
-		data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		data = (java.sql.Date) data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
@@ -76,7 +76,7 @@ public class AgendamentoAvaliacaoAuto
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
 		Date data = new Date(0);
-		data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		data = (java.sql.Date) data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataFim(StatusAvaliacao.EM_ANDAMENTO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{

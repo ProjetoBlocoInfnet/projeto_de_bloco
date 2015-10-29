@@ -13,4 +13,5 @@ public interface AgendamentoAvaliacaoDAO extends GenericoDAO<AgendamentoAvaliaca
 	public List<AgendamentoAvaliacao> obterPorStatusDataFim(StatusAvaliacao status, Date data);
 	public List<AgendamentoAvaliacao> obterPorDataInicio(Date data);
 	public List<AgendamentoAvaliacao> obterPorDataFim(Date data);
+	public List<AgendamentoAvaliacao> obterPorNomeAvaliacao(String nome);
 }
