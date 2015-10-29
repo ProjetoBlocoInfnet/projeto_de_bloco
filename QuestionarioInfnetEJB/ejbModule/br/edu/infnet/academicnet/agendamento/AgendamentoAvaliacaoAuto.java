@@ -2,7 +2,7 @@ package br.edu.infnet.academicnet.agendamento;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,12 +29,14 @@ public class AgendamentoAvaliacaoAuto
     private Session session;
 
 	//O agendamento executa a cada dia às 00hrs
-	@Schedule(hour="0")
+	@Schedule(hour="0", minute="15")
 	public void IniciarAvaliacao()
 	{
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
-		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		Date data = new Date(0);
+		data = (java.sql.Date) data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
 			for(Aluno al : a.getTurma().getAlunos())
@@ -73,7 +75,9 @@ public class AgendamentoAvaliacaoAuto
 	{
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
-		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataFim(StatusAvaliacao.EM_ANDAMENTO, Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		Date data = new Date(0);
+		data = (java.sql.Date) data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataFim(StatusAvaliacao.EM_ANDAMENTO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
 			try

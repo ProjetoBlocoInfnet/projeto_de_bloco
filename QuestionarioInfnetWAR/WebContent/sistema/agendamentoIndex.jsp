@@ -21,10 +21,10 @@
 		    <input type="text" name="valor" class="form-control" placeholder="Consultar por...">
 				<select name="tipoConsulta" id="tipoConsulta" class="form-control">
 				  	<option value="agendamento">ID Agendamento</option>
-			  		<option value="avaliacao">ID Avaliação</option>
+			  		<option value="avaliacao">Avaliação</option>
 			  		<option value="dataInicio">Data Inicio</option>
 					<option value="dataFim">Data Fim</option>
-					<option value="turma">ID Turma</option>
+					<option value="turma">Turma</option>
 					<option value="curso">Curso</option>
 					<option value="modulo">Módulo</option>
 					<option value="professor">Professor</option>
@@ -57,11 +57,11 @@
 	<table class="table table-hover">
   		<thead>
   		<th>ID Agendamento</th>
-  		<th>ID Avaliação</th>
+  		<th>Avaliação</th>
   		<th>Status</th>
   		<th>Data Inicio</th>
   		<th>Data Fim</th>
-  		<th>ID Turma</th>
+  		<th>Turma</th>
   		<th>Curso</th>
   		<th>Módulo</th>
   		<th>Professor</th>
@@ -74,18 +74,18 @@
 	  		<tr>
 	  			
 	  			<td>${agendamento.idAgendamento}</td>
-	  			<td>${agendamento.avaliacao.idAvaliacao}</td>
+	  			<td>${agendamento.avaliacao.nome}</td>
 	  			<td>${agendamento.status}</td>
 	  			<td>${agendamento.dataInicio}</td>
 	  			<td>${agendamento.dataFim}</td>
-	  			<td>${agendamento.turma.idTurma}</td>
+	  			<td>${agendamento.turma.nomeTurma}</td>
 	  			<td>${agendamento.curso.nome}</td>
 	  			<td>${agendamento.modulo.nomeModulo}</td>
 	  			<td>${agendamento.professor.nome}</td>
 
 	  			<td>
-	  				<a href="ControllerAgendamento?action=editar&id=${avaliacao.idAgendamento}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href="ControllerAgendamento?action=excluir&id=${avaliacao.idAgendamento}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
+	  				<a href="ControllerAgendamento?action=editar&id=${agendamento.idAgendamento}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
+	  				<a href="ControllerAgendamento?action=excluir&id=${agendamento.idAgendamento}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
 	  			</td>
 	  		</tr>
 	  		</c:forEach>
