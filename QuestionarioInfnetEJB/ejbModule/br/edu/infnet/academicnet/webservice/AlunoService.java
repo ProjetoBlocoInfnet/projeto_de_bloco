@@ -8,14 +8,17 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 
 import br.edu.infnet.academicnet.dao.PessoaDAO;
 import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Pessoa;
 
-@WebService
+@WebService(serviceName = "AlunoService",  targetNamespace="http://localhost:1099/ws")
 @Stateless
-public class AlunoService {
+@SOAPBinding(style = SOAPBinding.Style.DOCUMENT)
+public class AlunoService implements AlunoServiceRemote
+{
 	
 	@Inject
 	PessoaDAO dao;
