@@ -17,8 +17,10 @@ public class TestWebservice {
 		                    "http://localhost:8080/QuestionarioInfnetEJB/AlunoService/AlunoService");
 		AlunoServiceSoapBindingStub bind = (AlunoServiceSoapBindingStub) asLocator.getAlunoServicePort();
 		Aluno alunos[] = bind.todosOsAlunos();
-		System.out.println(alunos[0].getNome());
-		System.out.println(alunos[1].getNome());
+		for(int i=0; i <alunos.length; i++)
+		{
+			System.out.println("Aluno: " + alunos[i].getNome());
+		}
 	}
 
 }
