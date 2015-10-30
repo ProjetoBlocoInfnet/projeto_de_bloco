@@ -66,7 +66,7 @@ public class CursoDAOImpl implements CursoDAO
 	@Override
 	public Curso obter(long id)
 	{
-		TypedQuery<Curso> query = manager.createQuery("select c from Curso c where c.idCurso=:cId and status = br.edu.infnet.academicnet.enumerators.Status.ATIVO", Curso.class);
+		TypedQuery<Curso> query = manager.createQuery("select c from Curso c join fetch c.modulo m join fetch c.turmas t where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and c.idCurso=:cId ", Curso.class);
 		query.setParameter("cId", id);
 		return query.getSingleResult();
 	}
@@ -81,7 +81,7 @@ public class CursoDAOImpl implements CursoDAO
 	@Override
 	public List<Curso> obterPorNome(String nome)
 	{
-		 TypedQuery<Curso> query = manager.createQuery("select c from Curso as c where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and c.nomeModulo like :mNome", Curso.class);
+		 TypedQuery<Curso> query = manager.createQuery("select c from Curso as c where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and c.nome like :mNome", Curso.class);
 		 query.setParameter("mNome", "%"+nome+"%");
 		 return query.getResultList();
 	}
@@ -101,6 +101,13 @@ public class CursoDAOImpl implements CursoDAO
 		query.setParameter("cId", idCurso);
 		Curso curso = query.getSingleResult();				
 		return curso;
+	}
+
+	@Override
+	public List<Curso> listarAtivos()
+	{
+		TypedQuery<Curso> query = manager.createQuery("select c from Curso c  where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO", Curso.class);
+		return query.getResultList();
 	}
 
 

@@ -10,11 +10,11 @@
 		<a href="ControllerCurso"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Cadastro de Curso</h2>
+		<h2>Alteração de Curso</h2>
 		<hr>
 		<form action="ControllerCurso" method="post" class="form-horizontal">
 		
-		  <input type="hidden" name="action" value="cadastrar" />
+		  <input type="hidden" name="action" value="alterar" />
 		
 		  <div class="form-group">
 		    <label for="nome" class="col-sm-2 control-label">Nome</label>
@@ -23,14 +23,16 @@
 		    </div>
 		  </div>
 		 		  
-		  
 		  <div class="form-group">
 		    <label for="modulo" class="col-sm-2 control-label">Módulos</label>
 		    	<div class="col-sm-10">
-					  <select name="modulos" id="modulo" class="form-control" multiple="multiple">
-					   <c:forEach var="modulo" items="${listaModulos}">
-							  <option value="${modulo.idModulo}">${modulo.nomeModulo}</option>
-					</c:forEach>
+					<select name="modulos" id="modulo" class="form-control" multiple="multiple">
+						<c:forEach var="meuModulo" items="${meusModulos}">
+							<option value="${meuModulo.idModulo}" selected>${meuModulo.nomeModulo}</option>
+						</c:forEach>
+						<c:forEach var="modulo" items="${listaModulos}">
+							<option value="${modulo.idModulo}" >${modulo.nomeModulo}</option>
+						</c:forEach>
 					</select>
 		  		</div>
 		  </div>
@@ -50,7 +52,7 @@
 		  
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">Cadastrar</button>
+		      <button type="submit" class="btn btn-default">Alterar</button>
 		    </div>
 		  </div>
 		</form>
