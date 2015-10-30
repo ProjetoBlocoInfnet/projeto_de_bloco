@@ -12,4 +12,6 @@ public interface CursoDAO extends GenericoDAO<Curso>
 	public List<Modulo> listarModulosPorCursoId(Long idCurso);
 	
 	public Curso CursoComModulosCursoId(Long idCurso);
+	
+	public List<Curso> listarAtivos();
 }
