@@ -63,9 +63,11 @@ public class ControllerCurso extends HttpServlet {
 			case "telaAlterar":
 				
 				Curso curso = cursoDAO.obter(idCurso);
+				request.setAttribute("meusModulos", cursoDAO.CursoComModulosCursoId(idCurso).getModulo());
+				request.setAttribute("meusTurmas", curso.getTurmas());
 				request.setAttribute("curso", curso);
-				request.setAttribute("listaModulos", moduloDAO.listarAtivos());
-				request.setAttribute("listaTurma", turmaDAO.listar());	
+				request.setAttribute("listaModulos", moduloDAO.listarAtivos().removeAll(curso.getModulo()));
+				request.setAttribute("listaTurma", turmaDAO.listar().removeAll(curso.getTurmas()));
 				request.getRequestDispatcher("sistema/alterarCurso.jsp").forward(request, response);
 				return;
 				//break;
@@ -74,12 +76,12 @@ public class ControllerCurso extends HttpServlet {
 				
 				boolean result = cursoDAO.excluir(idCurso);
 				if(result){
-					request.setAttribute("result_ok", "Exclusão efetuada com Sucesso!");
+					request.setAttribute("result_ok", "Exclus�o efetuada com Sucesso!");
 				}else{
 					request.setAttribute("result_error", "Erro ao excluir!");
 				}	
 				
-				listaCurso = cursoDAO.listar();
+				listaCurso = cursoDAO.listarAtivos();
 				request.setAttribute("listaCurso", listaCurso);
 				break;
 				
@@ -88,7 +90,7 @@ public class ControllerCurso extends HttpServlet {
 			}
 									
 		}else{
-			 listaCurso = cursoDAO.listar();			
+			 listaCurso = cursoDAO.listarAtivos();			
 		}
 				
 		request.setAttribute("listaCurso", listaCurso);
@@ -125,17 +127,16 @@ public class ControllerCurso extends HttpServlet {
 					break;
 				case "alterar":
 					
-					curso = new Curso();
-					curso.setIdCurso(Long.valueOf(request.getParameter("idCurso")));
+					curso = cursoDAO.obter(Long.valueOf(request.getParameter("idCurso")));
 					curso.setNome(nome);
 					curso.setModulo(retornaListModulo(modulos));
 					curso.setTurmas(retornaListTurma(turmas));
 					result = cursoDAO.alterar(curso);
 					
 					if(result){
-						request.setAttribute("result_ok", "Usuário alterada com Sucesso!");
+						request.setAttribute("result_ok", "Curso alterado com Sucesso!");
 					}else{
-						request.setAttribute("result_error", "Erro ao alterar a usuário!");
+						request.setAttribute("result_error", "Erro ao alterar o curso!");
 					}	
 					
 					break;

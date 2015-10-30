@@ -21,6 +21,10 @@ import br.edu.infnet.academicnet.dao.ModuloDAO;
 import br.edu.infnet.academicnet.dao.PessoaDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
+import br.edu.infnet.academicnet.modelo.Curso;
+import br.edu.infnet.academicnet.modelo.Modulo;
+
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class ControllerAgendamento
@@ -39,7 +43,7 @@ public class ControllerAgendamento extends HttpServlet {
     ModuloDAO modulo;
     
     @EJB
-    CursoDAO curso;
+    CursoDAO cursoDAO;
     
     @EJB
     PessoaDAO professor;
@@ -78,7 +82,7 @@ public class ControllerAgendamento extends HttpServlet {
 					request.setAttribute("turmas", turma.listar());
 					request.setAttribute("professores", professor.obterProfessores());
 					request.setAttribute("modulos", modulo.listar());
-					request.setAttribute("cursos", curso.listar());
+					request.setAttribute("cursos", cursoDAO.listar());
 					request.getRequestDispatcher("sistema/cadastroAgendamento.jsp").forward(request, response);
 					return;
 				case "editar":
@@ -99,10 +103,19 @@ public class ControllerAgendamento extends HttpServlet {
 			switch(list)
 			{
 				case "listarModulos":
-					request.setAttribute("modulos", curso.obter(Long.valueOf(request.getParameter("idCurso"))).getModulo());
-					//JsonObject modulos = Json.
-							//.add(curso.obter(Long.valueOf(request.getParameter("idCurso"))).getModulo()).build();
-				break;
+					
+					Long idCurso = Long.valueOf(request.getParameter("idCurso"));
+					//Curso curso = cursoDAO.obter(idCurso);
+					
+					Curso curso = cursoDAO.CursoComModulosCursoId(idCurso);
+							
+					/* Exemplo de como usar Gson */			
+					/*Gson gson = new Gson();
+					String modulosJson = gson.toJson(modulos);
+					System.out.println(modulosJson);
+					request.setAttribute("modulos", modulosJson);
+					return ;*/					
+					
 			}	
 		}
 		request.setAttribute("agendamentos", agendamento.listar());
@@ -140,7 +153,7 @@ public class ControllerAgendamento extends HttpServlet {
 					
 					a.setAvaliacao(avaliacao.obter(Long.valueOf(request.getParameter("avaliacao"))));
 					a.setTurma(turma.obter(Long.valueOf(request.getParameter("turma"))));
-					a.setCurso(curso.obter(Long.valueOf(request.getParameter("curso"))));
+					a.setCurso(cursoDAO.obter(Long.valueOf(request.getParameter("curso"))));
 					a.setModulo(modulo.obter(Long.valueOf(request.getParameter("modulo"))));
 					a.setProfessor(professor.obterProfessor(Long.valueOf(request.getParameter("professor"))));
 					request = checkReturn(agendamento.incluir(a), action, request);
@@ -161,7 +174,7 @@ public class ControllerAgendamento extends HttpServlet {
 					
 					a.setAvaliacao(avaliacao.obter(Long.valueOf(request.getParameter("avaliacao"))));
 					a.setTurma(turma.obter(Long.valueOf(request.getParameter("turma"))));
-					a.setCurso(curso.obter(Long.valueOf(request.getParameter("curso"))));
+					a.setCurso(cursoDAO.obter(Long.valueOf(request.getParameter("curso"))));
 					a.setModulo(modulo.obter(Long.valueOf(request.getParameter("modulo"))));
 					a.setProfessor(professor.obterProfessor(Long.valueOf(request.getParameter("professor"))));
 					request = checkReturn(agendamento.alterar(a), action, request);

@@ -1,0 +1,123 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:1099/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="AlunoService" targetNamespace="http://localhost:1099/ws">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost:1099/ws" elementFormDefault="unqualified" targetNamespace="http://localhost:1099/ws" version="1.0">
+
+  <xs:element name="BuscarUsuariosPorNome" type="tns:BuscarUsuariosPorNome"></xs:element>
+
+  <xs:element name="BuscarUsuariosPorNomeResponse" type="tns:BuscarUsuariosPorNomeResponse"></xs:element>
+
+  <xs:element name="aluno" type="tns:aluno"></xs:element>
+
+  <xs:element name="pessoa" type="tns:pessoa"></xs:element>
+
+  <xs:element name="todosOsAlunos" type="tns:todosOsAlunos"></xs:element>
+
+  <xs:element name="todosOsAlunosResponse" type="tns:todosOsAlunosResponse"></xs:element>
+
+  <xs:complexType name="BuscarUsuariosPorNome">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nome" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BuscarUsuariosPorNomeResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="aluno" type="tns:pessoa"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="pessoa">
+    <xs:sequence>
+      <xs:element name="matricula" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="nome" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="endereco" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="cep" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="email" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="status" type="tns:status"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="todosOsAlunos">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="todosOsAlunosResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="aluno" type="tns:aluno"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="aluno">
+    <xs:complexContent>
+      <xs:extension base="tns:pessoa">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ATIVO"></xs:enumeration>
+      <xs:enumeration value="INATIVO"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="BuscarUsuariosPorNome">
+    <wsdl:part element="tns:BuscarUsuariosPorNome" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="todosOsAlunosResponse">
+    <wsdl:part element="tns:todosOsAlunosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="todosOsAlunos">
+    <wsdl:part element="tns:todosOsAlunos" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BuscarUsuariosPorNomeResponse">
+    <wsdl:part element="tns:BuscarUsuariosPorNomeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AlunoService">
+    <wsdl:operation name="BuscarUsuariosPorNome">
+      <wsdl:input message="tns:BuscarUsuariosPorNome" name="BuscarUsuariosPorNome">
+    </wsdl:input>
+      <wsdl:output message="tns:BuscarUsuariosPorNomeResponse" name="BuscarUsuariosPorNomeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="todosOsAlunos">
+      <wsdl:input message="tns:todosOsAlunos" name="todosOsAlunos">
+    </wsdl:input>
+      <wsdl:output message="tns:todosOsAlunosResponse" name="todosOsAlunosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlunoServiceSoapBinding" type="tns:AlunoService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="BuscarUsuariosPorNome">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="BuscarUsuariosPorNome">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="BuscarUsuariosPorNomeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="todosOsAlunos">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="todosOsAlunos">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="todosOsAlunosResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AlunoService">
+    <wsdl:port binding="tns:AlunoServiceSoapBinding" name="AlunoServicePort">
+      <soap:address location="http://localhost:8080/QuestionarioInfnetEJB/AlunoService/AlunoService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
