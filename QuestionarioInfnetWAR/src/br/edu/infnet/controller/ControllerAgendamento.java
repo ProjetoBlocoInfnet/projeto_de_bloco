@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.json.Json;
-import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,13 +53,13 @@ public class ControllerAgendamento extends HttpServlet {
         super();
     }
 
-    //Funções auxiliares
+    //Funï¿½ï¿½es auxiliares
     private HttpServletRequest checkReturn(boolean status, String action, HttpServletRequest request)
     {
 		if(status){
-			request.setAttribute("result_ok", "Ação efetuada com Sucesso!");
+			request.setAttribute("result_ok", "Aï¿½ï¿½o efetuada com Sucesso!");
 		}else{
-			request.setAttribute("result_error", "Erro ao " + action + " a avaliação!");
+			request.setAttribute("result_error", "Erro ao " + action + " a avaliaï¿½ï¿½o!");
 		}
 		return request;
     }
@@ -92,7 +90,7 @@ public class ControllerAgendamento extends HttpServlet {
 					break;
 				//case "excluirQuestao":
 				default:
-					request.setAttribute("result_error", "Não houve ação válida inserida");
+					request.setAttribute("result_error", "Nï¿½o houve aï¿½ï¿½o vï¿½lida inserida");
 			}
 		}
 		String list = request.getParameter("list");
@@ -191,7 +189,7 @@ public class ControllerAgendamento extends HttpServlet {
 					request.getRequestDispatcher("sistema/agendamentoIndex.jsp").forward(request, response);
 					return;
 				default:
-					request.setAttribute("result_error", "Não houve ação válida inserida");
+					request.setAttribute("result_error", "Nï¿½o houve aï¿½ï¿½o vï¿½lida inserida");
 			}
 		}
 		request.setAttribute("agendamentos", agendamento.listar());
