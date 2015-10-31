@@ -84,10 +84,14 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	@Override
 	public List<AgendamentoAvaliacao> obterPorStatusDataInicio(StatusAvaliacao status,
 			Date data) {
-		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataInicio=:agData and ag.status =:agStatus ", AgendamentoAvaliacao.class);
-		 query.setParameter("agStatus", status);
-		 query.setParameter("agData", data);
-		 return query.getResultList();
+		System.out.println("Dentro da função de sql");
+		System.out.println(data);
+		System.out.println(status);
+		manager.getTransaction().begin();
+		TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataInicio=:agData and ag.status =:agStatus ", AgendamentoAvaliacao.class);
+		query.setParameter("agStatus", status);
+		query.setParameter("agData", data);
+		return query.getResultList();
 	}
 
 	@Override
