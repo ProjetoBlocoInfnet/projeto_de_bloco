@@ -11,15 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="tbl_usuario")
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Usuario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -34,9 +28,8 @@ public class Usuario implements Serializable{
 	
 	private String senha;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "perfil_id")
-	@XmlTransient
 	private Perfil perfil;
 	
 	@OneToOne(mappedBy = "usuario")	

@@ -27,7 +27,7 @@ public class AlunoService implements AlunoServiceRemote
 	@WebResult(name="aluno")
 	public List<Aluno> todosOsAlunos(){
 		System.out.println("Aluno Service selecinando alunos no bd ......");		
-		return dao.obterAlunos();		
+		return dao.obterAlunosService();		
 	}
 	
 	@WebMethod(operationName="BuscarUsuariosPorNome")
