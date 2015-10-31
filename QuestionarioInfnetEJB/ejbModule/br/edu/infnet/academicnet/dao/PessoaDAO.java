@@ -22,6 +22,8 @@ public interface PessoaDAO extends GenericoDAO<Pessoa>{
 
 	public List<Aluno> obterAlunos();
 	
+	public List<Aluno> obterAlunosService();
+	
 	public List<Professor> obterProfessores();
 	
 	public Aluno obterAluno(long matricula);

@@ -3,7 +3,6 @@ package br.edu.infnet.academicnet.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -112,7 +111,7 @@ public class PessoaDAOImpl implements PessoaDAO{
 
 	@Override
 	public List<Aluno> obterAlunos() {
-		TypedQuery<Aluno> query = manager.createQuery("select a from Aluno a order by a.matricula", Aluno.class);
+		TypedQuery<Aluno> query = manager.createQuery("select a from Aluno a INNER JOIN FETCH a.usuario  order by a.matricula", Aluno.class);
 		return query.getResultList();
 	}
 
@@ -135,6 +134,12 @@ public class PessoaDAOImpl implements PessoaDAO{
 		query.setParameter("pId", matricula);
 		return query.getSingleResult();
 		
+	}
+
+	@Override
+	public List<Aluno> obterAlunosService() {
+		TypedQuery<Aluno> query = manager.createQuery("select a from Aluno a INNER JOIN FETCH a.usuario u INNER JOIN FETCH a.usuario.perfil p order by a.matricula", Aluno.class);
+		return query.getResultList();
 	}
 	
 

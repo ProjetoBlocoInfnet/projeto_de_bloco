@@ -37,7 +37,7 @@
 			  </div>
 			  
 			  <div class="form-group">
-			    <label for="tipoResposta" class="col-sm-2 control-label">Categoria</label>
+			    <label for="tipoResposta" class="col-sm-2 control-label">Tipo</label>
 			    	<div class="col-sm-10">
 						  <select name="tipoResposta" id="tipoResposta" class="form-control">
 							  <option>Selecionar</option>

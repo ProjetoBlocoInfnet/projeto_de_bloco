@@ -24,12 +24,11 @@ import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Curso;
 import br.edu.infnet.academicnet.modelo.Modulo;
 
-import com.google.gson.Gson;
 
 /**
  * Servlet implementation class ControllerAgendamento
  */
-@WebServlet("/ControllerAgendamento")
+@WebServlet("/ControllerAgendamento") 
 public class ControllerAgendamento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -108,6 +107,12 @@ public class ControllerAgendamento extends HttpServlet {
 					//Curso curso = cursoDAO.obter(idCurso);
 					
 					Curso curso = cursoDAO.CursoComModulosCursoId(idCurso);
+					
+					List<Modulo> modulos = curso.getModulo();
+					
+					for (Modulo modulo : modulos) {
+						System.out.println(modulo.getNomeModulo());
+					}
 							
 					/* Exemplo de como usar Gson */			
 					/*Gson gson = new Gson();

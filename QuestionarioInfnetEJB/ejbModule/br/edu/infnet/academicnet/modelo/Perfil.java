@@ -11,11 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="tbl_perfil")
-@XmlRootElement
 public class Perfil implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -29,7 +27,7 @@ public class Perfil implements Serializable{
 
 	private String descricao;
 	
-	@OneToMany(mappedBy = "perfil",fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Usuario> usuarios;
 
 	public Perfil()

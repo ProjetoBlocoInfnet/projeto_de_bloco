@@ -66,7 +66,7 @@ public class CursoDAOImpl implements CursoDAO
 	@Override
 	public Curso obter(long id)
 	{
-		TypedQuery<Curso> query = manager.createQuery("select c from Curso c join fetch c.modulo m join fetch c.turmas t where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and c.idCurso=:cId ", Curso.class);
+		TypedQuery<Curso> query = manager.createQuery("select c from Curso c where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and c.idCurso=:cId ", Curso.class);
 		query.setParameter("cId", id);
 		return query.getSingleResult();
 	}
@@ -96,11 +96,21 @@ public class CursoDAOImpl implements CursoDAO
 	}
 	
 	@Override
-	public Curso CursoComModulosCursoId(Long idCurso){		
-		TypedQuery<Curso> query = manager.createQuery("select c from Curso c join fetch c.modulo m where c.idCurso =:cId",Curso.class);
+	public Curso CursoComModulosCursoId(Long idCurso){	
+		System.out.println("buscando o curso...");
+		System.out.println("idCurso "+ idCurso);
+		System.out.println();
+		//TypedQuery<Curso> query = manager.createQuery("select c from Curso c INNER JOIN FETCH c.modulo m where c.idCurso=:cId",Curso.class);
+		//query.setParameter("cId", idCurso);
+		TypedQuery<Curso> query = manager.createQuery("select c from Curso c  where c.idCurso=:cId", Curso.class);
 		query.setParameter("cId", idCurso);
-		Curso curso = query.getSingleResult();				
-		return curso;
+		try {
+			Curso curso = query.getSingleResult();			
+			return curso;
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 
 	@Override
