@@ -29,7 +29,7 @@ public class AgendamentoAvaliacaoAuto
     private Session session;
 
 	//O agendamento executa a cada dia às 00hrs
-	@Schedule(hour="20", minute="32", persistent=true)
+	@Schedule(hour="21", minute="16", persistent=true)
 	public void IniciarAvaliacao()
 	{
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();

@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.enumerators.StatusAvaliacao;
@@ -14,7 +16,7 @@ import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 @Stateless
 public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 {
-	@PersistenceContext
+	@PersistenceContext(type = PersistenceContextType.EXTENDED)
 	private EntityManager manager;
 
 	@Override
@@ -87,7 +89,7 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 		System.out.println("Dentro da função de sql");
 		System.out.println(data);
 		System.out.println(status);
-		manager.getTransaction().begin();
+		manager = Persistence.createEntityManagerFactory("java:jboss/datasource/academicnetDS").createEntityManager();
 		TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataInicio=:agData and ag.status =:agStatus ", AgendamentoAvaliacao.class);
 		query.setParameter("agStatus", status);
 		query.setParameter("agData", data);
