@@ -25,9 +25,9 @@
 		 		  
 		  
 		  <div class="form-group">
-		    <label for="modulo" class="col-sm-2 control-label">Módulos</label>
+		    <label for="modulos" class="col-sm-2 control-label">Módulos</label>
 		    	<div class="col-sm-10">
-					  <select name="modulos" id="modulo" class="form-control" multiple="multiple">
+					  <select name="modulos" id="modulos" class="form-control" multiple="multiple">
 					   <c:forEach var="modulo" items="${listaModulos}">
 							  <option value="${modulo.idModulo}">${modulo.nomeModulo}</option>
 					</c:forEach>

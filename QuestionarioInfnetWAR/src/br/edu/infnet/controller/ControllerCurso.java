@@ -62,8 +62,10 @@ public class ControllerCurso extends HttpServlet {
 			
 			case "telaAlterar":
 				
-				Curso curso = cursoDAO.obter(idCurso);
-				request.setAttribute("meusModulos", cursoDAO.CursoComModulosCursoId(idCurso).getModulo());
+				Curso curso = cursoDAO.obter(idCurso);								
+				
+				//request.setAttribute("meusModulos", cursoDAO.CursoComModulosCursoId(idCurso).getModulo());
+				request.setAttribute("meusModulos", curso.getModulo());
 				request.setAttribute("meusTurmas", curso.getTurmas());
 				request.setAttribute("curso", curso);
 				request.setAttribute("listaModulos", moduloDAO.listarAtivos().removeAll(curso.getModulo()));
@@ -76,7 +78,7 @@ public class ControllerCurso extends HttpServlet {
 				
 				boolean result = cursoDAO.excluir(idCurso);
 				if(result){
-					request.setAttribute("result_ok", "Exclusão efetuada com Sucesso!");
+					request.setAttribute("result_ok", "Exclusï¿½o efetuada com Sucesso!");
 				}else{
 					request.setAttribute("result_error", "Erro ao excluir!");
 				}	
@@ -163,11 +165,11 @@ public class ControllerCurso extends HttpServlet {
 		
 	}
 	
-	private List<Modulo> retornaListModulo(String[] cusos){
+	private List<Modulo> retornaListModulo(String[] modulos){
 		List<Modulo> listaModulo = new ArrayList<Modulo>();
-		for (String string : cusos) {
+		for (String string : modulos) {
 			listaModulo.add(moduloDAO.obter(Long.valueOf(string)));
-		}
+		}		
 		return listaModulo;
 	}
 	
