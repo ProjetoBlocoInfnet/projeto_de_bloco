@@ -36,7 +36,9 @@ public class Curso implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
-	@ManyToMany(mappedBy="cursos")
+	
+	@ManyToMany
+	@JoinTable(name="curso_modulos")	
 	private List<Modulo> modulo;
 	
 	public Curso()

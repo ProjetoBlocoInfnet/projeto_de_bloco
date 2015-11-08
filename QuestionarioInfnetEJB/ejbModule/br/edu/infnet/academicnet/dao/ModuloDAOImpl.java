@@ -63,7 +63,7 @@ public class ModuloDAOImpl implements ModuloDAO
 	@Override
 	public Modulo obter(long id)
 	{
-		 TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m where m.idModulo=:mId and status = br.edu.infnet.academicnet.enumerators.Status.ATIVO", Modulo.class);
+		 TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m where m.idModulo=:mId and m.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO", Modulo.class);
 		 query.setParameter("mId", id);
 		 return query.getSingleResult();
 	}
@@ -77,7 +77,12 @@ public class ModuloDAOImpl implements ModuloDAO
 	@Override
 	public List<Modulo> listarAtivos() {
 		TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m where status = br.edu.infnet.academicnet.enumerators.Status.ATIVO", Modulo.class);
-		return query.getResultList();
+		List<Modulo> listaModulos = query.getResultList();
+		for (int i = 0; i < listaModulos.size(); i++) {
+			listaModulos.get(i).getCursos();
+		}
+		
+		return listaModulos;
 	}
 
 	
