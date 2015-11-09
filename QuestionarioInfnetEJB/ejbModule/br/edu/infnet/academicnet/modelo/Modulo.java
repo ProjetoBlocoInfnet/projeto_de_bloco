@@ -103,17 +103,11 @@ public class Modulo implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime
-				* result
-				+ ((agendamentoAvaliacao == null) ? 0 : agendamentoAvaliacao
-						.hashCode());
-		result = prime * result + ((cursos == null) ? 0 : cursos.hashCode());
 		result = prime * result + (int) (idModulo ^ (idModulo >>> 32));
 		result = prime * result
 				+ ((nomeModulo == null) ? 0 : nomeModulo.hashCode());
 		result = prime * result
 				+ ((professor == null) ? 0 : professor.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -126,16 +120,6 @@ public class Modulo implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Modulo other = (Modulo) obj;
-		if (agendamentoAvaliacao == null) {
-			if (other.agendamentoAvaliacao != null)
-				return false;
-		} else if (!agendamentoAvaliacao.equals(other.agendamentoAvaliacao))
-			return false;
-		if (cursos == null) {
-			if (other.cursos != null)
-				return false;
-		} else if (!cursos.equals(other.cursos))
-			return false;
 		if (idModulo != other.idModulo)
 			return false;
 		if (nomeModulo == null) {
@@ -148,17 +132,9 @@ public class Modulo implements Serializable{
 				return false;
 		} else if (!professor.equals(other.professor))
 			return false;
-		if (status != other.status)
-			return false;
 		return true;
 	}
 
-	
-	
-	
-	
-	
-	
 
 
 }

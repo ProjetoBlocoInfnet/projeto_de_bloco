@@ -1,11 +1,12 @@
 package br.edu.infnet.academicnet.agendamento;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.sql.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
+import javax.ejb.AccessTimeout;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -22,20 +23,20 @@ import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Aluno;
 
 @Singleton
-@Startup
 public class AgendamentoAvaliacaoAuto
 {
     @Resource(name = "java:jboss/mail/gmail")
     private Session session;
 
 	//O agendamento executa a cada dia às 00hrs
-	@Schedule(hour="0", minute="42")
+	@Schedule(hour="21", minute="16", persistent=true)
 	public void IniciarAvaliacao()
 	{
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
-		java.sql.Date data = new java.sql.Date(0);
-		data.setTime(data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime());
+		java.sql.Date data = Date.valueOf(LocalDate.now());
+		System.out.println("Ao chamarmos o método");
+		System.out.println(data);
 		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
@@ -75,8 +76,7 @@ public class AgendamentoAvaliacaoAuto
 	{
 		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
-		Date data = new Date(0);
-		data.setTime(data.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime());
+		java.sql.Date data = Date.valueOf(LocalDate.now());
 		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataFim(StatusAvaliacao.EM_ANDAMENTO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
@@ -91,5 +91,12 @@ public class AgendamentoAvaliacaoAuto
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	@javax.ejb.Timeout
+	@AccessTimeout(value = 20, unit = TimeUnit.MINUTES)
+	public void Timeout()
+	{
+		System.out.println("Tempo limite estourado!");
 	}
 }
