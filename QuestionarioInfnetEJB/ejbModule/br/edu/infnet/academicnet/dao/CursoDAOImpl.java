@@ -66,11 +66,14 @@ public class CursoDAOImpl implements CursoDAO
 	@Override
 	public Curso obter(long id)
 	{
-		TypedQuery<Curso> query = manager.createQuery("select c from Curso c where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and c.idCurso=:cId ", Curso.class);
+		TypedQuery<Curso> query = manager.createQuery("select c from Curso c join fetch c.turmas where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and c.idCurso=:cId ", Curso.class);
 		query.setParameter("cId", id);
 		Curso c = query.getSingleResult();
-		c.getTurmas();
-		c.getModulo();
+		
+		TypedQuery<Curso> query2 = manager.createQuery("select c from Curso c join fetch c.modulo where c.status = br.edu.infnet.academicnet.enumerators.Status.ATIVO and c.idCurso=:cId ", Curso.class);
+		query2.setParameter("cId", id);
+		Curso c2 = query2.getSingleResult();
+		c.setModulo(c2.getModulo());
 		
 		//System.out.println("Quantidade de Módulos retornados = "+ c.getModulo().size());
 		//System.out.println("Quantidade de Turmas retornados = "+ c.getTurmas().size());

@@ -65,11 +65,29 @@ public class ControllerCurso extends HttpServlet {
 				Curso curso = cursoDAO.obter(idCurso);								
 				
 				//request.setAttribute("meusModulos", cursoDAO.CursoComModulosCursoId(idCurso).getModulo());
+				List<Modulo> modulosAtivos = moduloDAO.listarAtivos();
+				System.out.println("Tamanho antes: " + modulosAtivos.size());
+				for(Modulo m1 : modulosAtivos)
+				{
+					System.out.println("=================================");
+					System.out.println(m1.getIdModulo());
+					for(Modulo m2 : curso.getModulo())
+					{
+						System.out.println(m2.getIdModulo());
+						if(m1.getIdModulo() == m2.getIdModulo())
+						{
+							modulosAtivos.remove(m2);
+						}
+					}
+				}
+				System.out.println("Tamanho depois: " + modulosAtivos.size());
+				List<Turma> turmasAtivas = turmaDAO.listar();
+				turmasAtivas.removeAll(curso.getTurmas());
 				request.setAttribute("meusModulos", curso.getModulo());
 				request.setAttribute("meusTurmas", curso.getTurmas());
 				request.setAttribute("curso", curso);
-				request.setAttribute("listaModulos", moduloDAO.listarAtivos().removeAll(curso.getModulo()));
-				request.setAttribute("listaTurma", turmaDAO.listar().removeAll(curso.getTurmas()));
+				request.setAttribute("listaModulos", modulosAtivos);
+				request.setAttribute("listaTurma", turmasAtivas);
 				request.getRequestDispatcher("sistema/alterarCurso.jsp").forward(request, response);
 				return;
 				//break;

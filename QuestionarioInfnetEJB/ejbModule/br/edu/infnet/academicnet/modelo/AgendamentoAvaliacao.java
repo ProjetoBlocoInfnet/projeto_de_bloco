@@ -153,21 +153,11 @@ public class AgendamentoAvaliacao implements Serializable{
 		int result = 1;
 		result = prime * result
 				+ ((avaliacao == null) ? 0 : avaliacao.hashCode());
-		result = prime * result + ((curso == null) ? 0 : curso.hashCode());
 		result = prime * result + ((dataFim == null) ? 0 : dataFim.hashCode());
 		result = prime * result
 				+ ((dataInicio == null) ? 0 : dataInicio.hashCode());
 		result = prime * result
 				+ (int) (idAgendamento ^ (idAgendamento >>> 32));
-		result = prime * result + ((modulo == null) ? 0 : modulo.hashCode());
-		result = prime * result
-				+ ((professor == null) ? 0 : professor.hashCode());
-		result = prime
-				* result
-				+ ((resultadoAvaliacao == null) ? 0 : resultadoAvaliacao
-						.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((turma == null) ? 0 : turma.hashCode());
 		return result;
 	}
 
@@ -185,11 +175,6 @@ public class AgendamentoAvaliacao implements Serializable{
 				return false;
 		} else if (!avaliacao.equals(other.avaliacao))
 			return false;
-		if (curso == null) {
-			if (other.curso != null)
-				return false;
-		} else if (!curso.equals(other.curso))
-			return false;
 		if (dataFim == null) {
 			if (other.dataFim != null)
 				return false;
@@ -202,32 +187,10 @@ public class AgendamentoAvaliacao implements Serializable{
 			return false;
 		if (idAgendamento != other.idAgendamento)
 			return false;
-		if (modulo == null) {
-			if (other.modulo != null)
-				return false;
-		} else if (!modulo.equals(other.modulo))
-			return false;
-		if (professor == null) {
-			if (other.professor != null)
-				return false;
-		} else if (!professor.equals(other.professor))
-			return false;
-		if (resultadoAvaliacao == null) {
-			if (other.resultadoAvaliacao != null)
-				return false;
-		} else if (!resultadoAvaliacao.equals(other.resultadoAvaliacao))
-			return false;
-		if (status != other.status)
-			return false;
-		if (turma == null) {
-			if (other.turma != null)
-				return false;
-		} else if (!turma.equals(other.turma))
-			return false;
 		return true;
 	}
 
-	
+
 	
 	
 
