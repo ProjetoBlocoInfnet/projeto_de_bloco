@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
+
 import br.edu.infnet.academicnet.enumerators.Status;
 
 @Entity
@@ -27,16 +29,18 @@ public class Modulo implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Expose
 	private long idModulo;
 	
 	@Column(length=100)
+	@Expose
 	private String nomeModulo;
 	
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
 	@ManyToOne
-	@JoinColumn(name="professor_id")
+	@JoinColumn(name="professor_id")		
 	private Professor professor;
 	
 	@ManyToMany(mappedBy="modulo")
@@ -106,8 +110,7 @@ public class Modulo implements Serializable{
 		result = prime * result + (int) (idModulo ^ (idModulo >>> 32));
 		result = prime * result
 				+ ((nomeModulo == null) ? 0 : nomeModulo.hashCode());
-		result = prime * result
-				+ ((professor == null) ? 0 : professor.hashCode());
+		
 		return result;
 	}
 
@@ -127,14 +130,19 @@ public class Modulo implements Serializable{
 				return false;
 		} else if (!nomeModulo.equals(other.nomeModulo))
 			return false;
-		if (professor == null) {
-			if (other.professor != null)
-				return false;
-		} else if (!professor.equals(other.professor))
-			return false;
+		
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Modulo [idModulo=" + idModulo + ", nomeModulo=" + nomeModulo
+				+ ", status=" + status 
+				+ ", agendamentoAvaliacao=" + agendamentoAvaliacao + "]";
+	}
 
+	
+
+	
 
 }

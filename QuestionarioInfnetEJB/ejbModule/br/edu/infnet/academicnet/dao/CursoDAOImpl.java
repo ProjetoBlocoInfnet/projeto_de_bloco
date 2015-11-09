@@ -99,7 +99,11 @@ public class CursoDAOImpl implements CursoDAO
 	
 	@Override
 	public List<Modulo> listarModulosPorCursoId(Long idCurso) {		
-		TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m inner join m.curso c",Modulo.class);
+		System.out.println("buscando o curso...");
+		System.out.println("idCurso "+ idCurso);
+		System.out.println();
+		TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m inner join m.cursos cur where cur.idCurso=:cId",Modulo.class);		
+		query.setParameter("cId", idCurso);
 		List<Modulo> modulos = query.getResultList();				
 		return modulos;
 	}
@@ -114,7 +118,7 @@ public class CursoDAOImpl implements CursoDAO
 		TypedQuery<Curso> query = manager.createQuery("select c from Curso c  where c.idCurso=:cId", Curso.class);
 		query.setParameter("cId", idCurso);
 		try {
-			Curso curso = query.getSingleResult();			
+			Curso curso = query.getSingleResult();	
 			return curso;
 		} catch (Exception e) {
 			return null;
