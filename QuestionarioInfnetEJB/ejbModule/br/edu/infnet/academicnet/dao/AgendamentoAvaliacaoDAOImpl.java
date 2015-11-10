@@ -7,7 +7,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
 import br.edu.infnet.academicnet.enumerators.StatusAvaliacao;
@@ -16,7 +15,8 @@ import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 @Stateless
 public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 {
-	@PersistenceContext(type = PersistenceContextType.EXTENDED)
+	//@PersistenceContext(type = PersistenceContextType.EXTENDED)
+	@PersistenceContext
 	private EntityManager manager;
 
 	@Override
@@ -86,7 +86,7 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	@Override
 	public List<AgendamentoAvaliacao> obterPorStatusDataInicio(StatusAvaliacao status,
 			Date data) {
-		System.out.println("Dentro da função de sql");
+		System.out.println("Dentro da funï¿½ï¿½o de sql");
 		System.out.println(data);
 		System.out.println(status);
 		manager = Persistence.createEntityManagerFactory("java:jboss/datasource/academicnetDS").createEntityManager();
