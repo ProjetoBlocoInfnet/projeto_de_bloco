@@ -15,6 +15,8 @@
 		<form action="ControllerCurso" method="post" class="form-horizontal">
 		
 		  <input type="hidden" name="action" value="alterar" />
+		  
+		  <input type="hidden" name="idCurso" value="${curso.idCurso}" />
 		
 		  <div class="form-group">
 		    <label for="nome" class="col-sm-2 control-label">Nome</label>
@@ -47,7 +49,7 @@
 					<select name="turmas" id="turmas" class="form-control" multiple="multiple">
 						<c:if test="${requestScope.meusTurmas != null && requestScope.meusTurmas.size() > 0 }">
 							<c:forEach var="turma" items="${requestScope.meusTurmas}">
-								<option value="${turma.idTurma}">${turma.nomeTurma}</option>
+								<option value="${turma.idTurma}" selected>${turma.nomeTurma}</option>
 							</c:forEach>
 						</c:if>
 						<c:if test="${requestScope.listaTurma != null && requestScope.listaTurma.size() > 0 }">

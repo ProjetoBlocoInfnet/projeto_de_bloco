@@ -67,7 +67,8 @@ public class ControllerCurso extends HttpServlet {
 				//request.setAttribute("meusModulos", cursoDAO.CursoComModulosCursoId(idCurso).getModulo());
 				List<Modulo> modulosAtivos = moduloDAO.listarAtivos();
 				System.out.println("Tamanho antes: " + modulosAtivos.size());
-				for(Modulo m1 : modulosAtivos)
+				modulosAtivos.removeAll(curso.getModulo());
+				/*for(Modulo m1 : modulosAtivos)
 				{
 					System.out.println("=================================");
 					System.out.println(m1.getIdModulo());
@@ -79,7 +80,7 @@ public class ControllerCurso extends HttpServlet {
 							modulosAtivos.remove(m2);
 						}
 					}
-				}
+				}*/
 				System.out.println("Tamanho depois: " + modulosAtivos.size());
 				List<Turma> turmasAtivas = turmaDAO.listar();
 				turmasAtivas.removeAll(curso.getTurmas());
@@ -96,7 +97,7 @@ public class ControllerCurso extends HttpServlet {
 				
 				boolean result = cursoDAO.excluir(idCurso);
 				if(result){
-					request.setAttribute("result_ok", "Exclusï¿½o efetuada com Sucesso!");
+					request.setAttribute("result_ok", "Exclusão efetuada com Sucesso!");
 				}else{
 					request.setAttribute("result_error", "Erro ao excluir!");
 				}	
@@ -165,9 +166,9 @@ public class ControllerCurso extends HttpServlet {
 					List<Curso> listaCurso = cursoDAO.obterPorNome(request.getParameter("nome"));
 					
 					if(listaCurso.size() > 0){
-						request.setAttribute("result_ok", "(" + listaCurso.size() + ") - Cursos(s) encontrado(s)!");
+						request.setAttribute("result_ok", "(" + listaCurso.size() + ") - Curso(s) encontrado(s)!");
 					}else{
-						request.setAttribute("result_error", "Nenhuma Curso encontrado!");
+						request.setAttribute("result_error", "Nenhum Curso encontrado!");
 					}	
 					
 					request.setAttribute("listaCurso", listaCurso);

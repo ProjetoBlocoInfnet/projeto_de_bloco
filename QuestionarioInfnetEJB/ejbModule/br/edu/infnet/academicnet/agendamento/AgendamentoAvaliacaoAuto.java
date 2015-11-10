@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
+import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -17,6 +18,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAOImpl;
 import br.edu.infnet.academicnet.enumerators.StatusAvaliacao;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
@@ -28,11 +30,14 @@ public class AgendamentoAvaliacaoAuto
     @Resource(name = "java:jboss/mail/gmail")
     private Session session;
 
+    @EJB
+    AgendamentoAvaliacaoDAO dao;
+    
 	//O agendamento executa a cada dia às 00hrs
-	@Schedule(hour="21", minute="16", persistent=true)
+	@Schedule(hour="01", minute="01", persistent=true)
 	public void IniciarAvaliacao()
 	{
-		AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
+		//AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
 		java.sql.Date data = Date.valueOf(LocalDate.now());
 		System.out.println("Ao chamarmos o método");
