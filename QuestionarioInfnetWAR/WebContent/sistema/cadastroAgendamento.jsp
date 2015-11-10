@@ -67,11 +67,7 @@
 		    	<div class="col-sm-10">
 					<select name="modulo" id="modulo" class="form-control">
 						<option value="">Selecionar</option>
-				  		<c:if test="${requestScope.modulos != null && requestScope.modulos.size() > 0 }">
-		  					<c:forEach items="${requestScope.modulos}" var="modulo">
-							  <option value="${modulo.idModulo}">${modulo.nomeModulo}</option>
-							</c:forEach>
-						</c:if>
+				  		
 					</select>
 		  		</div>
 		  </div>

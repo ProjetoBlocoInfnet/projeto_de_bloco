@@ -16,9 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.google.gson.annotations.Expose;
-
 import br.edu.infnet.academicnet.enumerators.Status;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name="tbl_modulo")
@@ -40,7 +40,7 @@ public class Modulo implements Serializable{
 	private Status status;
 
 	@ManyToOne
-	@JoinColumn(name="professor_id")		
+	@JoinColumn(name="professor_id")
 	private Professor professor;
 	
 	@ManyToMany(mappedBy="modulo")
@@ -134,14 +134,7 @@ public class Modulo implements Serializable{
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Modulo [idModulo=" + idModulo + ", nomeModulo=" + nomeModulo
-				+ ", status=" + status 
-				+ ", agendamentoAvaliacao=" + agendamentoAvaliacao + "]";
-	}
-
-	
+			
 
 	
 
