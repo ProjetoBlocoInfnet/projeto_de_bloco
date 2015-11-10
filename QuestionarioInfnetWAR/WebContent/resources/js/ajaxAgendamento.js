@@ -1,30 +1,27 @@
-/**
+/*
+ * Ajax para carregar os módulos
  * 
- */
-function getModulos()
-{
-	var idCurso = $('#curso').val();
-	alert(idCurso)
+ */	
+function getModulos(){	
+	var idCurso = $('#curso').val();		
     $.ajax({
         url: "ControllerAgendamento?list=listarModulos",
         type: 'GET',
         dataType: 'json',
-        data: {idCurso: idCurso},// assim que se passa 
+        data: {idCurso: idCurso},
         contentType: 'application/json',
         mimeType: 'application/json',
  
-        success: function (data) {
-            $("#modulo:has(option)").remove();
-            $("#modulo").append("<option value=\"\">Selecionar</option>");
- 
-            $.each(data, function (index, modulo) {
- 
-                $("#modulo").append($("'<option value='"+modulo.idModulo+"'>"+modulo.nomeModulo+"</option>"));
- 
+        success: function (data) { 
+            var option = '<option value="">Selecione o Módulo</option>';
+            $.each(data, function (index, modulo) { 
+            	option += '<option value="'+modulo.idModulo+'">'+modulo.nomeModulo+'</option>'; 
             }); 
+            $("#modulo").html(option).show();
         },
         error:function(data,status,er) {
             alert("error: "+data+" status: "+status+" er:"+er);
         }
     });
 }
+

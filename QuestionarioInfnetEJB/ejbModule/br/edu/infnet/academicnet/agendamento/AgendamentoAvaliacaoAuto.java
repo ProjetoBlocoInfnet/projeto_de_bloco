@@ -1,7 +1,7 @@
 package br.edu.infnet.academicnet.agendamento;
 
-import java.time.LocalDate;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +25,7 @@ import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Aluno;
 
 @Singleton
+@Startup
 public class AgendamentoAvaliacaoAuto
 {
     @Resource(name = "java:jboss/mail/gmail")
@@ -33,26 +34,26 @@ public class AgendamentoAvaliacaoAuto
     @EJB
     AgendamentoAvaliacaoDAO dao;
     
-	//O agendamento executa a cada dia às 00hrs
+	//O agendamento executa a cada dia ï¿½s 00hrs
 	@Schedule(hour="01", minute="01", persistent=true)
 	public void IniciarAvaliacao()
 	{
 		//AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
 		java.sql.Date data = Date.valueOf(LocalDate.now());
-		System.out.println("Ao chamarmos o método");
+		System.out.println("Ao chamarmos o mï¿½todo");
 		System.out.println(data);
 		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
 			for(Aluno al : a.getTurma().getAlunos())
 			{
-				//TODO Enviar emails para os alunos com os links das avaliações
+				//TODO Enviar emails para os alunos com os links das avaliaï¿½ï¿½es
 				try {
 					 
 		            Message message = new MimeMessage(session);
 		            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
-		            message.setSubject("Avaliação curso Infnet " + a.getModulo().getNomeModulo());
+		            message.setSubject("Avaliaï¿½ï¿½o curso Infnet " + a.getModulo().getNomeModulo());
 		            message.setText("Teste de envio de email");
 		 
 		            Transport.send(message);
@@ -75,7 +76,7 @@ public class AgendamentoAvaliacaoAuto
 		}
 	}
 	
-	//O agendamento executa a cada dia às 00hrs
+	//O agendamento executa a cada dia ï¿½s 00hrs
 	@Schedule(hour="0")
 	public void FinalizarAvaliacao()
 	{

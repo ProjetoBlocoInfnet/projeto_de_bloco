@@ -104,9 +104,10 @@ public class CursoDAOImpl implements CursoDAO
 		System.out.println();
 		TypedQuery<Modulo> query = manager.createQuery("select m from Modulo m inner join m.cursos cur where cur.idCurso=:cId",Modulo.class);		
 		query.setParameter("cId", idCurso);
-		List<Modulo> modulos = query.getResultList();				
-		return modulos;
+		return query.getResultList();	
 	}
+	
+	
 	
 	@Override
 	public Curso CursoComModulosCursoId(Long idCurso){	
