@@ -67,7 +67,8 @@ public class ControllerCurso extends HttpServlet {
 				//request.setAttribute("meusModulos", cursoDAO.CursoComModulosCursoId(idCurso).getModulo());
 				List<Modulo> modulosAtivos = moduloDAO.listarAtivos();
 				System.out.println("Tamanho antes: " + modulosAtivos.size());
-				for(Modulo m1 : modulosAtivos)
+				modulosAtivos.removeAll(curso.getModulo());
+				/*for(Modulo m1 : modulosAtivos)
 				{
 					System.out.println("=================================");
 					System.out.println(m1.getIdModulo());
@@ -79,7 +80,7 @@ public class ControllerCurso extends HttpServlet {
 							modulosAtivos.remove(m2);
 						}
 					}
-				}
+				}*/
 				System.out.println("Tamanho depois: " + modulosAtivos.size());
 				List<Turma> turmasAtivas = turmaDAO.listar();
 				turmasAtivas.removeAll(curso.getTurmas());
