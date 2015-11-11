@@ -78,6 +78,7 @@ public class ControllerAgendamento extends HttpServlet {
 		String action = request.getParameter("action");
 		if(action != null)
 		{
+			long id;
 			switch(action)
 			{
 				case "telaCadastro":
@@ -89,10 +90,15 @@ public class ControllerAgendamento extends HttpServlet {
 					request.getRequestDispatcher("sistema/cadastroAgendamento.jsp").forward(request, response);
 					return;
 				case "editar":
+					id = Long.valueOf(request.getParameter("id"));
+					AgendamentoAvaliacao a = agendamento.obter(id);
+					request.setAttribute("agendamento", a);
+//					cursoDAO.listarModulosPorCursoId(a.getCurso().getIdCurso());
+//					a.getCurso().getTurmas();
 					request.getRequestDispatcher("sistema/alterarAgendamento.jsp").forward(request, response);
 					return;
 				case "excluir":
-					long id = Long.valueOf(request.getParameter("id"));
+					id = Long.valueOf(request.getParameter("id"));
 					request = checkReturn(agendamento.excluir(id), action, request);
 					break;
 				//case "excluirQuestao":

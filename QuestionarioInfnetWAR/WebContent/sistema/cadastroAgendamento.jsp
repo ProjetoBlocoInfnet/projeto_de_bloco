@@ -66,7 +66,7 @@
 		    <label for="turma" class="col-sm-2 control-label">Turma</label>
 		    	<div class="col-sm-10">
 					<select name="turma" id="turma" class="form-control">
-						<option value="">Selecionar</option>
+						<option value="">Selecione o Curso antes</option>
 					</select>
 		  		</div>
 		  </div>
@@ -75,7 +75,7 @@
 		    <label for="modulo" class="col-sm-2 control-label">Módulo</label>
 		    	<div class="col-sm-10">
 					<select name="modulo" id="modulo" class="form-control" onchange="getProfessores()">
-						<option value="">Selecionar</option>
+						<option value="">Selecione o Curso antes</option>
 					</select>
 		  		</div>
 		  </div>
@@ -85,7 +85,7 @@
 		    <label for="professor" class="col-sm-2 control-label">Professor</label>
 		    	<div class="col-sm-10">
 					<select name="professor" id="professor" class="form-control">
-						<option value="">Selecionar</option>
+						<option value="">Selecione o módulo antes</option>
 					</select>
 		  		</div>
 		  </div>
