@@ -3,7 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="menu.jsp" />
-  
+
+<script src="resources/js/jquery-1.11.3.min.js"></script>
+<script src="resources/js/ajaxAgendamento.js"></script>
 
 <div id="container" class="container-fluid">
 
@@ -11,84 +13,93 @@
 		<a href="ControllerAgendamento"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Alteração de Avaliações</h2>
+		<h2>Alteração de Agendamentos de Avaliação</h2>
 		<hr>
-		<form action="ControllerAvaliacao" method="post" class="form-horizontal">
+		<form action="ControllerAgendamento" method="post" class="form-horizontal">
 			
 		  <input type="hidden" name="action" value="alterar">
-		  <input type="hidden" name="id" value="${avaliacao.idAvaliacao}">
 		
 		  <div class="form-group">
-		    <label for="avaliacao" class="col-sm-2 control-label">Avaliacao</label>
+		    <label for="dataInicio" class="col-sm-2 control-label">Data Inicio</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="nome" class="form-control" id="avaliacao" placeholder="avaliacao" value="${avaliacao.nome}">
+		      <input type="date" name="dataInicio" class="form-control" id="dataInicio" placeholder="Data Inicio"/>
 		    </div>
 		  </div>
-		 		 
+
 		  <div class="form-group">
-		    <label for="questoes" class="col-sm-2 control-label">Questões</label>
+		    <label for="dataFim" class="col-sm-2 control-label">Data Fim</label>
+		    <div class="col-sm-10">
+		      <input type="date" name="dataFim" class="form-control" id="dataFim" placeholder="Data Fim"/>
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="avaliacao" class="col-sm-2 control-label">Avaliação</label>
 		    	<div class="col-sm-10">
-					<select name="questoes" id="questoes" multiple="multiple" class="form-control">
-				  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
-		  					<c:forEach items="${requestScope.questoes}" var="questao">
-							  <option value="${questao.idQuestao}">${questao.textoQuestao} | ${questao.categoria.getCategoria()}</option>
+					<select name="avaliacao" id="avaliacao" class="form-control">
+						<option value="">Selecionar</option>
+				  		<c:if test="${requestScope.avaliacoes != null && requestScope.avaliacoes.size() > 0 }">
+		  					<c:forEach items="${requestScope.avaliacoes}" var="avaliacao">
+							  <option value="${avaliacao.idAvaliacao}">${avaliacao.nome}</option>
 							</c:forEach>
 						</c:if>
 					</select>
 		  		</div>
 		  </div>
-		  
+
+
 		  <div class="form-group">
-			    <label for="status" class="col-sm-2 control-label">Status</label>
-			    	<div class="col-sm-10">
-						  <select name="status" id="status" class="form-control">
-							  <option >Selecionar</option>
-							  <c:forEach var="status" items="${listaStatus}">
-							  		<option value="${status}" ${status eq avaliacao.status ? 'selected="selected"' : ''} >${status.status}</option>
-							  </c:forEach>
-						</select>
-			  		</div>
-			  </div>
-		  
+		    <label for="curso" class="col-sm-2 control-label">Curso</label>
+		    	<div class="col-sm-10">
+					<select name="curso" id="curso" class="form-control" onchange="getModulosTurmas()">
+						<option value="">Selecionar</option>
+				  		<c:if test="${requestScope.cursos != null && requestScope.cursos.size() > 0 }">
+		  					<c:forEach items="${requestScope.cursos}" var="curso">
+							  <option value="${curso.idCurso}">${curso.nome}</option>
+							</c:forEach>
+						</c:if>
+					</select>
+		  		</div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="turma" class="col-sm-2 control-label">Turma</label>
+		    	<div class="col-sm-10">
+					<select name="turma" id="turma" class="form-control">
+						<option value="">Selecione o Curso antes</option>
+					</select>
+		  		</div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="modulo" class="col-sm-2 control-label">Módulo</label>
+		    	<div class="col-sm-10">
+					<select name="modulo" id="modulo" class="form-control" onchange="getProfessores()">
+						<option value="">Selecione o Curso antes</option>
+					</select>
+		  		</div>
+		  </div>
+
+
+		  <div class="form-group">
+		    <label for="professor" class="col-sm-2 control-label">Professor</label>
+		    	<div class="col-sm-10">
+					<select name="professor" id="professor" class="form-control">
+						<option value="">Selecione o módulo antes</option>
+					</select>
+		  		</div>
+		  </div>
+
+
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">Alterar Avaliação</button>
+		      <button type="submit" class="btn btn-default">Cadastrar</button>
 		    </div>
 		  </div>
 		</form>
 	
 	</div>
-	
-	<hr>
-	
-	<div class="container">
-		<h2>Questões Atuais</h2>
-		<hr>
-		<table class="table table-hover">
-	  		<thead>
-		  		<th>Questão</th>
-		  		<th>Categoria</th>
-		  		<th>tipoResposta</th>
-		  		<th>Status</th>
-		  		<th>Ação</th>
-	  		</thead>
-	  		<tbody>
-	  		 
-	  			<c:forEach var="questao" items="${avaliacao.listQuestao}">
-			  		<tr>
-			  			<td>${questao.textoQuestao}</td>  
-			  			<td>${questao.categoria}</td>  		
-			  			<td>${questao.tipoResposta}</td>
-			  			<td>${questao.status}</td>   				
-			  			<td>			  				
-			  				<a href="ControllerAvaliacao?action=excluirQuestao&id=${avaliacao.idAvaliacao}&idQuestao=${questao.idQuestao}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
-			  			</td>
-			  		</tr>
-		  		</c:forEach>
-		  	 
-	  		</tbody>
-		</table>
-	</div>
+
 	
 </div>
 

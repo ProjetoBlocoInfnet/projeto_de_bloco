@@ -24,6 +24,8 @@ import br.edu.infnet.academicnet.dao.PessoaDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Modulo;
+import br.edu.infnet.academicnet.modelo.Professor;
+import br.edu.infnet.academicnet.modelo.Turma;
 import flexjson.JSONSerializer;
 
 
@@ -76,43 +78,84 @@ public class ControllerAgendamento extends HttpServlet {
 		String action = request.getParameter("action");
 		if(action != null)
 		{
+			long id;
 			switch(action)
 			{
 				case "telaCadastro":
 					request.setAttribute("avaliacoes", avaliacao.listar());
-					request.setAttribute("turmas", turma.listar());
-					request.setAttribute("professores", professor.obterProfessores());
+					//request.setAttribute("turmas", turma.listar());
+					//request.setAttribute("professores", professor.obterProfessores());
 					//request.setAttribute("modulos", modulo.listar());
 					request.setAttribute("cursos", cursoDAO.listarAtivos());
 					request.getRequestDispatcher("sistema/cadastroAgendamento.jsp").forward(request, response);
 					return;
 				case "editar":
+					id = Long.valueOf(request.getParameter("id"));
+					AgendamentoAvaliacao a = agendamento.obter(id);
+					request.setAttribute("agendamento", a);
+//					cursoDAO.listarModulosPorCursoId(a.getCurso().getIdCurso());
+//					a.getCurso().getTurmas();
 					request.getRequestDispatcher("sistema/alterarAgendamento.jsp").forward(request, response);
 					return;
 				case "excluir":
-					long id = Long.valueOf(request.getParameter("id"));
+					id = Long.valueOf(request.getParameter("id"));
 					request = checkReturn(agendamento.excluir(id), action, request);
 					break;
 				//case "excluirQuestao":
 				default:
-					request.setAttribute("result_error", "Nï¿½o houve aï¿½ï¿½o vï¿½lida inserida");
+					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
 		}
 		String list = request.getParameter("list");
 		if(list != null)
 		{
+			Long idCurso;
+			JSONSerializer serializer;
+			String jsonStr;
 			switch(list)
 			{
 				case "listarModulos":
 					
 					List<Modulo> listaModulos = new ArrayList<Modulo>();
 					
-					Long idCurso = Long.valueOf(request.getParameter("idCurso"));					
+					idCurso = Long.valueOf(request.getParameter("idCurso"));					
 					listaModulos = cursoDAO.listarModulosPorCursoId(idCurso);
 					
 					
-					JSONSerializer serializer = new JSONSerializer().prettyPrint(true); 
-				    String jsonStr = serializer.serialize(listaModulos);
+					serializer = new JSONSerializer().prettyPrint(true); 
+				    jsonStr = serializer.serialize(listaModulos);
+				    System.out.println(jsonStr);								
+					
+				    response.setContentType("application/json");  
+				    response.setCharacterEncoding("UTF-8"); 
+				    response.getWriter().write(jsonStr); 	
+					
+					return ;
+				case "listarTurmas":
+					
+					List<Turma> listaTurmas = new ArrayList<Turma>();
+					
+					idCurso = Long.valueOf(request.getParameter("idCurso"));					
+					listaTurmas = cursoDAO.obter(idCurso).getTurmas();
+					
+					serializer = new JSONSerializer().prettyPrint(true); 
+				    jsonStr = serializer.serialize(listaTurmas);
+				    System.out.println(jsonStr);								
+					
+				    response.setContentType("application/json");  
+				    response.setCharacterEncoding("UTF-8"); 
+				    response.getWriter().write(jsonStr); 	
+					
+					return ;
+				case "listarProfessores":
+					
+					List<Professor> listaProfessores = new ArrayList<Professor>();
+					
+					Long idModulo = Long.valueOf(request.getParameter("idModulo"));					
+					listaProfessores.add(moduloDAO.obter(idModulo).getProfessor());
+
+					serializer = new JSONSerializer().prettyPrint(true); 
+				    jsonStr = serializer.serialize(listaProfessores);
 				    System.out.println(jsonStr);								
 					
 				    response.setContentType("application/json");  
