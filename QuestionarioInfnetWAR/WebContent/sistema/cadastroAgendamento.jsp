@@ -51,7 +51,7 @@
 		  <div class="form-group">
 		    <label for="curso" class="col-sm-2 control-label">Curso</label>
 		    	<div class="col-sm-10">
-					<select name="curso" id="curso" class="form-control" onchange="getModulos()">
+					<select name="curso" id="curso" class="form-control" onchange="getModulosTurmas()">
 						<option value="">Selecionar</option>
 				  		<c:if test="${requestScope.cursos != null && requestScope.cursos.size() > 0 }">
 		  					<c:forEach items="${requestScope.cursos}" var="curso">
@@ -63,39 +63,29 @@
 		  </div>
 
 		  <div class="form-group">
-		    <label for="modulo" class="col-sm-2 control-label">Módulo</label>
+		    <label for="turma" class="col-sm-2 control-label">Turma</label>
 		    	<div class="col-sm-10">
-					<select name="modulo" id="modulo" class="form-control">
+					<select name="turma" id="turma" class="form-control">
 						<option value="">Selecionar</option>
-				  		
 					</select>
 		  		</div>
 		  </div>
 
 		  <div class="form-group">
-		    <label for="turma" class="col-sm-2 control-label">Turma</label>
+		    <label for="modulo" class="col-sm-2 control-label">Módulo</label>
 		    	<div class="col-sm-10">
-					<select name="turma" id="turma" class="form-control">
+					<select name="modulo" id="modulo" class="form-control" onchange="getProfessores()">
 						<option value="">Selecionar</option>
-				  		<c:if test="${requestScope.turmas != null && requestScope.turmas.size() > 0 }">
-		  					<c:forEach items="${requestScope.turmas}" var="turma">
-							  <option value="${turma.idTurma}">Turma ${turma.nomeTurma}</option>
-							</c:forEach>
-						</c:if>
 					</select>
 		  		</div>
 		  </div>
+
 
 		  <div class="form-group">
 		    <label for="professor" class="col-sm-2 control-label">Professor</label>
 		    	<div class="col-sm-10">
 					<select name="professor" id="professor" class="form-control">
 						<option value="">Selecionar</option>
-				  		<c:if test="${requestScope.professores != null && requestScope.professores.size() > 0 }">
-		  					<c:forEach items="${requestScope.professores}" var="professor">
-							  <option value="${professor.matricula}">${professor.nome}</option>
-							</c:forEach>
-						</c:if>
 					</select>
 		  		</div>
 		  </div>
