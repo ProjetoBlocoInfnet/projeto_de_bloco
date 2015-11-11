@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.AvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.CursoDAO;
@@ -22,9 +24,7 @@ import br.edu.infnet.academicnet.dao.PessoaDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Modulo;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import flexjson.JSONSerializer;
 
 
 /**
@@ -41,7 +41,7 @@ public class ControllerAgendamento extends HttpServlet {
     TurmaDAO turma;
     
     @EJB
-    ModuloDAO modulo;
+    ModuloDAO moduloDAO;
     
     @EJB
     CursoDAO cursoDAO;
@@ -105,25 +105,21 @@ public class ControllerAgendamento extends HttpServlet {
 			{
 				case "listarModulos":
 					
+					List<Modulo> listaModulos = new ArrayList<Modulo>();
+					
 					Long idCurso = Long.valueOf(request.getParameter("idCurso"));					
-					List<Modulo> modulos = cursoDAO.listarModulosPorCursoId(idCurso);
-							
-					/* Exemplo de como usar Gson */			
+					listaModulos = cursoDAO.listarModulosPorCursoId(idCurso);
 					
-					for (Modulo modulo : modulos) {
-						System.out.println(modulo.getIdModulo());
-						System.out.println(modulo.getNomeModulo());
-						System.out.println();
-					}
-										
-					GsonBuilder gsonBuilder = new GsonBuilder();
-					gsonBuilder.excludeFieldsWithoutExposeAnnotation();
-					Gson gson = gsonBuilder.create();
-					String modulosJson = gson.toJson(modulos);
-					System.out.println("Imprimindo o JSon >>>>>>> " + modulosJson);
-					request.setAttribute("modulos", modulosJson);
-					return ;				
 					
+					JSONSerializer serializer = new JSONSerializer().prettyPrint(true); 
+				    String jsonStr = serializer.serialize(listaModulos);
+				    System.out.println(jsonStr);								
+					
+				    response.setContentType("application/json");  
+				    response.setCharacterEncoding("UTF-8"); 
+				    response.getWriter().write(jsonStr); 	
+					
+					return ;
 			}	
 		}
 		request.setAttribute("agendamentos", agendamento.listar());
@@ -162,7 +158,7 @@ public class ControllerAgendamento extends HttpServlet {
 					a.setAvaliacao(avaliacao.obter(Long.valueOf(request.getParameter("avaliacao"))));
 					a.setTurma(turma.obter(Long.valueOf(request.getParameter("turma"))));
 					a.setCurso(cursoDAO.obter(Long.valueOf(request.getParameter("curso"))));
-					a.setModulo(modulo.obter(Long.valueOf(request.getParameter("modulo"))));
+					a.setModulo(moduloDAO.obter(Long.valueOf(request.getParameter("modulo"))));
 					a.setProfessor(professor.obterProfessor(Long.valueOf(request.getParameter("professor"))));
 					request = checkReturn(agendamento.incluir(a), action, request);
 					break;
@@ -183,7 +179,7 @@ public class ControllerAgendamento extends HttpServlet {
 					a.setAvaliacao(avaliacao.obter(Long.valueOf(request.getParameter("avaliacao"))));
 					a.setTurma(turma.obter(Long.valueOf(request.getParameter("turma"))));
 					a.setCurso(cursoDAO.obter(Long.valueOf(request.getParameter("curso"))));
-					a.setModulo(modulo.obter(Long.valueOf(request.getParameter("modulo"))));
+					a.setModulo(moduloDAO.obter(Long.valueOf(request.getParameter("modulo"))));
 					a.setProfessor(professor.obterProfessor(Long.valueOf(request.getParameter("professor"))));
 					request = checkReturn(agendamento.alterar(a), action, request);
 					break;
