@@ -28,7 +28,7 @@ public class AgendamentoAvaliacao implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idAgendamento;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)	
 	private Date dataInicio;
 	
 	@Temporal(TemporalType.DATE)
