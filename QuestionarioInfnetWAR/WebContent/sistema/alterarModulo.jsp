@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -11,7 +12,7 @@
 		<a href="ControllerModulo"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Alteração de Módulos</h2>
+		<h2>AlteraÃ§Ã£o de MÃ³dulos</h2>
 		<hr>
 		<form action="ControllerModulo" method="post" class="form-horizontal">
 			
@@ -19,7 +20,7 @@
 		  <input type="hidden" name="id" value="${modulo.idModulo}">
 		
 		  <div class="form-group">
-		    <label for="avaliacao" class="col-sm-2 control-label">Módulo</label>
+		    <label for="avaliacao" class="col-sm-2 control-label">MÃ³dulo</label>
 		    <div class="col-sm-10">
 		      <input type="text" name="nome" class="form-control" id="avaliacao" placeholder="avaliacao" value="${modulo.nomeModulo}">
 		    </div>
@@ -40,7 +41,7 @@
 
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">Alterar Módulo</button>
+		      <button type="submit" class="btn btn-default">Alterar MÃ³dulo</button>
 		    </div>
 		  </div>
 		</form>

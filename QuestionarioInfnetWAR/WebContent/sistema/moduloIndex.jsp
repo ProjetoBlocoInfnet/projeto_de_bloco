@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -12,7 +13,7 @@
 	<br><br>
 	<form action="ControllerModulo" method="get">
 		<input type="hidden" name="action" value="telaCadastro">
-		<input type="submit" class="btn btn-info" value="Cadastrar Módulo">
+		<input type="submit" class="btn btn-info" value="Cadastrar MÃ³dulo">
 	</form>
 	<br>
 	<form action="ControllerModulo" method="post">
@@ -48,9 +49,9 @@
 	<div >
 	<table class="table table-hover">
   		<thead>
-  		<th>Módulo</th>
+  		<th>MÃ³dulo</th>
   		<th>Professor</th>
-  		<th>Ação</th>
+  		<th>AÃ§Ã£o</th>
   		</thead>
   		<tbody>
   		<c:if test="${requestScope.modulos != null && requestScope.modulos.size() > 0 }">

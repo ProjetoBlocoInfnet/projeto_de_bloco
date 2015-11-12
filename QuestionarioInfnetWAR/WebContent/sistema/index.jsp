@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 
 <jsp:include page="menu.jsp" />
@@ -14,8 +15,6 @@
 		      <div class="carousel-caption">
 			      	<div class="jumbotron">
 						  <h1>Bem-vindo ao AcademicNet!</h1>
-						  <!-- <p>...</p>
-						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realizar Avaliação</a></p> -->
 					</div>
 			  </div>
 	    </div>
@@ -24,8 +23,6 @@
 	      <div class="carousel-caption">
 			      	<div class="jumbotron">
 						  <h1>Bem-vindo ao AcademicNet!</h1>
-						  <!-- <p>...</p>
-						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realizar Avaliação</a></p> -->
 					</div>
 			  </div>
 	    </div>
@@ -34,8 +31,6 @@
 	      <div class="carousel-caption">
 			      	<div class="jumbotron">
 						  <h1>Bem-vindo ao AcademicNet!</h1>
-						  <!-- <p>...</p>
-						  <p><a class="btn btn-primary btn-lg" href="#" role="button">Realizar Avaliação</a></p> -->
 					</div>
 			  </div>
 	    </div>
