@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -65,16 +66,30 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 
 	@Override
 	public AgendamentoAvaliacao obter(long id) {
-		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId and not ag.status = br.edu.infnet.academicnet.enumerators.StatusAvaliacao.INATIVO  ", AgendamentoAvaliacao.class);
-		 query.setParameter("agId", id);
-		 return query.getSingleResult();
+		TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId and not ag.status = br.edu.infnet.academicnet.enumerators.StatusAvaliacao.INATIVO  ", AgendamentoAvaliacao.class);
+		query.setParameter("agId", id);
+		try
+		{
+			return query.getSingleResult();
+		}
+		catch (NoResultException e)
+		{
+			return null;
+		}
 	}
 
 	@Override
 	public AgendamentoAvaliacao obterAtivo(long id) {
-		 TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId and ag.status = br.edu.infnet.academicnet.enumerators.StatusAvaliacao.EM_ANDAMENTO ", AgendamentoAvaliacao.class);
-		 query.setParameter("agId", id);
-		 return query.getSingleResult();
+		TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.idAgendamento=:agId and ag.status = br.edu.infnet.academicnet.enumerators.StatusAvaliacao.EM_ANDAMENTO ", AgendamentoAvaliacao.class);
+		query.setParameter("agId", id);
+		try
+		{
+			return query.getSingleResult();
+		}
+		catch (NoResultException e)
+		{
+			return null;
+		}
 	}
 	
 	@Override

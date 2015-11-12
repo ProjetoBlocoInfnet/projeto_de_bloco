@@ -11,6 +11,7 @@ import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.inject.Inject;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -31,17 +32,17 @@ public class AgendamentoAvaliacaoAuto
     @Resource(name = "java:jboss/mail/gmail")
     private Session session;
 
-    @EJB
+    @Inject
     AgendamentoAvaliacaoDAO dao;
     
 	//O agendamento executa a cada dia �s 00hrs
-	@Schedule(hour="01", minute="01", persistent=true)
+	@Schedule(hour="01", minute="30", persistent=true)
 	public void IniciarAvaliacao()
 	{
 		//AgendamentoAvaliacaoDAOImpl dao = new AgendamentoAvaliacaoDAOImpl();
 		
 		java.sql.Date data = Date.valueOf(LocalDate.now());
-		System.out.println("Ao chamarmos o m�todo");
+		System.out.println("Ao chamarmos o metodo");
 		System.out.println(data);
 		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
