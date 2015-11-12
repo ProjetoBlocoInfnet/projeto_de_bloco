@@ -74,14 +74,21 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 			Aluno meuAluno = null;
 			for(Aluno a : turma.obter(minhaAvaliacao.getTurma().getIdTurma()).getAlunos())
 			{
-				if(login.equals(a.getUsuario()))
+				if(login.equals(a.getUsuario().getLogin()))
 				{
 					meuAluno = a;
 					break;
 				}
 			}
-			request.setAttribute("aluno", meuAluno);
-			request.getRequestDispatcher("sistema/formularioAvaliacao.jsp").forward(request, response);
+			if(meuAluno != null)
+			{
+				request.setAttribute("aluno", meuAluno);
+				request.getRequestDispatcher("sistema/formularioAvaliacao.jsp").forward(request, response);
+			}
+			else
+			{
+				request.getRequestDispatcher("erroAvaliacao.jsp").forward(request, response);
+			}
 		}
 		else
 		{
@@ -103,7 +110,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		String login = request.getParameter("idAluno");
 		for(Aluno al : r.getTurma().getAlunos())
 		{
-			if(login.equals(al.getUsuario()))
+			if(login.equals(al.getUsuario().getLogin()))
 			{
 				meuAluno = al;
 				break;
