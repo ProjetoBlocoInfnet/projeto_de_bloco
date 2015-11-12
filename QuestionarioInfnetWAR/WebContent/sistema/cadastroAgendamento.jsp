@@ -27,9 +27,9 @@
 		  </div> --> 
 		  
 		  <div class="form-group">
-		    <label for="dataInicio" class="col-sm-2 control-label">Data de Início</label>
+		    <label for="dataInicio" class="col-sm-2 control-label">Data Inicio</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="dataInicio" class="form-control" id="dataInicio" placeholder="data Início">
+		      <input type="text" name="dataInicio" class="form-control" id="dataInicio" placeholder="Data Inicio">
 		    </div>		      
 		      <script>
 			      $(document).ready(function () {
@@ -44,7 +44,7 @@
 		  <div class="form-group">
 		    <label for="dataFim" class="col-sm-2 control-label">Data Fim</label>		    
 		    <div class="col-sm-10">		      
-		      	<input type="text" name="dataFim" class="form-control" id="dataFim" placeholder="data Fim">
+		      	<input type="text" name="dataFim" class="form-control" id="dataFim" placeholder="Data Fim">
 		     </div>		      
 		      <script>
 			      $(document).ready(function () {
