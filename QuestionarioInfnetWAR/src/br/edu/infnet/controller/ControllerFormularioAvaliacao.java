@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.ResultadoAvaliacaoDAO;
+import br.edu.infnet.academicnet.dao.TurmaDAO;
 import br.edu.infnet.academicnet.enumerators.Categoria;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Aluno;
@@ -32,6 +33,9 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 	
 	@EJB
 	ResultadoAvaliacaoDAO resultado;
+	
+	@EJB
+	TurmaDAO turma;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -48,7 +52,18 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		String senha = request.getParameter("key");
 		// TODO fazer consulta de validação de usuário aqui
 		long idAgendamento = Long.valueOf(request.getParameter("aval"));
-		AgendamentoAvaliacao minhaAvaliacao = agendamento.obterAtivo(idAgendamento);
+		
+		/*TODO
+		 * So para efeitos de teste isso esta aqui!!!!
+		 * */
+
+		AgendamentoAvaliacao minhaAvaliacao = agendamento.obter(idAgendamento);
+		
+		/*TODO
+		 * So para efeitos de teste isso esta aqui!!!!
+		 * */
+		//TODO Esse é o correto que está comentado. Está assim por causa dos testes. Depois tem que ser descomentado e o bloco de cima apagado
+		//AgendamentoAvaliacao minhaAvaliacao = agendamento.obterAtivo(idAgendamento);
 		if(minhaAvaliacao != null)
 		{
 			request.setAttribute("idAgendamento", idAgendamento);
@@ -57,16 +72,23 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 			request.setAttribute("professor", minhaAvaliacao.getProfessor());
 			request.setAttribute("modulo", minhaAvaliacao.getModulo());
 			Aluno meuAluno = null;
-			for(Aluno a : minhaAvaliacao.getTurma().getAlunos())
+			for(Aluno a : turma.obter(minhaAvaliacao.getTurma().getIdTurma()).getAlunos())
 			{
-				if(login.equals(a.getUsuario()))
+				if(login.equals(a.getUsuario().getLogin()))
 				{
 					meuAluno = a;
 					break;
 				}
 			}
-			request.setAttribute("aluno", meuAluno);
-			request.getRequestDispatcher("sistema/formularioAvaliacao.jsp").forward(request, response);
+			if(meuAluno != null)
+			{
+				request.setAttribute("aluno", meuAluno);
+				request.getRequestDispatcher("sistema/formularioAvaliacao.jsp").forward(request, response);
+			}
+			else
+			{
+				request.getRequestDispatcher("erroAvaliacao.jsp").forward(request, response);
+			}
 		}
 		else
 		{
@@ -88,7 +110,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		String login = request.getParameter("idAluno");
 		for(Aluno al : r.getTurma().getAlunos())
 		{
-			if(login.equals(al.getUsuario()))
+			if(login.equals(al.getUsuario().getLogin()))
 			{
 				meuAluno = al;
 				break;

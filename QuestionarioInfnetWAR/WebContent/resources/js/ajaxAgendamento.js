@@ -34,10 +34,12 @@ function getModulosTurmas(){
 		
 		success: function (data) { 
 		    var option = '<option value="">Selecionar</option>';
+		    var optionProfessor = '<option value="">Selecione um modulo antes</option>';
 		    $.each(data, function (index, turma) { 
 		    	option += '<option value="'+turma.idTurma+'">'+turma.nomeTurma+'</option>'; 
 		    }); 
 		    $("#turma").html(option).show();
+		    $("#professor").html(optionProfessor).show();
 		},
 		error:function(data,status,er) {
 		    alert("error: "+data+" status: "+status+" er:"+er);

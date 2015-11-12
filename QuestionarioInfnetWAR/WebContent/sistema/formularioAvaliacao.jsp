@@ -34,7 +34,7 @@
 			  			<c:forEach items="${requestScope.questoes}" var="questao">
 			  				<c:if test="${questao.categoria.getCategoria() == 'Curso'}">
 						  		<tr>
-						  			<td>${questao.nome}</td>
+						  			<td>${questao.textoQuestao}</td>
 						  			<c:if test="${questao.tipoResposta == 'LIKERT'}">
 						  				<td><input type="radio" name="${questao.idQuestao}" value=5 /></td>
 						  				<td><input type="radio" name="${questao.idQuestao}" value=4 /></td>
@@ -59,7 +59,7 @@
 			  			<c:forEach items="${requestScope.questoes}" var="questao">
 			  				<c:if test="${questao.categoria.getCategoria() == 'Professor'}">
 						  		<tr>
-						  			<td>${questao.nome}</td>
+						  			<td>${questao.textoQuestao}</td>
 						  			<c:if test="${questao.tipoResposta == 'LIKERT'}">
 						  				<td><input type="radio" name="${questao.idQuestao}" value=5 /></td>
 						  				<td><input type="radio" name="${questao.idQuestao}" value=4 /></td>
@@ -84,7 +84,7 @@
 			  			<c:forEach items="${requestScope.questoes}" var="questao">
 			  				<c:if test="${questao.categoria.getCategoria() == 'Conteúdo e Infra-Estrutura do módulo'}">
 						  		<tr>
-						  			<td>${questao.nome}</td>
+						  			<td>${questao.textoQuestao}</td>
 						  			<c:if test="${questao.tipoResposta == 'LIKERT'}">
 						  				<td><input type="radio" name="${questao.idQuestao}" value=5 /></td>
 						  				<td><input type="radio" name="${questao.idQuestao}" value=4 /></td>

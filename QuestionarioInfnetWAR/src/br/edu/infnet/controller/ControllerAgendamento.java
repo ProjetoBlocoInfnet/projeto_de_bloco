@@ -23,6 +23,8 @@ import br.edu.infnet.academicnet.dao.ModuloDAO;
 import br.edu.infnet.academicnet.dao.PessoaDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
+import br.edu.infnet.academicnet.modelo.Avaliacao;
+import br.edu.infnet.academicnet.modelo.Curso;
 import br.edu.infnet.academicnet.modelo.Modulo;
 import br.edu.infnet.academicnet.modelo.Professor;
 import br.edu.infnet.academicnet.modelo.Turma;
@@ -93,6 +95,23 @@ public class ControllerAgendamento extends HttpServlet {
 					id = Long.valueOf(request.getParameter("id"));
 					AgendamentoAvaliacao a = agendamento.obter(id);
 					request.setAttribute("agendamento", a);
+					
+					List<Avaliacao> avaliacoes = avaliacao.listar();
+					avaliacoes.remove(a.getAvaliacao());
+					request.setAttribute("avaliacoes", avaliacoes);
+					
+					List<Curso> cursos = cursoDAO.listarAtivos();
+					cursos.remove(a.getCurso());
+					request.setAttribute("cursos", cursos);
+					
+					List<Turma> turmas = cursoDAO.obter(a.getCurso().getIdCurso()).getTurmas();
+					turmas.remove(a.getTurma());
+					request.setAttribute("turmas", turmas);
+
+					List<Modulo> modulos = cursoDAO.listarModulosPorCursoId(a.getCurso().getIdCurso());
+					modulos.remove(a.getModulo());
+					request.setAttribute("modulos", modulos);
+
 //					cursoDAO.listarModulosPorCursoId(a.getCurso().getIdCurso());
 //					a.getCurso().getTurmas();
 					request.getRequestDispatcher("sistema/alterarAgendamento.jsp").forward(request, response);

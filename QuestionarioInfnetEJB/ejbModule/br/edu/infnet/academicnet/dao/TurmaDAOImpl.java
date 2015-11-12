@@ -51,7 +51,7 @@ public class TurmaDAOImpl implements TurmaDAO{
 
 	@Override
 	public Turma obter(long id) {
-		 TypedQuery<Turma> query = manager.createQuery("select t from Turma t where t.idTurma=:tId ", Turma.class);
+		 TypedQuery<Turma> query = manager.createQuery("select t from Turma t join fetch t.alunos where t.idTurma=:tId ", Turma.class);
 		 query.setParameter("tId", id);
 		 return query.getSingleResult();
 	}
