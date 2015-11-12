@@ -11,6 +11,7 @@
 	
 	<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="resources/datepicker/css/datepicker.css">
 	<link href="resources/css/style.css" rel="stylesheet">
 	
 </head>

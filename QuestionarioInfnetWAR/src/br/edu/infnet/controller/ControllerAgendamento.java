@@ -64,9 +64,9 @@ public class ControllerAgendamento extends HttpServlet {
     private HttpServletRequest checkReturn(boolean status, String action, HttpServletRequest request)
     {
 		if(status){
-			request.setAttribute("result_ok", "A��o efetuada com Sucesso!");
+			request.setAttribute("result_ok", "Ação efetuada com Sucesso!");
 		}else{
-			request.setAttribute("result_error", "Erro ao " + action + " a avalia��o!");
+			request.setAttribute("result_error", "Erro ao " + action + " a avaliação!");
 		}
 		return request;
     }
@@ -103,7 +103,7 @@ public class ControllerAgendamento extends HttpServlet {
 					break;
 				//case "excluirQuestao":
 				default:
-					request.setAttribute("result_error", "N�o houve a��o v�lida inserida");
+					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
 		}
 		String list = request.getParameter("list");
@@ -185,11 +185,19 @@ public class ControllerAgendamento extends HttpServlet {
 			switch(action)
 			{
 				case "cadastrar":
+					
+					System.out.println("Testando a data");
+					
 					a = new AgendamentoAvaliacao();
+					
 					try
 					{
 						dataInicio = (java.util.Date)sdf.parse(request.getParameter("dataInicio"));
 						dataFim = (java.util.Date)sdf.parse(request.getParameter("dataFim"));
+						
+						System.out.println(dataInicio);
+						System.out.println(dataFim);
+						
 						a.setDataInicio(new java.sql.Date(dataInicio.getTime()));
 						a.setDataFim(new java.sql.Date(dataFim.getTime()));
 					}
@@ -249,7 +257,7 @@ public class ControllerAgendamento extends HttpServlet {
 					request.getRequestDispatcher("sistema/agendamentoIndex.jsp").forward(request, response);
 					return;
 				default:
-					request.setAttribute("result_error", "N�o houve a��o v�lida inserida");
+					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
 		}
 		request.setAttribute("agendamentos", agendamento.listar());

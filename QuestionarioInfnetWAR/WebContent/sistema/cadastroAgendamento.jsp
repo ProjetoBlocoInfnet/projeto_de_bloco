@@ -19,19 +19,44 @@
 			
 		  <input type="hidden" name="action" value="cadastrar">
 		
-		  <div class="form-group">
+		 <!-- <div class="form-group">
 		    <label for="dataInicio" class="col-sm-2 control-label">Data Inicio</label>
 		    <div class="col-sm-10">
 		      <input type="date" name="dataInicio" class="form-control" id="dataInicio" placeholder="Data Inicio"/>
 		    </div>
+		  </div> --> 
+		  
+		  <div class="form-group">
+		    <label for="dataInicio" class="col-sm-2 control-label">Data de Início</label>
+		    <div class="col-sm-10">
+		      <input type="text" name="dataInicio" class="form-control" id="dataInicio" placeholder="data Início">
+		    </div>		      
+		      <script>
+			      $(document).ready(function () {
+			        $('#dataInicio').datepicker({
+			            format: "dd/mm/yyyy",
+			            language: "pt-BR"
+			        });
+			      });
+			    </script>		    
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="dataFim" class="col-sm-2 control-label">Data Fim</label>		    
+		    <div class="col-sm-10">		      
+		      	<input type="text" name="dataFim" class="form-control" id="dataFim" placeholder="data Fim">
+		     </div>		      
+		      <script>
+			      $(document).ready(function () {
+			        $('#dataFim').datepicker({
+			            format: "dd/mm/yyyy",
+			            language: "pt-BR"
+			        });
+			      });
+			    </script>		   
 		  </div>
 
-		  <div class="form-group">
-		    <label for="dataFim" class="col-sm-2 control-label">Data Fim</label>
-		    <div class="col-sm-10">
-		      <input type="date" name="dataFim" class="form-control" id="dataFim" placeholder="Data Fim"/>
-		    </div>
-		  </div>
+		 
 
 		  <div class="form-group">
 		    <label for="avaliacao" class="col-sm-2 control-label">Avaliação</label>
