@@ -25,7 +25,7 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	public boolean incluir(AgendamentoAvaliacao agendamentoAvaliacao) {
 		try
 		{
-			if(agendamentoAvaliacao.getDataInicio() == Date.valueOf(LocalDate.now()))
+			if(agendamentoAvaliacao.getDataInicio().equals(Date.valueOf(LocalDate.now())))
 			{
 				agendamentoAvaliacao.setStatus(StatusAvaliacao.EM_ANDAMENTO);
 			}

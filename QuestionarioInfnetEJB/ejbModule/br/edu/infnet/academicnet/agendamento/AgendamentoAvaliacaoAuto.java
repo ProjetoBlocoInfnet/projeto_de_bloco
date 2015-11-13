@@ -158,6 +158,7 @@ public class AgendamentoAvaliacaoAuto
 		link.append(aluno.getUsuario().getSenha());
 		link.append("&aval=");
 		link.append(idAgendamento);
+		System.out.println(link);
 		return link.toString();
 	}
 	
