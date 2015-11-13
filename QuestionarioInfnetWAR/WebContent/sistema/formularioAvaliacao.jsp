@@ -15,7 +15,7 @@
   		<hr>
   		<div id="infoUserCurso">
 			<span class="glyphicon glyphicon-user" aria-hidden="true"> Nome: "${requestScope.aluno.nome}"</span> &nbsp;&nbsp; || &nbsp;&nbsp;
-			<span class="glyphicon glyphicon-book" aria-hidden="true"> Curso: "${requestScope.curso.nome}" </span> &nbsp;&nbsp; || &nbsp;&nbsp;
+			<span class="glyphicon glyphicon-book" aria-hidden="true"> Módulo: "${requestScope.modulo.nomeModulo}" </span> &nbsp;&nbsp; || &nbsp;&nbsp;
 			<span class="glyphicon glyphicon-user" aria-hidden="true"> Professor: "${requestScope.professor.nome}"</span> <br/>
 		</div>
 	</div>

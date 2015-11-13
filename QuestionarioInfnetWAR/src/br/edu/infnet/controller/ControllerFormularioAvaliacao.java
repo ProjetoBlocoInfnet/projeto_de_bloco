@@ -1,9 +1,6 @@
 package br.edu.infnet.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -15,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.ResultadoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
-import br.edu.infnet.academicnet.enumerators.Categoria;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Questao;
@@ -74,13 +70,13 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 			Aluno meuAluno = null;
 			for(Aluno a : turma.obter(minhaAvaliacao.getTurma().getIdTurma()).getAlunos())
 			{
-				if(login.equals(a.getUsuario().getLogin()))
+				if(login.equals(a.getUsuario().getLogin()) && senha.equals(a.getUsuario().getSenha()))
 				{
 					meuAluno = a;
 					break;
 				}
 			}
-			if(meuAluno != null)
+			if(meuAluno != null && !resultado.seAlunoRespondeuAvaliacao(idAgendamento, meuAluno.getMatricula()))
 			{
 				request.setAttribute("aluno", meuAluno);
 				request.getRequestDispatcher("sistema/formularioAvaliacao.jsp").forward(request, response);
@@ -120,7 +116,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		//TODO essa parte aqui pode mudar dependendo de como fizermos a parte de login
 		
 		//Recupera as questões da tela e faz a mídia internamente no método setRespostas
-		Map<Questao,String> minhasRespostas = new HashMap<Questao,String>();
+		//Map<Questao,String> minhasRespostas = new HashMap<Questao,String>();
 		System.out.println("for das questoes");
 		//for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
 		System.out.println("Questao " + a.getAvaliacao().getListQuestao().get(0).getIdQuestao());

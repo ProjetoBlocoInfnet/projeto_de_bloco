@@ -63,4 +63,13 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	public boolean seAlunoRespondeuAvaliacao(Long idAgendamento, Long idAluno)
+	{
+		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r where r.agendamentoAvaliacao.idAgendamento=:rIdAgendamento and r.aluno.matricula=:rIdAluno ", ResultadoAvaliacao.class);
+		query.setParameter("rIdAgendamento", idAgendamento);
+		query.setParameter("rIdAluno", idAluno);
+		return query.getSingleResult() != null;
+	}
+
 }
