@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -29,6 +30,7 @@ import br.edu.infnet.academicnet.modelo.Modulo;
 import br.edu.infnet.academicnet.modelo.Professor;
 import br.edu.infnet.academicnet.modelo.Turma;
 import flexjson.JSONSerializer;
+import flexjson.transformer.IterableTransformer;
 
 
 /**
@@ -140,10 +142,9 @@ public class ControllerAgendamento extends HttpServlet {
 					idCurso = Long.valueOf(request.getParameter("idCurso"));					
 					listaModulos = cursoDAO.listarModulosPorCursoId(idCurso);
 					
-					
 					serializer = new JSONSerializer().prettyPrint(true); 
-				    jsonStr = serializer.serialize(listaModulos);
-				    System.out.println(jsonStr);								
+				    jsonStr = serializer.exclude("agendamentoAvaliacao").serialize(listaModulos);
+				    System.out.println(jsonStr);
 					
 				    response.setContentType("application/json");  
 				    response.setCharacterEncoding("UTF-8"); 
@@ -156,10 +157,10 @@ public class ControllerAgendamento extends HttpServlet {
 					
 					idCurso = Long.valueOf(request.getParameter("idCurso"));					
 					listaTurmas = cursoDAO.obter(idCurso).getTurmas();
-					
+
 					serializer = new JSONSerializer().prettyPrint(true); 
-				    jsonStr = serializer.serialize(listaTurmas);
-				    System.out.println(jsonStr);								
+				    jsonStr = serializer.exclude("alunos").exclude("professores").exclude("cursos").exclude("avaliacao").serialize(listaTurmas);
+				    System.out.println(jsonStr);
 					
 				    response.setContentType("application/json");  
 				    response.setCharacterEncoding("UTF-8"); 

@@ -13,5 +13,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="G:/Trabalhos/Java/projeto_de_bloco/QuestionarioInfnetWAR/WebContent/WEB-INF/lib/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="G:/Trabalhos/Java/projeto_de_bloco/QuestionarioInfnetWAR/WebContent/WEB-INF/lib/flexjson-2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

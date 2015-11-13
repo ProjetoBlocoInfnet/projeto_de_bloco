@@ -114,6 +114,41 @@ public class AgendamentoAvaliacaoAuto
 		}
 	}
 	
+	public boolean sendEmails(AgendamentoAvaliacao a)
+	{
+		for(Aluno al : a.getTurma().getAlunos())
+		{
+			//TODO Enviar emails para os alunos com os links das avaliaï¿½ï¿½es
+			try 
+			{
+				Message message = new MimeMessage(session);
+				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
+				message.setSubject("Avaliação curso Infnet " + a.getModulo().getNomeModulo());
+
+				StringBuilder mensagem = new StringBuilder();
+				mensagem.append("Olá Sr(a) ");
+				mensagem.append(al.getNome());
+				mensagem.append("\n");
+				mensagem.append("Segue abaixo o link para responder o questionário de avaliação do módulo ");
+				mensagem.append(a.getModulo().getNomeModulo());
+				mensagem.append(".\n");
+				mensagem.append(this.generateLink(a.getIdAgendamento(), al));
+				mensagem.append("\n");
+				mensagem.append("Desde já agradecemos pelo seu feedback");
+				mensagem.append("\n");
+				
+				message.setText(mensagem.toString());
+				Transport.send(message);
+			}
+			catch (MessagingException e)
+			{
+				System.out.println("Erro ao enviar o email");
+				e.printStackTrace();
+	        }
+		}
+		return true;
+	}
+	
 	private String generateLink(Long idAgendamento, Aluno aluno)
 	{
 		StringBuilder link = new StringBuilder();

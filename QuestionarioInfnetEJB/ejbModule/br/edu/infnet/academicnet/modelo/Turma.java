@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import flexjson.JSON;
+
 @Entity
 @Table(name="tbl_turma")
 public class Turma implements Serializable{
@@ -61,7 +63,7 @@ public class Turma implements Serializable{
 		this.nomeTurma = nomeTurma;
 	}
 
-
+	@JSON(include=false)
 	public List<Aluno> getAlunos() {
 		return alunos;
 	}
@@ -90,6 +92,7 @@ public class Turma implements Serializable{
 		return avaliacao;
 	}
 
+	@JSON(include=false)
 	public void setAvaliacao(AgendamentoAvaliacao avaliacao) {
 		this.avaliacao = avaliacao;
 	}

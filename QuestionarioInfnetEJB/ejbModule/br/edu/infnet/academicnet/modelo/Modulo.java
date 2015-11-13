@@ -20,6 +20,8 @@ import br.edu.infnet.academicnet.enumerators.Status;
 
 import com.google.gson.annotations.Expose;
 
+import flexjson.JSON;
+
 @Entity
 @Table(name="tbl_modulo")
 public class Modulo implements Serializable{
@@ -95,6 +97,7 @@ public class Modulo implements Serializable{
 		this.cursos = cursos;
 	}
 
+	@JSON(include=false)
 	public AgendamentoAvaliacao getAgendamentoAvaliacao() {
 		return agendamentoAvaliacao;
 	}

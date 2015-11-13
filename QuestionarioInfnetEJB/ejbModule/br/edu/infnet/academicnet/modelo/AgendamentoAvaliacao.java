@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import flexjson.JSON;
+import br.edu.infnet.academicnet.agendamento.AgendamentoAvaliacaoAuto;
 import br.edu.infnet.academicnet.enumerators.StatusAvaliacao;
 
 @Entity
@@ -60,7 +62,7 @@ public class AgendamentoAvaliacao implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private StatusAvaliacao status;
 	
-	@OneToOne(mappedBy="agendamentoAvaliacao")	
+	@OneToOne(mappedBy="agendamentoAvaliacao")
 	private ResultadoAvaliacao resultadoAvaliacao;
 	
 	public AgendamentoAvaliacao() {
@@ -137,8 +139,13 @@ public class AgendamentoAvaliacao implements Serializable{
 
 	public void setStatus(StatusAvaliacao status) {
 		this.status = status;
+		if(this.status.compareTo(StatusAvaliacao.EM_ANDAMENTO) == 0)
+		{
+			new AgendamentoAvaliacaoAuto().sendEmails(this);
+		}
 	}
 
+	@JSON(include=false)
 	public ResultadoAvaliacao getResultadoAvaliacao() {
 		return resultadoAvaliacao;
 	}
