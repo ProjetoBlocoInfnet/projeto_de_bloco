@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
+import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
@@ -29,7 +30,8 @@ import br.edu.infnet.academicnet.modelo.Aluno;
 @Startup
 public class AgendamentoAvaliacaoAuto
 {
-    @Resource(name = "java:jboss/mail/gmail")
+    //Resource(name = "java:jboss/mail/Gmail")
+    @Resource(name = "gmail")
     private Session session;
 
     @Inject
@@ -114,7 +116,8 @@ public class AgendamentoAvaliacaoAuto
 		}
 	}
 	
-	public boolean sendEmails(AgendamentoAvaliacao a)
+	@Asynchronous
+	public void sendEmails(AgendamentoAvaliacao a)
 	{
 		for(Aluno al : a.getTurma().getAlunos())
 		{
@@ -146,7 +149,7 @@ public class AgendamentoAvaliacaoAuto
 				e.printStackTrace();
 	        }
 		}
-		return true;
+		//return true;
 	}
 	
 	private String generateLink(Long idAgendamento, Aluno aluno)
