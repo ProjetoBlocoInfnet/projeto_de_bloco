@@ -120,7 +120,9 @@ public class ResultadoAvaliacao implements Serializable{
 		int qtdLikert=0;
 		for(Map.Entry<Questao, String> resposta : respostas.entrySet())
 		{
-			if(resposta.getKey().getTipoResposta() == TipoResposta.LIKERT)
+			System.out.println("Comparando questao " + resposta.getKey().getIdQuestao() + " com likert " + resposta.getKey().getTipoResposta().compareTo(TipoResposta.LIKERT) + " de resposta " + resposta.getValue());
+//			System.out.println(resposta.getValue());
+			if(resposta.getKey().getTipoResposta().compareTo(TipoResposta.LIKERT) == 0)
 			{
 				total+=Integer.valueOf(resposta.getValue());
 				qtdLikert++;

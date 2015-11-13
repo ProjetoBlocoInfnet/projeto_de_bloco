@@ -108,7 +108,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		//TODO essa parte aqui pode mudar dependendo de como fizermos a parte de login
 		Aluno meuAluno = null;
 		String login = request.getParameter("idAluno");
-		for(Aluno al : r.getTurma().getAlunos())
+		for(Aluno al : turma.obter(r.getTurma().getIdTurma()).getAlunos())
 		{
 			if(login.equals(al.getUsuario().getLogin()))
 			{
@@ -121,11 +121,26 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		
 		//Recupera as questões da tela e faz a mídia internamente no método setRespostas
 		Map<Questao,String> minhasRespostas = new HashMap<Questao,String>();
-		for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
+		System.out.println("for das questoes");
+		//for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
+		System.out.println("Questao " + a.getAvaliacao().getListQuestao().get(0).getIdQuestao());
+		for(Questao questao : a.getAvaliacao().getListQuestao())
 		{
-			minhasRespostas.put(resposta.getKey(), request.getParameter(request.getParameter(String.valueOf(resposta.getKey().getIdQuestao()))));
+			//System.out.println("Retorno da tela da questao " + questao.getIdQuestao() + " " + request.getParameter(String.valueOf(questao.getIdQuestao())) + " Tipo Questao " + questao.getTipoResposta());
+			//System.out.println(questao + " = " + request.getParameter(request.getParameter(String.valueOf(resposta.getKey().getIdQuestao()))));
+			try
+			{
+				//minhasRespostas.put(questao, request.getParameter(request.getParameter(String.valueOf(questao.getIdQuestao()))));
+				r.getRespostas().put(questao, request.getParameter(String.valueOf(questao.getIdQuestao())));
+			}
+			catch(Exception e)
+			{
+				request.getRequestDispatcher("erroAvaliacaoIncompleta.jsp").forward(request, response);
+				return;
+			}
 		}
-		r.setRespostas(minhasRespostas);
+		r.calculaMedia();
+		//r.setRespostas(minhasRespostas);
 
 		if(resultado.incluir(r))
 		{
