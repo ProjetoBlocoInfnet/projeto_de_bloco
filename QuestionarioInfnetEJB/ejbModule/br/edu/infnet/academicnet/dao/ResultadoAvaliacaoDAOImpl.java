@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -65,11 +66,19 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 
 	@Override
 	public boolean seAlunoRespondeuAvaliacao(Long idAgendamento, Long idAluno)
-	{
-		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r where r.agendamentoAvaliacao.idAgendamento=:rIdAgendamento and r.aluno.matricula=:rIdAluno ", ResultadoAvaliacao.class);
-		query.setParameter("rIdAgendamento", idAgendamento);
-		query.setParameter("rIdAluno", idAluno);
-		return query.getSingleResult() != null;
+	{	
+		try {
+			TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r where r.agendamentoAvaliacao.idAgendamento=:rIdAgendamento and r.aluno.matricula=:rIdAluno ", ResultadoAvaliacao.class);
+			query.setParameter("rIdAgendamento", idAgendamento);
+			query.setParameter("rIdAluno", idAluno);
+			query.getSingleResult() ;
+			return true;
+			
+		} catch (NoResultException ex) {
+			return false;
+		}
+		
+		
 	}
 
 }

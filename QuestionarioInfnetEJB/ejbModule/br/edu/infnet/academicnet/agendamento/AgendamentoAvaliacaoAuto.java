@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Asynchronous;
-import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -31,7 +30,7 @@ import br.edu.infnet.academicnet.modelo.Aluno;
 public class AgendamentoAvaliacaoAuto
 {
     //Resource(name = "java:jboss/mail/Gmail")
-    @Resource(name = "gmail")
+    @Resource(name = "java:jboss/mail/Gmail")
     private Session session;
 
     @Inject
@@ -59,7 +58,7 @@ public class AgendamentoAvaliacaoAuto
 				System.out.println("Erro ao iniciar o agendamento de ID " + a.getIdAgendamento());
 				e.printStackTrace();
 			}
-
+			System.out.println("idAgendamento = " + a.getIdAgendamento());
 			for(Aluno al : a.getTurma().getAlunos())
 			{
 				//TODO Enviar emails para os alunos com os links das avaliaï¿½ï¿½es
@@ -67,18 +66,18 @@ public class AgendamentoAvaliacaoAuto
 				{
 					Message message = new MimeMessage(session);
 					message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
-					message.setSubject("Avaliação curso Infnet " + a.getModulo().getNomeModulo());
+					message.setSubject("AvaliaÃ§Ã£o curso Infnet " + a.getModulo().getNomeModulo());
 
 					StringBuilder mensagem = new StringBuilder();
-					mensagem.append("Olá Sr(a) ");
+					mensagem.append("OlÃ¡ Sr(a) ");
 					mensagem.append(al.getNome());
 					mensagem.append("\n");
-					mensagem.append("Segue abaixo o link para responder o questionário de avaliação do módulo ");
+					mensagem.append("Segue abaixo o link para responder o questionÃ¡rio de avaliaÃ§Ã£o do mÃ³dulo ");
 					mensagem.append(a.getModulo().getNomeModulo());
 					mensagem.append(".\n");
 					mensagem.append(this.generateLink(a.getIdAgendamento(), al));
 					mensagem.append("\n");
-					mensagem.append("Desde já agradecemos pelo seu feedback");
+					mensagem.append("Desde jÃ¡ agradecemos pelo seu feedback");
 					mensagem.append("\n");
 					
 					message.setText(mensagem.toString());
@@ -122,22 +121,23 @@ public class AgendamentoAvaliacaoAuto
 		for(Aluno al : a.getTurma().getAlunos())
 		{
 			//TODO Enviar emails para os alunos com os links das avaliaï¿½ï¿½es
+			System.out.println("idAgendamento =" + a.getIdAgendamento());
 			try 
 			{
 				Message message = new MimeMessage(session);
 				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
-				message.setSubject("Avaliação curso Infnet " + a.getModulo().getNomeModulo());
+				message.setSubject("AvaliaÃ§Ã£o curso Infnet " + a.getModulo().getNomeModulo());
 
 				StringBuilder mensagem = new StringBuilder();
-				mensagem.append("Olá Sr(a) ");
+				mensagem.append("OlÃ¡ Sr(a) ");
 				mensagem.append(al.getNome());
 				mensagem.append("\n");
-				mensagem.append("Segue abaixo o link para responder o questionário de avaliação do módulo ");
+				mensagem.append("Segue abaixo o link para responder o questionÃ¡rio de avaliaÃ§Ã£o do mÃ³dulo ");
 				mensagem.append(a.getModulo().getNomeModulo());
 				mensagem.append(".\n");
 				mensagem.append(this.generateLink(a.getIdAgendamento(), al));
 				mensagem.append("\n");
-				mensagem.append("Desde já agradecemos pelo seu feedback");
+				mensagem.append("Desde jÃ¡ agradecemos pelo seu feedback");
 				mensagem.append("\n");
 				
 				message.setText(mensagem.toString());
@@ -161,6 +161,7 @@ public class AgendamentoAvaliacaoAuto
 		link.append(aluno.getUsuario().getSenha());
 		link.append("&aval=");
 		link.append(idAgendamento);
+		System.out.println("idAgendamento =" + idAgendamento);
 		System.out.println(link);
 		return link.toString();
 	}
