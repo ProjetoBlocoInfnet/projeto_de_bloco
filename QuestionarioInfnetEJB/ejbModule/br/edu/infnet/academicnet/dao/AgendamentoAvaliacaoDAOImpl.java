@@ -24,7 +24,10 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	@Override
 	public boolean incluir(AgendamentoAvaliacao agendamentoAvaliacao) {
 		try
-		{
+		{	
+			manager.persist(agendamentoAvaliacao);
+			manager.flush();
+			
 			if(agendamentoAvaliacao.getDataInicio().equals(Date.valueOf(LocalDate.now())))
 			{
 				agendamentoAvaliacao.setStatus(StatusAvaliacao.EM_ANDAMENTO);
@@ -33,8 +36,7 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 			{
 				agendamentoAvaliacao.setStatus(StatusAvaliacao.CRIADO);
 			}
-			manager.persist(agendamentoAvaliacao);
-			manager.flush();
+			
 		}
 		catch (Exception e)
 		{
@@ -109,7 +111,7 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	@Override
 	public List<AgendamentoAvaliacao> obterPorStatusDataInicio(StatusAvaliacao status,
 			Date data) {
-		System.out.println("Dentro da função de sql");
+		System.out.println("Dentro da funï¿½ï¿½o de sql");
 		System.out.println(data);
 		System.out.println(status);
 		manager = Persistence.createEntityManagerFactory("academicnetDS").createEntityManager();
