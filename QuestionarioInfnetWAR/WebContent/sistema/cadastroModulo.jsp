@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -11,16 +12,16 @@
 		<a href="ControllerModulo"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Cadastro de Módulos</h2>
+		<h2>Cadastro de MÃ³dulos</h2>
 		<hr>
 		<form action="ControllerModulo" method="post" class="form-horizontal">
 			
 		  <input type="hidden" name="action" value="cadastrar">
 		
 		  <div class="form-group">
-		    <label for="avaliacao" class="col-sm-2 control-label">Módulo</label>
+		    <label for="avaliacao" class="col-sm-2 control-label">MÃ³dulo</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="nome" class="form-control" id="nome" placeholder="Módulo">
+		      <input type="text" name="nome" class="form-control" id="nome" placeholder="Mï¿½dulo">
 		    </div>
 		  </div>
 		 		 

@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 
 <jsp:include page="menu.jsp" />
@@ -49,7 +51,7 @@
   		<thead>
   		<th>id</th>
   		<th>Nome</th>
-  		<th>Ação</th>
+  		<th>AÃ§Ã£o</th>
   		</thead>
   		<tbody>
   			<c:forEach var="curso" items="${listaCurso}" >

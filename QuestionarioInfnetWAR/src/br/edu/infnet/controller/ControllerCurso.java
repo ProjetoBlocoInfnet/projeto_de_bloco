@@ -97,7 +97,7 @@ public class ControllerCurso extends HttpServlet {
 				
 				boolean result = cursoDAO.excluir(idCurso);
 				if(result){
-					request.setAttribute("result_ok", "Exclus„o efetuada com Sucesso!");
+					request.setAttribute("result_ok", "Exclus√£o efetuada com Sucesso!");
 				}else{
 					request.setAttribute("result_error", "Erro ao excluir!");
 				}	

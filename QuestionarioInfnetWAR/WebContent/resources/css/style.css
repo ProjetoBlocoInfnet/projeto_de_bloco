@@ -69,6 +69,10 @@
 	margin-top:100px;
 }
 
+#containerFormulario{
+	margin-top:40px;
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -122,3 +126,40 @@
 #formLogin{
 	padding-top:15px;
 }
+
+/* =========== Formulário Avaliação =======================*/
+
+#formularioMenu img{
+	width: 180px;
+	height: 50px;
+}
+
+#infoUserCurso{
+	height: 28px;
+	padding: 1px 8px;
+}
+
+
+
+#opcoes th{
+	font-size: 13px;
+	text-align: center;
+	background:  rgba(23, 7, 0, 0.1);
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	padding: 5px 5px;
+}
+
+#avaliacao #opcoes #first{
+	width: 52%;	
+}
+
+#avaliacao tbody tr td input[type=radio]{	
+	margin-left:46%;
+}
+
+#avaliacao .questaoInfo{
+	font-weight: bold;
+}
+
+

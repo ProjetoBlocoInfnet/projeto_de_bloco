@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 
 <jsp:include page="menu.jsp" />
@@ -10,7 +12,7 @@
 		<a href="ControllerUsuario"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Cadastro de Usuários</h2>
+		<h2>Cadastro de UsuÃ¡rios</h2>
 		<hr>
 		<form action="ControllerUsuario" method="post" class="form-horizontal">
 		
@@ -47,9 +49,9 @@
 		    </div>
 		  </div>
 		   <div class="form-group">
-		    <label for="endereco" class="col-sm-2 control-label">Endereço</label>
+		    <label for="endereco" class="col-sm-2 control-label">EndereÃ§o</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="endereco" class="form-control" id="endereco" placeholder="Endereço">
+		      <input type="text" name="endereco" class="form-control" id="endereco" placeholder="EndereÃ§o">
 		    </div>
 		  </div>
 		  

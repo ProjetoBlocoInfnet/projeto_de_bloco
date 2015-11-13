@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 
 <jsp:include page="menu.jsp" />
@@ -10,7 +12,7 @@
 		<a href="ControllerQuestao"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Alterar  Quest„o</h2>
+		<h2>Alterar  Quest√£o</h2>
 		<hr>
 		
 		<form action="ControllerQuestao" method="post" class="form-horizontal">
@@ -20,9 +22,9 @@
 			  
 		
 			  <div class="form-group">
-			    <label for="questao" class="col-sm-2 control-label">Quest„o</label>
+			    <label for="questao" class="col-sm-2 control-label">Quest√£o</label>
 			    <div class="col-sm-10">
-			      <textarea name="questao" class="form-control" id="questao" placeholder="Quest„o">${questao.textoQuestao}</textarea>
+			      <textarea name="questao" class="form-control" id="questao" placeholder="QuestÔøΩo">${questao.textoQuestao}</textarea>
 			    </div>
 			  </div>
 			  		 		 

@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 
 <jsp:include page="menu.jsp" />
@@ -11,7 +13,7 @@
 	<br><br>
 	<form action="ControllerQuestao" method="get">
 		<input type="hidden" name="tela" value="telaCadastro">
-		<input type="submit" class="btn btn-info" value="Cadastrar Quest„o">
+		<input type="submit" class="btn btn-info" value="Cadastrar Quest√£o">
 	</form>
 	<br>
 	<form action="ControllerQuestao" method="post">
@@ -47,11 +49,11 @@
 	<div >
 	<table class="table table-hover">
   		<thead>
-	  		<th>Quest„o</th>
+	  		<th>Quest√£o</th>
 	  		<th>Categoria</th>
 	  		<th>tipoResposta</th>
 	  		<th>Status</th>
-	  		<th>AÁ„o</th>
+	  		<th>A√ß√£o</th>
   		</thead>
   		<tbody>
   			<c:forEach var="questao" items="${listaQuestao}">

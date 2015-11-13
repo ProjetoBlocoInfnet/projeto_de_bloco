@@ -1,5 +1,7 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="menu.jsp" />
@@ -21,12 +23,12 @@
 		    <input type="text" name="valor" class="form-control" placeholder="Consultar por...">
 				<select name="tipoConsulta" id="tipoConsulta" class="form-control">
 				  	<option value="agendamento">ID Agendamento</option>
-			  		<option value="avaliacao">AvaliaÁ„o</option>
-			  		<option value="dataInicio">Data Inicio</option>
+			  		<option value="avaliacao">Avalia√ß√£o</option>
+			  		<option value="dataInicio">Data In√≠cio</option>
 					<option value="dataFim">Data Fim</option>
 					<option value="turma">Turma</option>
 					<option value="curso">Curso</option>
-					<option value="modulo">MÛdulo</option>
+					<option value="modulo">M√≥dulo</option>
 					<option value="professor">Professor</option>
 				</select>
 			
@@ -57,15 +59,15 @@
 	<table class="table table-hover">
   		<thead>
   		<th>ID Agendamento</th>
-  		<th>AvaliaÁ„o</th>
+  		<th>Avalia√ß√£o</th>
   		<th>Status</th>
   		<th>Data Inicio</th>
   		<th>Data Fim</th>
   		<th>Turma</th>
   		<th>Curso</th>
-  		<th>MÛdulo</th>
+  		<th>M√≥dulo</th>
   		<th>Professor</th>
-  		<th>AÁ„o</th>
+  		<th>A√ß√£o</th>
   		</thead>
   		<tbody>
   		<c:if test="${requestScope.agendamentos != null && requestScope.agendamentos.size() > 0 }">
