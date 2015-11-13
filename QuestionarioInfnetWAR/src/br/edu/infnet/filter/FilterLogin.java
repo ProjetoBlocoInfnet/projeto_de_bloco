@@ -2,7 +2,6 @@ package br.edu.infnet.filter;
 
 import java.io.IOException;
 
-import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -18,8 +17,8 @@ import br.edu.infnet.academicnet.modelo.Pessoa;
 /**
  * Servlet Filter implementation class FilterLogin
  */
-@WebFilter(filterName = "/FilterLogin", urlPatterns="/paginas/*",
-		   servletNames = {"ControllerAvaliacao","ControllerFormularioAvaliacao","ControllerMediaHistorica","ControllerQuestao","ControllerUsuario","ControllerTurma","ControllerUsuario"}
+@WebFilter(filterName = "/FilterLogin", urlPatterns="/paginas/*", 
+		   servletNames = {"ControllerAvaliacao","ControllerMediaHistorica","ControllerQuestao","ControllerUsuario","ControllerTurma","ControllerUsuario"}
            )
 public class FilterLogin implements Filter {
 

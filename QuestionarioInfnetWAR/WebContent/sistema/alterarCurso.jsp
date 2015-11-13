@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 
 <jsp:include page="menu.jsp" />
@@ -10,7 +12,7 @@
 		<a href="ControllerCurso"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Alteração de Curso</h2>
+		<h2>AlteraÃ§Ã£o de Curso</h2>
 		<hr>
 		<form action="ControllerCurso" method="post" class="form-horizontal">
 		
@@ -26,7 +28,7 @@
 		  </div>
 		 		  
 		  <div class="form-group">
-		    <label for="modulo" class="col-sm-2 control-label">Módulos</label>
+		    <label for="modulo" class="col-sm-2 control-label">MÃ³dulos</label>
 		    	<div class="col-sm-10">
 					<select name="modulos" id="modulo" class="form-control" multiple="multiple">
 						<c:if test="${requestScope.meusModulos != null && requestScope.meusModulos.size() > 0 }">

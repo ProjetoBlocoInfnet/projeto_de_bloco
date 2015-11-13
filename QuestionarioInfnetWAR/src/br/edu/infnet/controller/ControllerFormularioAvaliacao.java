@@ -47,10 +47,10 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO carrega a tela da avaliaÁ„o
+		// TODO carrega a tela da avalia√ß√£o
 		String login = request.getParameter("aluno");
 		String senha = request.getParameter("key");
-		// TODO fazer consulta de validaÁ„o de usu·rio aqui
+		// TODO fazer consulta de valid√ß√£o de usu√°rio aqui
 		long idAgendamento = Long.valueOf(request.getParameter("aval"));
 		
 		/*TODO
@@ -62,7 +62,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		/*TODO
 		 * So para efeitos de teste isso esta aqui!!!!
 		 * */
-		//TODO Esse È o correto que est· comentado. Est· assim por causa dos testes. Depois tem que ser descomentado e o bloco de cima apagado
+		//TODO Esse √© o correto que est√° comentado. Est√° assim por causa dos testes. Depois tem que ser descomentado e o bloco de cima apagado
 		//AgendamentoAvaliacao minhaAvaliacao = agendamento.obterAtivo(idAgendamento);
 		if(minhaAvaliacao != null)
 		{
@@ -119,7 +119,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		r.setAluno(meuAluno);
 		//TODO essa parte aqui pode mudar dependendo de como fizermos a parte de login
 		
-		//Recupera as questıes da tela e faz a mÈdia internamente no mÈtodo setRespostas
+		//Recupera as quest√µes da tela e faz a m√≠dia internamente no m√©todo setRespostas
 		Map<Questao,String> minhasRespostas = new HashMap<Questao,String>();
 		for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
 		{

@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:include page="../openDoc.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -13,7 +14,7 @@
 		<a href="ControllerAgendamento"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>Cadastro de Agendamentos de AvaliaÁ„o</h2>
+		<h2>Cadastro de Agendamentos de Avalia√ß√£o</h2>
 		<hr>
 		<form action="ControllerAgendamento" method="post" class="form-horizontal">
 			
@@ -27,9 +28,9 @@
 		  </div> --> 
 		  
 		  <div class="form-group">
-		    <label for="dataInicio" class="col-sm-2 control-label">Data Inicio</label>
+		    <label for="dataInicio" class="col-sm-2 control-label">Data In√≠cio</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="dataInicio" class="form-control" id="dataInicio" placeholder="Data Inicio">
+		      <input type="text" name="dataInicio" class="form-control" id="dataInicio" placeholder="Data In√≠cio">
 		    </div>		      
 		      <script>
 			      $(document).ready(function () {
@@ -59,7 +60,7 @@
 		 
 
 		  <div class="form-group">
-		    <label for="avaliacao" class="col-sm-2 control-label">AvaliaÁ„o</label>
+		    <label for="avaliacao" class="col-sm-2 control-label">Avalia√ß√£o</label>
 		    	<div class="col-sm-10">
 					<select name="avaliacao" id="avaliacao" class="form-control">
 						<option value="">Selecionar</option>
@@ -97,7 +98,7 @@
 		  </div>
 
 		  <div class="form-group">
-		    <label for="modulo" class="col-sm-2 control-label">MÛdulo</label>
+		    <label for="modulo" class="col-sm-2 control-label">M√≥dulo</label>
 		    	<div class="col-sm-10">
 					<select name="modulo" id="modulo" class="form-control" onchange="getProfessores()">
 						<option value="">Selecione o Curso antes</option>
@@ -110,7 +111,7 @@
 		    <label for="professor" class="col-sm-2 control-label">Professor</label>
 		    	<div class="col-sm-10">
 					<select name="professor" id="professor" class="form-control">
-						<option value="">Selecione o mÛdulo antes</option>
+						<option value="">Selecione o m√≥dulo antes</option>
 					</select>
 		  		</div>
 		  </div>

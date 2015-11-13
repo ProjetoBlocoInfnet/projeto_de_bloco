@@ -2,8 +2,8 @@ package br.edu.infnet.academicnet.enumerators;
 
 public enum Categoria {
 	
-	CURSO("Curso", "Avaliação geral da Pós-Graduação"), PROFESSOR("Professor","Avaliação do professor do módulo"), 
-	MODULO_INFRA("Conteúdo e Infra-Estrutura do módulo","Avaliação de Conteúdo e infra-estrutura no módulo");
+	CURSO("Curso", "AvaliaÃ§Ã£o geral da PÃ³s-Graduao"), PROFESSOR("Professor","AvaliaÃ§Ã£o do professor do mÃ³dulo"), 
+	MODULO_INFRA("ConteÃºdo e Infra-Estrutura do mÃ³dulo","AvaliaÃ§Ã£o de ConteÃºdo e infra-estrutura no mÃ³dulo");
 	
 	private String categoria;
 	private String titulo;

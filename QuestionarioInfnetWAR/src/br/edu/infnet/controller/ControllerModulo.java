@@ -33,13 +33,13 @@ public class ControllerModulo extends HttpServlet {
         super();
     }
 
-    //Funï¿½ï¿½es auxiliares
+    //FunÃ§Ãµes auxiliares
     private HttpServletRequest checkReturn(boolean status, String action, HttpServletRequest request)
     {
 		if(status){
-			request.setAttribute("result_ok", "Ação efetuada com Sucesso!");
+			request.setAttribute("result_ok", "AÃ§Ã£o efetuada com Sucesso!");
 		}else{
-			request.setAttribute("result_error", "Erro ao " + action + " o módulo!");
+			request.setAttribute("result_error", "Erro ao " + action + " o mÃ³dulo!");
 		}
 		return request;
     }

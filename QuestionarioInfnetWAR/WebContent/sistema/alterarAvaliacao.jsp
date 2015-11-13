@@ -11,7 +11,7 @@
 		<a href="ControllerAvaliacao"><button type="button" class="btn btn-default">Voltar</button></a>
 		<br><br>
 		
-		<h2>AlteraÁ„o de AvaliaÁıes</h2>
+		<h2>Altera√ß√£o de Avalia√ß√µes</h2>
 		<hr>
 		<form action="ControllerAvaliacao" method="post" class="form-horizontal">
 			
@@ -26,7 +26,7 @@
 		  </div>
 		 		 
 		  <div class="form-group">
-		    <label for="questoes" class="col-sm-2 control-label">Questıes</label>
+		    <label for="questoes" class="col-sm-2 control-label">Quest√µes</label>
 		    	<div class="col-sm-10">
 					<select name="questoes" id="questoes" multiple="multiple" class="form-control">
 				  		<c:if test="${requestScope.questoes != null && requestScope.questoes.size() > 0 }">
@@ -52,7 +52,7 @@
 		  
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">Alterar AvaliaÁ„o</button>
+		      <button type="submit" class="btn btn-default">Alterar Avalia√ß√£o</button>
 		    </div>
 		  </div>
 		</form>
@@ -62,15 +62,15 @@
 	<hr>
 	
 	<div class="container">
-		<h2>Questıes Atuais</h2>
+		<h2>Quest√µes Atuais</h2>
 		<hr>
 		<table class="table table-hover">
 	  		<thead>
-		  		<th>Quest„o</th>
+		  		<th>Quest√£o</th>
 		  		<th>Categoria</th>
 		  		<th>tipoResposta</th>
 		  		<th>Status</th>
-		  		<th>AÁ„o</th>
+		  		<th>A√ß√£o</th>
 	  		</thead>
 	  		<tbody>
 	  		 

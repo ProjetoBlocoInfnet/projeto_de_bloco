@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<img src="resources/img/logoInfnet3.png">  
@@ -5,26 +7,26 @@
 		<ul id="menu" class="nav navbar-nav navbar-right">	 
 	        <li id="area" class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-	         ¡reas  <span class="caret"></span></a>
+	         √Åreas  <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li>
 	            	<a href="ControllerUsuario">
-	            		<span class="glyphicon glyphicon-user" aria-hidden="true"> Usu·rios</span> 
+	            		<span class="glyphicon glyphicon-user" aria-hidden="true"> Usu√°rios</span> 
 	            	</a>
 	            </li>
 	            <li>
 	            	<a href="ControllerQuestao">
-	            		<span class="glyphicon glyphicon-list" aria-hidden="true"> Questıes</span> 
+	            		<span class="glyphicon glyphicon-list" aria-hidden="true"> Quest√µes</span> 
 	            	</a>
 	            </li>
 	            <li>
 	            	<a href="ControllerAvaliacao">
-	            		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"> AvaliaÁıes</span> 
+	            		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Avalia√ß√µes</span> 
 	            	</a>
 	            </li>
 	             <li>
 	            	<a href="ControllerModulo">
-	            		<span class="glyphicon glyphicon-th" aria-hidden="true"> MÛdulo</span> 
+	            		<span class="glyphicon glyphicon-th" aria-hidden="true"> M√≥dulo</span> 
 	            	</a>
 	            </li>
 	            <li>
@@ -42,7 +44,7 @@
 	        </li>	        
         	<li class="principal">
         		<a href="ControllerMediaHistorica" >
-        			 MÈdia HistÛrica <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+        			 M√©dia Hist√≥rica <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
         		</a>
        		</li>
 			
