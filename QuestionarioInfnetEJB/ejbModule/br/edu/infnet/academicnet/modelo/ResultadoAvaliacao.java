@@ -16,6 +16,7 @@ import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import flexjson.JSON;
 import br.edu.infnet.academicnet.enumerators.TipoResposta;
 
 @Entity
@@ -77,6 +78,7 @@ public class ResultadoAvaliacao implements Serializable{
 		this.media = media;
 	}
 
+	@JSON(include=false)
 	public Map<Questao, String> getRespostas() {
 		return respostas;
 	}
@@ -120,7 +122,9 @@ public class ResultadoAvaliacao implements Serializable{
 		int qtdLikert=0;
 		for(Map.Entry<Questao, String> resposta : respostas.entrySet())
 		{
-			if(resposta.getKey().getTipoResposta() == TipoResposta.LIKERT)
+			System.out.println("Comparando questao " + resposta.getKey().getIdQuestao() + " com likert " + resposta.getKey().getTipoResposta().compareTo(TipoResposta.LIKERT) + " de resposta " + resposta.getValue());
+//			System.out.println(resposta.getValue());
+			if(resposta.getKey().getTipoResposta().compareTo(TipoResposta.LIKERT) == 0)
 			{
 				total+=Integer.valueOf(resposta.getValue());
 				qtdLikert++;
@@ -140,16 +144,9 @@ public class ResultadoAvaliacao implements Serializable{
 		result = prime * result + ((aluno == null) ? 0 : aluno.hashCode());
 		result = prime * result
 				+ (int) (idResultadoAvaliacao ^ (idResultadoAvaliacao >>> 32));
-		long temp;
-		temp = Double.doubleToLongBits(media);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result
-				+ ((respostas == null) ? 0 : respostas.hashCode());
 		result = prime * result + ((turma == null) ? 0 : turma.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -172,14 +169,6 @@ public class ResultadoAvaliacao implements Serializable{
 			return false;
 		if (idResultadoAvaliacao != other.idResultadoAvaliacao)
 			return false;
-		if (Double.doubleToLongBits(media) != Double
-				.doubleToLongBits(other.media))
-			return false;
-		if (respostas == null) {
-			if (other.respostas != null)
-				return false;
-		} else if (!respostas.equals(other.respostas))
-			return false;
 		if (turma == null) {
 			if (other.turma != null)
 				return false;
@@ -187,7 +176,5 @@ public class ResultadoAvaliacao implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 
 }

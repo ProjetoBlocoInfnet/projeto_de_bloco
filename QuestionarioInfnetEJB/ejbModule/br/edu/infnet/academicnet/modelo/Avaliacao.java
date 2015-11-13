@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import flexjson.JSON;
 import br.edu.infnet.academicnet.enumerators.Status;
 
 @Entity
@@ -84,6 +85,7 @@ public class Avaliacao implements Serializable{
 		this.listQuestao = listQuestao;
 	}
 
+	@JSON(include=false)
 	public List<AgendamentoAvaliacao> getAgendamentoAvaliacao() {
 		return agendamentoAvaliacao;
 	}

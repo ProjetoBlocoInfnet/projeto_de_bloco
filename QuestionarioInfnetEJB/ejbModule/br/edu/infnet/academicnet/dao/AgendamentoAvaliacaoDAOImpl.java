@@ -1,6 +1,7 @@
 package br.edu.infnet.academicnet.dao;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -24,7 +25,14 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	public boolean incluir(AgendamentoAvaliacao agendamentoAvaliacao) {
 		try
 		{
-			agendamentoAvaliacao.setStatus(StatusAvaliacao.CRIADO);
+			if(agendamentoAvaliacao.getDataInicio().equals(Date.valueOf(LocalDate.now())))
+			{
+				agendamentoAvaliacao.setStatus(StatusAvaliacao.EM_ANDAMENTO);
+			}
+			else
+			{
+				agendamentoAvaliacao.setStatus(StatusAvaliacao.CRIADO);
+			}
 			manager.persist(agendamentoAvaliacao);
 			manager.flush();
 		}
@@ -101,10 +109,10 @@ public class AgendamentoAvaliacaoDAOImpl implements AgendamentoAvaliacaoDAO
 	@Override
 	public List<AgendamentoAvaliacao> obterPorStatusDataInicio(StatusAvaliacao status,
 			Date data) {
-		System.out.println("Dentro da funï¿½ï¿½o de sql");
+		System.out.println("Dentro da função de sql");
 		System.out.println(data);
 		System.out.println(status);
-		manager = Persistence.createEntityManagerFactory("java:jboss/datasource/academicnetDS").createEntityManager();
+		manager = Persistence.createEntityManagerFactory("academicnetDS").createEntityManager();
 		TypedQuery<AgendamentoAvaliacao> query = manager.createQuery("select ag from AgendamentoAvaliacao ag where ag.dataInicio=:agData and ag.status =:agStatus ", AgendamentoAvaliacao.class);
 		query.setParameter("agStatus", status);
 		query.setParameter("agData", data);

@@ -15,7 +15,7 @@
   		<hr>
   		<div id="infoUserCurso">
 			<span class="glyphicon glyphicon-user" aria-hidden="true"> Nome: "${requestScope.aluno.nome}"</span> &nbsp;&nbsp; || &nbsp;&nbsp;
-			<span class="glyphicon glyphicon-book" aria-hidden="true"> Curso: "${requestScope.curso.nome}" </span> &nbsp;&nbsp; || &nbsp;&nbsp;
+			<span class="glyphicon glyphicon-book" aria-hidden="true"> Módulo: "${requestScope.modulo.nomeModulo}" </span> &nbsp;&nbsp; || &nbsp;&nbsp;
 			<span class="glyphicon glyphicon-user" aria-hidden="true"> Professor: "${requestScope.professor.nome}"</span> <br/>
 		</div>
 	</div>
@@ -23,7 +23,7 @@
 	<form action="ControllerFormularioAvaliacao" method="post">		
 		
 			<input type="hidden" name="idAgendamento" value="${requestScope.idAgendamento}"/>
-			<input type="hidden" name="idAluno" value="${requestScope.aluno.usuario}"/>
+			<input type="hidden" name="idAluno" value="${requestScope.aluno.usuario.login}"/>
 			
 			<div class="table-responsive">
 				<table class="table table-hover" id="avaliacao">
@@ -103,7 +103,7 @@
 				  			<td class="questaoInfo" colspan="7"><h4>Avaliação de Conteúdo e infra-estrutura no módulo:</h4></td>
 				  		</tr>
 				  			<c:forEach items="${requestScope.questoes}" var="questao">
-				  				<c:if test="${questao.categoria.getCategoria() == 'Conteúdo e Infra-Estrutura do módulo'}">
+				  				<c:if test="${questao.categoria.getCategoria() != 'Curso' && questao.categoria.getCategoria() != 'Professor'}">
 							  		<tr>
 							  			<td>${questao.textoQuestao}</td>						  			
 							  			<c:choose>						  				

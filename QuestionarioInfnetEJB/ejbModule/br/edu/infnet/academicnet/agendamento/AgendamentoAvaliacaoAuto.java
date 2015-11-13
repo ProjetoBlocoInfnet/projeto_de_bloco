@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
+import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
@@ -29,7 +30,8 @@ import br.edu.infnet.academicnet.modelo.Aluno;
 @Startup
 public class AgendamentoAvaliacaoAuto
 {
-    @Resource(name = "java:jboss/mail/gmail")
+    //Resource(name = "java:jboss/mail/Gmail")
+    @Resource(name = "gmail")
     private Session session;
 
     @Inject
@@ -47,23 +49,6 @@ public class AgendamentoAvaliacaoAuto
 		List<AgendamentoAvaliacao> agendamentos = dao.obterPorStatusDataInicio(StatusAvaliacao.CRIADO, data);
 		for(AgendamentoAvaliacao a : agendamentos)
 		{
-			for(Aluno al : a.getTurma().getAlunos())
-			{
-				//TODO Enviar emails para os alunos com os links das avaliaï¿½ï¿½es
-				try {
-					 
-		            Message message = new MimeMessage(session);
-		            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
-		            message.setSubject("Avaliaï¿½ï¿½o curso Infnet " + a.getModulo().getNomeModulo());
-		            message.setText("Teste de envio de email");
-		 
-		            Transport.send(message);
-		 
-		        } catch (MessagingException e) {
-		            System.out.println("Erro ao enviar o email");
-		            e.printStackTrace();
-		        }
-			}
 			try
 			{
 				a.setStatus(StatusAvaliacao.EM_ANDAMENTO);
@@ -73,6 +58,37 @@ public class AgendamentoAvaliacaoAuto
 			{
 				System.out.println("Erro ao iniciar o agendamento de ID " + a.getIdAgendamento());
 				e.printStackTrace();
+			}
+
+			for(Aluno al : a.getTurma().getAlunos())
+			{
+				//TODO Enviar emails para os alunos com os links das avaliaï¿½ï¿½es
+				try 
+				{
+					Message message = new MimeMessage(session);
+					message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
+					message.setSubject("Avaliação curso Infnet " + a.getModulo().getNomeModulo());
+
+					StringBuilder mensagem = new StringBuilder();
+					mensagem.append("Olá Sr(a) ");
+					mensagem.append(al.getNome());
+					mensagem.append("\n");
+					mensagem.append("Segue abaixo o link para responder o questionário de avaliação do módulo ");
+					mensagem.append(a.getModulo().getNomeModulo());
+					mensagem.append(".\n");
+					mensagem.append(this.generateLink(a.getIdAgendamento(), al));
+					mensagem.append("\n");
+					mensagem.append("Desde já agradecemos pelo seu feedback");
+					mensagem.append("\n");
+					
+					message.setText(mensagem.toString());
+					Transport.send(message);
+				}
+				catch (MessagingException e)
+				{
+					System.out.println("Erro ao enviar o email");
+					e.printStackTrace();
+		        }
 			}
 		}
 	}
@@ -98,6 +114,55 @@ public class AgendamentoAvaliacaoAuto
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	@Asynchronous
+	public void sendEmails(AgendamentoAvaliacao a)
+	{
+		for(Aluno al : a.getTurma().getAlunos())
+		{
+			//TODO Enviar emails para os alunos com os links das avaliaï¿½ï¿½es
+			try 
+			{
+				Message message = new MimeMessage(session);
+				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
+				message.setSubject("Avaliação curso Infnet " + a.getModulo().getNomeModulo());
+
+				StringBuilder mensagem = new StringBuilder();
+				mensagem.append("Olá Sr(a) ");
+				mensagem.append(al.getNome());
+				mensagem.append("\n");
+				mensagem.append("Segue abaixo o link para responder o questionário de avaliação do módulo ");
+				mensagem.append(a.getModulo().getNomeModulo());
+				mensagem.append(".\n");
+				mensagem.append(this.generateLink(a.getIdAgendamento(), al));
+				mensagem.append("\n");
+				mensagem.append("Desde já agradecemos pelo seu feedback");
+				mensagem.append("\n");
+				
+				message.setText(mensagem.toString());
+				Transport.send(message);
+			}
+			catch (MessagingException e)
+			{
+				System.out.println("Erro ao enviar o email");
+				e.printStackTrace();
+	        }
+		}
+		//return true;
+	}
+	
+	private String generateLink(Long idAgendamento, Aluno aluno)
+	{
+		StringBuilder link = new StringBuilder();
+		link.append("http://localhost:8080/QuestionarioInfnetWAR/ControllerFormularioAvaliacao?aluno=");
+		link.append(aluno.getUsuario().getLogin());
+		link.append("&key=");
+		link.append(aluno.getUsuario().getSenha());
+		link.append("&aval=");
+		link.append(idAgendamento);
+		System.out.println(link);
+		return link.toString();
 	}
 	
 	@javax.ejb.Timeout

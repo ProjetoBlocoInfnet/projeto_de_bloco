@@ -18,10 +18,8 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	@Override
 	public boolean incluir(ResultadoAvaliacao resultAvaliacao) {
 		try {
-			manager.getTransaction().begin();
 			manager.persist(resultAvaliacao);
-			manager.getTransaction().commit();
-			
+			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,9 +29,8 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	@Override
 	public boolean alterar(ResultadoAvaliacao resultAvaliacao) {
 		try {
-			manager.getTransaction().begin();
 			manager.merge(resultAvaliacao);
-			manager.getTransaction().commit();
+			manager.flush();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,9 +42,8 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	public boolean excluir(long id) {
 		ResultadoAvaliacao ResultadoAvaliacaoBanco = manager.find(ResultadoAvaliacao.class, id);
 		try {
-			manager.getTransaction().begin();
 			manager.remove(ResultadoAvaliacaoBanco);
-			manager.getTransaction().commit();
+			manager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,6 +61,15 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	public List<ResultadoAvaliacao> listar() {
 		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r", ResultadoAvaliacao.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public boolean seAlunoRespondeuAvaliacao(Long idAgendamento, Long idAluno)
+	{
+		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r where r.agendamentoAvaliacao.idAgendamento=:rIdAgendamento and r.aluno.matricula=:rIdAluno ", ResultadoAvaliacao.class);
+		query.setParameter("rIdAgendamento", idAgendamento);
+		query.setParameter("rIdAluno", idAluno);
+		return query.getSingleResult() != null;
 	}
 
 }

@@ -1,8 +1,8 @@
 package br.edu.infnet.controller;
 
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Map;
 
 import javax.ejb.EJB;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.ResultadoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
-import br.edu.infnet.academicnet.enumerators.Categoria;
 import br.edu.infnet.academicnet.modelo.AgendamentoAvaliacao;
 import br.edu.infnet.academicnet.modelo.Aluno;
 import br.edu.infnet.academicnet.modelo.Questao;
@@ -74,13 +73,13 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 			Aluno meuAluno = null;
 			for(Aluno a : turma.obter(minhaAvaliacao.getTurma().getIdTurma()).getAlunos())
 			{
-				if(login.equals(a.getUsuario().getLogin()))
+				if(login.equals(a.getUsuario().getLogin()) && senha.equals(a.getUsuario().getSenha()))
 				{
 					meuAluno = a;
 					break;
 				}
 			}
-			if(meuAluno != null)
+			if(meuAluno != null && !resultado.seAlunoRespondeuAvaliacao(idAgendamento, meuAluno.getMatricula()))
 			{
 				request.setAttribute("aluno", meuAluno);
 				request.getRequestDispatcher("sistema/formularioAvaliacao.jsp").forward(request, response);
@@ -108,7 +107,7 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		//TODO essa parte aqui pode mudar dependendo de como fizermos a parte de login
 		Aluno meuAluno = null;
 		String login = request.getParameter("idAluno");
-		for(Aluno al : r.getTurma().getAlunos())
+		for(Aluno al : turma.obter(r.getTurma().getIdTurma()).getAlunos())
 		{
 			if(login.equals(al.getUsuario().getLogin()))
 			{
@@ -120,15 +119,51 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		//TODO essa parte aqui pode mudar dependendo de como fizermos a parte de login
 		
 		//Recupera as questões da tela e faz a mídia internamente no método setRespostas
-		Map<Questao,String> minhasRespostas = new HashMap<Questao,String>();
-		for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
+		//Map<Questao,String> minhasRespostas = new HashMap<Questao,String>();
+		System.out.println("for das questoes");
+		//for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
+		System.out.println("Questao " + a.getAvaliacao().getListQuestao().get(0).getIdQuestao());
+		for(Questao questao : a.getAvaliacao().getListQuestao())
 		{
-			minhasRespostas.put(resposta.getKey(), request.getParameter(request.getParameter(String.valueOf(resposta.getKey().getIdQuestao()))));
+			//System.out.println("Retorno da tela da questao " + questao.getIdQuestao() + " " + request.getParameter(String.valueOf(questao.getIdQuestao())) + " Tipo Questao " + questao.getTipoResposta());
+			//System.out.println(questao + " = " + request.getParameter(request.getParameter(String.valueOf(resposta.getKey().getIdQuestao()))));
+			try
+			{
+				//minhasRespostas.put(questao, request.getParameter(request.getParameter(String.valueOf(questao.getIdQuestao()))));
+				r.getRespostas().put(questao, request.getParameter(String.valueOf(questao.getIdQuestao())));
+			}
+			catch(Exception e)
+			{
+				request.getRequestDispatcher("erroAvaliacaoIncompleta.jsp").forward(request, response);
+				return;
+			}
 		}
-		r.setRespostas(minhasRespostas);
+		r.calculaMedia();
+		//r.setRespostas(minhasRespostas);
 
 		if(resultado.incluir(r))
 		{
+			//TODO testar essa parte com mais calma. Ela gera a avaliação em arquivo CSV
+			FileWriter writer = new FileWriter("c:\\resultadoAvaliacao_" + r.getAgendamentoAvaliacao().getIdAgendamento() + "_Aluno_" + r.getAluno().getMatricula() + "_" + LocalDate.now().toString() + ".csv");
+			r.getRespostas();
+		    writer.append("Questao");
+		    writer.append(',');
+		    writer.append("TipoResposta");
+		    writer.append(',');
+		    writer.append("Resposta");
+		    writer.append('\n');
+			
+			for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
+			{
+			    writer.append(resposta.getKey().getTextoQuestao());
+			    writer.append(',');
+			    writer.append(resposta.getKey().getTipoResposta().name());
+			    writer.append(',');
+			    writer.append(resposta.getValue());
+			    writer.append('\n');
+			}	
+		    writer.flush();
+		    writer.close();
 			request.getRequestDispatcher("avaliacaoConcluida.jsp").forward(request, response);
 		}
 		else
