@@ -1,6 +1,9 @@
 package br.edu.infnet.controller;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -140,6 +143,27 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 
 		if(resultado.incluir(r))
 		{
+			//TODO testar essa parte com mais calma. Ela gera a avaliação em arquivo CSV
+			FileWriter writer = new FileWriter("c:\\resultadoAvaliacao_" + r.getAgendamentoAvaliacao().getIdAgendamento() + "_Aluno_" + r.getAluno().getMatricula() + "_" + LocalDate.now().toString() + ".csv");
+			r.getRespostas();
+		    writer.append("Questao");
+		    writer.append(',');
+		    writer.append("TipoResposta");
+		    writer.append(',');
+		    writer.append("Resposta");
+		    writer.append('\n');
+			
+			for(Map.Entry<Questao, String> resposta : r.getRespostas().entrySet())
+			{
+			    writer.append(resposta.getKey().getTextoQuestao());
+			    writer.append(',');
+			    writer.append(resposta.getKey().getTipoResposta().name());
+			    writer.append(',');
+			    writer.append(resposta.getValue());
+			    writer.append('\n');
+			}	
+		    writer.flush();
+		    writer.close();
 			request.getRequestDispatcher("avaliacaoConcluida.jsp").forward(request, response);
 		}
 		else
