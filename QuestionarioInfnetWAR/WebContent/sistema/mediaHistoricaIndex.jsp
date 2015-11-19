@@ -31,8 +31,7 @@
 		    	<input type="submit" class="btn btn-default" type="button" value="Consultar">
 			
 		</div>
-		
-		
+
 	</form>
 	<hr>
 	
@@ -54,36 +53,58 @@
 	<div >
 	<table class="table table-hover">
   		<thead>
-  		<c:choose>
-	  		<c:when test="${requestScope.tipoRetorno == 'total' }">
-	  		<!-- Montagem de tela Média geral -->
-		  		<th>ID Resultado</th>
-		  		<th>Avaliacao</th>
-		  		<th>Data Inicio avaliação</th>
-		  		<th>Data Fim avaliação</th>
-		  		<th>Média Total</th>
-		  		<th>Aluno</th>
-		  		<th>Professor</th>
-		  		</thead>
-		  		<tbody>
-		  		<c:if test="${requestScope.resultados != null && requestScope.resultados.size() > 0 }">
-		  		<!-- inicio do loop -->
-		  			<c:forEach items="${requestScope.resultados}" var="resultado">
-			  		<tr>
-			  			<td>${resultado.idResultadoAvaliacao}</td>
-			  			<td>${resultado.agendamentoAvaliacao.avaliacao.nome}</td>
-			  			<td>${resultado.agendamentoAvaliacao.dataInicio}</td>
-			  			<td>${resultado.agendamentoAvaliacao.dataFim}</td>
-			  			<td>${resultado.media}</td>
-			  			<td>${resultado.aluno.nome}</td>
-			  			<td>${resultado.agendamentoAvaliacao.professor.nome}</td>
-			  		</tr>
-			  		</c:forEach>
-			  	<!-- fim do loop -->
-			  	</c:if>
-			<!-- FIM - Montagem de tela Média geral -->
-		  	</c:when>
-  		</c:choose>
+  			<!-- Inicio montagem tipos de relatórios -->
+	  		<c:choose>
+		  		<c:when test="${requestScope.tipoRetorno == 'total' }">
+		  		<!-- Montagem de tela Média geral -->
+			  		<th>Avaliacao</th>
+			  		<th>Data Inicio avaliação</th>
+			  		<th>Data Fim avaliação</th>
+			  		<th>Média Total</th>
+			  		<th>Professor</th>
+			  		</thead>
+			  		<tbody>
+			  		<c:if test="${requestScope.resultados != null && requestScope.resultados.size() > 0 }">
+			  		<!-- inicio do loop -->
+			  			<c:forEach items="${requestScope.resultados}" var="resultado">
+				  		<tr>
+				  			<td>${resultado.agendamentoAvaliacao.avaliacao.nome}</td>
+				  			<td>${resultado.agendamentoAvaliacao.dataInicio}</td>
+				  			<td>${resultado.agendamentoAvaliacao.dataFim}</td>
+				  			<td>${resultado.media}</td>
+				  			<td>${resultado.agendamentoAvaliacao.professor.nome}</td>
+				  		</tr>
+				  		</c:forEach>
+				  	<!-- fim do loop -->
+				  	</c:if>
+				<!-- FIM - Montagem de tela Média geral -->
+			  	</c:when>
+		  		<c:when test="${requestScope.tipoRetorno == 'professor' }">
+		  		<!-- Montagem de tela professor -->
+			  		<th>Avaliacao</th>
+			  		<th>Data Inicio avaliação</th>
+			  		<th>Data Fim avaliação</th>
+			  		<th>Média do Professor</th>
+			  		<th>Professor</th>
+			  		</thead>
+			  		<tbody>
+			  		<c:if test="${requestScope.resultados != null && requestScope.resultados.size() > 0 }">
+			  		<!-- inicio do loop -->
+			  			<c:forEach items="${requestScope.resultados}" var="resultado">
+				  		<tr>
+				  			<td>${resultado.agendamentoAvaliacao.avaliacao.nome}</td>
+				  			<td>${resultado.agendamentoAvaliacao.dataInicio}</td>
+				  			<td>${resultado.agendamentoAvaliacao.dataFim}</td>
+				  			<td>${resultado.media}</td>
+				  			<td>${resultado.agendamentoAvaliacao.professor.nome}</td>
+				  		</tr>
+				  		</c:forEach>
+				  	<!-- fim do loop -->
+				  	</c:if>
+				<!-- FIM - Montagem de tela profesor -->
+			  	</c:when>
+	  		</c:choose>
+	  		<!-- Fim montagem tipos de relatórios -->
   		</tbody>
 	</table>
 	</div>

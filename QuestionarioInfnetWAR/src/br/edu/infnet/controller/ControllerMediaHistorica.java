@@ -104,12 +104,14 @@ public class ControllerMediaHistorica extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String action = request.getParameter("action");
+		System.out.println(action);
 		if(action != null)
 		{
 			switch(action)
 			{
 				case "consultar":
 					String tipoConsulta = request.getParameter("tipoConsulta");
+					System.out.println(tipoConsulta);
 					switch(tipoConsulta)
 					{
 						case "total":
@@ -132,6 +134,7 @@ public class ControllerMediaHistorica extends HttpServlet {
 							request.setAttribute("tipoRetorno", "total");
 							request.setAttribute("resultados", this.sumarizarMedia(resultado.listar()));
 					}
+					break;
 				default:
 					request.setAttribute("result_error", "Não houve ação válida inserida");
 			}
