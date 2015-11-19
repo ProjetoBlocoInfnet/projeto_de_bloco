@@ -12,10 +12,10 @@
 	<div class="container">
 	<a href="ControllerLogin"><button type="button" class="btn btn-default">Voltar</button></a>
 	<br><br>
-	<form action="ControllerAgendamento" method="get">
+<!-- <form action="ControllerAgendamento" method="get">
 		<input type="hidden" name="action" value="telaCadastro">
 		<input type="submit" class="btn btn-info" value="Cadastrar Agendamento">
-	</form>
+	</form> -->	
 	<br>
 	<form action="ControllerMediaHistorica" method="post" class="form-inline">
 		<input type="hidden" name="action" value="consultar">		
@@ -48,47 +48,42 @@
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<strong>${result_error}</strong>
 			</div>
-		</c:when>		
+		</c:when>
 	</c:choose>
 	
 	<div >
 	<table class="table table-hover">
   		<thead>
-  		<th>ID Agendamento</th>
-  		<th>Avaliação</th>
-  		<th>Status</th>
-  		<th>Data Inicio</th>
-  		<th>Data Fim</th>
-  		<th>Turma</th>
-  		<th>Curso</th>
-  		<th>Módulo</th>
-  		<th>Professor</th>
-  		<th>Ação</th>
-  		</thead>
-  		<tbody>
-  		<c:if test="${requestScope.agendamentos != null && requestScope.agendamentos.size() > 0 }">
-  		<!-- inicio do loop -->
-  			<c:forEach items="${requestScope.agendamentos}" var="agendamento">
-	  		<tr>
-	  			
-	  			<td>${agendamento.idAgendamento}</td>
-	  			<td>${agendamento.avaliacao.nome}</td>
-	  			<td>${agendamento.status}</td>
-	  			<td>${agendamento.dataInicio}</td>
-	  			<td>${agendamento.dataFim}</td>
-	  			<td>${agendamento.turma.nomeTurma}</td>
-	  			<td>${agendamento.curso.nome}</td>
-	  			<td>${agendamento.modulo.nomeModulo}</td>
-	  			<td>${agendamento.professor.nome}</td>
-
-	  			<td>
-	  				<a href="ControllerAgendamento?action=editar&id=${agendamento.idAgendamento}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | 
-	  				<a href="ControllerAgendamento?action=excluir&id=${agendamento.idAgendamento}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 	  				
-	  			</td>
-	  		</tr>
-	  		</c:forEach>
-	  	<!-- fim do loop -->
-	  	</c:if>
+  		<c:choose>
+	  		<c:when test="${requestScope.tipoRetorno == 'total' }">
+	  		<!-- Montagem de tela Média geral -->
+		  		<th>ID Resultado</th>
+		  		<th>Avaliacao</th>
+		  		<th>Data Inicio avaliação</th>
+		  		<th>Data Fim avaliação</th>
+		  		<th>Média Total</th>
+		  		<th>Aluno</th>
+		  		<th>Professor</th>
+		  		</thead>
+		  		<tbody>
+		  		<c:if test="${requestScope.resultados != null && requestScope.resultados.size() > 0 }">
+		  		<!-- inicio do loop -->
+		  			<c:forEach items="${requestScope.resultados}" var="resultado">
+			  		<tr>
+			  			<td>${resultado.idResultadoAvaliacao}</td>
+			  			<td>${resultado.agendamentoAvaliacao.avaliacao.nome}</td>
+			  			<td>${resultado.agendamentoAvaliacao.dataInicio}</td>
+			  			<td>${resultado.agendamentoAvaliacao.dataFim}</td>
+			  			<td>${resultado.media}</td>
+			  			<td>${resultado.aluno.nome}</td>
+			  			<td>${resultado.agendamentoAvaliacao.professor.nome}</td>
+			  		</tr>
+			  		</c:forEach>
+			  	<!-- fim do loop -->
+			  	</c:if>
+			<!-- FIM - Montagem de tela Média geral -->
+		  	</c:when>
+  		</c:choose>
   		</tbody>
 	</table>
 	</div>

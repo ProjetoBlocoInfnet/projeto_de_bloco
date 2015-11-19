@@ -82,26 +82,26 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	}
 
 	@Override
-	public ResultadoAvaliacao obterPorNomeProfessor(String nome)
+	public List<ResultadoAvaliacao> obterPorNomeProfessor(String nome)
 	{
 		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao where r.agendamentoAvaliacao.professor.nome like :rNomeProfessor ", ResultadoAvaliacao.class);
 		query.setParameter("rNomeProfessor", "%" + nome + "%");
-		return query.getSingleResult();
+		return query.getResultList();
 	}
 
 	@Override
-	public ResultadoAvaliacao obterPorNomeCurso(String nome)
+	public List<ResultadoAvaliacao> obterPorNomeCurso(String nome)
 	{
 		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao where r.agendamentoAvaliacao.curso.nome like :rNomeCurso ", ResultadoAvaliacao.class);
 		query.setParameter("rNomeCurso", "%" + nome + "%");
-		return query.getSingleResult();
+		return query.getResultList();
 	}
 
 	@Override
-	public ResultadoAvaliacao obterPorInfra()
+	public List<ResultadoAvaliacao> obterPorInfra()
 	{
 		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao", ResultadoAvaliacao.class);
-		return query.getSingleResult();
+		return query.getResultList();
 	}
 
 }
