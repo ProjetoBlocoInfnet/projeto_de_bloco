@@ -20,7 +20,7 @@
 	<form action="ControllerMediaHistorica" method="post" class="form-inline">
 		<input type="hidden" name="action" value="consultar">		
 		<div class="form-group">
-		    <input type="text" name="valor" class="form-control" placeholder="Consultar por...">
+		    <input type="text" name="valor" id="valor" class="form-control" placeholder="Consultar por...">
 				<select name="tipoConsulta" id="tipoConsulta" class="form-control">
 					<option value="total">Média Total</option>
 					<option value="curso">Curso</option>
@@ -31,7 +31,33 @@
 		    	<input type="submit" class="btn btn-default" type="button" value="Consultar">
 			
 		</div>
-
+		<script type='text/javascript'>
+		$(document).ready(function() {
+			$('select[name="tipoConsulta"]').on('change',function(){
+				alert(this.value);
+				var retorno = $(this).val();
+				if( retorno == "total")
+				{
+					$('#valor').attr('disabled','disabled'); 
+				}
+				else
+				if( retorno == "curso")
+				{
+					$('#valor').removeAttr('disabled');
+				}
+				else
+				if( retorno == "infra")
+				{
+					$('#valor').attr('disabled','disabled'); 
+				}
+				else
+				if( retorno == "professor")
+				{
+					$('#valor').removeAttr('disabled');
+				}
+			});
+		});
+		</script>
 	</form>
 	<hr>
 	

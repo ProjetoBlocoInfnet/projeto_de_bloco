@@ -84,7 +84,7 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	@Override
 	public List<ResultadoAvaliacao> obterPorNomeProfessor(String nome)
 	{
-		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao where r.agendamentoAvaliacao.professor.nome like :rNomeProfessor ", ResultadoAvaliacao.class);
+		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao join fetch r.respostas where r.agendamentoAvaliacao.professor.nome like :rNomeProfessor ", ResultadoAvaliacao.class);
 		query.setParameter("rNomeProfessor", "%" + nome + "%");
 		return query.getResultList();
 	}
@@ -92,7 +92,7 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	@Override
 	public List<ResultadoAvaliacao> obterPorNomeCurso(String nome)
 	{
-		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao where r.agendamentoAvaliacao.curso.nome like :rNomeCurso ", ResultadoAvaliacao.class);
+		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao join fetch r.respostas where r.agendamentoAvaliacao.curso.nome like :rNomeCurso ", ResultadoAvaliacao.class);
 		query.setParameter("rNomeCurso", "%" + nome + "%");
 		return query.getResultList();
 	}
@@ -100,7 +100,7 @@ public class ResultadoAvaliacaoDAOImpl implements ResultadoAvaliacaoDAO {
 	@Override
 	public List<ResultadoAvaliacao> obterPorInfra()
 	{
-		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao", ResultadoAvaliacao.class);
+		TypedQuery<ResultadoAvaliacao> query = manager.createQuery("select r from ResultadoAvaliacao r join fetch r.agendamentoAvaliacao join fetch r.respostas", ResultadoAvaliacao.class);
 		return query.getResultList();
 	}
 
