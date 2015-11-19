@@ -103,6 +103,52 @@
 				  	</c:if>
 				<!-- FIM - Montagem de tela profesor -->
 			  	</c:when>
+		  		<c:when test="${requestScope.tipoRetorno == 'curso' }">
+		  		<!-- Montagem de tela curso -->
+			  		<th>Avaliacao</th>
+			  		<th>Data Inicio avaliação</th>
+			  		<th>Data Fim avaliação</th>
+			  		<th>Média do Curso</th>
+			  		<th>Curso</th>
+			  		</thead>
+			  		<tbody>
+			  		<c:if test="${requestScope.resultados != null && requestScope.resultados.size() > 0 }">
+			  		<!-- inicio do loop -->
+			  			<c:forEach items="${requestScope.resultados}" var="resultado">
+				  		<tr>
+				  			<td>${resultado.agendamentoAvaliacao.avaliacao.nome}</td>
+				  			<td>${resultado.agendamentoAvaliacao.dataInicio}</td>
+				  			<td>${resultado.agendamentoAvaliacao.dataFim}</td>
+				  			<td>${resultado.media}</td>
+				  			<td>${resultado.agendamentoAvaliacao.curso.nome}</td>
+				  		</tr>
+				  		</c:forEach>
+				  	<!-- fim do loop -->
+				  	</c:if>
+				<!-- FIM - Montagem de tela curso -->
+			  	</c:when>
+		  		<c:when test="${requestScope.tipoRetorno == 'infra' }">
+		  		<!-- Montagem de tela infra -->
+			  		<th>Avaliacao</th>
+			  		<th>Data Inicio avaliação</th>
+			  		<th>Data Fim avaliação</th>
+			  		<th>Média da infra</th>
+			  		</thead>
+			  		<tbody>
+			  		<c:if test="${requestScope.resultados != null && requestScope.resultados.size() > 0 }">
+			  		<!-- inicio do loop -->
+			  			<c:forEach items="${requestScope.resultados}" var="resultado">
+				  		<tr>
+				  			<td>${resultado.agendamentoAvaliacao.avaliacao.nome}</td>
+				  			<td>${resultado.agendamentoAvaliacao.dataInicio}</td>
+				  			<td>${resultado.agendamentoAvaliacao.dataFim}</td>
+				  			<td>${resultado.media}</td>
+				  		</tr>
+				  		</c:forEach>
+				  	<!-- fim do loop -->
+				  	</c:if>
+				<!-- FIM - Montagem de tela infra -->
+			  	</c:when>
 	  		</c:choose>
 	  		<!-- Fim montagem tipos de relatórios -->
   		</tbody>
