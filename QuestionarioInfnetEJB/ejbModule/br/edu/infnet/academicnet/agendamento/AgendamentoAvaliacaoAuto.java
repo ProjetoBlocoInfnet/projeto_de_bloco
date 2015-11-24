@@ -1,5 +1,6 @@
 package br.edu.infnet.academicnet.agendamento;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -125,6 +126,12 @@ public class AgendamentoAvaliacaoAuto
 			try 
 			{
 				Message message = new MimeMessage(session);
+				try {
+					message.setFrom(new InternetAddress("waizmam.rj@gmail.com", "Infnet AcademicNet"));
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(al.getEmail()));
 				message.setSubject("Avaliação curso Infnet " + a.getModulo().getNomeModulo());
 

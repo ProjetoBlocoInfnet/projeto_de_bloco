@@ -144,6 +144,9 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 		if(resultado.incluir(r))
 		{
 			//TODO testar essa parte com mais calma. Ela gera a avaliação em arquivo CSV
+			//windows
+			//FileWriter writer = new FileWriter("c:\\resultadoAvaliacao_" + r.getAgendamentoAvaliacao().getIdAgendamento() + "_Aluno_" + r.getAluno().getMatricula() + "_" + LocalDate.now().toString() + ".csv");
+			//linux
 			FileWriter writer = new FileWriter("c:\\resultadoAvaliacao_" + r.getAgendamentoAvaliacao().getIdAgendamento() + "_Aluno_" + r.getAluno().getMatricula() + "_" + LocalDate.now().toString() + ".csv");
 			r.getRespostas();
 		    writer.append("Questao");

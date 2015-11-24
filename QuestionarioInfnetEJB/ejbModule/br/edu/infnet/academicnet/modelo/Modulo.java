@@ -18,7 +18,6 @@ import javax.persistence.Table;
 
 import br.edu.infnet.academicnet.enumerators.Status;
 
-import com.google.gson.annotations.Expose;
 
 import flexjson.JSON;
 
@@ -31,11 +30,9 @@ public class Modulo implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Expose
 	private long idModulo;
 	
 	@Column(length=100)
-	@Expose
 	private String nomeModulo;
 	
 	@Enumerated(EnumType.STRING)
