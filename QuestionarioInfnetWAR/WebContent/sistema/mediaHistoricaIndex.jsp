@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="menu.jsp" />
+
   
 
 <div id="container" class="container-fluid">
@@ -17,47 +18,18 @@
 		<input type="submit" class="btn btn-info" value="Cadastrar Agendamento">
 	</form> -->	
 	<br>
-	<form action="ControllerMediaHistorica" method="post" class="form-inline">
+	<form action="ControllerMediaHistorica" method="post" id="formConsulta" class="form-inline">
 		<input type="hidden" name="action" value="consultar">		
-		<div class="form-group">
-		    <input type="text" name="valor" id="valor" class="form-control" placeholder="Consultar por...">
+		<div class="form-group">		    
 				<select name="tipoConsulta" id="tipoConsulta" class="form-control">
 					<option value="total">Média Total</option>
 					<option value="curso">Curso</option>
 					<option value="infra">Infra Estrutura</option>
 					<option value="professor">Professor</option>
-				</select>
-			
-		    	<input type="submit" class="btn btn-default" type="button" value="Consultar">
-			
-		</div>
-		<script type='text/javascript'>
-		$(document).ready(function() {
-			$('select[name="tipoConsulta"]').on('change',function(){
-				alert(this.value);
-				var retorno = $(this).val();
-				if( retorno == "total")
-				{
-					$('#valor').attr('disabled','disabled'); 
-				}
-				else
-				if( retorno == "curso")
-				{
-					$('#valor').removeAttr('disabled');
-				}
-				else
-				if( retorno == "infra")
-				{
-					$('#valor').attr('disabled','disabled'); 
-				}
-				else
-				if( retorno == "professor")
-				{
-					$('#valor').removeAttr('disabled');
-				}
-			});
-		});
-		</script>
+				</select>	
+				<input type="text" name="valor" id="valor" class="form-control" placeholder="Consultar por...">		
+		    	<input type="submit" class="btn btn-default" type="button" value="Consultar">			
+		</div>		
 	</form>
 	<hr>
 	
@@ -87,7 +59,7 @@
 			  		<th>Data Inicio avaliação</th>
 			  		<th>Data Fim avaliação</th>
 			  		<th>Média Total</th>
-			  		<th>Professor</th>
+			  		<!--  <th>Professor</th>-->
 			  		</thead>
 			  		<tbody>
 			  		<c:if test="${requestScope.resultados != null && requestScope.resultados.size() > 0 }">
@@ -98,7 +70,7 @@
 				  			<td>${resultado.agendamentoAvaliacao.dataInicio}</td>
 				  			<td>${resultado.agendamentoAvaliacao.dataFim}</td>
 				  			<td>${resultado.media}</td>
-				  			<td>${resultado.agendamentoAvaliacao.professor.nome}</td>
+				  			<!-- <td>${resultado.agendamentoAvaliacao.professor.nome}</td> -->
 				  		</tr>
 				  		</c:forEach>
 				  	<!-- fim do loop -->
