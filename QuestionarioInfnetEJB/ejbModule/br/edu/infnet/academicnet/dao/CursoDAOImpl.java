@@ -109,10 +109,10 @@ public class CursoDAOImpl implements CursoDAO
 	
 	
 	
-	@Override
+	@Override 
 	public Curso CursoComModulosCursoId(Long idCurso){	
 		System.out.println("buscando o curso...");
-		System.out.println("idCurso "+ idCurso);
+		System.out.println("idCurso "+ idCurso); 
 		System.out.println();
 		//TypedQuery<Curso> query = manager.createQuery("select c from Curso c INNER JOIN FETCH c.modulo m where c.idCurso=:cId",Curso.class);
 		//query.setParameter("cId", idCurso);

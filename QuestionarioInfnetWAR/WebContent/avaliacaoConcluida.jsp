@@ -17,7 +17,7 @@
 	      <div class="carousel-caption">
 		      <div class="jumbotron">
 				  <h1>AcademicNet</h1>
-				  <p>Avaliação concluída com suceso!</p>
+				  <p>Avaliação concluída com sucesso!</p>
 			  </div>
 		  </div>
 	    </div>

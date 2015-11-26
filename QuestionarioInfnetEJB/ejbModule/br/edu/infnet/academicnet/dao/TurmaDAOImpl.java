@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 import br.edu.infnet.academicnet.modelo.Turma;
 
 @Stateless
-public class TurmaDAOImpl implements TurmaDAO{
+public class TurmaDAOImpl implements TurmaDAO{  
 	
 	@PersistenceContext
 	private EntityManager manager;
