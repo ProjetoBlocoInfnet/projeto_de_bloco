@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.infnet.academicnet.agendamento.AgendamentoAvaliacaoAuto;
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.ResultadoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.TurmaDAO;
@@ -35,6 +36,8 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 	
 	@EJB
 	TurmaDAO turma;
+	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -147,7 +150,8 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 			//windows
 			//FileWriter writer = new FileWriter("c:\\resultadoAvaliacao_" + r.getAgendamentoAvaliacao().getIdAgendamento() + "_Aluno_" + r.getAluno().getMatricula() + "_" + LocalDate.now().toString() + ".csv");
 			//linux
-			FileWriter writer = new FileWriter("c:\\resultadoAvaliacao_" + r.getAgendamentoAvaliacao().getIdAgendamento() + "_Aluno_" + r.getAluno().getMatricula() + "_" + LocalDate.now().toString() + ".csv");
+			String caminhoArquivoLinux = "/home/waizmam/Documentos/projetos_git/projeto_de_bloco/CSV/resultadoAvaliacao_" + r.getAgendamentoAvaliacao().getIdAgendamento() + "_Aluno_" + r.getAluno().getMatricula() + "_" + LocalDate.now().toString() + ".csv";
+			FileWriter writer = new FileWriter(caminhoArquivoLinux);
 			r.getRespostas();
 		    writer.append("Questao");
 		    writer.append(',');
@@ -167,7 +171,8 @@ public class ControllerFormularioAvaliacao extends HttpServlet {
 			}	
 		    writer.flush();
 		    writer.close();
-			request.getRequestDispatcher("avaliacaoConcluida.jsp").forward(request, response);
+		    r.enviarCSVPorEmail(caminhoArquivoLinux);
+		    request.getRequestDispatcher("avaliacaoConcluida.jsp").forward(request, response);
 		}
 		else
 		{

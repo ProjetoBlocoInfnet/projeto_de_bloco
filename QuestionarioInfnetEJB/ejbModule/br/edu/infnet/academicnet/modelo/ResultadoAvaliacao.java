@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import flexjson.JSON;
+import br.edu.infnet.academicnet.agendamento.AgendamentoAvaliacaoAuto;
 import br.edu.infnet.academicnet.enumerators.TipoResposta;
 
 @Entity
@@ -114,6 +115,10 @@ public class ResultadoAvaliacao implements Serializable{
 
 	public Boolean efetuarAvaliacao() {
 		return null;
+	}
+	
+	public void enviarCSVPorEmail(String caminhoCSV){
+		new AgendamentoAvaliacaoAuto().sendEmailsResultadoAvaliacaoCSV(caminhoCSV);
 	}
 
 	public void calculaMedia()
