@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Asynchronous;
@@ -15,10 +17,13 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAOImpl;
@@ -31,7 +36,7 @@ import br.edu.infnet.academicnet.modelo.Aluno;
 public class AgendamentoAvaliacaoAuto
 {
     //Resource(name = "java:jboss/mail/Gmail")
-    @Resource(name = "java:jboss/mail/Gmail")
+    @Resource(mappedName = "java:jboss/mail/Gmail")
     private Session session;
 
     @Inject
@@ -179,4 +184,51 @@ public class AgendamentoAvaliacaoAuto
 	{
 		System.out.println("Tempo limite estourado!");
 	}
+	
+	
+	@Asynchronous
+	public void sendEmailsResultadoAvaliacaoCSV(String caminhoArquivo)	{		
+		
+			try 
+			{
+				Message message = new MimeMessage(session);
+				try {
+					message.setFrom(new InternetAddress("waizmam.rj@gmail.com", "Infnet AcademicNet"));
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				message.setRecipient(Message.RecipientType.TO, new InternetAddress("waizmam.rj@gmail.com"));				
+				message.setSubject("Resultado em CSV da Avaliação");
+
+				StringBuilder mensagem = new StringBuilder();
+				mensagem.append("Olá Sr(a) Coordenador");				
+				mensagem.append("\n");
+				mensagem.append("Segue em anexo o CSV do Resultado da Avaliação: ");				
+				mensagem.append(".\n");
+				mensagem.append("AcademicNet");
+				mensagem.append("\n");
+				message.setText(mensagem.toString());
+				
+				MimeBodyPart mbp2 = new MimeBodyPart();      
+				FileDataSource fds = new FileDataSource(caminhoArquivo);            
+				mbp2.setDataHandler(new DataHandler(fds));            
+				mbp2.setFileName(fds.getName());           
+    
+				Multipart mp = new MimeMultipart();            
+				mp.addBodyPart(mbp2);            
+                  
+                message.setContent(mp);
+				
+				Transport.send(message);
+			}
+			catch (MessagingException e)
+			{
+				System.out.println("Erro ao enviar o email");
+				e.printStackTrace();
+	        }		
+		
+	}
+	
+	
 }
