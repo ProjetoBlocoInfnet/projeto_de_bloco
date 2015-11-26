@@ -1,9 +1,7 @@
 Questao,TipoResposta,Resposta
-Curso 1,LIKERT,5
-Questão 4,LIKERT,3
-Questão 1,LIKERT,5
-Questão 2,LIKERT,5
-Questão 7,TEXTO,
-Questão 5,LIKERT,0
-Questão 3,LIKERT,3
-Questão 6,LIKERT,0
+questao 6,LIKERT,1
+questao 1,LIKERT,5
+questao 4,LIKERT,3
+questao 2,LIKERT,5
+questao 3,LIKERT,3
+questao 5,LIKERT,1

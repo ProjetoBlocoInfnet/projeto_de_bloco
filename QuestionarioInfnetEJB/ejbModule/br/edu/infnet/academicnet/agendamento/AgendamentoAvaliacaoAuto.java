@@ -198,7 +198,10 @@ public class AgendamentoAvaliacaoAuto
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				message.setRecipient(Message.RecipientType.TO, new InternetAddress("waizmam.rj@gmail.com"));				
+				//message.setRecipient(Message.RecipientType.TO, new InternetAddress("waizmam.rj@gmail.com"));
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress("waizmam.rj@gmail.com"));
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress("emmanuelaranha@gmail.com"));
+				
 				message.setSubject("Resultado em CSV da Avaliação");
 
 				StringBuilder mensagem = new StringBuilder();
