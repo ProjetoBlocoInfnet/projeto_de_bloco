@@ -5,7 +5,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -14,8 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
 
 import br.edu.infnet.academicnet.dao.AgendamentoAvaliacaoDAO;
 import br.edu.infnet.academicnet.dao.AvaliacaoDAO;
@@ -30,7 +27,6 @@ import br.edu.infnet.academicnet.modelo.Modulo;
 import br.edu.infnet.academicnet.modelo.Professor;
 import br.edu.infnet.academicnet.modelo.Turma;
 import flexjson.JSONSerializer;
-import flexjson.transformer.IterableTransformer;
 
 
 /**
